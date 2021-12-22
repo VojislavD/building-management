@@ -34,6 +34,7 @@ class CreateBuildingsTable extends Migration
             $table->string('balance_begining');
             $table->text('comment');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
