@@ -15,22 +15,22 @@ class CreateBuildingsTable extends Migration
     {
         Schema::create('buildings', function (Blueprint $table) {
             $table->id();
-            $table->integer('internal_code');
-            $table->string('pib');
-            $table->string('identification_number');
-            $table->string('account_number');
+            $table->integer('internal_code')->unique();
+            $table->string('pib')->unique();
+            $table->string('identification_number')->unique();
+            $table->string('account_number')->unique();
             $table->string('balance');
             $table->string('construction_year');
-            $table->boolean('yard');
+            $table->integer('square');
+            $table->tinyInteger('floors');
+            $table->integer('apartments');
+            $table->integer('tenants');
             $table->boolean('elevator');
+            $table->boolean('yard');
             $table->string('address');
             $table->string('city');
             $table->string('municipality');
             $table->string('postal_code');
-            $table->tinyInteger('floors');
-            $table->tinyInteger('apartments');
-            $table->tinyInteger('tenants');
-            $table->tinyInteger('square');
             $table->string('balance_begining');
             $table->text('comment');
             $table->timestamps();
