@@ -42,6 +42,7 @@ class BuildingsTableLivewireComponentTest extends TestCase
             ->assertDontSee($building1->internal_code)
             ->assertSee($building2->internal_code)
             ->assertSee($building3->internal_code)
+            ->assertSeeInOrder(['Showing', '1', 'to', '10', 'of', Building::active()->count(), 'results'])
             ->assertHasNoErrors();
     }
 }
