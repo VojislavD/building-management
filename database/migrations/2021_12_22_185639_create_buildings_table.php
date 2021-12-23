@@ -16,6 +16,7 @@ class CreateBuildingsTable extends Migration
         Schema::create('buildings', function (Blueprint $table) {
             $table->id();
             $table->integer('internal_code')->unique();
+            $table->tinyInteger('status');
             $table->string('pib')->unique();
             $table->string('identification_number')->unique();
             $table->string('account_number')->unique();
