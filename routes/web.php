@@ -24,5 +24,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     })->name('dashboard');
 
     // Buildings
-    Route::get('/buildings', [BuildingController::class, 'index'])->name('buildings.index');
+    Route::prefix('/buildings')->name('buildings.')->group(function() {
+        Route::get('/', [BuildingController::class, 'index'])->name('index');
+        Route::get('/create', [BuildingController::class, 'create'])->name('create');
+    });
 });
