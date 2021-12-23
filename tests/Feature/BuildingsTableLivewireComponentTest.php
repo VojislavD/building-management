@@ -14,7 +14,21 @@ class BuildingsTableLivewireComponentTest extends TestCase
     /**
      * @test
      */
-    public function testShowLatestTenBuildingsInTable()
+    public function test_show_only_active_buildings()
+    {
+        $active = Building::factory()->active()->create();
+        $inactive = Building::factory()->inactive()->create();
+        
+        Livewire::test('buildings-table')
+            ->assertSee($active->internal_code)
+            ->assertDontSee($inactive->internal_code)
+            ->assertHasNoErrors();
+    }
+
+    /**
+     * @test
+     */
+    public function test_show_latest_ten_buildings()
     {
         $building1 = Building::factory()->create([
             'created_at' => now()->subDay()

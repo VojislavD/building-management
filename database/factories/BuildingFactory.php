@@ -36,4 +36,18 @@ class BuildingFactory extends Factory
             'comment' => $this->faker->text(500)
         ];
     }
+
+    public function active(): Factory
+    {
+        return $this->state([
+            'status' => Building::STATUS_ACTIVE
+        ]);
+    }
+
+    public function inactive(): Factory
+    {
+        return $this->state([
+            'status' => Building::STATUS_INACTIVE
+        ]);
+    }
 }
