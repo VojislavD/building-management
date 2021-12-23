@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+use function PHPSTORM_META\map;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,6 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::create([
+            'name' => 'Test User',
+            'email' => 'testuser@example.com',
+            'password' => bcrypt('password')
+        ]);
+
+        \App\Models\Building::factory(50)->create();
     }
 }
