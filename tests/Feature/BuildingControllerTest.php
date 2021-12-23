@@ -30,8 +30,32 @@ class BuildingControllerTest extends TestCase
             ->get(route('buildings.index'));
 
         $response->assertStatus(200)
+            ->assertViewIs('buildings.index')
             ->assertSeeText(__('All Buildings'))
             ->assertSeeText(__('Add Building'))
             ->assertSeeInOrder(['Internal Code', 'Address',	'Floors', 'Apartments', 'Tenants', 'Manage']);
+    }
+
+    /**
+     * @test
+     */
+    public function test_create_page_can_view_only_authenticated_user()
+    {
+        $response = $this->get(route('buildings.create'));
+
+        $response->assertRedirect(route('login'));
+    }
+
+    /**
+     * @test
+     */
+    public function test_create_page_show_correct_info()
+    {
+        $response = $this->actingAs(User::factory()->create())
+            ->get(route('buildings.create'));
+
+        $response->assertStatus(200)
+            ->assertViewIs('buildings.create')
+            ->assertSeeText(__('Add New Building'));
     }
 }
