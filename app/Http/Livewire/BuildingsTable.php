@@ -13,7 +13,7 @@ class BuildingsTable extends Component
     public function render()
     {
         return view('livewire.buildings-table', [
-            'buildings' => Building::latest()->paginate(10)
+            'buildings' => Building::active()->latest()->paginate(10)
         ]);
     }
 }

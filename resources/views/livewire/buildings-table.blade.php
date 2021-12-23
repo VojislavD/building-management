@@ -54,7 +54,7 @@
                 </tr>
             @empty
                 <tr class="bg-gray-100 hover:bg-primary hover:bg-opacity-20 transition duration-200">
-                    <td class="py-3 pl-2" colspan="7">
+                    <td class="py-3 pl-2 text-center" colspan="7">
                         {{ __('There is no any buildings yet') }}
                     </td>
                 </tr>

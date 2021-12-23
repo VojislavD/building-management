@@ -11,4 +11,14 @@ class Building extends Model
 
     const STATUS_ACTIVE = 1;
     const STATUS_INACTIVE = 2;
+
+    public function scopeActive()
+    {
+        return $this->where('status', static::STATUS_ACTIVE);
+    }
+
+    public function scopeInactive()
+    {
+        return $this->where('status', static::STATUS_INACTIVE);
+    }
 }
