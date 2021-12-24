@@ -21,4 +21,15 @@ class Building extends Model
     {
         return $this->where('status', static::STATUS_INACTIVE);
     }
+
+    public static function availableConstructionYears()
+    {
+        $years = [];
+
+        for ($i = now()->year; $i >= 1950; $i--) {
+            $years[$i] = $i;
+        }
+
+        return $years;
+    }
 }
