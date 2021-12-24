@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Form;
 
 use Illuminate\View\Component;
 
@@ -11,7 +11,7 @@ class Input extends Component
     public $id;
     public $title;
     public $placeholder;
-
+    
     /**
      * Create a new component instance.
      *
@@ -33,6 +33,6 @@ class Input extends Component
      */
     public function render()
     {
-        return view('components.input');
+        return view('components.form.input');
     }
 }

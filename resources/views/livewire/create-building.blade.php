@@ -1,5 +1,5 @@
 <form>
-    <x-input 
+    <x-form.input 
         type="text" 
         name="internal_code" 
         id="internal_code" 
