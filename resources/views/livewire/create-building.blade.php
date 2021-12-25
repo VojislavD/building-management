@@ -133,10 +133,10 @@
 
         <x-form.input 
             type="text" 
-            name="municipality" 
-            id="municipality" 
-            title="{{ __('Municipality') }}" 
-            placeholder="{{ __('Municipality') }}" 
+            name="county" 
+            id="county" 
+            title="{{ __('County') }}" 
+            placeholder="{{ __('County') }}" 
         />
 
         <x-form.input 

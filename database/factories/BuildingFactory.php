@@ -30,7 +30,7 @@ class BuildingFactory extends Factory
             'yard' => $this->faker->boolean(30),
             'address' => $this->faker->streetAddress(),
             'city' => $this->faker->city(),
-            'municipality' => $this->faker->country(),
+            'county' => $this->faker->country(),
             'postal_code' => $this->faker->postcode(),
             'balance_begining' => $this->faker->numberBetween(1000, 10000),
             'comment' => $this->faker->text(500)

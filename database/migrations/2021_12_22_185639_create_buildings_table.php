@@ -30,7 +30,7 @@ class CreateBuildingsTable extends Migration
             $table->boolean('yard');
             $table->string('address');
             $table->string('city');
-            $table->string('municipality');
+            $table->string('county');
             $table->string('postal_code');
             $table->string('balance_begining');
             $table->text('comment');
