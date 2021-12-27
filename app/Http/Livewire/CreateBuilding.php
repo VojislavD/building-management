@@ -76,8 +76,6 @@ class CreateBuilding extends Component
             'postal_code' => $this->postal_code,
             'comment' => $this->comment
         ]);
-
-        dd('ok');
     }
     
     public function render()
