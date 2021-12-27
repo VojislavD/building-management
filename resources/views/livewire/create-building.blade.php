@@ -170,12 +170,11 @@
     
     <div class="my-16">
         <div class="my-4">
-            <x-form.input 
-                type="text" 
-                name="comment" 
-                id="comment" 
-                title="{{ __('Comment') }}" 
-                placeholder="{{ __('Comment') }}" 
+            <x-form.textarea
+                name="comment"
+                id="comment"
+                title="Comment"
+                placeholder="{{ __('Comment...') }}"
             />
         </div>
     </div>
