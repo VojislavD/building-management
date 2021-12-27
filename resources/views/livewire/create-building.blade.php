@@ -45,6 +45,7 @@
             <div>
                 <x-form.input 
                     type="number" 
+                    step=".01"
                     model="square" 
                     id="square" 
                     title="{{ __('Square') }}" 
@@ -121,6 +122,7 @@
             <div>
                 <x-form.input 
                     type="number" 
+                    step=".01"
                     model="balance_begining" 
                     id="balance_begining" 
                     title="{{ __('Balance Begining') }}" 
