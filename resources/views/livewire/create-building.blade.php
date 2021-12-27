@@ -1,18 +1,21 @@
-<form class="w-full xl:w-2/3 mx-auto">
+<form 
+    class="w-full xl:w-2/3 mx-auto"
+    wire:submit.prevent="submit"
+>
     <div class="my-16">
         <p class="w-full text-gray-500 uppercase text-sm py-1 border-b border-gray-300">{{ __('Basic Info') }}</p>
 
         <div class="grid grid-cols-2 gap-8 my-4">
             <x-form.input 
                 type="text" 
-                name="internal_code" 
+                model="internal_code"
                 id="internal_code" 
                 title="{{ __('Internal Code') }}" 
                 placeholder="{{ __('Internal Code') }}" 
             />
 
             <x-form.select 
-                name="status" 
+                model="status" 
                 id="status" 
                 title="{{ __('Status') }}" 
                 :options="[
@@ -24,7 +27,7 @@
 
         <div class="grid grid-cols-2 gap-8 my-4">
             <x-form.select 
-                name="construction_year" 
+                model="construction_year" 
                 id="construction_year" 
                 title="{{ __('Construction Year') }}" 
                 :options="\App\Models\Building::availableConstructionYears()"
@@ -32,7 +35,7 @@
     
             <x-form.input 
                 type="number" 
-                name="square" 
+                model="square" 
                 id="square" 
                 title="{{ __('Square') }}" 
                 placeholder="{{ __('Square') }}" 
@@ -42,7 +45,7 @@
         <div class="grid grid-cols-3 gap-8 my-4">
             <x-form.input 
                 type="number" 
-                name="floors" 
+                model="floors" 
                 id="floors" 
                 title="{{ __('Floors') }}" 
                 placeholder="{{ __('Floors') }}" 
@@ -50,7 +53,7 @@
     
             <x-form.input 
                 type="number" 
-                name="apartments" 
+                model="apartments" 
                 id="apartments" 
                 title="{{ __('Apartments') }}" 
                 placeholder="{{ __('Apartments') }}" 
@@ -58,7 +61,7 @@
     
             <x-form.input 
                 type="number" 
-                name="tenants" 
+                model="tenants" 
                 id="tenants" 
                 title="{{ __('Tenants') }}" 
                 placeholder="{{ __('Tenants') }}" 
@@ -67,7 +70,7 @@
 
         <div class="grid grid-cols-2 gap-8 my-4">
             <x-form.select 
-                name="elevator" 
+                model="elevator" 
                 id="elevator" 
                 title="{{ __('Elevator') }}" 
                 :options="[
@@ -77,7 +80,7 @@
             />
     
             <x-form.select 
-                name="yard" 
+                model="yard" 
                 id="yard" 
                 title="{{ __('Yard') }}" 
                 :options="[
@@ -90,7 +93,7 @@
         <div class="my-4">
             <x-form.input 
                 type="number" 
-                name="balance_begining" 
+                model="balance_begining" 
                 id="balance_begining" 
                 title="{{ __('Balance Begining') }}" 
                 placeholder="{{ __('Balance Begining') }}" 
@@ -104,7 +107,7 @@
         <div class="grid grid-cols-3 gap-8 my-4">
             <x-form.input 
                 type="text" 
-                name="pib" 
+                model="pib" 
                 id="pib" 
                 title="{{ __('PIB') }}" 
                 placeholder="{{ __('PIB') }}" 
@@ -112,7 +115,7 @@
     
             <x-form.input 
                 type="text" 
-                name="identification_number" 
+                model="identification_number" 
                 id="identification_number" 
                 title="{{ __('Identification Number') }}" 
                 placeholder="{{ __('Identification Number') }}" 
@@ -120,7 +123,7 @@
     
             <x-form.input 
                 type="text" 
-                name="account_number" 
+                model="account_number" 
                 id="account_number" 
                 title="{{ __('Account Number') }}" 
                 placeholder="{{ __('Account Number') }}" 
@@ -134,7 +137,7 @@
         <div class="my-4">
             <x-form.input 
                 type="text" 
-                name="address" 
+                model="address" 
                 id="address" 
                 title="{{ __('Address') }}" 
                 placeholder="{{ __('Address') }}" 
@@ -144,7 +147,7 @@
         <div class="grid grid-cols-3 gap-8 my-4">
             <x-form.input 
                 type="text" 
-                name="city" 
+                model="city" 
                 id="city" 
                 title="{{ __('City') }}" 
                 placeholder="{{ __('City') }}" 
@@ -152,7 +155,7 @@
     
             <x-form.input 
                 type="text" 
-                name="county" 
+                model="county" 
                 id="county" 
                 title="{{ __('County') }}" 
                 placeholder="{{ __('County') }}" 
@@ -160,7 +163,7 @@
     
             <x-form.input 
                 type="text" 
-                name="postal_code" 
+                model="postal_code" 
                 id="postal_code" 
                 title="{{ __('Postal Code') }}" 
                 placeholder="{{ __('Postal Code') }}" 
@@ -171,7 +174,7 @@
     <div class="my-16">
         <div class="my-4">
             <x-form.textarea
-                name="comment"
+                model="comment"
                 id="comment"
                 title="Comment"
                 placeholder="{{ __('Comment...') }}"
