@@ -43,10 +43,9 @@ class CreateBuilding extends Component
             'account_number' => ['required'],
             'address' => ['required'],
             'city' => ['required'],
+            'county' => ['required'],
             'postal_code' => ['required'],
             'comment' => ['required'],
-            'status' => ['required'],
-            'status' => ['required']
         ];
     }
 
