@@ -54,6 +54,30 @@ class CreateBuilding extends Component
     public function submit()
     {
         $this->validate();
+
+        Building::create([
+            'internal_code' => $this->internal_code,
+            'status' => $this->status,
+            'construction_year' => $this->construction_year,
+            'square' => $this->square,
+            'floors' => $this->floors,
+            'apartments' => $this->apartments,
+            'tenants' => $this->tenants,
+            'elevator' => $this->elevator,
+            'yard' => $this->yard,
+            'balance_begining' => $this->balance_begining,
+            'balance' => $this->balance_begining,
+            'pib' => $this->pib,
+            'identification_number' => $this->identification_number,
+            'account_number' => $this->account_number,
+            'address' => $this->address,
+            'city' => $this->city,
+            'county' => $this->county,
+            'postal_code' => $this->postal_code,
+            'comment' => $this->comment
+        ]);
+
+        dd('ok');
     }
     
     public function render()

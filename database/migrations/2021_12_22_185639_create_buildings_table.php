@@ -33,7 +33,7 @@ class CreateBuildingsTable extends Migration
             $table->string('county');
             $table->string('postal_code');
             $table->string('balance_begining');
-            $table->text('comment');
+            $table->text('comment')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
