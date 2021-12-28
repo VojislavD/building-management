@@ -30,7 +30,7 @@ class CreateBuilding extends Component
     protected function rules()
     {
         return [
-            'internal_code' => ['required', 'string', 'max:255'],
+            'internal_code' => ['required', 'string', 'max:255', 'unique:buildings'],
             'status' => ['required', Rule::in([Building::STATUS_ACTIVE, Building::STATUS_INACTIVE])],
             'construction_year' => ['required', Rule::in(Building::availableConstructionYears())],
             'square' => ['required', 'numeric', 'min:1'],
@@ -40,9 +40,9 @@ class CreateBuilding extends Component
             'elevator' => ['required', 'boolean'],
             'yard' => ['required', 'boolean'],
             'balance_begining' => ['required', 'numeric'],
-            'pib' => ['required', 'numeric', 'digits:9'],
-            'identification_number' => ['required', 'numeric', 'digits:8'],
-            'account_number' => ['required', 'string'],
+            'pib' => ['required', 'numeric', 'digits:9', 'unique:buildings'],
+            'identification_number' => ['required', 'numeric', 'digits:8', 'unique:buildings'],
+            'account_number' => ['required', 'string', 'unique:buildings'],
             'address' => ['required', 'string'],
             'city' => ['required', 'string'],
             'county' => ['required', 'string'],
@@ -53,31 +53,35 @@ class CreateBuilding extends Component
 
     public function submit()
     {
-        // $this->validate();
+        $this->validate();
 
-        // Building::create([
-        //     'internal_code' => $this->internal_code,
-        //     'status' => $this->status,
-        //     'construction_year' => $this->construction_year,
-        //     'square' => $this->square,
-        //     'floors' => $this->floors,
-        //     'apartments' => $this->apartments,
-        //     'tenants' => $this->tenants,
-        //     'elevator' => $this->elevator,
-        //     'yard' => $this->yard,
-        //     'balance_begining' => $this->balance_begining,
-        //     'balance' => $this->balance_begining,
-        //     'pib' => $this->pib,
-        //     'identification_number' => $this->identification_number,
-        //     'account_number' => $this->account_number,
-        //     'address' => $this->address,
-        //     'city' => $this->city,
-        //     'county' => $this->county,
-        //     'postal_code' => $this->postal_code,
-        //     'comment' => $this->comment
-        // ]);
+        $newBuilding = Building::create([
+            'internal_code' => $this->internal_code,
+            'status' => $this->status,
+            'construction_year' => $this->construction_year,
+            'square' => $this->square,
+            'floors' => $this->floors,
+            'apartments' => $this->apartments,
+            'tenants' => $this->tenants,
+            'elevator' => $this->elevator,
+            'yard' => $this->yard,
+            'balance_begining' => $this->balance_begining,
+            'balance' => $this->balance_begining,
+            'pib' => $this->pib,
+            'identification_number' => $this->identification_number,
+            'account_number' => $this->account_number,
+            'address' => $this->address,
+            'city' => $this->city,
+            'county' => $this->county,
+            'postal_code' => $this->postal_code,
+            'comment' => $this->comment
+        ]);
         
-        session()->flash('buildingCreated', __('New building successfully created.'));
+        if ($newBuilding instanceof Building) {
+            session()->flash('buildingCreated', __('New building successfully created.'));
+        } else {
+            session()->flash('buildingNotCreated', __('Oops! Something went wrong, please try again.'));
+        }
 
         return redirect()->to(route('buildings.index'));
     }
