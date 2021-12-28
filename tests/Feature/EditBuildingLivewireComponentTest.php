@@ -244,4 +244,77 @@ class EditBuildingLivewireComponentTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
     }
+
+    /**
+     * @test
+     */
+    public function test_update_building()
+    {
+        $building = Building::factory()->active()->create();
+
+        Livewire::test('edit-building', [
+            'building' => $building
+        ])
+            ->set('internal_code', "12345")
+            ->set('status', Building::STATUS_INACTIVE)
+            ->set('construction_year', $building->construction_year-1)
+            ->set('square', $building->square + 10)
+            ->set('floors', $building->floors + 10)
+            ->set('apartments', $building->apartments + 10)
+            ->set('tenants', $building->tenants + 10)
+            ->set('elevator', false)
+            ->set('yard', false)
+            ->set('balance', $building->balance + 10)
+            ->set('pib', '111111111')
+            ->set('identification_number', '11111111')
+            ->set('account_number', '111-11111-11')
+            ->set('address', 'Some Random Street')
+            ->set('city', 'New York')
+            ->set('county', 'New York')
+            ->set('postal_code', 11111)
+            ->set('comment', 'Some random comment.')
+            ->call('submit')
+            ->assertHasNoErrors();
+
+        $this->assertDatabaseMissing('buildings', [
+                'internal_code' => $building->internal_code,
+                'status' => $building->status,
+                'construction_year' => $building->construction_year,
+                'square' => $building->square,
+                'floors' => $building->floors,
+                'apartments' => $building->apartments,
+                'tenants' => $building->tenants,
+                'elevator' => $building->elevator,
+                'yard' => $building->yard,
+                'balance' => $building->balance,
+                'pib' => $building->pib,
+                'identification_number' => $building->identification_number,
+                'account_number' => $building->account_number,
+                'address' => $building->address,
+                'city' => $building->city,
+                'county' => $building->county,
+                'postal_code' => $building->postal_code,
+                'comment' => $building->comment,
+            ])
+            ->assertDatabaseHas('buildings', [
+                'internal_code' => "12345",
+                'status' => Building::STATUS_INACTIVE,
+                'construction_year' => $building->construction_year-1,
+                'square' => $building->square + 10,
+                'floors' => $building->floors + 10,
+                'apartments' => $building->apartments + 10,
+                'tenants' => $building->tenants + 10,
+                'elevator' => false,
+                'yard' => false,
+                'balance' => $building->balance + 10,
+                'pib' => '111111111',
+                'identification_number' => '11111111',
+                'account_number' => '111-11111-11',
+                'address' => 'Some Random Street',
+                'city' => 'New York',
+                'county' => 'New York',
+                'postal_code' => '11111',
+                'comment' => 'Some random comment.'
+            ]);
+    }
 }
