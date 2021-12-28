@@ -238,7 +238,7 @@
         </div>
     </div>
 
-    <div class="flex items-center justify-end">
+    <div>
         <x-form.submit title="Save" />
     </div>
 </form>

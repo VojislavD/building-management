@@ -24,4 +24,13 @@ class BuildingController extends Controller
             'building' => $building
         ]);
     }
+
+    public function destroy(Building $building)
+    {
+        if ($building->delete()) {
+            return redirect()->to(route('buildings.index'))->with('buildingDeleted', __('Building is successfully deleted.'));
+        } else {
+            return redirect()->to(route('buildings.index'))->with('buildingNotDeleted', __('Oops! Something went wrong, please try again.'));
+        }
+    }
 }
