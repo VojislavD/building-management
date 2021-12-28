@@ -32,8 +32,15 @@ class BuildingControllerTest extends TestCase
         $response->assertStatus(200)
             ->assertViewIs('buildings.index')
             ->assertSeeText(__('All Buildings'))
-            ->assertSeeText(__('Add Building'))
-            ->assertSeeInOrder(['Internal Code', 'Address',	'Floors', 'Apartments', 'Tenants', 'Manage']);
+            ->assertSeeText(__('New Building'))
+            ->assertSeeInOrder([
+                __('Internal Code'), 
+                __('Address'),	
+                __('Floors'), 
+                __('Apartments'), 
+                __('Tenants'), 
+                __('Manage')
+            ]);
     }
 
     /**
@@ -56,6 +63,11 @@ class BuildingControllerTest extends TestCase
 
         $response->assertStatus(200)
             ->assertViewIs('buildings.create')
-            ->assertSeeText(__('Add New Building'));
+            ->assertSeeText(__('Add New Building'))
+            ->assertSeeTextInOrder([
+                __('Basic Info'), 
+                __('Administrative Info'),
+                __('Location Info') 
+            ]);
     }
 }
