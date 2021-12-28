@@ -18,7 +18,7 @@ class BuildingFactory extends Factory
             'internal_code' => $this->faker->unique()->randomNumber(5),
             'status' => Building::STATUS_ACTIVE,
             'pib' => $this->faker->unique()->randomNumber(9),
-            'identification_number' => $this->faker->unique()->randomNumber(9),
+            'identification_number' => $this->faker->unique()->randomNumber(8),
             'account_number' => $this->faker->randomNumber(3).'-'.$this->faker->randomNumber(5).'-'.$this->faker->randomNumber(2),
             'balance' => $this->faker->numberBetween(1000, 1000000),
             'construction_year' => $this->faker->numberBetween(1970, now()->year),
