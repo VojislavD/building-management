@@ -141,4 +141,34 @@ class BuildingControllerTest extends TestCase
                 __('Save'), 
             ]);
     }
+
+    /**
+     * @test
+     */
+    public function test_delete_building_can_do_only_authenticated_user()
+    {
+        $building = Building::factory()->create();
+
+        $response = $this->delete(route('buildings.delete', $building));
+
+        $response->assertRedirect(route('login'));
+    }
+
+    /**
+     * @test
+     */
+    public function test_delete_building()
+    {
+        $building = Building::factory()->create();
+
+        $response = $this->actingAs(User::factory()->create())
+            ->delete(route('buildings.delete', $building));
+
+        $response->assertRedirect(route('buildings.index'))
+            ->assertSessionHas('buildingDeleted');
+
+        $this->assertDatabaseMissing('buildings', [
+            $building->id
+        ]);
+    }
 }
