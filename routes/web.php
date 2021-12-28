@@ -29,5 +29,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
         Route::get('/create', [BuildingController::class, 'create'])->name('create');
         Route::get('/edit/{building}', [BuildingController::class, 'edit'])->name('edit');
         Route::delete('/delete/{building}', [BuildingController::class, 'destroy'])->name('delete');
+        Route::get('/{building}', [BuildingController::class, 'show'])->name('show');
     });
 });

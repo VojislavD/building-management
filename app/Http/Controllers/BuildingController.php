@@ -18,6 +18,13 @@ class BuildingController extends Controller
         return view('buildings.create');
     }
 
+    public function show(Building $building)
+    {
+        return view('buildings.show', [
+            'building' => $building
+        ]);
+    }
+
     public function edit(Building $building): Renderable
     {
         return view('buildings.edit', [
