@@ -1871,6 +1871,14 @@ select {
   --tw-text-opacity: 1;
   color: rgb(13 148 136 / var(--tw-text-opacity));
 }
+.text-cyan-600 {
+  --tw-text-opacity: 1;
+  color: rgb(8 145 178 / var(--tw-text-opacity));
+}
+.text-sky-600 {
+  --tw-text-opacity: 1;
+  color: rgb(2 132 199 / var(--tw-text-opacity));
+}
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;

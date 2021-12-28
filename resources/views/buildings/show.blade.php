@@ -3,6 +3,10 @@
         <div class="flex items-center space-x-4">
             <span class="text-2xl font-bold" title="{{ __('Address') }}">{{ $building->address }}</span>
             <span class="text-xs bg-green-600 text-gray-100 lowercase px-2 py-0.5 rounded-lg" title="{{ __('Status') }}">Active</span>
+            <div class="flex items-center mt-0.5 space-x-1" title="{{ __('Balance') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                <span class="font-bold">{{ $building->balance }}</span>
+            </div>
         </div>
         <p title="{{ __('City') }}">{{ $building->city }}</p>
         <div class="flex items-center mt-0.5 space-x-6">
@@ -15,16 +19,12 @@
                 <span class="text-sm">{{ $building->tenants }}</span>
             </div>
         </div>
-        <div class="flex items-center mt-0.5 space-x-1" title="{{ __('Balance') }}">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-            <span class="font-bold">{{ $building->balance }}</span>
-        </div>
     </div>
     <div class="grid grid-cols-4 gap-8 mt-12">
         <div>
             <div class="flex items-center space-x-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                <p class="text-lg font-semibold">{{ __('Basic Info') }}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                <p class="text-lg font-semibold text-teal-600">{{ __('Basic Info') }}</p>
             </div>
             <div class="mt-4">
                 <p>
@@ -58,8 +58,8 @@
         </div>
         <div>
             <div class="flex items-center space-x-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" /></svg>
-                <p class="text-lg font-semibold">{{ __('Administrative Info') }}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" /></svg>
+                <p class="text-lg font-semibold text-sky-600">{{ __('Administrative Info') }}</p>
             </div>
             <div class="mt-4">
                 <p>
@@ -76,8 +76,8 @@
         </div>
         <div>
             <div class="flex items-center space-x-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                <p class="text-lg font-semibold">{{ __('Location') }}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                <p class="text-lg font-semibold text-indigo-600">{{ __('Location') }}</p>
             </div>
             <div class="mt-4">
                 <p>
@@ -96,8 +96,8 @@
         </div>
         <div>
             <div class="flex items-center space-x-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                <p class="text-lg font-semibold">{{ __('Balance') }}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                <p class="text-lg font-semibold text-yellow-600">{{ __('Balance') }}</p>
             </div>
             <div class="mt-4">
                 <p>
