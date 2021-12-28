@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Building;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
@@ -15,5 +16,12 @@ class BuildingController extends Controller
     public function create(): Renderable
     {
         return view('buildings.create');
+    }
+
+    public function edit(Building $building): Renderable
+    {
+        return view('buildings.edit', [
+            'building' => $building
+        ]);
     }
 }
