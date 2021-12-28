@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Building;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -66,8 +67,78 @@ class BuildingControllerTest extends TestCase
             ->assertSeeText(__('Add New Building'))
             ->assertSeeTextInOrder([
                 __('Basic Info'), 
+                __('Internal Code'), 
+                __('Status'), 
+                __('Construction Year'), 
+                __('Square'), 
+                __('Floors'), 
+                __('Apartments'), 
+                __('Tenants'), 
+                __('Elevator'), 
+                __('Yard'), 
+                __('Balance'), 
                 __('Administrative Info'),
-                __('Location Info') 
+                __('PIB'), 
+                __('Identification Number'), 
+                __('Account Number'), 
+                __('Location Info'), 
+                __('Address'), 
+                __('City'), 
+                __('County'), 
+                __('Postal Code'), 
+                __('Comment'), 
+                __('Save'), 
+            ]);
+    }
+
+    /**
+     * @test
+     */
+    public function test_edit_page_can_view_only_authenticated_user()
+    {
+        $building = Building::factory()->create();
+
+        $response = $this->get(route('buildings.edit', $building));
+
+        $response->assertRedirect(route('login'));
+    }
+
+    /**
+     * @test
+     */
+    public function test_edit_page_show_correct_info()
+    {
+        $building = Building::factory()->create();
+
+        $response = $this->actingAs(User::factory()->create())
+            ->get(route('buildings.edit', $building));
+
+        $response->assertStatus(200)
+            ->assertViewIs('buildings.edit')
+            ->assertSeeText(__('Edit Building'))
+            ->assertSeeTextInOrder([
+                __('Basic Info'), 
+                __('Internal Code'), 
+                __('Status'), 
+                __('Construction Year'), 
+                __('Square'), 
+                __('Floors'), 
+                __('Apartments'), 
+                __('Tenants'), 
+                __('Elevator'), 
+                __('Yard'), 
+                __('Balance'), 
+                __('Administrative Info'),
+                __('PIB'), 
+                __('Identification Number'), 
+                __('Account Number'), 
+                __('Location Info'), 
+                __('Address'), 
+                __('City'), 
+                __('County'), 
+                __('Postal Code'), 
+                __('Comment'), 
+                __('Save'), 
             ]);
     }
 }
