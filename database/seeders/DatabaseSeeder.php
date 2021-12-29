@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password')
         ]);
 
-        \App\Models\Building::factory(50)->create();
+        \App\Models\Apartment::factory(50)->create();
     }
 }
