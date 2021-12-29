@@ -123,6 +123,8 @@
     </div>
 
     <div class="mt-24">
-        Apartments List Here
+        <h2 class="text-xl font-semibold">Apartments</h2>
+
+        @livewire('apartments-table', ['building_id' => $building->id])
     </div>
 </x-app-layout>
