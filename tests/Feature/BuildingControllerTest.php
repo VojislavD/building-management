@@ -94,6 +94,38 @@ class BuildingControllerTest extends TestCase
     /**
      * @test
      */
+    public function test_show_page_can_view_only_authenticated_user()
+    {
+        $building = Building::factory()->create();
+
+        $response = $this->get(route('buildings.show', $building));
+
+        $response->assertRedirect(route('login'));
+    }
+
+    /**
+     * @test
+     */
+    public function test_show_page_show_correct_info()
+    {
+        $building = Building::factory()->create();
+
+        $response = $this->actingAs(User::factory()->create())
+            ->get(route('buildings.show', $building));
+
+        $response->assertOk()
+            ->assertViewIs('buildings.show')
+            ->assertSeeInOrder([
+                $building->address,
+                $building->balance,
+                __('Basic Info'),
+                $building->internal_code
+            ]);
+    }
+
+    /**
+     * @test
+     */
     public function test_edit_page_can_view_only_authenticated_user()
     {
         $building = Building::factory()->create();
@@ -113,7 +145,7 @@ class BuildingControllerTest extends TestCase
         $response = $this->actingAs(User::factory()->create())
             ->get(route('buildings.edit', $building));
 
-        $response->assertStatus(200)
+        $response->assertOk()
             ->assertViewIs('buildings.edit')
             ->assertSeeText(__('Edit Building'))
             ->assertSeeTextInOrder([
