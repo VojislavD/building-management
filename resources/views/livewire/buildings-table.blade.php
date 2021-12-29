@@ -34,6 +34,9 @@
                 {{ __('Address') }}
             </td>
             <td class="py-2 pl-2">
+                {{ __('Status') }}
+            </td>
+            <td class="py-2 pl-2">
                 {{ __('Floors') }}
             </td>
             <td class="py-2 pl-2">
@@ -59,7 +62,10 @@
                         {{ $building->address }}, {{ $building->city }}
                     </td>
                     <td class="py-3 pl-2">
-                        {{ $building->floors}}
+                        {!! $building->getStatusLabel() !!}
+                    </td>
+                    <td class="py-3 pl-2">
+                        {{ $building->floors }}
                     </td>
                     <td class="py-3 pl-2">
                         {{ $building->apartments }}
