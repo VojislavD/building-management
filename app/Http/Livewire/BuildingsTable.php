@@ -11,6 +11,7 @@ class BuildingsTable extends Component
     use WithPagination;
     
     public $perPage = 10;
+    public $status = Building::STATUS_ACTIVE;
 
     public function updatingPerPage() 
     {
@@ -19,8 +20,14 @@ class BuildingsTable extends Component
 
     public function render()
     {
+        $buildings = Building::when($this->status, function($query) {
+                return $query->where('status', $this->status);
+            })
+            ->latest()
+            ->paginate($this->perPage);
+
         return view('livewire.buildings-table', [
-            'buildings' => Building::active()->latest()->paginate($this->perPage)
+            'buildings' => $buildings
         ]);
     }
 }

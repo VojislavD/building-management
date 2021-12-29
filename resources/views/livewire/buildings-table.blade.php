@@ -1,14 +1,27 @@
 <div>
-    <div class="flex items-center justify-end mt-4">
-        <select 
-            wire:model="perPage"
-            class="py-1 text-sm border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300"
-        >
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
-            <option value="50">50</option>
-        </select>
+    <div class="flex items-center justify-between mt-4">
+        <div>
+            <label for="">Status: </label>
+            <select 
+                wire:model="status"
+                class="py-1 text-sm border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300"
+                >
+                <option value="">{{ __('All') }}</option>
+                <option value="{{ \App\Models\Building::STATUS_ACTIVE }}">{{ __('Active') }}</option>
+                <option value="{{ \App\Models\Building::STATUS_INACTIVE }}">{{ __('Inactive') }}</option>
+            </select>
+        </div>
+        <div>
+            <select 
+                wire:model="perPage"
+                class="py-1 text-sm border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300"
+                >
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+            </select>
+        </div>
     </div>
     <table class="w-full my-3 whitespace-nowrap">
         <thead class="bg-secondary text-gray-100 font-bold">
