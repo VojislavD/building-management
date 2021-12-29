@@ -14,7 +14,7 @@ class BuildingsTableLivewireComponentTest extends TestCase
     /**
      * @test
      */
-    public function test_show_only_active_buildings()
+    public function test_show_only_active_buildings_at_begining()
     {
         $active = Building::factory()->active()->create();
         $inactive = Building::factory()->inactive()->create();
@@ -22,6 +22,32 @@ class BuildingsTableLivewireComponentTest extends TestCase
         Livewire::test('buildings-table')
             ->assertSee($active->internal_code)
             ->assertDontSee($inactive->internal_code)
+            ->assertHasNoErrors();
+    }
+
+    /**
+     * @test
+     */
+    public function test_show_active_inactive_or_all_buildings()
+    {
+        $active = Building::factory()->active()->create();
+        $inactive = Building::factory()->inactive()->create();
+        
+        Livewire::test('buildings-table')
+            ->assertSee($active->internal_code)
+            ->assertDontSee($inactive->internal_code)
+            ->assertHasNoErrors();
+
+        Livewire::test('buildings-table')
+            ->set('status', Building::STATUS_INACTIVE)
+            ->assertSee($inactive->internal_code)
+            ->assertDontSee($active->internal_code)
+            ->assertHasNoErrors();
+        
+        Livewire::test('buildings-table')
+            ->set('status', '')
+            ->assertSee($active->internal_code)
+            ->assertSee($inactive->internal_code)
             ->assertHasNoErrors();
     }
 
