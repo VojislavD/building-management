@@ -54,21 +54,22 @@ class BuildingsTableLivewireComponentTest extends TestCase
     /**
      * @test
      */
-    public function test_show_latest_ten_buildings()
+    public function test_show_buildings_in_latest_order()
     {
         $building1 = Building::factory()->create([
+            'created_at' => now()->subDays(2)
+        ]);
+        $building2 = Building::factory()->create([
             'created_at' => now()->subDay()
         ]);
-
-        $building2 = Building::factory()->create();
-        Building::factory(8)->create();
         $building3 = Building::factory()->create();
 
         Livewire::test('buildings-table')
-            ->assertDontSee($building1->internal_code)
-            ->assertSee($building2->internal_code)
-            ->assertSee($building3->internal_code)
-            ->assertSeeInOrder(['Showing', '1', 'to', '10', 'of', Building::active()->count(), 'results'])
+            ->assertSeeInOrder([
+                $building3->internal_code,
+                $building2->internal_code,
+                $building1->internal_code
+            ])
             ->assertHasNoErrors();
     }
 }
