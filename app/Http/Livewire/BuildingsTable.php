@@ -20,7 +20,8 @@ class BuildingsTable extends Component
 
     public function render()
     {
-        $buildings = Building::when($this->status, function($query) {
+        $buildings = Building::withCount('apartments')
+            ->when($this->status, function($query) {
                 return $query->where('status', $this->status);
             })
             ->latest()
