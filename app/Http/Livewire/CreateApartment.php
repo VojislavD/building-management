@@ -58,6 +58,7 @@ class CreateApartment extends Component
             if ($apartment instanceof Apartment) {
                 session()->flash('apratmentCreated', __('Apartment successfully created.'));
             } else {
+                $owner->delete();
                 session()->flash('apratmentNotCreated', __('Oops! Something went wrong, please try again.'));
             }
         } else {

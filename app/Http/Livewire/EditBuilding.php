@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class EditBuilding extends Component
 {
-    public $building;
+    public Building $building;
 
     public $internal_code;
     public $status;
@@ -28,27 +28,25 @@ class EditBuilding extends Component
     public $postal_code;
     public $comment;
 
-    public function mount(Building $building)
+    public function mount()
     {
-        $this->building = $building;
-
-        $this->internal_code = $building->internal_code;
-        $this->status = $building->status;
-        $this->construction_year = $building->construction_year;
-        $this->square = $building->square;
-        $this->floors = $building->floors;
-        $this->tenants = $building->tenants;
-        $this->elevator = $building->elevator;
-        $this->yard = $building->yard;
-        $this->balance = $building->balance;
-        $this->pib = $building->pib;
-        $this->identification_number = $building->identification_number;
-        $this->account_number = $building->account_number;
-        $this->address = $building->address;
-        $this->city = $building->city;
-        $this->county = $building->county;
-        $this->postal_code = $building->postal_code;
-        $this->comment = $building->comment;
+        $this->internal_code = $this->building->internal_code;
+        $this->status = $this->building->status;
+        $this->construction_year = $this->building->construction_year;
+        $this->square = $this->building->square;
+        $this->floors = $this->building->floors;
+        $this->tenants = $this->building->tenants;
+        $this->elevator = $this->building->elevator;
+        $this->yard = $this->building->yard;
+        $this->balance = $this->building->balance;
+        $this->pib = $this->building->pib;
+        $this->identification_number = $this->building->identification_number;
+        $this->account_number = $this->building->account_number;
+        $this->address = $this->building->address;
+        $this->city = $this->building->city;
+        $this->county = $this->building->county;
+        $this->postal_code = $this->building->postal_code;
+        $this->comment = $this->building->comment;
     }
 
     protected function rules()
