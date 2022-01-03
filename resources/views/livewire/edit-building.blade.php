@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-3 gap-8 my-4">
+        <div class="grid grid-cols-2 gap-8 my-4">
             <div>
                 <x-form.input 
                     type="number" 
