@@ -126,7 +126,7 @@
         <h2 class="text-xl font-semibold">Apartments</h2>
 
         <div class="flex items-center justify-end">
-            <x-link-button route="#" text="{{ __('New Apartment') }}" />
+            <x-link-button route="{{ route('apartments.create', $building) }}" text="{{ __('New Apartment') }}" />
         </div>
 
         @livewire('apartments-table', ['building_id' => $building->id])

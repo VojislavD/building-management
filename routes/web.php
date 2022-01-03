@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\BuildingController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +31,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
         Route::get('/edit/{building}', [BuildingController::class, 'edit'])->name('edit');
         Route::delete('/delete/{building}', [BuildingController::class, 'destroy'])->name('delete');
         Route::get('/{building}', [BuildingController::class, 'show'])->name('show');
+    });
+
+    // Apartments
+    Route::prefix('/apartments')->name('apartments.')->group(function() {
+        Route::get('/create/{building}', [ApartmentController::class, 'create'])->name('create');
     });
 });
