@@ -13,13 +13,14 @@ class Input extends Component
     public $name;
     public $model;
     public $step;
+    public $disabled;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type, $id, $title, $placeholder, $name = null, $model = null, $step = null)
+    public function __construct($type, $id, $title, $placeholder, $name = null, $model = null, $step = null, $disabled = false)
     {
         $this->type = $type;
         $this->id = $id;
@@ -28,6 +29,7 @@ class Input extends Component
         $this->name = $name;
         $this->model = $model;
         $this->step = $step;
+        $this->disabled = $disabled;
     }
 
     /**
