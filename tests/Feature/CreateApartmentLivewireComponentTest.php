@@ -129,4 +129,37 @@ class CreateApartmentLivewireComponentTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
     }
+
+    /**
+     * @test
+     */
+    public function test_create_apartment()
+    {
+        $building = Building::factory()->create();
+
+        Livewire::test('create-apartment', [
+                'building' => $building
+            ])
+            ->set('owner_name', 'Test User')
+            ->set('owner_email', 'testuser@example.com')
+            ->set('owner_phone', '0641234567')
+            ->set('number', 10)
+            ->set('tenants', 15)
+            ->call('submit')
+            ->assertHasNoErrors()
+            ->assertRedirect(route('buildings.show', $building));
+    
+        $this->assertDatabaseHas('tenants', [
+            'name' => 'Test User',
+            'email' => 'testuser@example.com',
+            'phone' => '0641234567'
+        ]);
+
+        $this->assertDatabaseHas('apartments', [
+            'building_id' => $building->id,
+            'tenant_id' => 1,
+            'number' => 10,
+            'tenants' => 15
+        ]);
+    }
 }
