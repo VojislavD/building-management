@@ -17,8 +17,8 @@ class CreateApartmentsTable extends Migration
             $table->id();
             $table->foreignId('building_id');
             $table->foreignId('tenant_id');
-            $table->integer('tenants');
             $table->integer('number');
+            $table->integer('tenants');
             $table->timestamps();
 
             $table->unique(['building_id', 'number']);

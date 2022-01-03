@@ -18,8 +18,8 @@ class ApartmentFactory extends Factory
         return [
             'building_id' => Building::factory(),
             'tenant_id' => Tenant::factory(),
-            'tenants' => $this->faker->numberBetween(1,6),
-            'number' => $this->faker->numberBetween(1,100)
+            'number' => $this->faker->numberBetween(1,100),
+            'tenants' => $this->faker->numberBetween(1,6)
         ];
     }
 }

@@ -125,6 +125,9 @@
     <div class="mt-24">
         <h2 class="text-xl font-semibold">Apartments</h2>
 
+        <x-flash-message type="success" name="apratmentCreated" />
+        <x-flash-message type="error" name="apratmentNotCreated" />
+
         <div class="flex items-center justify-end">
             <x-link-button route="{{ route('apartments.create', $building) }}" text="{{ __('New Apartment') }}" />
         </div>

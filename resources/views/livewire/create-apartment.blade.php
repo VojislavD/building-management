@@ -75,7 +75,7 @@
         <div class="grid grid-cols-2 gap-8 my-4">
             <div>
                 <x-form.input 
-                    type="text" 
+                    type="number" 
                     model="number" 
                     id="number" 
                     title="{{ __('Number') }}" 
@@ -86,7 +86,7 @@
 
             <div>
                 <x-form.input 
-                    type="email" 
+                    type="number" 
                     model="tenants" 
                     id="tenants" 
                     title="{{ __('Tenants') }}" 
