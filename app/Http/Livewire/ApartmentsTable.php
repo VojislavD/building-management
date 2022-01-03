@@ -11,16 +11,11 @@ class ApartmentsTable extends Component
 {
     use WithPagination;
 
-    private $building_id;
-
-    public function mount($building_id)
-    {
-        $this->building_id = $building_id;
-    }
+    public Building $building;
 
     public function render()
     {
-        $apartments = Apartment::where('building_id', $this->building_id)
+        $apartments = Apartment::where('building_id', $this->building->id)
             ->with('owner')
             ->latest()
             ->paginate(10);
