@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Apartment;
 use App\Models\Building;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -19,6 +20,18 @@ class ApartmentControllerTest extends TestCase
         $building = Building::factory()->create();
 
         $response = $this->get(route('apartments.create', $building));
+
+        $response->assertRedirect(route('login'));
+    }
+
+    /**
+     * @test
+     */
+    public function test_edit_page_can_view_only_authenticated_user()
+    {
+        $apartment = Apartment::factory()->create();
+
+        $response = $this->get(route('apartments.edit', $apartment));
 
         $response->assertRedirect(route('login'));
     }
