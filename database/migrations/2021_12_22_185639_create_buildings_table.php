@@ -24,7 +24,6 @@ class CreateBuildingsTable extends Migration
             $table->string('construction_year');
             $table->integer('square');
             $table->tinyInteger('floors');
-            $table->integer('apartments');
             $table->integer('tenants');
             $table->boolean('elevator');
             $table->boolean('yard');

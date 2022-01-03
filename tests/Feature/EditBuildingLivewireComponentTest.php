@@ -28,7 +28,6 @@ class EditBuildingLivewireComponentTest extends TestCase
                 __('Construction Year'),
                 __('Square'),
                 __('Floors'),
-                __('Apartments'),
                 __('Tenants'),
                 __('Elevator'),
                 __('Yard'),
@@ -48,7 +47,6 @@ class EditBuildingLivewireComponentTest extends TestCase
             ->assertSet('construction_year', $building->construction_year)
             ->assertSet('sqaure', $building->sqaure)
             ->assertSet('floors', $building->floors)
-            ->assertSet('apartments', $building->apartments)
             ->assertSet('tenants', $building->tenants)
             ->assertSet('elevator', $building->elevator)
             ->assertSet('yard', $building->yard)
@@ -80,7 +78,6 @@ class EditBuildingLivewireComponentTest extends TestCase
             ->set('construction_year', '')
             ->set('square', '')
             ->set('floors', '')
-            ->set('apartments', '')
             ->set('tenants', '')
             ->set('elevator', '')
             ->set('yard', '')
@@ -100,7 +97,6 @@ class EditBuildingLivewireComponentTest extends TestCase
                 'construction_year' => 'required',
                 'square' => 'required',
                 'floors' => 'required',
-                'apartments' => 'required',
                 'tenants' => 'required',
                 'elevator' => 'required',
                 'yard' => 'required',
@@ -122,7 +118,6 @@ class EditBuildingLivewireComponentTest extends TestCase
             ->set('construction_year', 1949)
             ->set('square', 'not numeric')
             ->set('floors', 'not numeric')
-            ->set('apartments', 'not numeric')
             ->set('tenants', 'not numeric')
             ->set('elevator', 'not boolean')
             ->set('yard', 'not boolean')
@@ -142,7 +137,6 @@ class EditBuildingLivewireComponentTest extends TestCase
                 'construction_year' => 'in',
                 'square' => 'numeric',
                 'floors' => 'numeric',
-                'apartments' => 'numeric',
                 'tenants' => 'numeric',
                 'elevator' => 'boolean',
                 'yard' => 'boolean',
@@ -165,7 +159,6 @@ class EditBuildingLivewireComponentTest extends TestCase
             ->set('construction_year', now()->year)
             ->set('square', 0)
             ->set('floors', -1)
-            ->set('apartments', 0)
             ->set('tenants', -1)
             ->set('elevator', true)
             ->set('yard', true)
@@ -183,7 +176,6 @@ class EditBuildingLivewireComponentTest extends TestCase
                 'internal_code' => 'max',
                 'square' => 'min',
                 'floors' => 'min',
-                'apartments' => 'min',
                 'tenants' => 'min',
                 'pib' => 'digits',
                 'identification_number' => 'digits',
@@ -200,7 +192,6 @@ class EditBuildingLivewireComponentTest extends TestCase
             ->set('construction_year', now()->year)
             ->set('square', 1)
             ->set('floors', 1)
-            ->set('apartments', 1)
             ->set('tenants', 1)
             ->set('elevator', true)
             ->set('yard', true)
@@ -228,7 +219,6 @@ class EditBuildingLivewireComponentTest extends TestCase
             ->set('construction_year', now()->year)
             ->set('square', 1)
             ->set('floors', 1)
-            ->set('apartments', 1)
             ->set('tenants', 1)
             ->set('elevator', true)
             ->set('yard', true)
@@ -260,7 +250,6 @@ class EditBuildingLivewireComponentTest extends TestCase
             ->set('construction_year', $building->construction_year-1)
             ->set('square', $building->square + 10)
             ->set('floors', $building->floors + 10)
-            ->set('apartments', $building->apartments + 10)
             ->set('tenants', $building->tenants + 10)
             ->set('elevator', false)
             ->set('yard', false)
@@ -282,7 +271,6 @@ class EditBuildingLivewireComponentTest extends TestCase
                 'construction_year' => $building->construction_year,
                 'square' => $building->square,
                 'floors' => $building->floors,
-                'apartments' => $building->apartments,
                 'tenants' => $building->tenants,
                 'elevator' => $building->elevator,
                 'yard' => $building->yard,
@@ -302,7 +290,6 @@ class EditBuildingLivewireComponentTest extends TestCase
                 'construction_year' => $building->construction_year-1,
                 'square' => $building->square + 10,
                 'floors' => $building->floors + 10,
-                'apartments' => $building->apartments + 10,
                 'tenants' => $building->tenants + 10,
                 'elevator' => false,
                 'yard' => false,

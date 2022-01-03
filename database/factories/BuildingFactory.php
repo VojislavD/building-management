@@ -24,7 +24,6 @@ class BuildingFactory extends Factory
             'construction_year' => $this->faker->numberBetween(1970, now()->year),
             'square' => $this->faker->randomNumber(4, true),
             'floors' => $this->faker->numberBetween(1,30),
-            'apartments' => $this->faker->numberBetween(4, 150),
             'tenants' => $this->faker->numberBetween(5, 300),
             'elevator' => $this->faker->boolean(80),
             'yard' => $this->faker->boolean(30),

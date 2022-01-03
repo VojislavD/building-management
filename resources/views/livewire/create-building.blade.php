@@ -70,17 +70,6 @@
             <div>
                 <x-form.input 
                     type="number" 
-                    model="apartments" 
-                    id="apartments" 
-                    title="{{ __('Apartments') }}" 
-                    placeholder="{{ __('Apartments') }}" 
-                />
-                <x-form.error-message name="apartments" />
-            </div>
-
-            <div>
-                <x-form.input 
-                    type="number" 
                     model="tenants" 
                     id="tenants" 
                     title="{{ __('Tenants') }}" 
