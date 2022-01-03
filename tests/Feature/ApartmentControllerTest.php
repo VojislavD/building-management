@@ -63,4 +63,30 @@ class ApartmentControllerTest extends TestCase
 
         $response->assertRedirect(route('login'));
     }
+
+    /**
+     * @test
+     */
+    public function test_edit_page_show_correct_info()
+    {
+        $apartment = Apartment::factory()->create();
+
+        $response = $this->actingAs(User::factory()->create())
+            ->get(route('apartments.edit', $apartment));
+
+        $response->assertStatus(200)
+            ->assertViewIs('apartments.edit')
+            ->assertSeeText(__('Edit Apartment'))
+            ->assertSeeInOrder([
+                $apartment->building->internal_code,
+                $apartment->building->address,
+                $apartment->owner->name,
+                $apartment->owner->email,
+                $apartment->owner->phone,
+                $apartment->number,
+                $apartment->tenants,
+                __('Save'),
+                __('Delete Apartment')
+            ]);
+    }
 }
