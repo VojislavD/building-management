@@ -9,6 +9,11 @@ class Apartment extends Model
 {
     use HasFactory;
 
+    public function building()
+    {
+        return $this->belongsTo(Building::class);
+    }
+
     public function owner()
     {
         return $this->belongsTo(Tenant::class, 'tenant_id');
