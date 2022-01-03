@@ -130,6 +130,9 @@
         
         <x-flash-message type="success" name="apratmentUpdated" />
         <x-flash-message type="error" name="apratmentNotUpdated" />
+        
+        <x-flash-message type="success" name="apratmentDeleted" />
+        <x-flash-message type="error" name="apratmentNotDeleted" />
 
         <div class="flex items-center justify-end">
             <x-link-button route="{{ route('apartments.create', $building) }}" text="{{ __('New Apartment') }}" />

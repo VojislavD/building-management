@@ -37,5 +37,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::prefix('/apartments')->name('apartments.')->group(function() {
         Route::get('/create/{building}', [ApartmentController::class, 'create'])->name('create');
         Route::get('/edit/{apartment}', [ApartmentController::class, 'edit'])->name('edit');
+        Route::delete('/delete/{apartment}', [ApartmentController::class, 'destroy'])->name('delete');
     });
 });

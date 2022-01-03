@@ -1,5 +1,6 @@
 <div
     x-show="confirmDelete"
+    x-cloak
     class="fixed w-full h-screen top-0 left-0 flex items-center justify-center bg-black bg-opacity-50 z-30"
 >
     <div

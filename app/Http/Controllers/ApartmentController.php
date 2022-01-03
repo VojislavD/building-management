@@ -21,4 +21,15 @@ class ApartmentController extends Controller
             'apartment' => $apartment
         ]);
     }
+
+    public function destroy(Apartment $apartment)
+    {
+        $building = $apartment->building;
+
+        if ($apartment->delete()) {
+            return redirect()->to(route('buildings.show', $building))->with('apartmentDeleted', 'Apartment successfully deleted.');
+        } else {
+            return redirect()->to(route('buildings.show', $building))->with('apartmentNotDeleted', 'Oops! Something went wrong, please try again.');
+        }
+    }
 }
