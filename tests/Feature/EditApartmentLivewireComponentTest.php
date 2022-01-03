@@ -135,4 +135,45 @@ class EditApartmentLivewireComponentTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
     }
+
+    /**
+     * @test
+     */
+    public function test_edit_apartment()
+    {
+        $apartment = Apartment::factory()->create();
+
+        Livewire::test('edit-apartment', [
+                'apartment' => $apartment
+            ])
+            ->set('owner_name', 'Test User')
+            ->set('owner_email', 'testuser@example.com')
+            ->set('owner_phone', '0641234567')
+            ->set('number', $apartment->number + 1)
+            ->set('tenants', $apartment->tenants + 1)
+            ->call('submit')
+            ->assertHasNoErrors();
+
+        $this->assertDatabaseMissing('tenants', [
+            'name' => $apartment->owner->name,
+            'email' => $apartment->owner->email,
+            'phone' => $apartment->owner->phone
+        ]);
+
+        $this->assertDatabaseMissing('apartments', [
+            'number' => $apartment->number,
+            'tenants' => $apartment->tenants
+        ]);
+
+        $this->assertDatabaseHas('tenants', [
+            'name' => 'Test User',
+            'email' => 'testuser@example.com',
+            'phone' => '0641234567'
+        ]);
+
+        $this->assertDatabaseHas('apartments', [
+            'number' => $apartment->number + 1,
+            'tenants' => $apartment->tenants + 1
+        ]);
+    }
 }
