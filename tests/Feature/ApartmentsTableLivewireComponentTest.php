@@ -22,7 +22,9 @@ class ApartmentsTableLivewireComponentTest extends TestCase
         $apartment = Apartment::factory()->for($building)->create();
         $apartment2 = Apartment::factory()->for(Building::factory()->create())->create();
 
-        Livewire::test('apartments-table', [$building->id])
+        Livewire::test('apartments-table', [
+            'building' => $building
+        ])
             ->assertSee([
                 $apartment->number,
                 $apartment->tenants,
