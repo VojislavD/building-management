@@ -16,6 +16,29 @@ class ApartmentControllerTest extends TestCase
     /**
      * @test
      */
+    public function test_index_page_can_view_only_authenticated_user()
+    {
+        $response = $this->get(route('apartments.index'));
+
+        $response->assertRedirect(route('login'));
+    }
+
+    /**
+     * @test
+     */
+    public function test_index_page_show_correct_info()
+    {
+        $response = $this->actingAs(User::factory()->create())
+            ->get(route('apartments.index'));
+
+        $response->assertStatus(200)
+            ->assertViewIs('apartments.index')
+            ->assertSeeText(__('All Apartments'));
+    }
+
+    /**
+     * @test
+     */
     public function test_create_page_can_view_only_authenticated_user()
     {
         $building = Building::factory()->create();
