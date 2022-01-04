@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
 {
+    public function index()
+    {
+        return view('apartments.index');
+    }
+    
     public function create(Building $building)
     {
         return view('apartments.create', [
