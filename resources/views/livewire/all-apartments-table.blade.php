@@ -1,4 +1,14 @@
 <div>
+    <div class="mt-8 mb-3 flex items-center justify-end">
+        <label>Building:</label>
+        <select wire:model="building_id" class="w-48 text-sm py-0.5 ml-2">
+            <option value="0">{{ __('All') }}</option>
+            @foreach($buildings as $building)
+                <option value="{{ $building->id }}">{{ $building->address }}</option>
+            @endforeach
+        </select>
+    </div>
+
     <table class="w-full my-3 whitespace-nowrap">
         <thead class="bg-secondary text-gray-100 font-bold">
             <tr>
@@ -58,7 +68,7 @@
                 </tr>
             @empty
                 <tr class="bg-gray-100 hover:bg-primary hover:bg-opacity-20 transition duration-200">
-                    <td class="py-3 pl-2" colspan="8">
+                    <td class="py-3 pl-2 text-center" colspan="8">
                         {{ __('There is no apartments yet.') }}
                     </td>
                 </tr>
