@@ -25,7 +25,7 @@ class AllApartmentsTable extends Component
                 return $query->where('building_id', $this->building_id);
             })
             ->latest()
-            ->paginate();
+            ->paginate(10);
 
         return view('livewire.all-apartments-table', [
             'buildings' => Building::get(['id','address']),
