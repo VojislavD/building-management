@@ -25,36 +25,33 @@
     </div>
     <table class="w-full my-3 whitespace-nowrap">
         <thead class="bg-secondary text-gray-100 font-bold">
-            <tr><td>
-            </td>
-            <td class="py-2 pl-2">
-                {{ __('Internal Code') }}
-            </td>
-            <td class="py-2 pl-2">
-                {{ __('Address') }}
-            </td>
-            <td class="py-2 pl-2">
-                {{ __('Status') }}
-            </td>
-            <td class="py-2 pl-2">
-                {{ __('Floors') }}
-            </td>
-            <td class="py-2 pl-2">
-                {{ __('Apartments') }}
-            </td>
-            <td class="py-2 pl-2">
-                {{ __('Tenants') }}
-            </td>
-            <td class="py-2 pl-2">
-                {{ __('Manage') }}
-            </td>
-        </tr></thead>
+            <tr>
+                <td class="py-2 pl-2">
+                    {{ __('Internal Code') }}
+                </td>
+                <td class="py-2 pl-2">
+                    {{ __('Address') }}
+                </td>
+                <td class="py-2 pl-2">
+                    {{ __('Status') }}
+                </td>
+                <td class="py-2 pl-2">
+                    {{ __('Floors') }}
+                </td>
+                <td class="py-2 pl-2">
+                    {{ __('Apartments') }}
+                </td>
+                <td class="py-2 pl-2">
+                    {{ __('Tenants') }}
+                </td>
+                <td class="py-2 pl-2">
+                    {{ __('Manage') }}
+                </td>
+            </tr>
+        </thead>
         <tbody>
             @forelse($buildings as $building)
                 <tr class="bg-gray-100 hover:bg-primary hover:bg-opacity-20 transition duration-200">
-                    <td class="py-3 pl-2">
-                        <input type="checkbox" class="rounded focus:ring-0 checked:bg-red-500 ml-2">
-                    </td>
                     <td class="py-3 pl-2">
                         # {{ $building->internal_code }}
                     </td>
