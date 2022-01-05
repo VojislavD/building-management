@@ -25,39 +25,36 @@
     </div> --}}
     <table class="w-full my-3 whitespace-nowrap">
         <thead class="bg-secondary text-gray-100 font-bold">
-            <tr><td>
-            </td>
-            <td class="py-2 pl-2">
-                {{ __('Created By') }}
-            </td>
-            <td class="py-2 pl-2">
-                {{ __('Status') }}
-            </td>
-            <td class="py-2 pl-2">
-                {{ __('Description') }}
-            </td>
-            <td class="py-2 pl-2">
-                {{ __('Building') }}
-            </td>
-            <td class="py-2 pl-2">
-                {{ __('Created At') }}
-            </td>
-            <td class="py-2 pl-2"></td>
-        </tr></thead>
+            <tr>
+                <td class="py-2 pl-2">
+                    {{ __('Created By') }}
+                </td>
+                <td class="py-2 pl-2">
+                    {{ __('Status') }}
+                </td>
+                <td class="py-2 pl-2">
+                    {{ __('Description') }}
+                </td>
+                <td class="py-2 pl-2">
+                    {{ __('Building') }}
+                </td>
+                <td class="py-2 pl-2">
+                    {{ __('Created At') }}
+                </td>
+                <td class="py-2 pl-2"></td>
+            </tr>
+        </thead>
         <tbody>
             @forelse($tasks as $task)
                 <tr class="bg-gray-100 hover:bg-primary hover:bg-opacity-20 transition duration-200">
                     <td class="py-3 pl-2">
-                        <input type="checkbox" class="rounded focus:ring-0 checked:bg-red-500 ml-2">
-                    </td>
-                    <td class="py-3 pl-2">
                         {{ $task->tenant->name }}
                     </td>
                     <td class="py-3 pl-2 capitalize">
-                        {{ $task->status }}
+                        {!! $task->getStatusLabel() !!}
                     </td>
-                    <td class="py-3 pl-2 truncate">
-                        {{ Str::limit($task->description, 30, '...') }}
+                    <td class="py-3 pl-2 truncate" title="{{ Str::limit($task->description, 500, '...') }}">
+                        {{ Str::limit($task->description, 40, '...') }}
                     </td>
                     <td class="py-3 pl-2">
                         {{ $task->building->address }}

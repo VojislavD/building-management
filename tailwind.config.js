@@ -7,7 +7,8 @@ module.exports = {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './app/Models/Building.php'
+        './app/Models/Building.php',
+        './app/Models/Task.php',
     ],
 
     theme: {

@@ -22,4 +22,22 @@ class Task extends Model
     {
         return $this->belongsTo(Building::class);
     }
+
+    public function getStatusLabel()
+    {
+        switch ($this->status) {
+            case static::STATUS_PENDING:
+                return '<span class="text-xs bg-yellow-600 text-gray-100 lowercase px-2 py-0.5 rounded-lg">'. __("Pending") .'</span>';
+                break;
+            case static::STATUS_FINISHED:
+                return '<span class="text-xs bg-green-600 text-gray-100 lowercase px-2 py-0.5 rounded-lg">'. __("Finished") .'</span>';
+                break;
+            case static::STATUS_REJECTED:
+                    return '<span class="text-xs bg-red-600 text-gray-100 lowercase px-2 py-0.5 rounded-lg">'. __("Cancelled") .'</span>';
+                    break;
+            default:
+                return __('N/A');
+                break;
+        }
+    }
 }
