@@ -57,7 +57,13 @@
                         {{ Str::limit($task->description, 40, '...') }}
                     </td>
                     <td class="py-3 pl-2">
-                        {{ $task->building->address }}
+                        <a 
+                            href="{{ route('buildings.show', $task->building) }}" 
+                            class="underline hover:text-primary" 
+                            title="{{ __('View Building Details') }}"
+                        >
+                            {{ $task->building->address }}
+                        </a>
                     </td>
                     <td class="py-3 pl-2">
                         {{ $task->created_at->format('d.m.Y') }}
