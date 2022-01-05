@@ -20,6 +20,7 @@ class CreateTasksTable extends Migration
             $table->foreignId('tenant_id');
             $table->tinyInteger('status')->default(Task::STATUS_PENDING);
             $table->text('description');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
