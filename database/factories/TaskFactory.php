@@ -20,7 +20,7 @@ class TaskFactory extends Factory
             'building_id' => Building::factory(),
             'tenant_id' => Tenant::factory(),
             'status' => collect([Task::STATUS_PENDING, Task::STATUS_FINISHED, Task::STATUS_REJECTED])->random(),
-            'description' => $this->faker->paragraphs(2)
+            'description' => $this->faker->realText(1000)
         ];
     }
 }
