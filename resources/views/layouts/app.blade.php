@@ -109,7 +109,7 @@
                         x-data="{ linkHover: false }"
                         @mouseover = "linkHover = true"
                         @mouseleave = "linkHover = false"
-                        href="{{ route('apartments.index') }}"
+                        href="{{ route('tasks.index') }}"
                         class="flex items-center text-gray-400 px-6 py-3 cursor-pointer hover:bg-black hover:bg-opacity-30 transition duration-200"
                         :class="{{ Request::segment(1) === 'tasks' }} ? 'bg-black bg-opacity-30' : ''"
                     >

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\BuildingController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,5 +40,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
         Route::get('/create/{building}', [ApartmentController::class, 'create'])->name('create');
         Route::get('/edit/{apartment}', [ApartmentController::class, 'edit'])->name('edit');
         Route::delete('/delete/{apartment}', [ApartmentController::class, 'destroy'])->name('delete');
+    });
+
+    // Tasks
+    Route::prefix('/tasks')->name('tasks.')->group(function() {
+        Route::get('/', [TaskController::class, 'index'])->name('index');
     });
 });
