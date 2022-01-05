@@ -12,4 +12,14 @@ class Task extends Model
     const STATUS_PENDING = 1;
     const STATUS_FINISHED = 2;
     const STATUS_REJECTED = 3;
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
+
+    public function building()
+    {
+        return $this->belongsTo(Building::class);
+    }
 }
