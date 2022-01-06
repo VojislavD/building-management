@@ -88,7 +88,7 @@ class TaskControllerTest extends TestCase
     /**
      * @test
      */
-    public function test_update_validation()
+    public function test_update_task_validation()
     {
         $task = Task::factory()->create();
 
@@ -116,6 +116,30 @@ class TaskControllerTest extends TestCase
             ]);
 
         $response->assertSessionHasNoErrors();
+    }
+
+    /**
+     * @test
+     */
+    public function test_update_task()
+    {
+        $task = Task::factory()->create();
+
+        $response = $this->actingAs(User::factory()->create())
+            ->patch(route('tasks.update', $task), [
+                'comment' => 'Some random comment'
+            ]);
+
+        $response->assertRedirect(route('tasks.index'))
+            ->assertSessionHas('taskUpdated');
+
+        $this->assertDatabaseMissing('tasks', [
+            'comment' => $task->comment
+        ]);
+
+        $this->assertDatabaseHas('tasks', [
+            'comment' => 'Some random comment'
+        ]);
     }
 
     /**
