@@ -25,9 +25,11 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
         Livewire::test('all-apartments-table')
             ->assertSeeHtml([
                 $apartment->number.'
-                    </td>',
+                    </td>
+                    <td class="py-3 pl-2 capitalize">',
                 $apartment2->number.'
-                    </td>'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">'
             ]);
     }
 
@@ -45,18 +47,49 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
             ])
             ->assertSeeHtml([
                 $apartment->number.'
-                    </td>'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">'
             ])
             ->assertDontSeeHtml([
                 $apartment2->number.'
-                    </td>'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">'
             ]);
     }
 
     /**
      * @test
      */
-    public function test_show_apartments_when_per_page_change()
+    public function test_show_apartments_when_per_page_15()
+    {
+        $apartment1 = Apartment::factory()->create([
+            'created_at' => now()->subDay()
+        ]);
+
+        $apartment2 = Apartment::factory()->create();
+        Apartment::factory(8)->create();
+        $apartment3 = Apartment::factory()->create();
+        
+        Livewire::test('all-apartments-table')
+            ->set('perPage', 15)
+            ->assertSeeHtml([
+                $apartment1->number.'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">',
+                $apartment2->number.'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">',
+                $apartment3->number.'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">',
+            ])
+            ->assertHasNoErrors();
+    }
+
+    /**
+     * @test
+     */
+    public function test_show_apartments_when_per_page_default()
     {
         $apartment1 = Apartment::factory()->create([
             'created_at' => now()->subDay()
@@ -81,21 +114,6 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
                     <td class="py-3 pl-2 capitalize">',
             ])
             ->assertSeeInOrder(['Showing', '1', 'to', '10', 'of', Apartment::count(), 'results'])
-            ->assertHasNoErrors();
-        
-        Livewire::test('all-apartments-table')
-            ->set('perPage', 15)
-            ->assertSeeHtml([
-                $apartment1->number.'
-                    </td>
-                    <td class="py-3 pl-2 capitalize">',
-                $apartment2->number.'
-                    </td>
-                    <td class="py-3 pl-2 capitalize">',
-                $apartment3->number.'
-                    </td>
-                    <td class="py-3 pl-2 capitalize">',
-            ])
             ->assertHasNoErrors();
     }
 }
