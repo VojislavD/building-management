@@ -12,8 +12,14 @@ class AllApartmentsTable extends Component
     use WithPagination;
 
     public $building_id;
+    public $perPage = 10;
 
     public function updatingBuildingId() 
+    {
+        $this->gotoPage(1);
+    }
+
+    public function updatingPerPage() 
     {
         $this->gotoPage(1);
     }
@@ -25,7 +31,7 @@ class AllApartmentsTable extends Component
                 return $query->where('building_id', $this->building_id);
             })
             ->latest()
-            ->paginate(10);
+            ->paginate($this->perPage);
 
         return view('livewire.all-apartments-table', [
             'buildings' => Building::get(['id','address']),

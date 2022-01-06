@@ -1,13 +1,27 @@
 <div>
-    <div class="mt-8 mb-3 flex items-center justify-end">
-        <label>Building:</label>
-        <select wire:model="building_id" class="w-48 text-sm py-0.5 ml-2">
-            <option value="0">{{ __('All') }}</option>
-            @foreach($buildings as $building)
-                <option value="{{ $building->id }}">{{ $building->address }}</option>
-            @endforeach
-        </select>
+    <div class="flex items-center justify-between mt-4">
+        <div class="flex items-center">
+            <label>Building:</label>
+            <select wire:model="building_id" class="w-48 text-sm py-0.5 ml-2">
+                <option value="0">{{ __('All') }}</option>
+                @foreach($buildings as $building)
+                    <option value="{{ $building->id }}">{{ $building->address }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div>
+            <select 
+                wire:model="perPage"
+                class="py-1 text-sm border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300"
+                >
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+            </select>
+        </div>
     </div>
+    
 
     <table class="w-full my-3 whitespace-nowrap">
         <thead class="bg-secondary text-gray-100 font-bold">
