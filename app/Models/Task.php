@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Task extends Model
 {
@@ -23,6 +24,11 @@ class Task extends Model
     public function building()
     {
         return $this->belongsTo(Building::class);
+    }
+
+    public function getLimitedDescriptionAttribute()
+    {
+        return Str::limit($this->description, 40, '...');
     }
 
     public function getStatusLabel()

@@ -55,7 +55,7 @@
                         {!! $task->getStatusLabel() !!}
                     </td>
                     <td class="py-3 pl-2 truncate" title="{{ Str::limit($task->description, 500, '...') }}">
-                        {{ Str::limit($task->description, 40, '...') }}
+                        {{ $task->limited_description }}
                     </td>
                     <td class="py-3 pl-2">
                         <a 
