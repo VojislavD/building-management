@@ -78,4 +78,31 @@ class TasksTableLivewireComponentTest extends TestCase
             ->assertSee($cancelled->limited_description)
             ->assertHasNoErrors();
     }
+
+    /**
+     * @test
+     */
+    public function test_show_number_of_tasks_when_per_page_change()
+    {
+        $task = Task::factory()->pending()->create([
+            'created_at' => now()->subDay()
+        ]);
+
+        $task2 = Task::factory()->pending()->create();
+        Task::factory(8)->pending()->create();
+        $task3 = Task::factory()->pending()->create();
+
+        Livewire::test('tasks-table')
+            ->assertDontSee($task->limited_description)
+            ->assertSee($task2->limited_description)
+            ->assertSee($task3->limited_description)
+            ->assertHasNoErrors();
+
+        Livewire::test('tasks-table')
+            ->set('perPage', 15)
+            ->assertSee($task->limited_description)
+            ->assertSee($task2->limited_description)
+            ->assertSee($task3->limited_description)
+            ->assertHasNoErrors();
+    }
 }
