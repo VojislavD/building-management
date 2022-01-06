@@ -24,11 +24,13 @@ class TaskControllerTest extends TestCase
     /**
      * @test
      */
-    public function test_index_page_shows_correct_data()
+    public function test_index_page_shows_correct_info()
     {
         $response = $this->actingAs(User::factory()->create())
             ->get(route('tasks.index'));
 
-        $response->assertOk();
+        $response->assertOk()
+            ->assertViewIs('tasks.index')
+            ->assertSee(__('All Tasks'));
     }
 }
