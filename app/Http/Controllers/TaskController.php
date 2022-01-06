@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,19 @@ class TaskController extends Controller
         return view('tasks.show', [
             'task' => $task
         ]);
+    }
+
+    public function update(UpdateTaskRequest $request, Task $task)
+    {
+        $updateTask = $task->update([
+            'comment' => $request->comment
+        ]);
+
+        if ($updateTask) {
+            return redirect()->to(route('tasks.index'))->with('taskUpdated', __('Task successfully updated.'));
+        } else {
+            return redirect()->to(route('tasks.index'))->with('taskNotUpdated', __('Oops! Something went wrong, please try again.'));
+        }
     }
 
     public function completed(Task $task)

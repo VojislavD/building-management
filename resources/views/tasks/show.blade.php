@@ -27,7 +27,7 @@
 
             <div class="my-4 flex items-center">
                 <span class="w-36 font-bold">{{ __('Comment:') }}</span>
-                <span>{{ $task->comment }}</span>
+                <span>{{ $task->comment ?? 'N/A' }}</span>
             </div>
 
             <div class="my-4 flex items-center">
@@ -44,14 +44,19 @@
         <div class="my-16">
             <p class="w-full text-gray-500 uppercase text-sm py-1 border-b border-gray-300">{{ __('Add Comment') }}</p>
 
-            <form class="my-4">
-                <x-form.input
-                    type="text"
+            <form class="my-4" method="POST" action="{{ route('tasks.update', $task) }}">
+                @csrf
+                @method('PATCH')
+
+                <x-form.textarea 
                     id="comment"
                     title="Comment"
                     placeholder="Add Comment..."
                     name="comment"
+                    value="{{ $task->comment }}"
                 />
+
+                <x-form.error-message name="comment" />
 
                 <div class="mt-4">
                     <x-form.submit title="Save" />

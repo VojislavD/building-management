@@ -13,7 +13,7 @@ class Task extends Model
     const STATUS_COMPLETED = 2;
     const STATUS_CANCELLED = 3;
 
-    protected $fillable = ['status'];
+    protected $fillable = ['status', 'comment'];
     
     public function tenant()
     {
@@ -23,11 +23,6 @@ class Task extends Model
     public function building()
     {
         return $this->belongsTo(Building::class);
-    }
-
-    public function getCommentAttribute($value)
-    {
-        return $value ?? __('N/A');
     }
 
     public function getStatusLabel()
