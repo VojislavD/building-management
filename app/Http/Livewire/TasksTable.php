@@ -25,7 +25,8 @@ class TasksTable extends Component
 
     public function render()
     {
-        $tasks = Task::when($this->status, function($query) {
+        $tasks = Task::with('tenant', 'building')
+            ->when($this->status, function($query) {
                 return $query->where('status', $this->status);
             })
             ->latest()
