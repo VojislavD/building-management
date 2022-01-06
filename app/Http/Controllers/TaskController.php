@@ -12,6 +12,13 @@ class TaskController extends Controller
         return view('tasks.index');
     }
 
+    public function show(Task $task)
+    {
+        return view('tasks.show', [
+            'task' => $task
+        ]);
+    }
+
     public function completed(Task $task)
     {
         $taskCompleted = $task->update([

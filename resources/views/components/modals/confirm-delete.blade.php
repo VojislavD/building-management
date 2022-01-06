@@ -8,7 +8,7 @@
         class="bg-gray-100 w-1/3"
     >
         <div class="h-10 relative flex items-center justify-center bg-secondary text-gray-100">
-            <h3 class="text-lg font-bold">Confirmation</h3>
+            <h3 class="text-lg font-bold">{{ __('Confirmation') }}</h3>
             <span
                 @click="confirmDelete = false" 
                 class="absolute text-lg right-3 cursor-pointer text-gray-100 hover:text-gray-300" title="{{ __('Close') }}"

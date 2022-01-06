@@ -25,6 +25,11 @@ class Task extends Model
         return $this->belongsTo(Building::class);
     }
 
+    public function getCommentAttribute($value)
+    {
+        return $value ?? __('N/A');
+    }
+
     public function getStatusLabel()
     {
         switch ($this->status) {
