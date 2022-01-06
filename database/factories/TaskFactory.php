@@ -23,4 +23,25 @@ class TaskFactory extends Factory
             'description' => $this->faker->realText(1000)
         ];
     }
+
+    public function pending(): Factory
+    {
+        return $this->state([
+            'status' => Task::STATUS_PENDING
+        ]);
+    }
+
+    public function completed(): Factory
+    {
+        return $this->state([
+            'status' => Task::STATUS_COMPLETED
+        ]);
+    }
+
+    public function cancelled(): Factory
+    {
+        return $this->state([
+            'status' => Task::STATUS_CANCELLED
+        ]);
+    }
 }

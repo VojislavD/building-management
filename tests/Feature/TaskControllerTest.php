@@ -145,6 +145,50 @@ class TaskControllerTest extends TestCase
     /**
      * @test
      */
+    public function test_update_task_status_as_completed()
+    {
+        $task = Task::factory()->pending()->create();
+
+        $response = $this->actingAs(User::factory()->create())
+            ->patch(route('tasks.completed', $task));
+
+        $response->assertRedirect(route('tasks.index'))
+            ->assertSessionHas('taskCompleted');
+
+        $this->assertDatabaseMissing('tasks', [
+            'status' => Task::STATUS_PENDING
+        ]);
+
+        $this->assertDatabaseHas('tasks', [
+            'status' => Task::STATUS_COMPLETED
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function test_update_task_status_as_cancelled()
+    {
+        $task = Task::factory()->pending()->create();
+
+        $response = $this->actingAs(User::factory()->create())
+            ->patch(route('tasks.cancelled', $task));
+
+        $response->assertRedirect(route('tasks.index'))
+            ->assertSessionHas('taskCancelled');
+
+        $this->assertDatabaseMissing('tasks', [
+            'status' => Task::STATUS_PENDING
+        ]);
+
+        $this->assertDatabaseHas('tasks', [
+            'status' => Task::STATUS_CANCELLED
+        ]);
+    }
+
+    /**
+     * @test
+     */
     public function test_status_completed_can_mark_only_authenticated_user()
     {
         $task = Task::factory()->create();
