@@ -4,7 +4,7 @@ namespace App\View\Components\Modals;
 
 use Illuminate\View\Component;
 
-class MarkTaskCompleted extends Component
+class ConfirmTaskStatus extends Component
 {
     public $route;
 
@@ -25,6 +25,6 @@ class MarkTaskCompleted extends Component
      */
     public function render()
     {
-        return view('components.modals.mark-task-completed');
+        return view('components.modals.confirm-task-status');
     }
 }

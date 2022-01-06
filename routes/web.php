@@ -46,5 +46,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::prefix('/tasks')->name('tasks.')->group(function() {
         Route::get('/', [TaskController::class, 'index'])->name('index');
         Route::patch('/completed/{task}', [TaskController::class, 'completed'])->name('completed');
+        Route::patch('/cancelled/{task}', [TaskController::class, 'cancelled'])->name('cancelled');
     });
 });

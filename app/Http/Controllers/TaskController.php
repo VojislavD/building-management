@@ -24,4 +24,17 @@ class TaskController extends Controller
             return redirect()->to(route('tasks.index'))->with('taskNotCompleted', __('Oops! Something went wrong, please try again.'));
         }
     }
+
+    public function cancelled(Task $task)
+    {
+        $taskCancelled = $task->update([
+            'status' => Task::STATUS_CANCELLED
+        ]);
+
+        if ($taskCancelled) {
+            return redirect()->to(route('tasks.index'))->with('taskCancelled', __('Task marked as cancelled successfully.'));
+        } else {
+            return redirect()->to(route('tasks.index'))->with('taskNotCancelled', __('Oops! Something went wrong, please try again.'));
+        }
+    }
 }
