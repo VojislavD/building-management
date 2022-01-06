@@ -1,21 +1,19 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Modals;
 
 use Illuminate\View\Component;
 
-class ConfirmDelete extends Component
+class ViewTaksDetails extends Component
 {
-    public $route;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($route)
+    public function __construct()
     {
-        $this->route = $route;
+        //
     }
 
     /**
@@ -25,6 +23,6 @@ class ConfirmDelete extends Component
      */
     public function render()
     {
-        return view('components.confirm-delete');
+        return view('components.modals.view-taks-details');
     }
 }

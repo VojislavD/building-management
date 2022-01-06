@@ -16,7 +16,7 @@
             {{ ('Delete Building') }}
         </button>
 
-        <x-confirm-delete route="{{ route('buildings.delete', $building) }}" />
+        <x-modals.confirm-delete route="{{ route('buildings.delete', $building) }}" />
     </div>
 
 </x-app-layout>
