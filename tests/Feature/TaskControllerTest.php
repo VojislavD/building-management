@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -32,5 +33,17 @@ class TaskControllerTest extends TestCase
         $response->assertOk()
             ->assertViewIs('tasks.index')
             ->assertSee(__('All Tasks'));
+    }
+
+    /**
+     * @test
+     */
+    public function test_show_page_can_open_only_authenticated_user()
+    {
+        $task = Task::factory()->create();
+        
+        $response = $this->get(route('tasks.show', $task));
+
+        $response->assertRedirect(route('login'));
     }
 }
