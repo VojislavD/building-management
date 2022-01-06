@@ -72,4 +72,40 @@ class TaskControllerTest extends TestCase
                 __('Mark As Cancelled')
             ]);
     }
+
+    /**
+     * @test
+     */
+    public function test_update_can_do_only_authenticated_user()
+    {
+        $task = Task::factory()->create();
+
+        $response = $this->patch(route('tasks.update', $task));
+
+        $response->assertRedirect(route('login'));
+    }
+
+    /**
+     * @test
+     */
+    public function test_status_completed_can_mark_only_authenticated_user()
+    {
+        $task = Task::factory()->create();
+
+        $response = $this->patch(route('tasks.completed', $task));
+
+        $response->assertRedirect(route('login'));
+    }
+
+    /**
+     * @test
+     */
+    public function test_status_cancelled_can_mark_only_authenticated_user()
+    {
+        $task = Task::factory()->create();
+
+        $response = $this->patch(route('tasks.cancelled', $task));
+
+        $response->assertRedirect(route('login'));
+    }
 }
