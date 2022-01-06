@@ -63,7 +63,7 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
     public function test_show_apartments_when_per_page_15()
     {
         $apartment1 = Apartment::factory()->create([
-            'created_at' => now()->subDay()
+            'created_at' => now()->subDays(2)
         ]);
 
         $apartment2 = Apartment::factory()->create();
@@ -92,7 +92,7 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
     public function test_show_apartments_when_per_page_default()
     {
         $apartment1 = Apartment::factory()->create([
-            'created_at' => now()->subDay()
+            'created_at' => now()->subDays(2)
         ]);
 
         $apartment2 = Apartment::factory()->create();
