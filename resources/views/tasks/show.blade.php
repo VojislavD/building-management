@@ -17,7 +17,12 @@
 
             <div class="my-4 flex items-center">
                 <span class="w-36 font-bold">{{ __('Building:') }}</span>
-                <span>{!! $task->building->address !!}</span>
+                <a
+                    href="{{ route('buildings.show', $task->building) }}"
+                    class="underline"
+                >
+                    {!! $task->building->address !!}
+                </a>
             </div>
 
             <div class="my-4 flex items-start">
