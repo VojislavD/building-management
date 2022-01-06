@@ -19,7 +19,7 @@ class TaskFactory extends Factory
         return [
             'building_id' => Building::factory(),
             'tenant_id' => Tenant::factory(),
-            'status' => collect([Task::STATUS_PENDING, Task::STATUS_FINISHED, Task::STATUS_REJECTED])->random(),
+            'status' => collect([Task::STATUS_PENDING, Task::STATUS_COMPLETED, Task::STATUS_CANCELLED])->random(),
             'description' => $this->faker->realText(1000)
         ];
     }
