@@ -88,6 +88,39 @@ class TaskControllerTest extends TestCase
     /**
      * @test
      */
+    public function test_update_validation()
+    {
+        $task = Task::factory()->create();
+
+        $response = $this->actingAs(User::factory()->create())
+            ->patch(route('tasks.update', $task), [
+                'comment' => 1
+            ]);
+
+        $response->assertSessionHasErrors([
+            'comment'
+        ]);
+
+        $response = $this->actingAs(User::factory()->create())
+            ->patch(route('tasks.update', $task), [
+                'comment' => "Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters."
+            ]);
+
+        $response->assertSessionHasErrors([
+            'comment'
+        ]);
+
+        $response = $this->actingAs(User::factory()->create())
+            ->patch(route('tasks.update', $task), [
+                'comment' => "Some random comment."
+            ]);
+
+        $response->assertSessionHasNoErrors();
+    }
+
+    /**
+     * @test
+     */
     public function test_status_completed_can_mark_only_authenticated_user()
     {
         $task = Task::factory()->create();

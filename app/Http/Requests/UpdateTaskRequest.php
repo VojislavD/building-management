@@ -24,7 +24,7 @@ class UpdateTaskRequest extends FormRequest
     public function rules()
     {
         return [
-            'comment' => ['nullable', 'string', 'min:1', 'max:10000']
+            'comment' => ['nullable', 'string', 'max:1000']
         ];
     }
 }
