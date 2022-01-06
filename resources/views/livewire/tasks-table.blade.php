@@ -1,5 +1,5 @@
 <div>
-    {{-- <div class="flex items-center justify-between mt-4">
+    <div class="flex items-center justify-between mt-4">
         <div>
             <label for="">Status: </label>
             <select 
@@ -7,8 +7,9 @@
                 class="py-1 text-sm border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300"
                 >
                 <option value="">{{ __('All') }}</option>
-                <option value="{{ \App\Models\Building::STATUS_ACTIVE }}">{{ __('Active') }}</option>
-                <option value="{{ \App\Models\Building::STATUS_INACTIVE }}">{{ __('Inactive') }}</option>
+                <option value="{{ \App\Models\Task::STATUS_PENDING }}">{{ __('Pending') }}</option>
+                <option value="{{ \App\Models\Task::STATUS_FINISHED }}">{{ __('Finished') }}</option>
+                <option value="{{ \App\Models\Task::STATUS_CANCELLED }}">{{ __('Cancelled') }}</option>
             </select>
         </div>
         <div>
@@ -22,7 +23,7 @@
                 <option value="50">50</option>
             </select>
         </div>
-    </div> --}}
+    </div>
     <table class="w-full my-3 whitespace-nowrap">
         <thead class="bg-secondary text-gray-100 font-bold">
             <tr>

@@ -1630,10 +1630,6 @@ select {
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
 }
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
 .pt-6 {
   padding-top: 1.5rem;
 }
@@ -1956,10 +1952,6 @@ select {
 }
 .custom-scrollbar .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-.checked\:bg-red-500:checked {
-  --tw-bg-opacity: 1;
-  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;

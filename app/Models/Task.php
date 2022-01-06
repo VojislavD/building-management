@@ -11,7 +11,7 @@ class Task extends Model
 
     const STATUS_PENDING = 1;
     const STATUS_FINISHED = 2;
-    const STATUS_REJECTED = 3;
+    const STATUS_CANCELLED = 3;
 
     public function tenant()
     {
@@ -32,7 +32,7 @@ class Task extends Model
             case static::STATUS_FINISHED:
                 return '<span class="text-xs bg-green-600 text-gray-100 lowercase px-2 py-0.5 rounded-lg">'. __("Finished") .'</span>';
                 break;
-            case static::STATUS_REJECTED:
+            case static::STATUS_CANCELLED:
                     return '<span class="text-xs bg-red-600 text-gray-100 lowercase px-2 py-0.5 rounded-lg">'. __("Cancelled") .'</span>';
                     break;
             default:
