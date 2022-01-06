@@ -41,9 +41,35 @@ class TaskControllerTest extends TestCase
     public function test_show_page_can_open_only_authenticated_user()
     {
         $task = Task::factory()->create();
-        
+
         $response = $this->get(route('tasks.show', $task));
 
         $response->assertRedirect(route('login'));
+    }
+
+    /**
+     * @test
+     */
+    public function test_show_page_shows_correct_info()
+    {
+        $task = Task::factory()->create();
+
+        $response = $this->actingAs(User::factory()->create())
+            ->get(route('tasks.show', $task));
+
+        $response->assertOk()
+            ->assertViewIs('tasks.show')
+            ->assertSee(__('View Task Details'))
+            ->assertSeeInOrder([
+                $task->tenant->name,
+                $task->building->address,
+                $task->description,
+                $task->comment,
+                $task->created_at->format('d.m.Y'),
+                $task->updated_at->format('d.m.Y'),
+                __('Comment'),
+                __('Mark As Completed'),
+                __('Mark As Cancelled')
+            ]);
     }
 }
