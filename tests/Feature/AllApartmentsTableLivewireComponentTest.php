@@ -6,6 +6,7 @@ use App\Models\Apartment;
 use App\Models\Building;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Log;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -50,5 +51,51 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
                 $apartment2->number.'
                     </td>'
             ]);
+    }
+
+    /**
+     * @test
+     */
+    public function test_show_apartments_when_per_page_change()
+    {
+        $apartment1 = Apartment::factory()->create([
+            'created_at' => now()->subDay()
+        ]);
+
+        $apartment2 = Apartment::factory()->create();
+        Apartment::factory(8)->create();
+        $apartment3 = Apartment::factory()->create();
+
+        Livewire::test('all-apartments-table')
+            ->assertDontSeeHtml([
+                $apartment1->number.'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">',
+            ])
+            ->assertSeeHtml([
+                $apartment2->number.'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">',
+                $apartment3->number.'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">',
+            ])
+            ->assertSeeInOrder(['Showing', '1', 'to', '10', 'of', Apartment::count(), 'results'])
+            ->assertHasNoErrors();
+        
+        Livewire::test('all-apartments-table')
+            ->set('perPage', 15)
+            ->assertSeeHtml([
+                $apartment1->number.'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">',
+                $apartment2->number.'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">',
+                $apartment3->number.'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">',
+            ])
+            ->assertHasNoErrors();
     }
 }
