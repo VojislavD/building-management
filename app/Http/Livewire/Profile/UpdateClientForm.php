@@ -15,6 +15,11 @@ class UpdateClientForm extends Component
         'name' => '',
     ];
 
+    public function mount()
+    {
+        $this->state['name'] = auth()->user()->client->name;
+    }
+    
     public function rules()
     {
         return [
