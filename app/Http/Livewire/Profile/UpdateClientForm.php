@@ -18,7 +18,7 @@ class UpdateClientForm extends Component
     public function rules()
     {
         return [
-            'state.name' => ['required', 'string', 'min:2', 'max:255']
+            'state.name' => ['required', 'string', 'max:255']
         ];
     }
 

@@ -42,13 +42,6 @@ class UpdateClientFormLivewireComponentTest extends TestCase
             ]);
 
         Livewire::test('profile.update-client-form')
-            ->set('state.name', 'a')
-            ->call('updateClient')
-            ->assertHasErrors([
-                'state.name' => 'min'
-            ]);
-
-        Livewire::test('profile.update-client-form')
             ->set('state.name', 'Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.')
             ->call('updateClient')
             ->assertHasErrors([
