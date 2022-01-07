@@ -15,7 +15,7 @@ class CreateApartmentsTable extends Migration
     {
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('building_id');
+            $table->foreignId('building_id')->references('id')->on('buildings')->onDelete('cascade');
             $table->foreignId('tenant_id');
             $table->integer('number');
             $table->integer('tenants');
