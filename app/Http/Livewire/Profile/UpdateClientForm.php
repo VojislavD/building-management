@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Profile;
 
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class UpdateClientForm extends Component
@@ -19,11 +20,11 @@ class UpdateClientForm extends Component
     {
         $this->state['name'] = auth()->user()->client->name;
     }
-    
+
     public function rules()
     {
         return [
-            'state.name' => ['required', 'string', 'max:255']
+            'state.name' => ['required', 'string', 'max:255', Rule::unique('clients', 'name')->ignore(auth()->user()->client)]
         ];
     }
 

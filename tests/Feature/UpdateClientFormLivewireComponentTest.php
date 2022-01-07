@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Client;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -17,6 +18,8 @@ class UpdateClientFormLivewireComponentTest extends TestCase
      */
     public function test_that_component_shows_correct_info()
     {
+        $this->actingAs(User::factory()->create());
+
         Livewire::test('profile.update-client-form')
             ->assertSee(__('Name'));
     }
@@ -27,8 +30,10 @@ class UpdateClientFormLivewireComponentTest extends TestCase
     public function test_client_validation()
     {
         $this->actingAs(User::factory()->create());
-
+        $client2 = Client::factory()->create();
+        
         Livewire::test('profile.update-client-form')
+            ->set('state.name', '')
             ->call('updateClient')
             ->assertHasErrors([
                 'state.name' => 'required'
@@ -46,6 +51,13 @@ class UpdateClientFormLivewireComponentTest extends TestCase
             ->call('updateClient')
             ->assertHasErrors([
                 'state.name' => 'max'
+            ]);
+        
+        Livewire::test('profile.update-client-form')
+            ->set('state.name', $client2->name)
+            ->call('updateClient')
+            ->assertHasErrors([
+                'state.name' => 'unique'
             ]);
         
         Livewire::test('profile.update-client-form')
