@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Building;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
@@ -46,6 +47,8 @@ class CreateBuildingLivewireComponentTest extends TestCase
      */
     public function test_validation()
     {
+        $this->actingAs(User::factory()->create());
+
         $building = Building::factory()->create();
 
         Livewire::test('create-building')
@@ -195,6 +198,8 @@ class CreateBuildingLivewireComponentTest extends TestCase
      */
     public function test_create_new_building()
     {
+        $this->actingAs(User::factory()->create());
+        
         Livewire::test('create-building', [
             'internal_code' => "12345",
             'status' => Building::STATUS_ACTIVE,

@@ -14,7 +14,10 @@ class Task extends Model
     const STATUS_COMPLETED = 2;
     const STATUS_CANCELLED = 3;
 
-    protected $fillable = ['status', 'comment'];
+    protected $fillable = [
+        'status', 
+        'comment'
+    ];
     
     public function tenant()
     {

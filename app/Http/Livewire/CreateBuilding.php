@@ -54,6 +54,7 @@ class CreateBuilding extends Component
         $this->validate();
 
         $newBuilding = Building::create([
+            'client_id' => auth()->user()->client->id,
             'internal_code' => $this->internal_code,
             'status' => $this->status,
             'construction_year' => $this->construction_year,
