@@ -22,7 +22,7 @@
             @endif
 
                 <div class="mt-10 sm:mt-0">
-                    @livewire('profile.update-client-form')
+                    @livewire('profile.update-company-form')
                 </div>
 
                 <x-jet-section-border />

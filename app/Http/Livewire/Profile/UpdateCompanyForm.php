@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Profile;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
-class UpdateClientForm extends Component
+class UpdateCompanyForm extends Component
 {
     /**
      * The component's state.
@@ -18,25 +18,25 @@ class UpdateClientForm extends Component
 
     public function mount()
     {
-        $this->state['name'] = auth()->user()->client->name;
+        $this->state['name'] = auth()->user()->company->name;
     }
 
     public function rules()
     {
         return [
-            'state.name' => ['required', 'string', 'max:255', Rule::unique('clients', 'name')->ignore(auth()->user()->client)]
+            'state.name' => ['required', 'string', 'max:255', Rule::unique('companies', 'name')->ignore(auth()->user()->company)]
         ];
     }
 
-    public function updateClient()
+    public function updateCompany()
     {
         $this->validate();
 
-        $updateClient = auth()->user()->client->update([
+        $updateCompany = auth()->user()->company->update([
             'name' => $this->state['name']
         ]);
 
-        if ($updateClient) {
+        if ($updateCompany) {
             $this->state = [
                 'name' => '',
             ];
@@ -47,6 +47,6 @@ class UpdateClientForm extends Component
 
     public function render()
     {
-        return view('livewire.profile.update-client-form');
+        return view('livewire.profile.update-company-form');
     }
 }

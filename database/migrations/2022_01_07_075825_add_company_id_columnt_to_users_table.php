@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddClientIdFieldToBuildingsTable extends Migration
+class AddCompanyIdColumntToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddClientIdFieldToBuildingsTable extends Migration
      */
     public function up()
     {
-        Schema::table('buildings', function (Blueprint $table) {
-            $table->foreignId('client_id')->after('id')->references('id')->on('clients')->onDelete('cascade');
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('company_id')->after('id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 
@@ -25,7 +25,7 @@ class AddClientIdFieldToBuildingsTable extends Migration
      */
     public function down()
     {
-        Schema::table('buildings', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

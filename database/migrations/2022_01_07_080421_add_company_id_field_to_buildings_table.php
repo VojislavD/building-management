@@ -1,11 +1,10 @@
 <?php
 
-use App\Models\Client;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClientsTable extends Migration
+class AddCompanyIdFieldToBuildingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +13,8 @@ class CreateClientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->tinyInteger('status')->default(Client::STATUS_ACTIVE);
-            $table->timestamps();
+        Schema::table('buildings', function (Blueprint $table) {
+            $table->foreignId('company_id')->after('id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateClientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        Schema::table('buildings', function (Blueprint $table) {
+            //
+        });
     }
 }

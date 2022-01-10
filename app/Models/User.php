@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'client_id',
+        'company_id',
         'name',
         'email',
         'password',
@@ -60,8 +60,8 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function client()
+    public function company()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Company::class);
     }
 }

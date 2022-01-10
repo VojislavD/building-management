@@ -2,14 +2,14 @@
 
 namespace Tests\Feature;
 
-use App\Models\Client;
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-class UpdateClientFormLivewireComponentTest extends TestCase
+class UpdateCompanyFormLivewireComponentTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -20,72 +20,72 @@ class UpdateClientFormLivewireComponentTest extends TestCase
     {
         $this->actingAs(User::factory()->create());
 
-        Livewire::test('profile.update-client-form')
+        Livewire::test('profile.update-company-form')
             ->assertSee(__('Name'));
     }
 
     /**
      * @test
      */
-    public function test_client_validation()
+    public function test_company_validation()
     {
         $this->actingAs(User::factory()->create());
-        $client2 = Client::factory()->create();
+        $company2 = Company::factory()->create();
         
-        Livewire::test('profile.update-client-form')
+        Livewire::test('profile.update-company-form')
             ->set('state.name', '')
-            ->call('updateClient')
+            ->call('updateCompany')
             ->assertHasErrors([
                 'state.name' => 'required'
             ]);
 
-        Livewire::test('profile.update-client-form')
+        Livewire::test('profile.update-company-form')
             ->set('state.name', 1)
-            ->call('updateClient')
+            ->call('updateCompany')
             ->assertHasErrors([
                 'state.name' => 'string'
             ]);
 
-        Livewire::test('profile.update-client-form')
+        Livewire::test('profile.update-company-form')
             ->set('state.name', 'Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.')
-            ->call('updateClient')
+            ->call('updateCompany')
             ->assertHasErrors([
                 'state.name' => 'max'
             ]);
         
-        Livewire::test('profile.update-client-form')
-            ->set('state.name', $client2->name)
-            ->call('updateClient')
+        Livewire::test('profile.update-company-form')
+            ->set('state.name', $company2->name)
+            ->call('updateCompany')
             ->assertHasErrors([
                 'state.name' => 'unique'
             ]);
         
-        Livewire::test('profile.update-client-form')
+        Livewire::test('profile.update-company-form')
             ->set('state.name', 'Test Name')
-            ->call('updateClient')
+            ->call('updateCompany')
             ->assertHasNoErrors();
     }
 
     /**
      * @test
      */
-    public function test_update_client()
+    public function test_update_company()
     {
         $user = User::factory()->create();
-        $client_name = $user->client->name;
+        $company_name = $user->company->name;
 
         $this->actingAs($user);
 
-        Livewire::test('profile.update-client-form')
+        Livewire::test('profile.update-company-form')
             ->set('state.name', 'Test Name')
-            ->call('updateClient')
+            ->call('updateCompany')
             ->assertHasNoErrors();
         
-        $this->assertDatabaseMissing('clients', [
-            'name' => $client_name
+        $this->assertDatabaseMissing('companies', [
+            'name' => $company_name
         ]);
 
-        $this->assertDatabaseHas('clients', [
+        $this->assertDatabaseHas('companies', [
             'name' => 'Test Name'
         ]);
     }

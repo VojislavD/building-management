@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Building;
-use App\Models\Client;
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BuildingFactory extends Factory
@@ -16,7 +16,7 @@ class BuildingFactory extends Factory
     public function definition()
     {
         return [
-            'client_id' => Client::factory(),
+            'company_id' => Company::factory(),
             'internal_code' => $this->faker->unique()->randomNumber(5, true),
             'status' => Building::STATUS_ACTIVE,
             'pib' => $this->faker->unique()->randomNumber(9, true),

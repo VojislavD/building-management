@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Client;
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ClientFactory extends Factory
+class CompanyFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,21 +16,21 @@ class ClientFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'status' => collect([Client::STATUS_ACTIVE, Client::STATUS_INACTIVE])->random()
+            'status' => collect([Company::STATUS_ACTIVE, Company::STATUS_INACTIVE])->random()
         ];
     }
 
     public function active(): Factory
     {
         return $this->state([
-            'status' => Client::STATUS_ACTIVE
+            'status' => Company::STATUS_ACTIVE
         ]);
     }
 
     public function inactive(): Factory
     {
         return $this->state([
-            'status' => Client::STATUS_INACTIVE
+            'status' => Company::STATUS_INACTIVE
         ]);
     }
 }

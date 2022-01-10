@@ -1,10 +1,10 @@
-<x-jet-form-section submit="updateClient">
+<x-jet-form-section submit="updateCompany">
     <x-slot name="title">
-        {{ __('Client Information') }}
+        {{ __('Company Information') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update your account\'s client informations.') }}
+        {{ __('Update your account\'s company informations.') }}
     </x-slot>
 
     <x-slot name="form">

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Client;
+use App\Models\Company;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -26,7 +26,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'client_id' => Client::factory(),
+            'company_id' => Company::factory(),
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),

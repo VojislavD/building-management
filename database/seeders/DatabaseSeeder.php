@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Client;
+use App\Models\Company;
 use Illuminate\Database\Seeder;
 
 use function PHPSTORM_META\map;
@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::create([
-            'client_id' => Client::factory()->active()->create()->id,
+            'company_id' => Company::factory()->active()->create()->id,
             'name' => 'Test User',
             'email' => 'testuser@example.com',
             'password' => bcrypt('password')

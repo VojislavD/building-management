@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\Company;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddClientIdColumntToUsersTable extends Migration
+class CreateCompaniesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +14,11 @@ class AddClientIdColumntToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('client_id')->after('id')->references('id')->on('clients')->onDelete('cascade');
+        Schema::create('companies', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->tinyInteger('status')->default(Company::STATUS_ACTIVE);
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddClientIdColumntToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('companies');
     }
 }

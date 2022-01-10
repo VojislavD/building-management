@@ -13,7 +13,7 @@ class Building extends Model
     const STATUS_INACTIVE = 2;
 
     protected $fillable = [
-        'client_id', 
+        'company_id', 
         'internal_code', 
         'status', 
         'construction_year', 

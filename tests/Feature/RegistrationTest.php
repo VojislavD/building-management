@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Models\Client;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Fortify\Features;
@@ -42,7 +41,7 @@ class RegistrationTest extends TestCase
         }
 
         $response = $this->post('/register', [
-            'client' => 'Some Company',
+            'company' => 'Some Company',
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => 'password',
