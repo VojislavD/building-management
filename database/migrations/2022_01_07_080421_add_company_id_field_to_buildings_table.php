@@ -26,7 +26,7 @@ class AddCompanyIdFieldToBuildingsTable extends Migration
     public function down()
     {
         Schema::table('buildings', function (Blueprint $table) {
-            //
+            $table->dropColumn('company_id');
         });
     }
 }
