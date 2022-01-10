@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Company;
 use Illuminate\Database\Seeder;
 
 use function PHPSTORM_META\map;
@@ -16,15 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::create([
-            'company_id' => Company::factory()->active()->create()->id,
-            'name' => 'Test User',
-            'email' => 'testuser@example.com',
-            'password' => bcrypt('password')
+        $this->call([
+            UserSeeder::class,
+            ApartmentSeeder::class,
+            TaskSeeder::class
         ]);
-
-        \App\Models\Apartment::factory(50)->create();
-
-        \App\Models\Task::factory(50)->create();
     }
 }
