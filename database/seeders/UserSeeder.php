@@ -14,13 +14,31 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user = \App\Models\User::create([
-            'company_id' => Company::factory()->active()->create()->id,
-            'name' => 'Test User',
-            'email' => 'testuser@example.com',
+        $company = Company::factory()->active()->create();
+
+        $super_admin = \App\Models\User::create([
+            'company_id' => $company->id,
+            'name' => 'Super Admin',
+            'email' => 'superadmin@example.com',
             'password' => bcrypt('password')
         ]);
 
-        $user->assignRole('admin');
+        $admin = \App\Models\User::create([
+            'company_id' => $company->id,
+            'name' => 'Admin',
+            'email' => 'admin@example.com',
+            'password' => bcrypt('password')
+        ]);
+
+        $user = \App\Models\User::create([
+            'company_id' => $company->id,
+            'name' => 'User',
+            'email' => 'user@example.com',
+            'password' => bcrypt('password')
+        ]);
+
+        $super_admin->assignRole('super_admin');
+        $admin->assignRole('admin');
+        $user->assignRole('user');
     }
 }
