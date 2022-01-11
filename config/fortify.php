@@ -142,4 +142,8 @@ return [
         ]),
     ],
 
+    'redirects' => [
+        'admin_login' => RouteServiceProvider::ADMIN_HOME
+    ]
+
 ];
