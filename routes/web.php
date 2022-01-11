@@ -25,10 +25,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
-
     // Buildings
     Route::prefix('/buildings')->name('buildings.')->group(function() {
         Route::get('/', [BuildingController::class, 'index'])->name('index');

@@ -141,9 +141,5 @@ return [
             'confirmPassword' => true,
         ]),
     ],
-
-    'redirects' => [
-        'admin_login' => RouteServiceProvider::ADMIN_HOME
-    ]
-
+    
 ];
