@@ -14,10 +14,6 @@
             @role('admin')
                 Admin
             @endrole
-
-            @role('user')
-                User
-            @endrole
         </div>
     </div>
 </x-app-layout>
