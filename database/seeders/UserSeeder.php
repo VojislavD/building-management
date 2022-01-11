@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
             'company_id' => $company->id,
             'name' => 'Super Admin',
             'email' => 'superadmin@example.com',
+            'phone' => '0641234567',
             'password' => bcrypt('password')
         ]);
 
@@ -27,6 +28,7 @@ class UserSeeder extends Seeder
             'company_id' => $company->id,
             'name' => 'Admin',
             'email' => 'admin@example.com',
+            'phone' => '0641234567',
             'password' => bcrypt('password')
         ]);
 
