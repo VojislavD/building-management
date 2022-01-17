@@ -39,6 +39,11 @@ class Building extends Model
     {
         return $this->hasMany(Apartment::class);
     }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
     
     public function scopeActive()
     {

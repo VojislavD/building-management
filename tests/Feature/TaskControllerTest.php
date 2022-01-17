@@ -61,7 +61,7 @@ class TaskControllerTest extends TestCase
             ->assertViewIs('tasks.show')
             ->assertSee(__('View Task Details'))
             ->assertSeeInOrder([
-                $task->tenant->name,
+                $task->user->name,
                 $task->building->address,
                 $task->description,
                 $task->comment,

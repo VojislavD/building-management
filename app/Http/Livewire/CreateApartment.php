@@ -5,8 +5,10 @@ namespace App\Http\Livewire;
 use App\Models\Apartment;
 use App\Models\Building;
 use App\Models\Tenant;
+use App\Models\User;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
+use Laravel\Fortify\Rules\Password;
 
 class CreateApartment extends Component
 {
@@ -17,6 +19,8 @@ class CreateApartment extends Component
     public $owner_name;
     public $owner_email;
     public $owner_phone;
+    public $owner_password;
+    public $owner_password_confirmation;
     public $number;
     public $tenants;
 
@@ -32,6 +36,7 @@ class CreateApartment extends Component
             'owner_name' => ['required', 'string', 'max:255'],
             'owner_email' => ['required', 'string', 'email', 'max:255'],
             'owner_phone' => ['required', 'string', 'max:255'],
+            'owner_password' => ['required', 'string', new Password, 'confirmed'],
             'number' => ['required', 'integer', 'min:0', 'max:9999', Rule::unique('apartments')->where('building_id', $this->building->id)],
             'tenants' => ['required', 'integer', 'min:0', 'max:9999']
         ];
@@ -41,16 +46,18 @@ class CreateApartment extends Component
     {
         $this->validate();
 
-        $owner = Tenant::create([
+        $owner = User::create([
+            'company_id' => $this->building->company->id,
             'name' => $this->owner_name,
             'email' => $this->owner_email,
-            'phone' => $this->owner_phone
+            'phone' => $this->owner_phone,
+            'password' => bcrypt($this->owner_password)
         ]);
 
-        if ($owner instanceof Tenant) {
+        if ($owner instanceof User) {
             $apartment = Apartment::create([
                 'building_id' => $this->building->id,
-                'tenant_id' => $owner->id,
+                'user_id' => $owner->id,
                 'number' => $this->number,
                 'tenants' => $this->tenants
             ]);

@@ -154,7 +154,7 @@ class EditApartmentLivewireComponentTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
 
-        $this->assertDatabaseMissing('tenants', [
+        $this->assertDatabaseMissing('users', [
             'name' => $apartment->owner->name,
             'email' => $apartment->owner->email,
             'phone' => $apartment->owner->phone
@@ -165,7 +165,7 @@ class EditApartmentLivewireComponentTest extends TestCase
             'tenants' => $apartment->tenants
         ]);
 
-        $this->assertDatabaseHas('tenants', [
+        $this->assertDatabaseHas('users', [
             'name' => 'Test User',
             'email' => 'testuser@example.com',
             'phone' => '0641234567'

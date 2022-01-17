@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Building;
-use App\Models\Tenant;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ApartmentFactory extends Factory
@@ -17,7 +17,7 @@ class ApartmentFactory extends Factory
     {
         return [
             'building_id' => Building::factory(),
-            'tenant_id' => Tenant::factory(),
+            'user_id' => User::factory(),
             'number' => $this->faker->numberBetween(1,100),
             'tenants' => $this->faker->numberBetween(1,6)
         ];

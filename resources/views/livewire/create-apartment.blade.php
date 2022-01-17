@@ -67,6 +67,29 @@
                 <x-form.error-message name="owner_phone" />
             </div>
         </div>
+
+        <div class="grid grid-cols-2 gap-8 my-4">
+            <div>
+                <x-form.input 
+                    type="password" 
+                    model="owner_password" 
+                    id="owner_password" 
+                    title="{{ __('Password') }}" 
+                    placeholder="{{ __('Password') }}" 
+                />
+                <x-form.error-message name="owner_password" />
+            </div>
+
+            <div>
+                <x-form.input 
+                    type="password" 
+                    model="owner_password_confirmation" 
+                    id="owner_password_confirmation" 
+                    title="{{ __('Password Confirmation') }}" 
+                    placeholder="{{ __('Password Confirmation') }}" 
+                />
+            </div>
+        </div>
     </div>
 
     <div class="my-16">

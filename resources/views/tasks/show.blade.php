@@ -12,7 +12,7 @@
 
             <div class="my-4 flex items-center">
                 <span class="w-36 font-bold">{{ __('Created By:') }}</span>
-                <span>{{ $task->tenant->name }}</span>
+                <span>{{ $task->user->name }}</span>
             </div>
 
             <div class="my-4 flex items-center">

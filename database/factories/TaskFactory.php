@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Building;
 use App\Models\Task;
-use App\Models\Tenant;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TaskFactory extends Factory
@@ -18,7 +18,7 @@ class TaskFactory extends Factory
     {
         return [
             'building_id' => Building::factory(),
-            'tenant_id' => Tenant::factory(),
+            'user_id' => User::factory(),
             'status' => collect([Task::STATUS_PENDING, Task::STATUS_COMPLETED, Task::STATUS_CANCELLED])->random(),
             'description' => $this->faker->realText(1000)
         ];

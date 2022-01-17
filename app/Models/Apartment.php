@@ -11,7 +11,7 @@ class Apartment extends Model
 
     protected $fillable = [
         'building_id', 
-        'tenant_id', 
+        'user_id', 
         'number', 
         'tenants'
     ];
@@ -23,6 +23,6 @@ class Apartment extends Model
 
     public function owner()
     {
-        return $this->belongsTo(Tenant::class, 'tenant_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
