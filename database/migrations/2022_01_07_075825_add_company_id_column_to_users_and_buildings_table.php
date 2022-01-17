@@ -14,11 +14,11 @@ class AddCompanyIdColumnToUsersAndBuildingsTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('company_id')->after('id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreignId('company_id')->after('id')->constrained()->cascadeOnDelete();
         });
 
         Schema::table('buildings', function (Blueprint $table) {
-            $table->foreignId('company_id')->after('id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreignId('company_id')->after('id')->constrained()->cascadeOnDelete();
         });
     }
 
