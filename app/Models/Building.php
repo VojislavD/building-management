@@ -20,7 +20,6 @@ class Building extends Model
         'square', 
         'floors', 
         'apartments', 
-        'tenants', 
         'elevator', 
         'yard', 
         'balance', 
@@ -53,6 +52,11 @@ class Building extends Model
     public function scopeInactive()
     {
         return $this->where('status', static::STATUS_INACTIVE);
+    }
+
+    public function getTenantsAttribute()
+    {
+        return $this->apartments->sum('tenants');
     }
 
     public static function availableConstructionYears()

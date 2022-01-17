@@ -15,7 +15,6 @@ class EditBuilding extends Component
     public $construction_year;
     public $square;
     public $floors;
-    public $tenants;
     public $elevator;
     public $yard;
     public $balance;
@@ -35,7 +34,6 @@ class EditBuilding extends Component
         $this->construction_year = $this->building->construction_year;
         $this->square = $this->building->square;
         $this->floors = $this->building->floors;
-        $this->tenants = $this->building->tenants;
         $this->elevator = $this->building->elevator;
         $this->yard = $this->building->yard;
         $this->balance = $this->building->balance;
@@ -57,7 +55,6 @@ class EditBuilding extends Component
             'construction_year' => ['required', Rule::in(Building::availableConstructionYears())],
             'square' => ['required', 'numeric', 'min:1'],
             'floors' => ['required', 'numeric', 'min:0'],
-            'tenants' => ['required', 'numeric', 'min:0'],
             'elevator' => ['required', 'boolean'],
             'yard' => ['required', 'boolean'],
             'balance' => ['required', 'numeric'],
@@ -82,7 +79,6 @@ class EditBuilding extends Component
             'construction_year' => $this->construction_year,
             'square' => $this->square,
             'floors' => $this->floors,
-            'tenants' => $this->tenants,
             'elevator' => $this->elevator,
             'yard' => $this->yard,
             'balance' => $this->balance,

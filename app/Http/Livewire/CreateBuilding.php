@@ -13,7 +13,6 @@ class CreateBuilding extends Component
     public $construction_year;
     public $square;
     public $floors;
-    public $tenants;
     public $elevator;
     public $yard;
     public $balance_begining;
@@ -34,7 +33,6 @@ class CreateBuilding extends Component
             'construction_year' => ['required', Rule::in(Building::availableConstructionYears())],
             'square' => ['required', 'numeric', 'min:1'],
             'floors' => ['required', 'numeric', 'min:0'],
-            'tenants' => ['required', 'numeric', 'min:0'],
             'elevator' => ['required', 'boolean'],
             'yard' => ['required', 'boolean'],
             'balance_begining' => ['required', 'numeric'],
@@ -60,7 +58,6 @@ class CreateBuilding extends Component
             'construction_year' => $this->construction_year,
             'square' => $this->square,
             'floors' => $this->floors,
-            'tenants' => $this->tenants,
             'elevator' => $this->elevator,
             'yard' => $this->yard,
             'balance_begining' => $this->balance_begining,

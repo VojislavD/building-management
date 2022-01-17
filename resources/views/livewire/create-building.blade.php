@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-8 my-4">
+        <div class="grid grid-cols-3 gap-8 my-4">
             <div>
                 <x-form.select 
                     model="construction_year" 
@@ -53,9 +53,7 @@
                 />
                 <x-form.error-message name="square" />
             </div>
-        </div>
 
-        <div class="grid grid-cols-2 gap-8 my-4">
             <div>
                 <x-form.input 
                     type="number" 
@@ -65,17 +63,6 @@
                     placeholder="{{ __('Floors') }}" 
                 />
                 <x-form.error-message name="floors" />
-            </div>
-
-            <div>
-                <x-form.input 
-                    type="number" 
-                    model="tenants" 
-                    id="tenants" 
-                    title="{{ __('Tenants') }}" 
-                    placeholder="{{ __('Tenants') }}" 
-                />
-                <x-form.error-message name="tenants" />
             </div>
         </div>
 
