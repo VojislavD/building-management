@@ -32,4 +32,32 @@ class ProjectFactory extends Factory
             'end_paying' => today()->addMonths(5)
         ];
     }
+
+    public function pending(): Factory
+    {
+        return $this->state([
+            'status' => Project::STATUS_PENDING
+        ]);
+    }
+
+    public function processing(): Factory
+    {
+        return $this->state([
+            'status' => Project::STATUS_PROCESSING
+        ]);
+    }
+
+    public function finished(): Factory
+    {
+        return $this->state([
+            'status' => Project::STATUS_FINISHED
+        ]);
+    }
+
+    public function cancelled(): Factory
+    {
+        return $this->state([
+            'status' => Project::STATUS_CANCELLED
+        ]);
+    }
 }
