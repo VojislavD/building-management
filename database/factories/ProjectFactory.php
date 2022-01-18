@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Building;
+use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProjectFactory extends Factory
@@ -14,7 +16,20 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'status' => collect([
+                Project::STATUS_PENDING,
+                Project::STATUS_PROCESSING,
+                Project::STATUS_FINISHED,
+                Project::STATUS_CANCELLED,
+            ])->random(),
+            'building_id' => Building::factory(),
+            'name' => $this->faker->sentence(),
+            'price' => $this->faker->numberBetween(10000, 100000),
+            'rates' => $this->faker->numberBetween(1,10),
+            'amount_payed' => $this->faker->numberBetween(10000, 50000),
+            'amount_left' => $this->faker->numberBetween(10000, 50000),
+            'start_paying' => today(),
+            'end_paying' => today()->addMonths(5)
         ];
     }
 }

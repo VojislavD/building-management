@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Project;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +16,15 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('status')->default(Project::STATUS_PENDING);
+            $table->foreignId('building_id')->constrained()->cascadeOnDelete();
+            $table->string('name');
+            $table->integer('price');
+            $table->tinyInteger('rates');
+            $table->integer('amount_payed');
+            $table->integer('amount_left');
+            $table->timestamp('start_paying');
+            $table->timestamp('end_paying');
             $table->timestamps();
         });
     }
