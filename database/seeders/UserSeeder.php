@@ -32,8 +32,17 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password')
         ]);
 
+        $user = \App\Models\User::create([
+            'company_id' => $company->id,
+            'name' => 'User',
+            'email' => 'user@example.com',
+            'phone' => '0641234567',
+            'password' => bcrypt('password')
+        ]);
+
 
         $super_admin->assignRole('super_admin');
         $admin->assignRole('admin');
+        $user->assignRole('user');
     }
 }
