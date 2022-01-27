@@ -104,6 +104,7 @@
                             </span>
                         </a>
                         <!-- end::Menu link -->
+                    @endrole
 
                         <!-- start::Menu link -->
                         <a 
@@ -114,7 +115,7 @@
                             class="flex items-center text-gray-400 px-6 py-3 cursor-pointer hover:bg-black hover:bg-opacity-30 transition duration-200"
                             :class="{{ Request::segment(1) === 'tasks' }} ? 'bg-black bg-opacity-30' : ''"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition duration-200" :class="linkHover ? 'text-gray-100' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition duration-200" :class="linkHover ? 'text-gray-100' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>
                             <span 
                                 class="ml-3 transition duration-200" 
                                 :class="linkHover ? 'text-gray-100' : ''"
@@ -123,7 +124,26 @@
                             </span>
                         </a>
                         <!-- end::Menu link -->
-                    @endrole
+
+                        <!-- start::Menu link -->
+                        <a 
+                            x-data="{ linkHover: false }"
+                            @mouseover = "linkHover = true"
+                            @mouseleave = "linkHover = false"
+                            href="#"
+                            class="flex items-center text-gray-400 px-6 py-3 cursor-pointer hover:bg-black hover:bg-opacity-30 transition duration-200"
+                            :class="{{ Request::segment(1) === 'projects' }} ? 'bg-black bg-opacity-30' : ''"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition duration-200" :class="linkHover ? 'text-gray-100' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg>
+                            <span 
+                                class="ml-3 transition duration-200" 
+                                :class="linkHover ? 'text-gray-100' : ''"
+                            >
+                                {{ __('Projects') }}
+                            </span>
+                        </a>
+                        <!-- end::Menu link -->
+                    
                 </nav>
                 <!-- end::Navigation -->
             </aside>
