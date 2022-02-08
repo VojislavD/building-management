@@ -25,6 +25,12 @@ class CreateNotification extends Component
         'via_email.accepted' => 'One of channels for sending notification must be selected.',
     ];
 
+    public function mount()
+    {
+        $this->internal_code = $this->building->internal_code;
+        $this->address = $this->building->address;
+    }
+
     protected function rules()
     {
         return [
