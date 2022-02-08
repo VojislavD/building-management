@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\BuildingController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,5 +49,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
         Route::patch('/update/{task}', [TaskController::class, 'update'])->name('update');
         Route::patch('/completed/{task}', [TaskController::class, 'completed'])->name('completed');
         Route::patch('/cancelled/{task}', [TaskController::class, 'cancelled'])->name('cancelled');
+    });
+
+    // Projects
+    Route::prefix('/projects')->name('projects.')->group(function() {
+        Route::get('/', [ProjectController::class, 'index'])->name('index');
     });
 });

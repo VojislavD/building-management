@@ -16,13 +16,13 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
+            'building_id' => Building::factory(),
             'status' => collect([
                 Project::STATUS_PENDING,
                 Project::STATUS_PROCESSING,
                 Project::STATUS_FINISHED,
                 Project::STATUS_CANCELLED,
             ])->random(),
-            'building_id' => Building::factory(),
             'name' => $this->faker->sentence(),
             'price' => $this->faker->numberBetween(10000, 100000),
             'rates' => $this->faker->numberBetween(1,10),

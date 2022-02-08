@@ -16,8 +16,8 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('status')->default(Project::STATUS_PENDING);
             $table->foreignId('building_id')->constrained()->cascadeOnDelete();
+            $table->tinyInteger('status')->default(Project::STATUS_PENDING);
             $table->string('name');
             $table->integer('price');
             $table->tinyInteger('rates');
