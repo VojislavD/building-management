@@ -54,5 +54,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     // Projects
     Route::prefix('/projects')->name('projects.')->group(function() {
         Route::get('/', [ProjectController::class, 'index'])->name('index');
+        Route::get('/edit/{project}', [ProjectController::class, 'edit'])->name('edit');
+        Route::delete('/delete/{project}', [ProjectController::class, 'destroy'])->name('delete');
     });
 });
