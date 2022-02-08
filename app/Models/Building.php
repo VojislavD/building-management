@@ -56,6 +56,19 @@ class Building extends Model
 
     public function getTenantsAttribute()
     {
+        $apartments = $this->apartments();
+
+        $tenants = collect();
+
+        $apartments->each(function ($item) use ($tenants) {
+            $tenants->push($item->owner);
+        });
+
+        return $tenants;
+    }
+
+    public function tenantsSum()
+    {
         return $this->apartments->sum('tenants');
     }
 

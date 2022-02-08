@@ -68,7 +68,7 @@
                         {{ $building->apartments_count }}
                     </td>
                     <td class="py-3 pl-2">
-                        {{ $building->tenants }}
+                        {{ $building->tenantsSum() }}
                     </td>
                     <td class="flex items-center space-x-2 py-3 pl-2">
                         <a 

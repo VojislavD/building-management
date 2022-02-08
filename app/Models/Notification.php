@@ -22,4 +22,9 @@ class Notification extends Model
         'body',
         'send_at'
     ];
+
+    public function building()
+    {
+        return $this->belongsTo(Building::class);
+    }
 }
