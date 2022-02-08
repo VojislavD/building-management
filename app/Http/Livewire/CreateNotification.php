@@ -36,17 +36,17 @@ class CreateNotification extends Component
         return [
             'subject' => ['required', 'string', 'max:255'],
             'body' => ['required', 'string'],
-            'via_email' => ['accepted', 'boolean'],
+            'via_email' => ['accepted'],
             'scheduled_date' => [
                 Rule::requiredIf(function () { 
-                    return $this->send_scheduled ? true : false; 
+                    return $this->send_scheduled; 
                 }), 
                 'nullable', 
                 'date', 
             ],
             'scheduled_time' => [
                 Rule::requiredIf(function () { 
-                    return $this->send_scheduled ? true : false; 
+                    return $this->send_scheduled; 
                 }), 
                 'nullable', 
                 'date_format:H:i',
@@ -56,7 +56,6 @@ class CreateNotification extends Component
 
     public function sendImmediately()
     {
-        dd($this->via_email);
         $this->send_scheduled = false;
     }
 
