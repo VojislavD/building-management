@@ -39,9 +39,6 @@
         <thead class="bg-secondary text-gray-100 font-bold">
             <tr>
                 <td class="py-2 pl-2">
-                    {{ __('Status') }}
-                </td>
-                <td class="py-2 pl-2">
                     {{ __('Name') }}
                 </td>
                 <td class="py-2 pl-2">
@@ -57,6 +54,9 @@
                     {{ __('Left') }}
                 </td>
                 <td class="py-2 pl-2">
+                    {{ __('Status') }}
+                </td>
+                <td class="py-2 pl-2">
                     {{ __('Start Paying') }}
                 </td>
                 <td class="py-2 pl-2">
@@ -68,9 +68,6 @@
         <tbody>
             @forelse($projects as $project)
                 <tr class="bg-gray-100 hover:bg-primary hover:bg-opacity-20 transition duration-200">
-                    <td class="py-3 pl-2">
-                        {{ $project->status }}
-                    </td>
                     <td class="py-3 pl-2">
                         {{ $project->name }}
                     </td>
@@ -85,6 +82,9 @@
                     </td>
                     <td class="py-3 pl-2">
                         {{ $project->amount_left }} RSD
+                    </td>
+                    <td class="py-3 pl-2">
+                        {!! $project->getStatusLabel() !!}
                     </td>
                     <td class="py-3 pl-2">
                         {{ $project->start_paying->format('d.m.Y') }}
