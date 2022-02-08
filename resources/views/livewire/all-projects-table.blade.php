@@ -102,7 +102,7 @@
                 </tr>
             @empty
                 <tr class="bg-gray-100 hover:bg-primary hover:bg-opacity-20 transition duration-200">
-                    <td class="py-3 pl-2 text-center" colspan="8">
+                    <td class="py-3 pl-2 text-center" colspan="9">
                         {{ __('There is no projects yet.') }}
                     </td>
                 </tr>
