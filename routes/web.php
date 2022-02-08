@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\BuildingController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
@@ -56,5 +57,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
         Route::get('/', [ProjectController::class, 'index'])->name('index');
         Route::get('/edit/{project}', [ProjectController::class, 'edit'])->name('edit');
         Route::delete('/delete/{project}', [ProjectController::class, 'destroy'])->name('delete');
+    });
+
+    // Notifications
+    Route::prefix('/notifications')->name('notifications.')->group(function() {
+        Route::get('/create/{building}', [NotificationController::class, 'create'])->name('create');
     });
 });
