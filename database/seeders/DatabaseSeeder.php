@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             ApartmentSeeder::class,
             TaskSeeder::class,
             ProjectSeeder::class,
+            NotificationSeeder::class,
         ]);
     }
 }
