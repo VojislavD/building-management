@@ -13,4 +13,14 @@ class Project extends Model
     const STATUS_PROCESSING = 2;
     const STATUS_FINISHED = 3;
     const STATUS_CANCELLED = 4;
+
+    protected $casts = [
+        'start_paying' => 'datetime',
+        'end_paying' => 'datetime'
+    ];
+
+    public function building()
+    {
+        return $this->belongsTo(Building::class);
+    }
 }
