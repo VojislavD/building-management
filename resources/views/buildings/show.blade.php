@@ -1,4 +1,8 @@
 <x-app-layout>
+
+    <x-flash-message type="success" name="notificationCreated" />
+    <x-flash-message type="error" name="notificationNotCreated" />
+    
     <div class="flex items-start justify-between">
         <div>
             <div class="flex items-center space-x-4">

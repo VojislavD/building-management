@@ -19,7 +19,7 @@ class CreateNotificationsTable extends Migration
             $table->foreignId('building_id')->constrained()->cascadeOnDelete();
             $table->tinyInteger('status')->default(Notification::STATUS_SCHEDULED);
             $table->boolean('via_email')->default(false);
-            $table->string('title')->nullable();
+            $table->string('subject')->nullable();
             $table->text('body');
             $table->datetime('send_at');
             $table->timestamps();

@@ -24,7 +24,7 @@ class NotificationFactory extends Factory
                 Notification::STATUS_CANCELLED,
             ])->random(),
             'via_email' => $this->faker->boolean(),
-            'title' => $this->faker->sentence(),
+            'subject' => $this->faker->sentence(),
             'body' => $this->faker->text(),
             'send_at' => now()->addMinute()
         ];
