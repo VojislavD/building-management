@@ -56,6 +56,25 @@ class EditProject extends Component
     public function submit()
     {
         $this->validate();
+
+        $updateProject = $this->project->update([
+            'status' => $this->status,
+            'name' => $this->name,
+            'price' => $this->price,
+            'rates' => $this->rates,
+            'amount_payed' => $this->amount_payed,
+            'amount_left' => $this->amount_left,
+            'start_paying' => $this->start_paying,
+            'end_paying' => $this->end_paying
+        ]);
+
+        if ($updateProject) {
+            session()->flash('projectUpdated', __('Project successfully updated.'));
+        } else {
+            session()->flash('projectNotUpdated', __('Oops! Something went wrong, please try again.'));
+        }
+
+        return redirect()->to(route('projects.index'));
     }
 
     public function render()

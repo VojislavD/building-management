@@ -19,6 +19,17 @@ class Project extends Model
         'end_paying' => 'datetime'
     ];
 
+    protected $fillable = [
+        'status',
+        'name',
+        'price',
+        'rates',
+        'amount_payed',
+        'amount_left',
+        'start_paying',
+        'end_paying'
+    ];
+
     public function building()
     {
         return $this->belongsTo(Building::class);
