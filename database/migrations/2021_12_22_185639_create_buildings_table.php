@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('buildings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('company_id');
             $table->string('internal_code')->unique();
             $table->tinyInteger('status');
             $table->string('pib')->unique();
