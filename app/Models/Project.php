@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Project extends Model
 {
@@ -40,12 +41,12 @@ class Project extends Model
         'end_paying' => 'datetime'
     ];
 
-    public function building()
+    public function building(): BelongsTo
     {
         return $this->belongsTo(Building::class);
     }
 
-    public function getStatusLabel()
+    public function getStatusLabel(): string
     {
         switch ($this->status) {
             case static::STATUS_PENDING:

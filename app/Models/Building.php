@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Building extends Model
 {
@@ -39,27 +42,27 @@ class Building extends Model
         'comment'
     ];
 
-    public function apartments()
+    public function apartments(): HasMany
     {
         return $this->hasMany(Apartment::class);
     }
 
-    public function company()
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
     }
     
     public function scopeActive()
     {
-        return $this->where('status', static::STATUS_ACTIVE);
+        $this->where('status', static::STATUS_ACTIVE);
     }
 
     public function scopeInactive()
     {
-        return $this->where('status', static::STATUS_INACTIVE);
+        $this->where('status', static::STATUS_INACTIVE);
     }
 
-    public function allTenants()
+    public function allTenants(): Collection
     {
         $apartments = $this->apartments();
 
@@ -72,12 +75,12 @@ class Building extends Model
         return $tenants;
     }
 
-    public function tenantsSum()
+    public function tenantsSum(): int
     {
         return $this->apartments->sum('tenants');
     }
 
-    public static function availableConstructionYears()
+    public static function availableConstructionYears(): array
     {
         $years = [];
 
@@ -88,7 +91,7 @@ class Building extends Model
         return $years;
     }
 
-    public function getStatusText()
+    public function getStatusText(): string
     {
         switch ($this->status) {
             case static::STATUS_ACTIVE:
@@ -103,7 +106,7 @@ class Building extends Model
         }
     }
 
-    public function getStatusLabel()
+    public function getStatusLabel(): string
     {
         switch ($this->status) {
             case static::STATUS_ACTIVE:
@@ -118,7 +121,7 @@ class Building extends Model
         }
     }
 
-    public function getElevatorStatusText()
+    public function getElevatorStatusText(): string
     {
         if ($this->elevator) {
             return __('Yes');
@@ -127,7 +130,7 @@ class Building extends Model
         }
     }
 
-    public function getYardStatusText()
+    public function getYardStatusText(): string
     {
         if ($this->yard) {
             return __('Yes');

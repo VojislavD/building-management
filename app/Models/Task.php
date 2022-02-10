@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
 class Task extends Model
@@ -24,22 +25,22 @@ class Task extends Model
         'comment'
     ];
     
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function building()
+    public function building(): BelongsTo
     {
         return $this->belongsTo(Building::class);
     }
 
-    public function getLimitedDescriptionAttribute()
+    public function getLimitedDescriptionAttribute(): string
     {
         return Str::limit($this->description, 40, '...');
     }
 
-    public function getStatusLabel()
+    public function getStatusLabel(): string
     {
         switch ($this->status) {
             case static::STATUS_PENDING:
