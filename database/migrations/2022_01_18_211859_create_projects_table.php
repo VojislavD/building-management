@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Project;
+use App\Enums\ProjectStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->foreignId('building_id')->constrained()->cascadeOnDelete();
-            $table->tinyInteger('status')->default(Project::STATUS_PENDING);
+            $table->tinyInteger('status')->default(ProjectStatus::Pending->value);
             $table->string('name');
             $table->integer('price');
             $table->tinyInteger('rates');

@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Project;
+use App\Enums\ProjectStatus;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
@@ -114,7 +115,7 @@ class EditProjectLivewireComponentTest extends TestCase
         Livewire::test('edit-project', [
                 'project' => $project
             ])
-            ->set('status', Project::STATUS_PENDING)
+            ->set('status', ProjectStatus::Pending->value)
             ->set('name', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
             ->set('price', 100)
             ->set('rates', 10)
@@ -130,7 +131,7 @@ class EditProjectLivewireComponentTest extends TestCase
         Livewire::test('edit-project', [
                 'project' => $project
             ])
-            ->set('status', Project::STATUS_PENDING)
+            ->set('status', ProjectStatus::Pending->value)
             ->set('name', 'Example')
             ->set('price', 100)
             ->set('rates', 10)
@@ -152,7 +153,7 @@ class EditProjectLivewireComponentTest extends TestCase
         Livewire::test('edit-project', [
                 'project' => $project
             ])
-            ->set('status', Project::STATUS_FINISHED)
+            ->set('status', ProjectStatus::Finished->value)
             ->set('name', 'Example')
             ->set('price', 100)
             ->set('rates', 10)
@@ -164,7 +165,7 @@ class EditProjectLivewireComponentTest extends TestCase
             ->assertHasNoErrors();
 
         $this->assertDatabaseMissing('projects', [
-            'status' => $project->status,
+            'status' => $project->status->value,
             'name' => $project->name,
             'price' => $project->price,
             'rates' => $project->rates,
@@ -175,7 +176,7 @@ class EditProjectLivewireComponentTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('projects', [
-            'status' => Project::STATUS_FINISHED,
+            'status' => ProjectStatus::Finished->value,
             'name' => 'Example',
             'price' => 100,
             'rates' => 10,

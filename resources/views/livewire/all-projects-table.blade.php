@@ -5,10 +5,10 @@
                 <label>Status:</label>
                 <select wire:model="status" class="w-24 text-sm py-0.5 ml-2 focus:outline-none focus:ring-0 focus:border-gray-900">
                     <option value="0">{{ __('All') }}</option>
-                    <option value="{{ \App\Models\Project::STATUS_PENDING }}">{{ __('Pending') }}</option>
-                    <option value="{{ \App\Models\Project::STATUS_PROCESSING }}">{{ __('Processing') }}</option>
-                    <option value="{{ \App\Models\Project::STATUS_FINISHED }}">{{ __('Finished') }}</option>
-                    <option value="{{ \App\Models\Project::STATUS_CANCELLED }}">{{ __('Cancelled') }}</option>
+                    <option value="{{ \App\Enums\ProjectStatus::Pending->value }}">{{ __('Pending') }}</option>
+                    <option value="{{ \App\Enums\ProjectStatus::Processing->value }}">{{ __('Processing') }}</option>
+                    <option value="{{ \App\Enums\ProjectStatus::Finished->value }}">{{ __('Finished') }}</option>
+                    <option value="{{ \App\Enums\ProjectStatus::Cancelled->value }}">{{ __('Cancelled') }}</option>
                 </select>
             </div>
             <div class="flex items-center">
@@ -86,7 +86,7 @@
                         {{ $project->amount_left }} RSD
                     </td>
                     <td class="py-3 pl-2">
-                        {!! $project->getStatusLabel() !!}
+                        {!! $project->status->label() !!}
                     </td>
                     <td class="py-3 pl-2">
                         {{ $project->start_paying->format('d.m.Y') }}

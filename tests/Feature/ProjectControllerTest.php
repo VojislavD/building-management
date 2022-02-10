@@ -63,7 +63,7 @@ class ProjectControllerTest extends TestCase
             ->assertSeeInOrder([
                 $project->building->internal_code,
                 $project->building->address,
-                $project->status,
+                $project->status->value,
                 $project->name,
                 $project->price,
                 $project->rates,

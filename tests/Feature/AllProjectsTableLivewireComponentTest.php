@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Building;
+use App\Enums\ProjectStatus;
 use App\Models\Project;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -45,7 +46,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
                 $projectFinished->name,
                 $projectCancelled->name
             ])
-            ->set('status', Project::STATUS_PENDING)
+            ->set('status', ProjectStatus::Pending->value)
             ->assertSee([
                 $projectPending->name
             ])
@@ -54,7 +55,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
                 $projectFinished->name,
                 $projectCancelled->name
             ])
-            ->set('status', Project::STATUS_PROCESSING)
+            ->set('status', ProjectStatus::Processing->value)
             ->assertSee([
                 $projectProcessing->name
             ])
@@ -63,7 +64,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
                 $projectFinished->name,
                 $projectCancelled->name
             ])
-            ->set('status', Project::STATUS_FINISHED)
+            ->set('status', ProjectStatus::Finished->value)
             ->assertSee([
                 $projectFinished->name
             ])
@@ -72,7 +73,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
                 $projectProcessing->name,
                 $projectCancelled->name
             ])
-            ->set('status', Project::STATUS_CANCELLED)
+            ->set('status', ProjectStatus::Cancelled->value)
             ->assertSee([
                 $projectCancelled->name
             ])

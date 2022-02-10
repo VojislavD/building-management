@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Enums\ProjectStatus;
 use App\Models\Project;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
@@ -27,7 +28,7 @@ class EditProject extends Component
     {
         $this->internal_code = $this->project->building->internal_code;    
         $this->address = $this->project->building->address;
-        $this->status = $this->project->status;
+        $this->status = $this->project->status->value;
         $this->name = $this->project->name;
         $this->price = $this->project->price;
         $this->rates = $this->project->rates;
@@ -41,10 +42,10 @@ class EditProject extends Component
     {
         return [
             'status' => ['required', 'integer', Rule::in([
-                Project::STATUS_PENDING, 
-                Project::STATUS_PROCESSING, 
-                Project::STATUS_FINISHED, 
-                Project::STATUS_CANCELLED
+                ProjectStatus::Pending->value, 
+                ProjectStatus::Processing->value, 
+                ProjectStatus::Finished->value, 
+                ProjectStatus::Cancelled->value, 
             ])],
             'name' => ['required', 'string', 'min:6', 'max:255'],
             'price' => ['required', 'integer', 'min:0'],
