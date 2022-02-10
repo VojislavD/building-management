@@ -30,6 +30,11 @@ class Project extends Model
         'end_paying'
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
     protected $casts = [
         'start_paying' => 'datetime',
         'end_paying' => 'datetime'
