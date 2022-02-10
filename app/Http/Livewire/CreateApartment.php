@@ -8,6 +8,7 @@ use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Laravel\Fortify\Rules\Password;
@@ -44,7 +45,7 @@ class CreateApartment extends Component
         ];
     }
 
-    public function submit(): RedirectResponse
+    public function submit(): Redirector|RedirectResponse
     {
         $this->validate();
 

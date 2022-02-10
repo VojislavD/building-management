@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Apartment;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
@@ -41,7 +42,7 @@ class EditApartment extends Component
         ];
     }
 
-    public function submit(): RedirectResponse
+    public function submit(): Redirector|RedirectResponse
     {
         $this->validate();
 

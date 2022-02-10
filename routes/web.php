@@ -27,12 +27,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
     // Buildings
-    Route::prefix('/buildings')->name('buildings.')->group(function() {
-        Route::get('/', [BuildingController::class, 'index'])->name('index');
-        Route::get('/create', [BuildingController::class, 'create'])->name('create');
-        Route::get('/edit/{building}', [BuildingController::class, 'edit'])->name('edit');
-        Route::delete('/delete/{building}', [BuildingController::class, 'destroy'])->name('delete');
-        Route::get('/{building}', [BuildingController::class, 'show'])->name('show');
+    Route::controller(BuildingController::class)->prefix('/buildings')->name('buildings.')->group(function() {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::get('/edit/{building}', 'edit')->name('edit');
+        Route::delete('/delete/{building}', 'destroy')->name('delete');
+        Route::get('/{building}', 'show')->name('show');
     });
 
     // Apartments

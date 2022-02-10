@@ -7,6 +7,7 @@ use App\Models\Notification;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
@@ -66,7 +67,7 @@ class CreateNotification extends Component
         $this->send_immediately = false;
     }
 
-    public function submit(): RedirectResponse
+    public function submit(): Redirector|RedirectResponse
     {
         $this->validate();
 
