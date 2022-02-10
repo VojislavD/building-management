@@ -81,7 +81,7 @@ class CreateBuilding extends Component
             session()->flash('buildingNotCreated', __('Oops! Something went wrong, please try again.'));
         }
 
-        return redirect()->to(route('buildings.index'));
+        return to_route('buildings.index');
     }
     
     public function render(): Renderable

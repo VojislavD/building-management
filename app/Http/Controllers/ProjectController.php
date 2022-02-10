@@ -24,9 +24,9 @@ class ProjectController extends Controller
     public function destroy(Project $project): RedirectResponse
     {
         if ($project->delete()) {
-            return redirect()->to(route('projects.index'))->with('projectDeleted', 'Project successfully deleted.');
+            return to_route('projects.index')->with('projectDeleted', 'Project successfully deleted.');
         } else {
-            return redirect()->to(route('projects.index'))->with('projectNotDeleted', 'Oops! Something went wrong, please try again.');
+            return to_route('projects.index')->with('projectNotDeleted', 'Oops! Something went wrong, please try again.');
         }
 
     }

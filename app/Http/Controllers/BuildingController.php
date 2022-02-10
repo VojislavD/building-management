@@ -35,9 +35,9 @@ class BuildingController extends Controller
     public function destroy(Building $building): RedirectResponse
     {
         if ($building->delete()) {
-            return redirect()->to(route('buildings.index'))->with('buildingDeleted', __('Building is successfully deleted.'));
+            return to_route('buildings.index')->with('buildingDeleted', __('Building is successfully deleted.'));
         } else {
-            return redirect()->to(route('buildings.index'))->with('buildingNotDeleted', __('Oops! Something went wrong, please try again.'));
+            return to_route('buildings.index')->with('buildingNotDeleted', __('Oops! Something went wrong, please try again.'));
         }
     }
 }

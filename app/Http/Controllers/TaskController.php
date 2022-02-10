@@ -29,9 +29,9 @@ class TaskController extends Controller
         ]);
 
         if ($updateTask) {
-            return redirect()->to(route('tasks.index'))->with('taskUpdated', __('Task successfully updated.'));
+            return to_route('tasks.index')->with('taskUpdated', __('Task successfully updated.'));
         } else {
-            return redirect()->to(route('tasks.index'))->with('taskNotUpdated', __('Oops! Something went wrong, please try again.'));
+            return to_route('tasks.index')->with('taskNotUpdated', __('Oops! Something went wrong, please try again.'));
         }
     }
 
@@ -42,9 +42,9 @@ class TaskController extends Controller
         ]);
 
         if ($taskCompleted) {
-            return redirect()->to(route('tasks.index'))->with('taskCompleted', __('Task marked as completed successfully.'));
+            return to_route('tasks.index')->with('taskCompleted', __('Task marked as completed successfully.'));
         } else {
-            return redirect()->to(route('tasks.index'))->with('taskNotCompleted', __('Oops! Something went wrong, please try again.'));
+            return to_route('tasks.index')->with('taskNotCompleted', __('Oops! Something went wrong, please try again.'));
         }
     }
 
@@ -55,9 +55,9 @@ class TaskController extends Controller
         ]);
 
         if ($taskCancelled) {
-            return redirect()->to(route('tasks.index'))->with('taskCancelled', __('Task marked as cancelled successfully.'));
+            return to_route('tasks.index')->with('taskCancelled', __('Task marked as cancelled successfully.'));
         } else {
-            return redirect()->to(route('tasks.index'))->with('taskNotCancelled', __('Oops! Something went wrong, please try again.'));
+            return to_route('tasks.index')->with('taskNotCancelled', __('Oops! Something went wrong, please try again.'));
         }
     }
 }

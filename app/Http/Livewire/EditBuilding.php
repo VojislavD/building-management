@@ -101,7 +101,7 @@ class EditBuilding extends Component
             session()->flash('buildingNotUpdated', __('Oops! Something went wrong, please try again.'));
         }
 
-        return redirect()->to(route('buildings.index'));
+        return to_route('buildings.index');
     }
 
     public function render(): Renderable

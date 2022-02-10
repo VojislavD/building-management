@@ -75,7 +75,7 @@ class CreateApartment extends Component
             session()->flash('apratmentNotCreated', __('Oops! Something went wrong, please try again.'));
         }
 
-        return redirect()->to(route('buildings.show', $this->building));
+        return to_route('buildings.show', $this->building);
     }
     
     public function render(): Renderable

@@ -92,7 +92,7 @@ class CreateNotification extends Component
             session()->flash('notificationNotCreated', __('Oops! Something went wrong, please try again.'));
         }
 
-        return redirect()->to(route('buildings.show', $this->building));
+        return to_route('buildings.show', $this->building);
     }
 
     public function render(): Renderable

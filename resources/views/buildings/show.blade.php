@@ -3,6 +3,9 @@
     <x-flash-message type="success" name="notificationCreated" />
     <x-flash-message type="error" name="notificationNotCreated" />
     
+    <x-flash-message type="success" name="apartmentDeleted" />
+    <x-flash-message type="error" name="apartmentNotDeleted" />
+
     <div class="flex items-start justify-between">
         <div>
             <div class="flex items-center space-x-4">

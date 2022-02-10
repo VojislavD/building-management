@@ -77,7 +77,7 @@ class EditProject extends Component
             session()->flash('projectNotUpdated', __('Oops! Something went wrong, please try again.'));
         }
 
-        return redirect()->to(route('projects.index'));
+        return to_route('projects.index');
     }
 
     public function render(): Renderable

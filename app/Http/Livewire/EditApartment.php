@@ -75,7 +75,7 @@ class EditApartment extends Component
             session()->flash('apratmentNotUpdated', __('Oops! Something went wrong, please try again.'));
         }
 
-        return redirect()->to(route('buildings.show', $this->apartment->building));
+        return to_route('buildings.show', $this->apartment->building);
     }
 
     public function render(): Renderable
