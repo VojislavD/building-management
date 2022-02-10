@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Building;
+use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -18,7 +19,7 @@ class BuildingsTable extends Component
         $this->gotoPage(1);
     }
 
-    public function render()
+    public function render(): Renderable
     {
         $buildings = Building::withCount('apartments')
             ->when($this->status, function($query) {

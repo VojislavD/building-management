@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Profile;
 
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
@@ -21,7 +22,7 @@ class UpdateCompanyForm extends Component
         $this->state['name'] = auth()->user()->company->name;
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'state.name' => ['required', 'string', 'max:255', Rule::unique('companies', 'name')->ignore(auth()->user()->company)]
@@ -45,7 +46,7 @@ class UpdateCompanyForm extends Component
         }
     }
 
-    public function render()
+    public function render(): Renderable
     {
         return view('livewire.profile.update-company-form');
     }

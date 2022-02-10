@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Models\Building;
 use App\Models\Notification;
 use Carbon\Carbon;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
@@ -31,7 +33,7 @@ class CreateNotification extends Component
         $this->address = $this->building->address;
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'subject' => ['required', 'string', 'max:255'],
@@ -64,7 +66,7 @@ class CreateNotification extends Component
         $this->send_immediately = false;
     }
 
-    public function submit()
+    public function submit(): RedirectResponse
     {
         $this->validate();
 
@@ -92,7 +94,7 @@ class CreateNotification extends Component
         return redirect()->to(route('buildings.show', $this->building));
     }
 
-    public function render()
+    public function render(): Renderable
     {
         return view('livewire.create-notification');
     }

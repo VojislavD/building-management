@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Apartment;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
@@ -28,7 +30,7 @@ class EditApartment extends Component
         $this->tenants = $this->apartment->tenants; 
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'owner_name' => ['required', 'string', 'max:255'],
@@ -39,7 +41,7 @@ class EditApartment extends Component
         ];
     }
 
-    public function submit()
+    public function submit(): RedirectResponse
     {
         $this->validate();
 
@@ -75,7 +77,7 @@ class EditApartment extends Component
         return redirect()->to(route('buildings.show', $this->apartment->building));
     }
 
-    public function render()
+    public function render(): Renderable
     {
         return view('livewire.edit-apartment');
     }

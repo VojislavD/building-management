@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Project;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
@@ -34,7 +36,7 @@ class EditProject extends Component
         $this->end_paying = $this->project->end_paying->format('Y-m-d');
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'status' => ['required', 'integer', Rule::in([
@@ -53,7 +55,7 @@ class EditProject extends Component
         ];
     }
 
-    public function submit()
+    public function submit(): RedirectResponse
     {
         $this->validate();
 
@@ -77,7 +79,7 @@ class EditProject extends Component
         return redirect()->to(route('projects.index'));
     }
 
-    public function render()
+    public function render(): Renderable
     {
         return view('livewire.edit-project');
     }

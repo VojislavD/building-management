@@ -6,6 +6,8 @@ use App\Models\Apartment;
 use App\Models\Building;
 use App\Models\Tenant;
 use App\Models\User;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Laravel\Fortify\Rules\Password;
@@ -30,7 +32,7 @@ class CreateApartment extends Component
         $this->address = $this->building->address;
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'owner_name' => ['required', 'string', 'max:255'],
@@ -42,7 +44,7 @@ class CreateApartment extends Component
         ];
     }
 
-    public function submit()
+    public function submit(): RedirectResponse
     {
         $this->validate();
 
@@ -75,7 +77,7 @@ class CreateApartment extends Component
         return redirect()->to(route('buildings.show', $this->building));
     }
     
-    public function render()
+    public function render(): Renderable
     {
         return view('livewire.create-apartment');
     }

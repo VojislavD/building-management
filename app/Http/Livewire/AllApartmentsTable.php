@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Apartment;
 use App\Models\Building;
+use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -24,7 +25,7 @@ class AllApartmentsTable extends Component
         $this->gotoPage(1);
     }
 
-    public function render()
+    public function render(): Renderable
     {
         $apartments = Apartment::with('building')
             ->when($this->building_id, function($query) {

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Task;
+use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -23,7 +24,7 @@ class TasksTable extends Component
         $this->gotoPage(1);
     }
 
-    public function render()
+    public function render(): Renderable
     {
         $tasks = Task::with('user', 'building')
             ->when($this->status, function($query) {

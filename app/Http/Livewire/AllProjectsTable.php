@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Building;
 use App\Models\Project;
+use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -30,7 +31,7 @@ class AllProjectsTable extends Component
         $this->gotoPage(1);
     }
 
-    public function render()
+    public function render(): Renderable
     {
         $projects = Project::with('building')
             ->when($this->status, function($query) {

@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Building;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
@@ -25,7 +27,7 @@ class CreateBuilding extends Component
     public $postal_code;
     public $comment;
     
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'internal_code' => ['required', 'string', 'max:255', 'unique:buildings'],
@@ -47,7 +49,7 @@ class CreateBuilding extends Component
         ];
     }
 
-    public function submit()
+    public function submit(): RedirectResponse
     {
         $this->validate();
 
@@ -81,7 +83,7 @@ class CreateBuilding extends Component
         return redirect()->to(route('buildings.index'));
     }
     
-    public function render()
+    public function render(): Renderable
     {
         return view('livewire.create-building');
     }
