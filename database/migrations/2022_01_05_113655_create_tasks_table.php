@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Task;
+use App\Enums\TaskStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('building_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->tinyInteger('status')->default(Task::STATUS_PENDING);
+            $table->tinyInteger('status')->default(TaskStatus::Pending->value);
             $table->text('description');
             $table->text('comment')->nullable();
             $table->timestamps();

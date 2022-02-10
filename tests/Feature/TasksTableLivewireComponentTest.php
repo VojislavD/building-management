@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Task;
+use App\Enums\TaskStatus;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
@@ -38,7 +39,7 @@ class TasksTableLivewireComponentTest extends TestCase
         $cancelled = Task::factory()->cancelled()->create();
 
         Livewire::test('tasks-table')
-            ->set('status', Task::STATUS_COMPLETED)
+            ->set('status', TaskStatus::Completed->value)
             ->assertSee($completed->limited_description)
             ->assertDontSee($pending->limited_description)
             ->assertDontSee($cancelled->limited_description)
@@ -55,7 +56,7 @@ class TasksTableLivewireComponentTest extends TestCase
         $cancelled = Task::factory()->cancelled()->create();
 
         Livewire::test('tasks-table')
-            ->set('status', Task::STATUS_CANCELLED)
+            ->set('status', TaskStatus::Cancelled->value)
             ->assertSee($cancelled->limited_description)
             ->assertDontSee($completed->limited_description)
             ->assertDontSee($pending->limited_description)

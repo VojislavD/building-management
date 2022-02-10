@@ -7,7 +7,7 @@
 
             <div class="my-4 flex items-center">
                 <span class="w-36 font-bold">{{ __('Status:') }}</span>
-                <span>{!! $task->getStatusLabel() !!}</span>
+                <span>{!! $task->status->label() !!}</span>
             </div>
 
             <div class="my-4 flex items-center">

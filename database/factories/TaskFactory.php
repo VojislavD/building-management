@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\TaskStatus;
 use App\Models\Building;
 use App\Models\Task;
 use App\Models\User;
@@ -22,7 +23,11 @@ class TaskFactory extends Factory
         return [
             'building_id' => Building::factory(),
             'user_id' => User::factory(),
-            'status' => collect([Task::STATUS_PENDING, Task::STATUS_COMPLETED, Task::STATUS_CANCELLED])->random(),
+            'status' => collect([
+                TaskStatus::Pending->value, 
+                TaskStatus::Completed->value, 
+                TaskStatus::Cancelled->value
+            ])->random(),
             'description' => $this->faker->realText(1000)
         ];
     }
@@ -30,21 +35,21 @@ class TaskFactory extends Factory
     public function pending(): Factory
     {
         return $this->state([
-            'status' => Task::STATUS_PENDING
+            'status' => TaskStatus::Pending->value
         ]);
     }
 
     public function completed(): Factory
     {
         return $this->state([
-            'status' => Task::STATUS_COMPLETED
+            'status' => TaskStatus::Completed->value
         ]);
     }
 
     public function cancelled(): Factory
     {
         return $this->state([
-            'status' => Task::STATUS_CANCELLED
+            'status' => TaskStatus::Cancelled->value
         ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Enums\TaskStatus;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -156,11 +157,11 @@ class TaskControllerTest extends TestCase
             ->assertSessionHas('taskCompleted');
 
         $this->assertDatabaseMissing('tasks', [
-            'status' => Task::STATUS_PENDING
+            'status' => TaskStatus::Pending->value
         ]);
 
         $this->assertDatabaseHas('tasks', [
-            'status' => Task::STATUS_COMPLETED
+            'status' => TaskStatus::Completed->value
         ]);
     }
 
@@ -178,11 +179,11 @@ class TaskControllerTest extends TestCase
             ->assertSessionHas('taskCancelled');
 
         $this->assertDatabaseMissing('tasks', [
-            'status' => Task::STATUS_PENDING
+            'status' => TaskStatus::Pending->value
         ]);
 
         $this->assertDatabaseHas('tasks', [
-            'status' => Task::STATUS_CANCELLED
+            'status' => TaskStatus::Cancelled->value
         ]);
     }
 

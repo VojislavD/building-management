@@ -7,9 +7,9 @@
                 class="py-1 text-sm border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300"
                 >
                 <option value="">{{ __('All') }}</option>
-                <option value="{{ \App\Models\Task::STATUS_PENDING }}">{{ __('Pending') }}</option>
-                <option value="{{ \App\Models\Task::STATUS_COMPLETED }}">{{ __('Completed') }}</option>
-                <option value="{{ \App\Models\Task::STATUS_CANCELLED }}">{{ __('Cancelled') }}</option>
+                <option value="{{ \App\Enums\TaskStatus::Pending->value }}">{{ __('Pending') }}</option>
+                <option value="{{ \App\Enums\TaskStatus::Completed->value }}">{{ __('Completed') }}</option>
+                <option value="{{ \App\Enums\TaskStatus::Cancelled->value }}">{{ __('Cancelled') }}</option>
             </select>
         </div>
         <div>
@@ -52,7 +52,7 @@
                         {{ $task->user->name }}
                     </td>
                     <td class="py-3 pl-2 capitalize">
-                        {!! $task->getStatusLabel() !!}
+                        {!! $task->status->label() !!}
                     </td>
                     <td class="py-3 pl-2 truncate" title="{{ Str::limit($task->description, 500, '...') }}">
                         {{ $task->limited_description }}

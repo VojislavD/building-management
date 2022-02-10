@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\TaskStatus;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
 use Illuminate\Contracts\Support\Renderable;
@@ -38,7 +39,7 @@ class TaskController extends Controller
     public function completed(Task $task): RedirectResponse
     {
         $taskCompleted = $task->update([
-            'status' => Task::STATUS_COMPLETED
+            'status' => TaskStatus::Completed->value
         ]);
 
         if ($taskCompleted) {
@@ -51,7 +52,7 @@ class TaskController extends Controller
     public function cancelled(Task $task): RedirectResponse
     {
         $taskCancelled = $task->update([
-            'status' => Task::STATUS_CANCELLED
+            'status' => TaskStatus::Cancelled->value
         ]);
 
         if ($taskCancelled) {

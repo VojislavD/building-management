@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TaskStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -24,6 +25,15 @@ class Task extends Model
         'status', 
         'comment'
     ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'status' => TaskStatus::class,
+    ];
     
     public function user(): BelongsTo
     {
@@ -38,23 +48,5 @@ class Task extends Model
     public function getLimitedDescriptionAttribute(): string
     {
         return Str::limit($this->description, 40, '...');
-    }
-
-    public function getStatusLabel(): string
-    {
-        switch ($this->status) {
-            case static::STATUS_PENDING:
-                return '<span class="text-xs bg-yellow-600 text-gray-100 lowercase px-2 py-0.5 rounded-lg">'. __("Pending") .'</span>';
-                break;
-            case static::STATUS_COMPLETED:
-                return '<span class="text-xs bg-green-600 text-gray-100 lowercase px-2 py-0.5 rounded-lg">'. __("Finished") .'</span>';
-                break;
-            case static::STATUS_CANCELLED:
-                    return '<span class="text-xs bg-red-600 text-gray-100 lowercase px-2 py-0.5 rounded-lg">'. __("Cancelled") .'</span>';
-                    break;
-            default:
-                return __('N/A');
-                break;
-        }
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Enums\TaskStatus;
 use App\Models\Task;
 use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
@@ -11,8 +12,13 @@ class TasksTable extends Component
 {
     use WithPagination;
 
-    public $status = Task::STATUS_PENDING;
+    public $status;
     public $perPage = 10;
+
+    public function mount()
+    {
+        $this->status = TaskStatus::Pending->value;
+    }
 
     public function updatingStatus() 
     {
