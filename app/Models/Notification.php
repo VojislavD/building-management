@@ -14,6 +14,11 @@ class Notification extends Model
     const STATUS_FINISHED = 3;
     const STATUS_CANCELLED = 4;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
     protected $fillable = [
         'building_id',
         'status',

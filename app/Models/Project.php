@@ -14,11 +14,11 @@ class Project extends Model
     const STATUS_FINISHED = 3;
     const STATUS_CANCELLED = 4;
 
-    protected $casts = [
-        'start_paying' => 'datetime',
-        'end_paying' => 'datetime'
-    ];
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
     protected $fillable = [
         'status',
         'name',
@@ -28,6 +28,11 @@ class Project extends Model
         'amount_left',
         'start_paying',
         'end_paying'
+    ];
+
+    protected $casts = [
+        'start_paying' => 'datetime',
+        'end_paying' => 'datetime'
     ];
 
     public function building()

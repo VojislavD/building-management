@@ -14,6 +14,11 @@ class Task extends Model
     const STATUS_COMPLETED = 2;
     const STATUS_CANCELLED = 3;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
     protected $fillable = [
         'status', 
         'comment'

@@ -12,5 +12,10 @@ class Company extends Model
     const STATUS_ACTIVE = 1;
     const STATUS_INACTIVE = 2;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
     protected $fillable = ['name'];
 }
