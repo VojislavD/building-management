@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Building;
+use App\Enums\BuildingStatus;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
@@ -39,7 +40,7 @@ class BuildingsTableLivewireComponentTest extends TestCase
             ->assertHasNoErrors();
 
         Livewire::test('buildings-table')
-            ->set('status', Building::STATUS_INACTIVE)
+            ->set('status', BuildingStatus::Inactive->value)
             ->assertSee($inactive->internal_code)
             ->assertDontSee($active->internal_code)
             ->assertHasNoErrors();

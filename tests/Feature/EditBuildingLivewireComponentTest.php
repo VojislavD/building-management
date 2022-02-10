@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Building;
+use App\Enums\BuildingStatus;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
@@ -42,7 +43,7 @@ class EditBuildingLivewireComponentTest extends TestCase
                 __('Save'),
             ])
             ->assertSet('internal_code', $building->internal_code)
-            ->assertSet('status', $building->status)
+            ->assertSet('status', $building->status->value)
             ->assertSet('construction_year', $building->construction_year)
             ->assertSet('sqaure', $building->sqaure)
             ->assertSet('floors', $building->floors)
@@ -149,7 +150,7 @@ class EditBuildingLivewireComponentTest extends TestCase
             'building' => $building
         ])
             ->set('internal_code', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
-            ->set('status', Building::STATUS_ACTIVE)
+            ->set('status', BuildingStatus::Active->value)
             ->set('construction_year', now()->year)
             ->set('square', 0)
             ->set('floors', -1)
@@ -180,7 +181,7 @@ class EditBuildingLivewireComponentTest extends TestCase
             'building' => $building
         ])
             ->set('internal_code', "$building2->internal_code")
-            ->set('status', Building::STATUS_ACTIVE)
+            ->set('status', BuildingStatus::Active->value)
             ->set('construction_year', now()->year)
             ->set('square', 1)
             ->set('floors', 1)
@@ -206,7 +207,7 @@ class EditBuildingLivewireComponentTest extends TestCase
             'building' => $building
         ])
             ->set('internal_code', "$building->internal_code")
-            ->set('status', Building::STATUS_ACTIVE)
+            ->set('status', BuildingStatus::Active->value)
             ->set('construction_year', now()->year)
             ->set('square', 1)
             ->set('floors', 1)
@@ -236,7 +237,7 @@ class EditBuildingLivewireComponentTest extends TestCase
             'building' => $building
         ])
             ->set('internal_code', "12345")
-            ->set('status', Building::STATUS_INACTIVE)
+            ->set('status', BuildingStatus::Inactive->value)
             ->set('construction_year', $building->construction_year-1)
             ->set('square', $building->square + 10)
             ->set('floors', $building->floors + 10)
@@ -274,7 +275,7 @@ class EditBuildingLivewireComponentTest extends TestCase
             ])
             ->assertDatabaseHas('buildings', [
                 'internal_code' => "12345",
-                'status' => Building::STATUS_INACTIVE,
+                'status' => BuildingStatus::Inactive->value,
                 'construction_year' => $building->construction_year-1,
                 'square' => $building->square + 10,
                 'floors' => $building->floors + 10,

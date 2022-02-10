@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Enums\BuildingStatus;
 use App\Models\Building;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -110,7 +111,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
 
         Livewire::test('create-building', [
             'internal_code' => 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.',
-            'status' => Building::STATUS_ACTIVE,
+            'status' => BuildingStatus::Active->value,
             'construction_year' => now()->year,
             'square' => 0,
             'floors' => -1,
@@ -140,7 +141,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
         
         Livewire::test('create-building', [
             'internal_code' => "$building->internal_code",
-            'status' => Building::STATUS_ACTIVE,
+            'status' => BuildingStatus::Active->value,
             'construction_year' => now()->year,
             'square' => 10,
             'floors' => 10,
@@ -165,7 +166,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
 
         Livewire::test('create-building', [
                 'internal_code' => "12345",
-                'status' => Building::STATUS_ACTIVE,
+                'status' => BuildingStatus::Active->value,
                 'construction_year' => now()->year,
                 'square' => 10,
                 'floors' => 10,
@@ -194,7 +195,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
         
         Livewire::test('create-building', [
             'internal_code' => "12345",
-            'status' => Building::STATUS_ACTIVE,
+            'status' => BuildingStatus::Active->value,
             'construction_year' => now()->year,
             'square' => 10,
             'floors' => 10,
@@ -215,7 +216,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
         
         $this->assertDatabaseHas('buildings', [
             'internal_code' => "12345",
-            'status' => Building::STATUS_ACTIVE,
+            'status' => BuildingStatus::Active->value,
             'construction_year' => now()->year,
             'square' => 10,
             'floors' => 10,

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Enums\BuildingStatus;
 use App\Models\Building;
 use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
@@ -12,8 +13,13 @@ class BuildingsTable extends Component
     use WithPagination;
     
     public $perPage = 10;
-    public $status = Building::STATUS_ACTIVE;
+    public $status;
 
+    public function mount()
+    {
+        $this->status = BuildingStatus::Active->value;
+    }
+    
     public function updatingPerPage() 
     {
         $this->gotoPage(1);

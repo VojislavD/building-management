@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Enums\BuildingStatus;
 use App\Models\Building;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
@@ -32,7 +33,7 @@ class CreateBuilding extends Component
     {
         return [
             'internal_code' => ['required', 'string', 'max:255', 'unique:buildings'],
-            'status' => ['required', Rule::in([Building::STATUS_ACTIVE, Building::STATUS_INACTIVE])],
+            'status' => ['required', Rule::in([BuildingStatus::Active->value, BuildingStatus::Inactive->value])],
             'construction_year' => ['required', Rule::in(Building::availableConstructionYears())],
             'square' => ['required', 'numeric', 'min:1'],
             'floors' => ['required', 'numeric', 'min:0'],

@@ -7,8 +7,8 @@
                 class="py-1 text-sm border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300"
                 >
                 <option value="">{{ __('All') }}</option>
-                <option value="{{ \App\Models\Building::STATUS_ACTIVE }}">{{ __('Active') }}</option>
-                <option value="{{ \App\Models\Building::STATUS_INACTIVE }}">{{ __('Inactive') }}</option>
+                <option value="{{ \App\Enums\BuildingStatus::Active->value }}">{{ __('Active') }}</option>
+                <option value="{{ \App\Enums\BuildingStatus::Inactive->value }}">{{ __('Inactive') }}</option>
             </select>
         </div>
         <div>
@@ -59,7 +59,7 @@
                         {{ $building->address }}, {{ $building->city }}
                     </td>
                     <td class="py-3 pl-2">
-                        {!! $building->getStatusLabel() !!}
+                        {!! $building->status->label() !!}
                     </td>
                     <td class="py-3 pl-2">
                         {{ $building->floors }}

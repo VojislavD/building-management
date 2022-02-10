@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\BuildingStatus;
 use App\Models\Building;
 use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -21,7 +22,7 @@ class BuildingFactory extends Factory
         return [
             'company_id' => Company::factory(),
             'internal_code' => $this->faker->unique()->randomNumber(5, true),
-            'status' => Building::STATUS_ACTIVE,
+            'status' => BuildingStatus::Active->value,
             'pib' => $this->faker->unique()->randomNumber(9, true),
             'identification_number' => $this->faker->unique()->randomNumber(8, true),
             'account_number' => $this->faker->randomNumber(3, true).'-'.$this->faker->randomNumber(5, true).'-'.$this->faker->randomNumber(2, true),
@@ -43,14 +44,14 @@ class BuildingFactory extends Factory
     public function active(): Factory
     {
         return $this->state([
-            'status' => Building::STATUS_ACTIVE
+            'status' => BuildingStatus::Active->value
         ]);
     }
 
     public function inactive(): Factory
     {
         return $this->state([
-            'status' => Building::STATUS_INACTIVE
+            'status' => BuildingStatus::Inactive->value
         ]);
     }
 }

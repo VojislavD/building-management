@@ -10,7 +10,7 @@
         <div>
             <div class="flex items-center space-x-4">
                 <span class="text-2xl font-bold" title="{{ __('Address') }}">{{ $building->address }}</span>
-                {!! $building->getStatusLabel() !!}
+                {!! $building->status->label() !!}
                 <div class="flex items-center mt-0.5 space-x-1" title="{{ __('Balance') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
                     <span class="font-bold">{{ $building->balance }}</span>
@@ -58,7 +58,7 @@
                     {{ __('Internal Code') }}: <span class="font-bold"> {{ $building->internal_code }} </span>
                 </p>
                 <p>
-                    {{ __('Status') }}: <span class="font-bold"> {{ $building->getStatusText() }} </span>
+                    {{ __('Status') }}: <span class="font-bold"> {{ $building->status->name() }} </span>
                 </p>
                 <p>
                     {{ __('Construction Year') }}: <span class="font-bold"> {{ $building->construction_year }} </span>

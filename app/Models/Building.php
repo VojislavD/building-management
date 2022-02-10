@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\BuildingStatus;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -40,6 +41,15 @@ class Building extends Model
         'county', 
         'postal_code', 
         'comment'
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'status' => BuildingStatus::class,
     ];
 
     public function apartments(): HasMany
@@ -89,36 +99,6 @@ class Building extends Model
         }
 
         return $years;
-    }
-
-    public function getStatusText(): string
-    {
-        switch ($this->status) {
-            case static::STATUS_ACTIVE:
-                return __("Active");
-                break;
-            case static::STATUS_INACTIVE:
-                return __("Inactive");
-                break;
-            default:
-                return __('N/A');
-                break;
-        }
-    }
-
-    public function getStatusLabel(): string
-    {
-        switch ($this->status) {
-            case static::STATUS_ACTIVE:
-                return '<span class="text-xs bg-green-600 text-gray-100 lowercase px-2 py-0.5 rounded-lg">'. __("Active") .'</span>';
-                break;
-            case static::STATUS_INACTIVE:
-                return '<span class="text-xs bg-red-600 text-gray-100 lowercase px-2 py-0.5 rounded-lg">'. __("Inactive") .'</span>';
-                break;
-            default:
-                return __('N/A');
-                break;
-        }
     }
 
     public function getElevatorStatusText(): string

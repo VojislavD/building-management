@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Enums\BuildingStatus;
 use App\Models\Building;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
@@ -33,7 +34,7 @@ class EditBuilding extends Component
     public function mount()
     {
         $this->internal_code = $this->building->internal_code;
-        $this->status = $this->building->status;
+        $this->status = $this->building->status->value;
         $this->construction_year = $this->building->construction_year;
         $this->square = $this->building->square;
         $this->floors = $this->building->floors;
@@ -54,7 +55,7 @@ class EditBuilding extends Component
     {
         return [
             'internal_code' => ['required', 'string', 'max:255', Rule::unique('buildings')->ignore($this->building->id)],
-            'status' => ['required', Rule::in([Building::STATUS_ACTIVE, Building::STATUS_INACTIVE])],
+            'status' => ['required', Rule::in([BuildingStatus::Active->value, BuildingStatus::Inactive->value])],
             'construction_year' => ['required', Rule::in(Building::availableConstructionYears())],
             'square' => ['required', 'numeric', 'min:1'],
             'floors' => ['required', 'numeric', 'min:0'],
