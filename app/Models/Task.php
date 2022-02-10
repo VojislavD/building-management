@@ -12,10 +12,6 @@ class Task extends Model
 {
     use HasFactory;
 
-    const STATUS_PENDING = 1;
-    const STATUS_COMPLETED = 2;
-    const STATUS_CANCELLED = 3;
-
     /**
      * The attributes that are mass assignable.
      *
