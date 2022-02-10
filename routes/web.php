@@ -36,31 +36,31 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     });
 
     // Apartments
-    Route::prefix('/apartments')->name('apartments.')->group(function() {
-        Route::get('/', [ApartmentController::class, 'index'])->name('index');
-        Route::get('/create/{building}', [ApartmentController::class, 'create'])->name('create');
-        Route::get('/edit/{apartment}', [ApartmentController::class, 'edit'])->name('edit');
-        Route::delete('/delete/{apartment}', [ApartmentController::class, 'destroy'])->name('delete');
+    Route::controller(ApartmentController::class)->prefix('/apartments')->name('apartments.')->group(function() {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create/{building}', 'create')->name('create');
+        Route::get('/edit/{apartment}', 'edit')->name('edit');
+        Route::delete('/delete/{apartment}', 'destroy')->name('delete');
     });
 
     // Tasks
-    Route::prefix('/tasks')->name('tasks.')->group(function() {
-        Route::get('/', [TaskController::class, 'index'])->name('index');
-        Route::get('/show/{task}', [TaskController::class, 'show'])->name('show');
-        Route::patch('/update/{task}', [TaskController::class, 'update'])->name('update');
-        Route::patch('/completed/{task}', [TaskController::class, 'completed'])->name('completed');
-        Route::patch('/cancelled/{task}', [TaskController::class, 'cancelled'])->name('cancelled');
+    Route::controller(TaskController::class)->prefix('/tasks')->name('tasks.')->group(function() {
+        Route::get('/', 'index')->name('index');
+        Route::get('/show/{task}', 'show')->name('show');
+        Route::patch('/update/{task}', 'update')->name('update');
+        Route::patch('/completed/{task}', 'completed')->name('completed');
+        Route::patch('/cancelled/{task}', 'cancelled')->name('cancelled');
     });
 
     // Projects
-    Route::prefix('/projects')->name('projects.')->group(function() {
-        Route::get('/', [ProjectController::class, 'index'])->name('index');
-        Route::get('/edit/{project}', [ProjectController::class, 'edit'])->name('edit');
-        Route::delete('/delete/{project}', [ProjectController::class, 'destroy'])->name('delete');
+    Route::controller(ProjectController::class)->prefix('/projects')->name('projects.')->group(function() {
+        Route::get('/', 'index')->name('index');
+        Route::get('/edit/{project}', 'edit')->name('edit');
+        Route::delete('/delete/{project}', 'destroy')->name('delete');
     });
 
     // Notifications
-    Route::prefix('/notifications')->name('notifications.')->group(function() {
-        Route::get('/create/{building}', [NotificationController::class, 'create'])->name('create');
+    Route::controller(NotificationController::class)->prefix('/notifications')->name('notifications.')->group(function() {
+        Route::get('/create/{building}', 'create')->name('create');
     });
 });
