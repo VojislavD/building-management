@@ -43,7 +43,7 @@ class SendBuildingNotifications extends Command
         $notifications = NotificationModel::where('status', NotificationModel::STATUS_SCHEDULED)->get(); 
 
         foreach ($notifications as $notification) {
-            $tenants = $notification->building->tenants;
+            $tenants = $notification->building->allTenants();
 
             Notification::send($tenants, new BuildingNotification(
                 $notification->via_email,

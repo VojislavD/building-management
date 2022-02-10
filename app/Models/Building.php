@@ -59,7 +59,7 @@ class Building extends Model
         return $this->where('status', static::STATUS_INACTIVE);
     }
 
-    public function getTenantsAttribute()
+    public function allTenants()
     {
         $apartments = $this->apartments();
 
