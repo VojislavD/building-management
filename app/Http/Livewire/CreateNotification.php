@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Enums\NotificationStatus;
 use App\Models\Building;
 use App\Models\Notification;
 use Carbon\Carbon;
@@ -79,7 +80,7 @@ class CreateNotification extends Component
         
         $newNotification = Notification::create([
             'building_id' => $this->building->id,
-            'status' => Notification::STATUS_SCHEDULED,
+            'status' => NotificationStatus::Scheduled->value,
             'via_email' => $this->via_email,
             'subject' => $this->subject,
             'body' => $this->body,

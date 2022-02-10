@@ -10,11 +10,6 @@ class Notification extends Model
 {
     use HasFactory;
 
-    const STATUS_SCHEDULED = 1;
-    const STATUS_PROCESSING = 2;
-    const STATUS_FINISHED = 3;
-    const STATUS_CANCELLED = 4;
-
     /**
      * The attributes that are mass assignable.
      *

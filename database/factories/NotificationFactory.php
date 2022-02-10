@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\NotificationStatus;
 use App\Models\Building;
 use App\Models\Notification;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -21,10 +22,10 @@ class NotificationFactory extends Factory
         return [
             'building_id' => Building::factory(),
             'status' => collect([
-                Notification::STATUS_SCHEDULED,
-                Notification::STATUS_PROCESSING,
-                Notification::STATUS_FINISHED,
-                Notification::STATUS_CANCELLED,
+                NotificationStatus::Scheduled->value,
+                NotificationStatus::Processing->value,
+                NotificationStatus::Finished->value,
+                NotificationStatus::Cancelled->value,
             ])->random(),
             'via_email' => $this->faker->boolean(),
             'subject' => $this->faker->sentence(),
@@ -36,28 +37,28 @@ class NotificationFactory extends Factory
     public function scheduled(): Factory
     {
         return $this->state([
-            'status' => Notification::STATUS_SCHEDULED
+            'status' => NotificationStatus::Scheduled->value
         ]);
     }
 
     public function processing(): Factory
     {
         return $this->state([
-            'status' => Notification::STATUS_PROCESSING
+            'status' => NotificationStatus::Processing->value
         ]);
     }
 
     public function finished(): Factory
     {
         return $this->state([
-            'status' => Notification::STATUS_FINISHED
+            'status' => NotificationStatus::Finished->value
         ]);
     }
 
     public function cancelled(): Factory
     {
         return $this->state([
-            'status' => Notification::STATUS_CANCELLED
+            'status' => NotificationStatus::Cancelled->value
         ]);
     }
 
