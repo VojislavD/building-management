@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Building;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Support\Renderable;
 
 class NotificationController extends Controller
 {
-    public function create(Building $building)
+    public function create(Building $building): Renderable
     {
         return view('notifications.create', [
             'building' => $building

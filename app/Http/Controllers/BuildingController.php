@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Building;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class BuildingController extends Controller
 {
@@ -18,7 +18,7 @@ class BuildingController extends Controller
         return view('buildings.create');
     }
 
-    public function show(Building $building)
+    public function show(Building $building): Renderable
     {
         return view('buildings.show', [
             'building' => $building
@@ -32,7 +32,7 @@ class BuildingController extends Controller
         ]);
     }
 
-    public function destroy(Building $building)
+    public function destroy(Building $building): RedirectResponse
     {
         if ($building->delete()) {
             return redirect()->to(route('buildings.index'))->with('buildingDeleted', __('Building is successfully deleted.'));

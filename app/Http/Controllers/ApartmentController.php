@@ -4,30 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Models\Apartment;
 use App\Models\Building;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 
 class ApartmentController extends Controller
 {
-    public function index()
+    public function index(): Renderable
     {
         return view('apartments.index');
     }
     
-    public function create(Building $building)
+    public function create(Building $building): Renderable
     {
         return view('apartments.create', [
             'building' => $building
         ]);
     }
 
-    public function edit(Apartment $apartment)
+    public function edit(Apartment $apartment): Renderable
     {
         return view('apartments.edit', [
             'apartment' => $apartment
         ]);
     }
 
-    public function destroy(Apartment $apartment)
+    public function destroy(Apartment $apartment): RedirectResponse
     {
         $building = $apartment->building;
 
