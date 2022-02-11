@@ -7,6 +7,6 @@
     <x-flash-message type="success" name="projectDeleted" />
     <x-flash-message type="error" name="projectNotDeleted" />
 
-    @livewire('all-projects-table')
+    @livewire('projects.all-projects-table')
 
 </x-app-layout>

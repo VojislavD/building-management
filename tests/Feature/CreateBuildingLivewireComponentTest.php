@@ -19,7 +19,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
      */
     public function test_all_required_fields_are_present()
     {
-        Livewire::test('create-building')
+        Livewire::test('buildings.create-building')
             ->assertSeeInOrder([
                 __('Internal Code'),
                 __('Status'),
@@ -51,7 +51,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
 
         $building = Building::factory()->create();
 
-        Livewire::test('create-building')
+        Livewire::test('buildings.create-building')
             ->call('submit')
             ->assertHasErrors([
                 'internal_code' => 'required',
@@ -71,7 +71,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
                 'postal_code' => 'required',
             ]);
 
-        Livewire::test('create-building', [
+        Livewire::test('buildings.create-building', [
             'internal_code' => 1,
             'status' => 0,
             'construction_year' => 1949,
@@ -109,7 +109,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
                 'comment' => 'string'
             ]);
 
-        Livewire::test('create-building', [
+        Livewire::test('buildings.create-building', [
             'internal_code' => 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.',
             'status' => BuildingStatus::Active->value,
             'construction_year' => now()->year,
@@ -139,7 +139,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
                 'comment' => 'max'
             ]);
         
-        Livewire::test('create-building', [
+        Livewire::test('buildings.create-building', [
             'internal_code' => "$building->internal_code",
             'status' => BuildingStatus::Active->value,
             'construction_year' => now()->year,
@@ -164,7 +164,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
                 'identification_number' => 'unique',
             ]);
 
-        Livewire::test('create-building', [
+        Livewire::test('buildings.create-building', [
                 'internal_code' => "12345",
                 'status' => BuildingStatus::Active->value,
                 'construction_year' => now()->year,
@@ -193,7 +193,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
     {
         $this->actingAs(User::factory()->create());
         
-        Livewire::test('create-building', [
+        Livewire::test('buildings.create-building', [
             'internal_code' => "12345",
             'status' => BuildingStatus::Active->value,
             'construction_year' => now()->year,

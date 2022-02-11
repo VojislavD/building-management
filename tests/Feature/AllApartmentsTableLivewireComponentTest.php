@@ -22,7 +22,7 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
         $apartment = Apartment::factory()->create();
         $apartment2 = Apartment::factory()->create();
 
-        Livewire::test('all-apartments-table')
+        Livewire::test('apartments.all-apartments-table')
             ->assertSeeHtml([
                 $apartment->number.'
                     </td>
@@ -42,7 +42,7 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
         $apartment = Apartment::factory()->for($building)->create();
         $apartment2 = Apartment::factory()->create();
 
-        Livewire::test('all-apartments-table', [
+        Livewire::test('apartments.all-apartments-table', [
                 'building_id' => $building->id
             ])
             ->assertSeeHtml([
@@ -70,7 +70,7 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
         Apartment::factory(8)->create();
         $apartment3 = Apartment::factory()->create();
         
-        Livewire::test('all-apartments-table')
+        Livewire::test('apartments.all-apartments-table')
             ->set('perPage', 15)
             ->assertSeeHtml([
                 $apartment1->number.'
@@ -99,7 +99,7 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
         Apartment::factory(8)->create();
         $apartment3 = Apartment::factory()->create();
 
-        Livewire::test('all-apartments-table')
+        Livewire::test('apartments.all-apartments-table')
             ->assertDontSeeHtml([
                 $apartment1->number.'
                     </td>

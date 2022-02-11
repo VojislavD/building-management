@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Apartments;
 
 use App\Models\Apartment;
 use App\Models\Building;
@@ -21,7 +21,7 @@ class ApartmentsTable extends Component
             ->latest()
             ->paginate(10);
 
-        return view('livewire.apartments-table', [
+        return view('livewire.apartments.apartments-table', [
             'apartments' => $apartments
         ]);
     }

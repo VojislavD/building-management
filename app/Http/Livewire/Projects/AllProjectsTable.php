@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Projects;
 
 use App\Models\Building;
 use App\Models\Project;
@@ -43,7 +43,7 @@ class AllProjectsTable extends Component
             ->latest()
             ->paginate($this->perPage);
 
-        return view('livewire.all-projects-table', [
+        return view('livewire.projects.all-projects-table', [
             'buildings' => Building::get(['id','address']),
             'projects' => $projects
         ]);

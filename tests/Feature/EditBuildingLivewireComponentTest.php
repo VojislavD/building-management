@@ -20,7 +20,7 @@ class EditBuildingLivewireComponentTest extends TestCase
     {
         $building = Building::factory()->create();
 
-        Livewire::test('edit-building', [
+        Livewire::test('buildings.edit-building', [
             'building' => $building
         ])
             ->assertSeeInOrder([
@@ -69,7 +69,7 @@ class EditBuildingLivewireComponentTest extends TestCase
         $building = Building::factory()->create();
         $building2 = Building::factory()->create();
 
-        Livewire::test('edit-building', [
+        Livewire::test('buildings.edit-building', [
             'building' => $building
         ])
             ->set('internal_code', '')
@@ -107,7 +107,7 @@ class EditBuildingLivewireComponentTest extends TestCase
                 'postal_code' => 'required',
             ]);
 
-        Livewire::test('edit-building', [
+        Livewire::test('buildings.edit-building', [
             'building' => $building
         ])
             ->set('internal_code', 1)
@@ -146,7 +146,7 @@ class EditBuildingLivewireComponentTest extends TestCase
                 'comment' => 'string',
             ]);
 
-        Livewire::test('edit-building', [
+        Livewire::test('buildings.edit-building', [
             'building' => $building
         ])
             ->set('internal_code', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
@@ -177,7 +177,7 @@ class EditBuildingLivewireComponentTest extends TestCase
                 'comment' => 'max',
             ]);
 
-        Livewire::test('edit-building', [
+        Livewire::test('buildings.edit-building', [
             'building' => $building
         ])
             ->set('internal_code', "$building2->internal_code")
@@ -203,7 +203,7 @@ class EditBuildingLivewireComponentTest extends TestCase
                 'identification_number' => 'unique',
             ]);
 
-        Livewire::test('edit-building', [
+        Livewire::test('buildings.edit-building', [
             'building' => $building
         ])
             ->set('internal_code', "$building->internal_code")
@@ -233,7 +233,7 @@ class EditBuildingLivewireComponentTest extends TestCase
     {
         $building = Building::factory()->active()->create();
 
-        Livewire::test('edit-building', [
+        Livewire::test('buildings.edit-building', [
             'building' => $building
         ])
             ->set('internal_code', "12345")

@@ -1,7 +1,7 @@
 <x-app-layout>
     <h1 class="text-xl font-bold">{{ __('Edit Project') }}</h1>
 
-    @livewire('edit-project', ['project' => $project])
+    @livewire('projects.edit-project', ['project' => $project])
     
     <div
         x-data="{ confirmDelete: false }" 

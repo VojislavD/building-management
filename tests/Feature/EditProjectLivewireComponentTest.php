@@ -20,7 +20,7 @@ class EditProjectLivewireComponentTest extends TestCase
     {
         $project = Project::factory()->create();
 
-        Livewire::test('edit-project', [
+        Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
             ->assertSeeInOrder([
@@ -45,7 +45,7 @@ class EditProjectLivewireComponentTest extends TestCase
     {
         $project = Project::factory()->create();
 
-        Livewire::test('edit-project', [
+        Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
             ->set('status', '')
@@ -68,7 +68,7 @@ class EditProjectLivewireComponentTest extends TestCase
                 'end_paying' => 'required'
             ]);
 
-        Livewire::test('edit-project', [
+        Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
             ->set('status', 'not integer')
@@ -91,7 +91,7 @@ class EditProjectLivewireComponentTest extends TestCase
                 'end_paying' => 'date'
             ]);
 
-        Livewire::test('edit-project', [
+        Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
             ->set('status', 0)
@@ -112,7 +112,7 @@ class EditProjectLivewireComponentTest extends TestCase
                 'amount_left' => 'min',
             ]);
         
-        Livewire::test('edit-project', [
+        Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
             ->set('status', ProjectStatus::Pending->value)
@@ -128,7 +128,7 @@ class EditProjectLivewireComponentTest extends TestCase
                 'name' => 'max',
             ]);
         
-        Livewire::test('edit-project', [
+        Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
             ->set('status', ProjectStatus::Pending->value)
@@ -150,7 +150,7 @@ class EditProjectLivewireComponentTest extends TestCase
     {
         $project = Project::factory()->pending()->create();
 
-        Livewire::test('edit-project', [
+        Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
             ->set('status', ProjectStatus::Finished->value)

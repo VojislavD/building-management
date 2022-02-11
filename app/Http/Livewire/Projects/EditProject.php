@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Projects;
 
 use App\Enums\ProjectStatus;
 use App\Models\Project;
@@ -83,6 +83,6 @@ class EditProject extends Component
 
     public function render(): Renderable
     {
-        return view('livewire.edit-project');
+        return view('livewire.projects.edit-project');
     }
 }

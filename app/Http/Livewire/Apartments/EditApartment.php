@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Apartments;
 
 use App\Models\Apartment;
 use Illuminate\Contracts\Support\Renderable;
@@ -80,6 +80,6 @@ class EditApartment extends Component
 
     public function render(): Renderable
     {
-        return view('livewire.edit-apartment');
+        return view('livewire.apartments.edit-apartment');
     }
 }

@@ -20,7 +20,7 @@ class CreateNotificationLivewireComponentTest extends TestCase
     {
         $building = Building::factory()->create();
 
-        Livewire::test('create-notification', [
+        Livewire::test('notifications.create-notification', [
                 'building' => $building
             ])
             ->assertSeeInOrder([
@@ -42,7 +42,7 @@ class CreateNotificationLivewireComponentTest extends TestCase
     {
         $building = Building::factory()->create();
 
-        Livewire::test('create-notification', [
+        Livewire::test('notifications.create-notification', [
                 'building' => $building
             ])
             ->call('submit')
@@ -52,7 +52,7 @@ class CreateNotificationLivewireComponentTest extends TestCase
                 'via_email' => 'accepted'
             ]);
 
-        Livewire::test('create-notification', [
+        Livewire::test('notifications.create-notification', [
                 'building' => $building
             ])
             ->set('send_scheduled', true)
@@ -65,7 +65,7 @@ class CreateNotificationLivewireComponentTest extends TestCase
                 'scheduled_time' => 'required'
             ]);
 
-        Livewire::test('create-notification', [
+        Livewire::test('notifications.create-notification', [
                 'building' => $building
             ])
             ->set('send_scheduled', true)
@@ -83,7 +83,7 @@ class CreateNotificationLivewireComponentTest extends TestCase
                 'scheduled_time' => 'date_format'
             ]);
 
-        Livewire::test('create-notification', [
+        Livewire::test('notifications.create-notification', [
                 'building' => $building
             ])
             ->set('send_scheduled', true)
@@ -97,7 +97,7 @@ class CreateNotificationLivewireComponentTest extends TestCase
                 'subject' => 'max',
             ]);
         
-        Livewire::test('create-notification', [
+        Livewire::test('notifications.create-notification', [
                 'building' => $building
             ])
             ->set('send_scheduled', true)
@@ -119,7 +119,7 @@ class CreateNotificationLivewireComponentTest extends TestCase
         $date = now()->format('Y-m-d');
         $time = now()->format('H:i');
 
-        Livewire::test('create-notification', [
+        Livewire::test('notifications.create-notification', [
                 'building' => $building
             ])
             ->set('send_scheduled', true)

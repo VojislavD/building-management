@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Apartments;
 
 use App\Models\Apartment;
 use App\Models\Building;
-use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
@@ -80,6 +79,6 @@ class CreateApartment extends Component
     
     public function render(): Renderable
     {
-        return view('livewire.create-apartment');
+        return view('livewire.apartments.create-apartment');
     }
 }

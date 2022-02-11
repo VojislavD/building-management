@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Buildings;
 
 use App\Enums\BuildingStatus;
 use App\Models\Building;
@@ -107,6 +107,6 @@ class EditBuilding extends Component
 
     public function render(): Renderable
     {
-        return view('livewire.edit-building');
+        return view('livewire.buildings.edit-building');
     }
 }

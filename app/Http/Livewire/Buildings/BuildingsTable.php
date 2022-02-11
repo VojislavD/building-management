@@ -1,30 +1,25 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Buildings;
 
-use App\Enums\TaskStatus;
-use App\Models\Task;
+use App\Enums\BuildingStatus;
+use App\Models\Building;
 use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class TasksTable extends Component
+class BuildingsTable extends Component
 {
     use WithPagination;
-
-    public $status;
+    
     public $perPage = 10;
+    public $status;
 
     public function mount()
     {
-        $this->status = TaskStatus::Pending->value;
+        $this->status = BuildingStatus::Active->value;
     }
-
-    public function updatingStatus() 
-    {
-        $this->gotoPage(1);
-    }
-
+    
     public function updatingPerPage() 
     {
         $this->gotoPage(1);
@@ -32,15 +27,15 @@ class TasksTable extends Component
 
     public function render(): Renderable
     {
-        $tasks = Task::with('user', 'building')
+        $buildings = Building::withCount('apartments')
             ->when($this->status, function($query) {
                 return $query->where('status', $this->status);
             })
             ->latest()
             ->paginate($this->perPage);
 
-        return view('livewire.tasks-table', [
-            'tasks' => $tasks
+        return view('livewire.buildings.buildings-table', [
+            'buildings' => $buildings
         ]);
     }
 }

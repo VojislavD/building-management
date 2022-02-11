@@ -153,6 +153,6 @@
             <x-link-button route="{{ route('apartments.create', $building) }}" text="{{ __('New Apartment') }}" />
         </div>
 
-        @livewire('apartments-table', ['building' => $building])
+        @livewire('apartments.apartments-table', ['building' => $building])
     </div>
 </x-app-layout>

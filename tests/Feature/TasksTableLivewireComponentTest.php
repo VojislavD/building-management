@@ -22,7 +22,7 @@ class TasksTableLivewireComponentTest extends TestCase
         $completed = Task::factory()->completed()->create();
         $cancelled = Task::factory()->cancelled()->create();
 
-        Livewire::test('tasks-table')
+        Livewire::test('tasks.tasks-table')
             ->assertSee($pending->limited_description)
             ->assertDontSee($completed->limited_description)
             ->assertDontSee($cancelled->limited_description)
@@ -38,7 +38,7 @@ class TasksTableLivewireComponentTest extends TestCase
         $completed = Task::factory()->completed()->create();
         $cancelled = Task::factory()->cancelled()->create();
 
-        Livewire::test('tasks-table')
+        Livewire::test('tasks.tasks-table')
             ->set('status', TaskStatus::Completed->value)
             ->assertSee($completed->limited_description)
             ->assertDontSee($pending->limited_description)
@@ -55,7 +55,7 @@ class TasksTableLivewireComponentTest extends TestCase
         $completed = Task::factory()->completed()->create();
         $cancelled = Task::factory()->cancelled()->create();
 
-        Livewire::test('tasks-table')
+        Livewire::test('tasks.tasks-table')
             ->set('status', TaskStatus::Cancelled->value)
             ->assertSee($cancelled->limited_description)
             ->assertDontSee($completed->limited_description)
@@ -72,7 +72,7 @@ class TasksTableLivewireComponentTest extends TestCase
         $completed = Task::factory()->completed()->create();
         $cancelled = Task::factory()->cancelled()->create();
 
-        Livewire::test('tasks-table')
+        Livewire::test('tasks.tasks-table')
             ->set('status', '')
             ->assertSee($pending->limited_description)
             ->assertSee($completed->limited_description)
@@ -93,13 +93,13 @@ class TasksTableLivewireComponentTest extends TestCase
         Task::factory(8)->pending()->create();
         $task3 = Task::factory()->pending()->create();
 
-        Livewire::test('tasks-table')
+        Livewire::test('tasks.tasks-table')
             ->assertDontSee($task->limited_description)
             ->assertSee($task2->limited_description)
             ->assertSee($task3->limited_description)
             ->assertHasNoErrors();
 
-        Livewire::test('tasks-table')
+        Livewire::test('tasks.tasks-table')
             ->set('perPage', 15)
             ->assertSee($task->limited_description)
             ->assertSee($task2->limited_description)

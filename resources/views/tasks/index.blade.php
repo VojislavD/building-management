@@ -10,6 +10,6 @@
     <x-flash-message type="success" name="taskCancelled" />
     <x-flash-message type="error" name="taskNotCancelled" />
 
-    @livewire('tasks-table')
+    @livewire('tasks.tasks-table')
 
 </x-app-layout>

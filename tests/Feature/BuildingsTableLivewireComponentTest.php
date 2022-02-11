@@ -20,7 +20,7 @@ class BuildingsTableLivewireComponentTest extends TestCase
         $active = Building::factory()->active()->create();
         $inactive = Building::factory()->inactive()->create();
         
-        Livewire::test('buildings-table')
+        Livewire::test('buildings.buildings-table')
             ->assertSee($active->internal_code)
             ->assertDontSee($inactive->internal_code)
             ->assertHasNoErrors();
@@ -34,18 +34,18 @@ class BuildingsTableLivewireComponentTest extends TestCase
         $active = Building::factory()->active()->create();
         $inactive = Building::factory()->inactive()->create();
         
-        Livewire::test('buildings-table')
+        Livewire::test('buildings.buildings-table')
             ->assertSee($active->internal_code)
             ->assertDontSee($inactive->internal_code)
             ->assertHasNoErrors();
 
-        Livewire::test('buildings-table')
+        Livewire::test('buildings.buildings-table')
             ->set('status', BuildingStatus::Inactive->value)
             ->assertSee($inactive->internal_code)
             ->assertDontSee($active->internal_code)
             ->assertHasNoErrors();
         
-        Livewire::test('buildings-table')
+        Livewire::test('buildings.buildings-table')
             ->set('status', '')
             ->assertSee($active->internal_code)
             ->assertSee($inactive->internal_code)
@@ -65,7 +65,7 @@ class BuildingsTableLivewireComponentTest extends TestCase
         ]);
         $building3 = Building::factory()->create();
 
-        Livewire::test('buildings-table')
+        Livewire::test('buildings.buildings-table')
             ->assertSeeInOrder([
                 $building3->internal_code,
                 $building2->internal_code,
@@ -87,14 +87,14 @@ class BuildingsTableLivewireComponentTest extends TestCase
         Building::factory(8)->active()->create();
         $building3 = Building::factory()->active()->create();
 
-        Livewire::test('buildings-table')
+        Livewire::test('buildings.buildings-table')
             ->assertDontSee($building1->internal_code)
             ->assertSee($building2->internal_code)
             ->assertSee($building3->internal_code)
             ->assertSeeInOrder(['Showing', '1', 'to', '10', 'of', Building::active()->count(), 'results'])
             ->assertHasNoErrors();
 
-        Livewire::test('buildings-table')
+        Livewire::test('buildings.buildings-table')
             ->set('perPage', 15)
             ->assertSee($building1->internal_code)
             ->assertSee($building2->internal_code)

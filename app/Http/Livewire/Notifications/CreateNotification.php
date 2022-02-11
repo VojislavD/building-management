@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Notifications;
 
 use App\Enums\NotificationStatus;
 use App\Models\Building;
@@ -98,6 +98,6 @@ class CreateNotification extends Component
 
     public function render(): Renderable
     {
-        return view('livewire.create-notification');
+        return view('livewire.notifications.create-notification');
     }
 }

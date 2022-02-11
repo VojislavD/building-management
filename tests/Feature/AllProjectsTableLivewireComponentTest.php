@@ -22,7 +22,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
         $project = Project::factory()->create();
         $project2 = Project::factory()->create();
 
-        Livewire::test('all-projects-table')
+        Livewire::test('projects.all-projects-table')
             ->assertSee([
                 $project->name,
                 $project2->name
@@ -39,7 +39,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
         $projectFinished = Project::factory()->finished()->create();
         $projectCancelled = Project::factory()->cancelled()->create();
 
-        Livewire::test('all-projects-table')
+        Livewire::test('projects.all-projects-table')
             ->assertSeeHtml([
                 $projectPending->name,
                 $projectProcessing->name,
@@ -93,7 +93,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
         $project = Project::factory()->for($building)->create();
         $project2 = Project::factory()->create();
 
-        Livewire::test('all-projects-table', [
+        Livewire::test('projects.all-projects-table', [
                 'building_id' => $building->id
             ])
             ->assertSee([
@@ -117,7 +117,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
         Project::factory(8)->create();
         $project3 = Project::factory()->create();
 
-        Livewire::test('all-projects-table')
+        Livewire::test('projects.all-projects-table')
             ->assertDontSee([
                 $project1->name,
             ])
@@ -142,7 +142,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
         Project::factory(8)->create();
         $project3 = Project::factory()->create();
         
-        Livewire::test('all-projects-table')
+        Livewire::test('projects.all-projects-table')
             ->set('perPage', 15)
             ->assertSee([
                 $project1->name,

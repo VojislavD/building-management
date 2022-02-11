@@ -20,7 +20,7 @@ class EditApartmentLivewireComponentTest extends TestCase
     {
         $apartment = Apartment::factory()->create();
 
-        Livewire::test('edit-apartment', [
+        Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
             ->assertSeeInOrder([
@@ -45,7 +45,7 @@ class EditApartmentLivewireComponentTest extends TestCase
         $apartment = Apartment::factory()->for($building)->create();
         $apartment2 = Apartment::factory()->for($building)->create();
 
-        Livewire::test('edit-apartment', [
+        Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
             ->set('owner_name', '')
@@ -62,7 +62,7 @@ class EditApartmentLivewireComponentTest extends TestCase
                 'tenants' => 'required',
             ]);
         
-        Livewire::test('edit-apartment', [
+        Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
             ->set('owner_name', 1)
@@ -79,7 +79,7 @@ class EditApartmentLivewireComponentTest extends TestCase
                 'tenants' => 'integer',
             ]);
         
-        Livewire::test('edit-apartment', [
+        Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
             ->set('owner_name', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
@@ -96,7 +96,7 @@ class EditApartmentLivewireComponentTest extends TestCase
                 'tenants' => 'min',
             ]);
         
-        Livewire::test('edit-apartment', [
+        Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
             ->set('owner_name', 'Test User')
@@ -111,7 +111,7 @@ class EditApartmentLivewireComponentTest extends TestCase
                 'tenants' => 'max',
             ]);
 
-        Livewire::test('edit-apartment', [
+        Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
             ->set('owner_name', 'Test User')
@@ -124,7 +124,7 @@ class EditApartmentLivewireComponentTest extends TestCase
                 'number' => 'unique',
             ]);
 
-        Livewire::test('edit-apartment', [
+        Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
             ->set('owner_name', 'Test User')
@@ -143,7 +143,7 @@ class EditApartmentLivewireComponentTest extends TestCase
     {
         $apartment = Apartment::factory()->create();
 
-        Livewire::test('edit-apartment', [
+        Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
             ->set('owner_name', 'Test User')
