@@ -55,7 +55,7 @@ class CreateBuilding extends Component
     {
         $this->validate();
 
-        $newBuilding = Building::create([
+        Building::create([
             'company_id' => auth()->user()->company->id,
             'internal_code' => $this->internal_code,
             'status' => $this->status,
@@ -76,11 +76,7 @@ class CreateBuilding extends Component
             'comment' => $this->comment
         ]);
         
-        if ($newBuilding instanceof Building) {
-            session()->flash('buildingCreated', __('New building successfully created.'));
-        } else {
-            session()->flash('buildingNotCreated', __('Oops! Something went wrong, please try again.'));
-        }
+        session()->flash('buildingCreated', __('New building successfully created.'));
 
         return to_route('buildings.index');
     }

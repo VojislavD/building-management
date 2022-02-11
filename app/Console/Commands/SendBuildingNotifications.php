@@ -6,6 +6,7 @@ use App\Notifications\BuildingNotification;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Notification;
 use App\Models\Notification as NotificationModel;
+use App\Enums\NotificationStatus;
 
 class SendBuildingNotifications extends Command
 {
@@ -40,7 +41,7 @@ class SendBuildingNotifications extends Command
      */
     public function handle()
     {
-        $notifications = NotificationModel::where('status', NotificationModel::STATUS_SCHEDULED)->get(); 
+        $notifications = NotificationModel::where('status', NotificationStatus::Scheduled->value)->get(); 
 
         foreach ($notifications as $notification) {
             $tenants = $notification->building->allTenants();
@@ -51,5 +52,7 @@ class SendBuildingNotifications extends Command
                 $notification->body
             ));
         }
+
+        return 1;
     }
 }

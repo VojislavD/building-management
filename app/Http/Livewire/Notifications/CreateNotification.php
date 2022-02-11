@@ -78,7 +78,7 @@ class CreateNotification extends Component
             $send_at = now();
         }
         
-        $newNotification = Notification::create([
+        Notification::create([
             'building_id' => $this->building->id,
             'status' => NotificationStatus::Scheduled->value,
             'via_email' => $this->via_email,
@@ -86,12 +86,8 @@ class CreateNotification extends Component
             'body' => $this->body,
             'send_at' => $send_at
         ]);
-        
-        if ($newNotification instanceof Notification) {
-            session()->flash('notificationCreated', __('New notification successfully created.'));
-        } else {
-            session()->flash('notificationNotCreated', __('Oops! Something went wrong, please try again.'));
-        }
+                
+        session()->flash('notificationCreated', __('New notification successfully created.'));
 
         return to_route('buildings.show', $this->building);
     }

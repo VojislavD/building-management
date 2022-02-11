@@ -1,7 +1,6 @@
 <x-app-layout>
 
     <x-flash-message type="success" name="notificationCreated" />
-    <x-flash-message type="error" name="notificationNotCreated" />
     
     <x-flash-message type="success" name="apartmentDeleted" />
     <x-flash-message type="error" name="apartmentNotDeleted" />
@@ -141,7 +140,6 @@
         <h2 class="text-xl font-semibold">Apartments</h2>
 
         <x-flash-message type="success" name="apratmentCreated" />
-        <x-flash-message type="error" name="apratmentNotCreated" />
         
         <x-flash-message type="success" name="apratmentUpdated" />
         <x-flash-message type="error" name="apratmentNotUpdated" />
