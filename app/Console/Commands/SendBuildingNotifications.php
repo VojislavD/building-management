@@ -41,7 +41,9 @@ class SendBuildingNotifications extends Command
      */
     public function handle()
     {
-        $notifications = NotificationModel::where('status', NotificationStatus::Scheduled->value)->get(); 
+        $notifications = NotificationModel::where('status', NotificationStatus::Scheduled->value)
+            ->where('send_at', '<', now())
+            ->get(); 
 
         foreach ($notifications as $notification) {
             $tenants = $notification->building->allTenants();
