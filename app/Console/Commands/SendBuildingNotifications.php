@@ -53,6 +53,10 @@ class SendBuildingNotifications extends Command
                 $notification->subject,
                 $notification->body
             ));
+
+            $notification->update([
+                'status' => NotificationStatus::Processing->value
+            ]);
         }
 
         return 1;
