@@ -2,11 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Notifications\BuildingNotification;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Notification;
 use App\Models\Notification as NotificationModel;
 use App\Enums\NotificationStatus;
+use App\Jobs\SendNotification;
 
 class SendBuildingNotifications extends Command
 {
@@ -46,13 +45,8 @@ class SendBuildingNotifications extends Command
             ->get(); 
 
         foreach ($notifications as $notification) {
-            $tenants = $notification->building->allTenants();
 
-            Notification::send($tenants, new BuildingNotification(
-                $notification->via_email,
-                $notification->subject,
-                $notification->body
-            ));
+            SendNotification::dispatch($notification);
 
             $notification->update([
                 'status' => NotificationStatus::Processing->value
