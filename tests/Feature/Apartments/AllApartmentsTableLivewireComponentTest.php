@@ -60,6 +60,39 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
     /**
      * @test
      */
+    public function test_show_apartments_when_per_page_default()
+    {
+        $building = Building::factory()->create();
+
+        $apartment1 = Apartment::factory()->for($building)->create([
+            'created_at' => now()->subDays(2)
+        ]);
+
+        $apartment2 = Apartment::factory()->for($building)->create();
+        Apartment::factory(8)->for($building)->create();
+        $apartment3 = Apartment::factory()->for($building)->create();
+
+        Livewire::test('apartments.all-apartments-table')
+            ->assertDontSeeHtml([
+                    $apartment1->number.'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">',
+            ])
+            ->assertSeeHtml([
+                    $apartment2->number.'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">',
+                    $apartment3->number.'
+                    </td>
+                    <td class="py-3 pl-2 capitalize">',
+            ])
+            ->assertSeeInOrder(['Showing', '1', 'to', '10', 'of', Apartment::count(), 'results'])
+            ->assertHasNoErrors();
+    }
+
+    /**
+     * @test
+     */
     public function test_show_apartments_when_per_page_15()
     {
         $apartment1 = Apartment::factory()->create([
@@ -83,37 +116,6 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
                     </td>
                     <td class="py-3 pl-2 capitalize">',
             ])
-            ->assertHasNoErrors();
-    }
-
-    /**
-     * @test
-     */
-    public function test_show_apartments_when_per_page_default()
-    {
-        $apartment1 = Apartment::factory()->create([
-            'created_at' => now()->subDays(2)
-        ]);
-
-        $apartment2 = Apartment::factory()->create();
-        Apartment::factory(8)->create();
-        $apartment3 = Apartment::factory()->create();
-
-        Livewire::test('apartments.all-apartments-table')
-            ->assertDontSeeHtml([
-                $apartment1->number.'
-                    </td>
-                    <td class="py-3 pl-2 capitalize">',
-            ])
-            ->assertSeeHtml([
-                $apartment2->number.'
-                    </td>
-                    <td class="py-3 pl-2 capitalize">',
-                $apartment3->number.'
-                    </td>
-                    <td class="py-3 pl-2 capitalize">',
-            ])
-            ->assertSeeInOrder(['Showing', '1', 'to', '10', 'of', Apartment::count(), 'results'])
             ->assertHasNoErrors();
     }
 }

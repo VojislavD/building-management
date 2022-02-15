@@ -21,7 +21,7 @@ class ApartmentFactory extends Factory
         return [
             'building_id' => Building::factory(),
             'user_id' => User::factory(),
-            'number' => $this->faker->numberBetween(1,100),
+            'number' => $this->faker->unique()->numberBetween(1,1000),
             'tenants' => $this->faker->numberBetween(1,6)
         ];
     }
