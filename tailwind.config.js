@@ -10,6 +10,7 @@ module.exports = {
         './app/Models/Building.php',
         './app/Enums/TaskStatus.php',
         './app/Enums/ProjectStatus.php',
+        './app/Enums/NotificationStatus.php',
         './app/Models/Notification.php',
     ],
 
