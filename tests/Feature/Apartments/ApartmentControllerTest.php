@@ -112,4 +112,34 @@ class ApartmentControllerTest extends TestCase
                 __('Delete Apartment')
             ]);
     }
+
+    /**
+     * @test
+     */
+    public function test_delete_can_do_only_authenticated_user()
+    {
+        $apartment = Apartment::factory()->create();
+
+        $response = $this->delete(route('apartments.delete', $apartment));
+
+        $response->assertRedirect(route('login'));
+    }
+
+    /**
+     * @test
+     */
+    public function test_delete_apartment()
+    {
+        $apartment = Apartment::factory()->create();
+
+        $response = $this->actingAs(User::factory()->create())
+            ->delete(route('apartments.delete', $apartment));
+
+        $response->assertRedirect(route('buildings.show', $apartment->building))
+            ->assertSessionHas('apartmentDeleted');
+
+        $this->assertDatabaseMissing('apartments', [
+            'id' => $apartment->id
+        ]);
+    }
 }
