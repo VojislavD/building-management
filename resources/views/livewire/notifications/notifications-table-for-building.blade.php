@@ -1,19 +1,4 @@
 <div>
-    <div class="flex items-center justify-between mt-4">
-        <div>
-            <select 
-                wire:model="perPage"
-                class="py-1 text-sm border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300"
-                >
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-            </select>
-        </div>
-    </div>
-    
-
     <table class="w-full my-3 whitespace-nowrap">
         <thead class="bg-secondary text-gray-100 font-bold">
             <tr>
@@ -53,7 +38,7 @@
                         {!! $notification->viaEmailLabel() !!}
                     </td>
                     <td class="py-3 pl-2">
-                        {{ $notification->status }}
+                        {!! $notification->status->label() !!}
                     </td>
                     <td class="py-3 pl-2">
                         {{ $notification->send_at }}

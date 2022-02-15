@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\NotificationStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,6 +23,15 @@ class Notification extends Model
         'subject',
         'body',
         'send_at'
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'status' => NotificationStatus::class,
     ];
 
     public function building(): BelongsTo
