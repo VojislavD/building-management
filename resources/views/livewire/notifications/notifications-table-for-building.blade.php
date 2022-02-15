@@ -50,7 +50,7 @@
                         {{ $notification->body }}
                     </td>
                     <td class="py-3 pl-2">
-                        {{ $notification->via_email }}
+                        {!! $notification->viaEmailLabel() !!}
                     </td>
                     <td class="py-3 pl-2">
                         {{ $notification->status }}
