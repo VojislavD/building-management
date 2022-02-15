@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\NotificationStatus;
 use App\Models\Building;
 use App\Models\Notification;
 use Illuminate\Contracts\Support\Renderable;
@@ -13,6 +14,15 @@ class NotificationController extends Controller
         return view('notifications.create', [
             'building' => $building
         ]);
+    }
+
+    public function cancel(Notification $notification)
+    {
+        $notification->update([
+            'status' => NotificationStatus::Cancelled->value
+        ]);
+
+        return to_route('buildings.show', $notification->building)->with('notificationCancelled', __('Notification is successfully cancelled.'));
     }
 
     public function destroy(Notification $notification)

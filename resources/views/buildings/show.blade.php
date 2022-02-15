@@ -5,6 +5,8 @@
     <x-flash-message type="success" name="apartmentDeleted" />
     <x-flash-message type="error" name="apartmentNotDeleted" />
 
+    <x-flash-message type="success" name="notificationCancelled" />
+
     <x-flash-message type="success" name="notificationDeleted" />
     <x-flash-message type="error" name="notificationNotDeleted" />
 
