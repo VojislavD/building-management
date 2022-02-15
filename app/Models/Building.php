@@ -61,6 +61,11 @@ class Building extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Notification::class);
+    }
     
     public function scopeActive()
     {

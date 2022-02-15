@@ -137,7 +137,7 @@
     </div>
 
     <div class="mt-24">
-        <h2 class="text-xl font-semibold">Apartments</h2>
+        <h2 class="text-xl font-semibold">{{ __('Apartments') }}</h2>
 
         <x-flash-message type="success" name="apratmentCreated" />
         
@@ -151,6 +151,12 @@
             <x-link-button route="{{ route('apartments.create', $building) }}" text="{{ __('New Apartment') }}" />
         </div>
 
-        @livewire('apartments.apartments-table', ['building' => $building])
+            @livewire('apartments.apartments-table', ['building' => $building])
+    </div>
+
+    <div class="mt-12">
+        <h2 class="text-xl font-semibold">{{ __('Notifications') }}</h2>
+
+        @livewire('notifications.notifications-table-for-building', ['building' => $building])
     </div>
 </x-app-layout>
