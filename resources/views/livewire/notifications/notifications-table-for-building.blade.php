@@ -1,4 +1,17 @@
 <div>
+    <div class="flex items-center justify-end">
+        <div class="flex items-center">
+            <label>Status:</label>
+            <select wire:model="status" class="w-32 text-sm py-0.5 ml-2 focus:outline-none focus:ring-0 focus:border-gray-900">
+                <option value="0">{{ __('All') }}</option>
+                <option value="{{ \App\Enums\NotificationStatus::Scheduled->value }}">{{ __('Scheduled') }}</option>
+                <option value="{{ \App\Enums\NotificationStatus::Processing->value }}">{{ __('Processing') }}</option>
+                <option value="{{ \App\Enums\NotificationStatus::Finished->value }}">{{ __('Finished') }}</option>
+                <option value="{{ \App\Enums\NotificationStatus::Cancelled->value }}">{{ __('Cancelled') }}</option>
+            </select>
+        </div>
+    </div>
+
     <table class="w-full my-3 whitespace-nowrap">
         <thead class="bg-secondary text-gray-100 font-bold">
             <tr>
@@ -55,7 +68,7 @@
             @empty
                 <tr class="bg-gray-100 hover:bg-primary hover:bg-opacity-20 transition duration-200">
                     <td class="py-3 pl-2 text-center" colspan="8">
-                        {{ __('There is no apartments yet.') }}
+                        {{ __('There is no notifications.') }}
                     </td>
                 </tr>
             @endforelse

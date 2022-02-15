@@ -9,10 +9,14 @@ use Livewire\Component;
 class NotificationsTableForBuilding extends Component
 {
     public Building $building;
+    public $status;
 
     public function render()
     {
         $notifications = Notification::where('building_id', $this->building->id)
+            ->when($this->status, function($query) {
+                return $query->where('status', $this->status);
+            })
             ->paginate(10);
 
         return view('livewire.notifications.notifications-table-for-building', [
