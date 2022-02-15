@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\Models\Notification as NotificationModel;
 use App\Enums\NotificationStatus;
 use App\Jobs\SendNotification;
+use Illuminate\Support\Facades\Queue;
 
 class SendBuildingNotifications extends Command
 {
@@ -45,7 +46,6 @@ class SendBuildingNotifications extends Command
             ->get(); 
 
         foreach ($notifications as $notification) {
-
             SendNotification::dispatch($notification);
 
             $notification->update([
@@ -53,6 +53,6 @@ class SendBuildingNotifications extends Command
             ]);
         }
 
-        return 1;
+        return 0;
     }
 }
