@@ -14,11 +14,4 @@ class NotificationController extends Controller
             'building' => $building
         ]);
     }
-
-    public function edit(Notification $notification)
-    {
-        return view('notifications.edit', [
-            'notification' => $notification
-        ]);
-    }
 }

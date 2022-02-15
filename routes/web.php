@@ -62,6 +62,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     // Notifications
     Route::controller(NotificationController::class)->prefix('/notifications')->name('notifications.')->group(function() {
         Route::get('/create/{building}', 'create')->name('create');
-        Route::get('/edit/{notification}', 'edit')->name('edit');
     });
 });
