@@ -61,6 +61,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
 
     // Notifications
     Route::controller(NotificationController::class)->prefix('/notifications')->name('notifications.')->group(function() {
+        Route::get('/index', 'index')->name('index');
         Route::get('/create/{building}', 'create')->name('create');
         Route::get('/show/{notification}', 'show')->name('show');
         Route::patch('/cancel/{notification}', 'cancel')->name('cancel');

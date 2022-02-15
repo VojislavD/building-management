@@ -143,7 +143,25 @@
                             </span>
                         </a>
                         <!-- end::Menu link -->
-                    
+
+                        <!-- start::Menu link -->
+                        <a 
+                            x-data="{ linkHover: false }"
+                            @mouseover = "linkHover = true"
+                            @mouseleave = "linkHover = false"
+                            href="{{ route('notifications.index') }}"
+                            class="flex items-center text-gray-400 px-6 py-3 cursor-pointer hover:bg-black hover:bg-opacity-30 transition duration-200"
+                            :class="{{ Request::segment(1) === 'notifications' }} ? 'bg-black bg-opacity-30' : ''"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition duration-200" :class="linkHover ? 'text-gray-100' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
+                            <span 
+                                class="ml-3 transition duration-200" 
+                                :class="linkHover ? 'text-gray-100' : ''"
+                            >
+                                {{ __('Notifications') }}
+                            </span>
+                        </a>
+                        <!-- end::Menu link -->
                 </nav>
                 <!-- end::Navigation -->
             </aside>

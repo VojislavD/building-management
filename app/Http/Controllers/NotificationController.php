@@ -10,6 +10,11 @@ use Illuminate\Http\RedirectResponse;
 
 class NotificationController extends Controller
 {
+    public function index()
+    {
+        return view('notifications.index');
+    }
+    
     public function create(Building $building): Renderable
     {
         return view('notifications.create', [
