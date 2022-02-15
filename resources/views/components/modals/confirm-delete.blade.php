@@ -17,7 +17,7 @@
             </span>
         </div>
         <div class="flex flex-col items-center justify-center py-8">
-            <p class="text-lg">{{ __('Are you sure you want to delete this item?') }}</p>
+            <p class="text-lg">{{ __('Are you sure you want to delete?') }}</p>
             <div class="flex items-center justify-center space-x-4 mt-8">
                 <x-form.button-cancel @click="confirmDelete = false" />
                 <form method="POST" action="{{ $route }}">

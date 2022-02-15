@@ -14,4 +14,13 @@ class NotificationController extends Controller
             'building' => $building
         ]);
     }
+
+    public function destroy(Notification $notification)
+    {
+        if ($notification->delete()) {
+            return to_route('buildings.show', $notification->building)->with('notificationDeleted', __('Notification is successfully deleted.'));
+        } else {
+            return to_route('buildings.show', $notification->building)->with('notificationNotDeleted', __('Oops! Something went wrong, please try again.'));
+        }
+    }
 }
