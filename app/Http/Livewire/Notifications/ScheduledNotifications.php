@@ -12,12 +12,12 @@ class ScheduledNotifications extends Component
 
     public function render()
     {
-        $scheduledNotifications = Notification::scheduled()
+        $notifications = Notification::scheduled()
             ->latest()
             ->paginate(5);
 
         return view('livewire.notifications.scheduled-notifications', [
-            'scheduledNotifications' => $scheduledNotifications
+            'notifications' => $notifications
         ]);
     }
 }

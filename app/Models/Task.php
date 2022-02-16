@@ -41,6 +41,11 @@ class Task extends Model
         return $this->belongsTo(Building::class);
     }
 
+    public function scopePending()
+    {
+        return $this->where('status', TaskStatus::Pending);
+    }
+
     public function getLimitedDescriptionAttribute(): string
     {
         return Str::limit($this->description, 40, '...');

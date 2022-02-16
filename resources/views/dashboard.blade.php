@@ -56,11 +56,13 @@
                 </div>
 
 
-                <div class="flex mt-12 space-x-4">
-                    <div class="w-2/3 bg-white rounded-lg p-4">
+                <div class="grid grid-cols-3 gap-8 mt-8">
+                    <div class="h-full col-span-2 bg-white rounded-lg p-4">
                         @livewire('notifications.scheduled-notifications')
                     </div>
-                    <div class="w-1/3">test</div>
+                    <div class="h-full bg-white rounded-lg p-4">
+                        @livewire('tasks.pending-tasks')
+                    </div>
                 </div>
             @endrole
 
