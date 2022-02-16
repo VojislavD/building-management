@@ -9,8 +9,8 @@
                     <span class="text-gray-300">{{ $notification->send_at->format('h:i') }}</span>
                 </div>
                 <div class="flex-1 flex flex-col justify-center pl-4">
-                    <span class="text-lg font-bold">{{ str($notification->subject)->limit(80) }}</span>
-                    <span>{{ str($notification->body)->limit(80) }}</span>
+                    <a href="{{ route('notifications.show', $notification) }}" class="text-lg font-bold hover:underline" title="{{ $notification->subject }}">{{ str($notification->subject)->limit(80) }}</a>
+                    <span title="{{ $notification->body }}">{{ str($notification->body)->limit(80) }}</a>
                 </div>
                 <div class="flex items-center pr-4 space-y-2">
                     <span class="bg-gray-300 text-sm px-3 py-2 rounded-lg">{{ $notification->created_at->shortRelativeDiffForHumans() }}</span>
