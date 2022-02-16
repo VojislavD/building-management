@@ -14,45 +14,53 @@
                     <div class="bg-white rounded-lg space-y-4">
                         <div class="flex items-center justify-between py-2 px-8 border-b">
                             <div class="flex flex-col">
-                                <span class="text-lg font-bold text-gray-700">Tasks This Month</span>
-                                <span class="text-sm text-gray-500">Number of tasks this month</span>
+                                <span class="text-lg font-bold text-gray-700">{{ __('Tasks This Month') }}</span>
+                                <span class="text-sm text-gray-500">{{ __('Number of tasks this month') }}</span>
                             </div>
                             <span class="text-3xl font-bold text-sky-600">{{ $ttm }}</span>
                         </div>
                         <div class="flex items-center justify-between py-2 px-8 border-b">
                             <div class="flex flex-col">
-                                <span class="text-lg font-bold text-gray-700">Tasks Last Month</span>
-                                <span class="text-sm text-gray-500">Number of tasks last month</span>
+                                <span class="text-lg font-bold text-gray-700">{{ __('Tasks Last Month') }}</span>
+                                <span class="text-sm text-gray-500">{{ __('Number of tasks last month') }}</span>
                             </div>
                             <span class="text-3xl font-bold text-indigo-600">{{ $tlm }}</span>
                         </div>
                         <div class="flex items-center justify-between py-2 px-8 border-b">
                             <div class="flex flex-col">
-                                <span class="text-lg font-bold text-gray-700">Notifications This Month</span>
-                                <span class="text-sm text-gray-500">Number of notifications this month</span>
+                                <span class="text-lg font-bold text-gray-700">{{ __('Notifications This Month') }}</span>
+                                <span class="text-sm text-gray-500">{{ __('Number of notifications this month') }}</span>
                             </div>
                             <span class="text-3xl font-bold text-sky-600">{{ $ntm }}</span>
                         </div>
                         <div class="flex items-center justify-between py-2 px-8">
                             <div class="flex flex-col">
-                                <span class="text-lg font-bold text-gray-700">Notifications Last Month</span>
-                                <span class="text-sm text-gray-500">Number of notifications last month</span>
+                                <span class="text-lg font-bold text-gray-700">{{ __('Notifications Last Month') }}</span>
+                                <span class="text-sm text-gray-500">{{ __('Number of notifications last month') }}</span>
                             </div>
                             <span class="text-3xl font-bold text-indigo-600">{{ $nlm }}</span>
                         </div>
                     </div>
                     <div class="bg-white flex flex-col items-center rounded-lg py-2 px-8 space-y-2">
-                        <span class="font-bold text-gray-700 capitalize">Tasks This Month</span>
+                        <span class="font-bold text-gray-700 capitalize">{{ __('Tasks This Month') }}</span>
                         <div class="w-2/3">
                             <canvas id="tasks"></canvas>
                         </div>
                     </div>
                     <div class="bg-white flex flex-col items-center rounded-lg py-2 px-8 space-y-2">
-                        <span class="font-bold text-gray-700 capitalize">Notifications This Month</span>
+                        <span class="font-bold text-gray-700 capitalize">{{ __('Notifications This Month')}}</span>
                         <div class="w-2/3">
                             <canvas id="notifications"></canvas>
                         </div>
                     </div>
+                </div>
+
+
+                <div class="flex mt-12 space-x-4">
+                    <div class="w-2/3 bg-white rounded-lg p-4">
+                        @livewire('notifications.pending-notifications')
+                    </div>
+                    <div class="w-1/3">test</div>
                 </div>
             @endrole
 

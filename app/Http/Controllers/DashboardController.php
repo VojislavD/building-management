@@ -41,7 +41,6 @@ class DashboardController extends Controller
             ->whereStatus(NotificationStatus::Cancelled)
             ->count();
 
-        
         return view('dashboard', [
             'ttm' => $tasksThisMonth,
             'tlm' => $tasksLastMonth,
@@ -53,7 +52,7 @@ class DashboardController extends Controller
             'sntm' => $scheduledNotificationsThisMonth,
             'pntm' => $processingNotificationsThisMonth,
             'fntm' => $finishedNotificationsThisMonth,
-            'cntm' => $cancelledNotificationsThisMonth
+            'cntm' => $cancelledNotificationsThisMonth,
         ]);
     }
 }

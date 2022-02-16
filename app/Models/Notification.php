@@ -32,11 +32,17 @@ class Notification extends Model
      */
     protected $casts = [
         'status' => NotificationStatus::class,
+        'send_at' => 'datetime'
     ];
 
     public function building(): BelongsTo
     {
         return $this->belongsTo(Building::class);
+    }
+
+    public function scopeScheduled()
+    {
+        return $this->where('status', NotificationStatus::Scheduled);
     }
 
     public function viaEmailLabel(): string
