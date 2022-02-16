@@ -1,5 +1,5 @@
 <div>
-    <h4 class="text-lg font-bold text-gray-700">{{ __('Pending Notifications') }}</h4>
+    <h4 class="text-lg font-bold text-gray-700">{{ __('Scheduled Notifications') }}</h4>
 
     <div class="space-y-1">
         @forelse ($scheduledNotifications as $notification)

@@ -58,7 +58,7 @@
 
                 <div class="flex mt-12 space-x-4">
                     <div class="w-2/3 bg-white rounded-lg p-4">
-                        @livewire('notifications.pending-notifications')
+                        @livewire('notifications.scheduled-notifications')
                     </div>
                     <div class="w-1/3">test</div>
                 </div>
