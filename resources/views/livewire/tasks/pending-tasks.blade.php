@@ -4,7 +4,7 @@
     <div class="space-y-1">
         @forelse ($tasks as $task)
             <div class="h-16 flex mt-6 hover:bg-gray-100 px-4">
-                <div class="flex-1 flex flex-col justify-center">
+                <div class="flex-1 flex flex-col justify-center truncate">
                     <a href="{{ route('tasks.show', $task) }}" class="font-bold hover:underline text-gray-900" >{{ str($task->description)->limit(40) }}</a>
                     <span class="text-gray-700">{{ $task->user->name }}</span>
                 </div>

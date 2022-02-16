@@ -4,11 +4,11 @@
     <div class="space-y-1">
         @forelse ($notifications as $notification)
             <div class="flex h-16 mt-6 hover:bg-gray-100">
-                <div class="w-24 bg-secondary flex flex-col items-center justify-center text-sm py-3">
+                <div class="w-16 xl:w-24 bg-secondary flex flex-col items-center justify-center text-sm py-3">
                     <span class="font-bold text-gray-200">{{ $notification->send_at->format('d M') }}</span>
                     <span class="text-gray-300">{{ $notification->send_at->format('h:i') }}</span>
                 </div>
-                <div class="flex-1 flex flex-col justify-center pl-4">
+                <div class="flex-1 flex flex-col justify-center pl-4 truncate">
                     <a href="{{ route('notifications.show', $notification) }}" class="text-lg text-gray-900 font-bold hover:underline" title="{{ $notification->subject }}">{{ str($notification->subject)->limit(80) }}</a>
                     <span class="text-gray-700" title="{{ $notification->body }}">{{ str($notification->body)->limit(80) }}</a>
                 </div>
