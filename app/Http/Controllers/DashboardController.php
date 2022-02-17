@@ -13,31 +13,31 @@ class DashboardController extends Controller
 {
     public function __invoke(): Renderable
     {
-        $tasksThisMonth = Task::whereMonth('created_at', now()->month)->count();
-        $tasksLastMonth = Task::whereMonth('created_at', now()->subMonth()->month)->count();
-        $notificationsThisMonth = Notification::whereMonth('created_at', now()->month)->count();
-        $notificationsLastMonth = Notification::whereMonth('created_at', now()->subMonth()->month)->count();
+        $tasksThisMonth = Task::whereMonth('created_at',  now())->count();
+        $tasksLastMonth = Task::whereMonth('created_at', now()->subMonth())->count();
+        $notificationsThisMonth = Notification::whereMonth('created_at', now())->count();
+        $notificationsLastMonth = Notification::whereMonth('created_at', now()->subMonth())->count();
 
-        $pendingTasksThisMonth = Task::whereMonth('created_at', now()->month)
+        $pendingTasksThisMonth = Task::whereMonth('created_at', now())
             ->whereStatus(TaskStatus::Pending)
             ->count();
-        $completedTasksThisMonth = Task::whereMonth('created_at', now()->month)
+        $completedTasksThisMonth = Task::whereMonth('created_at', now())
             ->whereStatus(TaskStatus::Completed)
             ->count();
-        $cancelledTasksThisMonth = Task::whereMonth('created_at', now()->month)
+        $cancelledTasksThisMonth = Task::whereMonth('created_at', now())
             ->whereStatus(TaskStatus::Cancelled)
             ->count();
 
-        $scheduledNotificationsThisMonth = Notification::whereMonth('created_at', now()->month)
+        $scheduledNotificationsThisMonth = Notification::whereMonth('created_at', now())
             ->whereStatus(NotificationStatus::Scheduled)
             ->count();
-        $processingNotificationsThisMonth = Notification::whereMonth('created_at', now()->month)
+        $processingNotificationsThisMonth = Notification::whereMonth('created_at', now())
             ->whereStatus(NotificationStatus::Processing)
             ->count();
-        $finishedNotificationsThisMonth = Notification::whereMonth('created_at', now()->month)
+        $finishedNotificationsThisMonth = Notification::whereMonth('created_at', now())
             ->whereStatus(NotificationStatus::Finished)
             ->count();
-        $cancelledNotificationsThisMonth = Notification::whereMonth('created_at', now()->month)
+        $cancelledNotificationsThisMonth = Notification::whereMonth('created_at', now())
             ->whereStatus(NotificationStatus::Cancelled)
             ->count();
 
