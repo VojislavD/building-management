@@ -67,7 +67,72 @@
             @endrole
 
             @role('user')
-                User
+                <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-6 2xl:gap-12">
+                    <div class="px-6 py-6 bg-white rounded-lg shadow-xl">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-lg text-teal-600">{{ __('Current Budget') }}</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <div>
+                                <svg class="w-12 2xl:w-16 h-12 2xl:h-16 p-1 2xl:p-3 bg-teal-400 bg-opacity-20 rounded-full text-teal-600 border border-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="flex items-end">
+                                    <span class="text-2xl 2xl:text-3xl font-bold">$8,141</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-6 bg-white rounded-lg shadow-xl">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-lg text-sky-600">{{ __('Spent This Year') }}</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <div>
+                                <svg class="w-12 2xl:w-16 h-12 2xl:h-16 p-1 2xl:p-3 bg-sky-400 bg-opacity-20 rounded-full text-sky-600 border border-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="flex items-end">
+                                    <span class="text-2xl 2xl:text-3xl font-bold">- $8,141</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-6 bg-white rounded-lg shadow-xl">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-lg text-indigo-600">{{ __('Pending Tasks') }}</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 2xl:w-16 h-12 2xl:h-16 p-1 2xl:p-3 bg-indigo-400 bg-opacity-20 rounded-full text-indigo-600 border border-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="flex items-end">
+                                    <span class="text-2xl 2xl:text-3xl font-bold">1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-6 bg-white rounded-lg shadow-xl">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-lg text-purple-600">{{ __('Pending Projects') }}</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 2xl:w-16 h-12 2xl:h-16 p-1 2xl:p-3 bg-purple-400 bg-opacity-20 rounded-full text-purple-600 border border-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="flex items-end">
+                                    <span class="text-2xl 2xl:text-3xl font-bold">1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             @endrole
         </div>
     </div>
