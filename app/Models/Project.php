@@ -42,4 +42,9 @@ class Project extends Model
     {
         return $this->belongsTo(Building::class);
     }
+
+    public function scopeActive()
+    {
+        return $this->whereIn('status', [ProjectStatus::Pending, ProjectStatus::Processing]);
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\NotificationStatus;
 use App\Enums\TaskStatus;
 use App\Models\Notification;
+use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -13,13 +14,14 @@ class DashboardController extends Controller
 {
     public function __invoke(): Renderable
     {
+        // Admin
         $tasksThisMonth = Task::whereMonth('created_at',  now())->count();
         $tasksLastMonth = Task::whereMonth('created_at', now()->subMonth())->count();
         $notificationsThisMonth = Notification::whereMonth('created_at', now())->count();
         $notificationsLastMonth = Notification::whereMonth('created_at', now()->subMonth())->count();
 
         $pendingTasksThisMonth = Task::whereMonth('created_at', now())
-            ->whereStatus(TaskStatus::Pending)
+            ->pending()
             ->count();
         $completedTasksThisMonth = Task::whereMonth('created_at', now())
             ->whereStatus(TaskStatus::Completed)
@@ -41,6 +43,11 @@ class DashboardController extends Controller
             ->whereStatus(NotificationStatus::Cancelled)
             ->count();
 
+        // User
+        $currentBudget = auth()->user()->apartment->building->balance;
+        $pendingTasks = Task::pending()->count();
+        $activeProject = Project::active()->count();
+
         return view('dashboard', [
             'ttm' => $tasksThisMonth,
             'tlm' => $tasksLastMonth,
@@ -53,6 +60,9 @@ class DashboardController extends Controller
             'pntm' => $processingNotificationsThisMonth,
             'fntm' => $finishedNotificationsThisMonth,
             'cntm' => $cancelledNotificationsThisMonth,
+            'cb' => $currentBudget,
+            'pt' => $pendingTasks,
+            'ap' => $activeProject
         ]);
     }
 }

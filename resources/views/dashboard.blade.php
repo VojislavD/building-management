@@ -78,7 +78,7 @@
                             </div>
                             <div class="flex flex-col">
                                 <div class="flex items-end">
-                                    <span class="text-2xl 2xl:text-3xl font-bold">$8,141</span>
+                                    <span class="text-2xl 2xl:text-3xl font-bold">$ {{ $cb }}</span>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                             </div>
                             <div class="flex flex-col">
                                 <div class="flex items-end">
-                                    <span class="text-2xl 2xl:text-3xl font-bold">- $8,141</span>
+                                    <span class="text-2xl 2xl:text-3xl font-bold">$ 0</span>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
                             </div>
                             <div class="flex flex-col">
                                 <div class="flex items-end">
-                                    <span class="text-2xl 2xl:text-3xl font-bold">1</span>
+                                    <span class="text-2xl 2xl:text-3xl font-bold">{{ $pt }}</span>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                             </div>
                             <div class="flex flex-col">
                                 <div class="flex items-end">
-                                    <span class="text-2xl 2xl:text-3xl font-bold">1</span>
+                                    <span class="text-2xl 2xl:text-3xl font-bold">{{ $ap }}</span>
                                 </div>
                             </div>
                         </div>

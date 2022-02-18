@@ -13,7 +13,7 @@ class ActiveProjects extends Component
 
     public function render()
     {
-        $projects = Project::whereIn('status', [ProjectStatus::Pending, ProjectStatus::Processing])
+        $projects = Project::active()
             ->latest()
             ->paginate(5, ['*'], 'projectsPage');
 
