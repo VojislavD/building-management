@@ -2,7 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Models\Apartment;
+use App\Models\Building;
 use App\Models\Notification;
+use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -77,7 +80,7 @@ class DashboardControllerTest extends TestCase
     /**
      * @test
      */
-    public function test_dashboard_page_shows_correct_stats()
+    public function test_dashboard_page_shows_correct_stats_for_admin()
     {
         $admin = User::factory()
             ->create()
@@ -106,6 +109,43 @@ class DashboardControllerTest extends TestCase
             ->assertSeeText([
                 __('Scheduled Notifications'),
                 __('Pending Tasks')
+            ]);
+    }
+
+    /**
+     * @test
+     */
+    public function test_dashboard_page_shows_correct_stats_for_user()
+    {
+        $user = User::factory()
+            ->create()
+            ->assignRole('user');
+
+        $building = Building::factory()->create();
+        Apartment::factory()->for($user, 'owner')->for($building)->create();
+
+        Task::factory(2)->pending()->create();
+        Project::factory(2)->pending()->create();
+        Project::factory(3)->processing()->create();
+
+        $response = $this->actingAs($user)
+            ->get(route('dashboard'));
+
+        $response->assertOk()
+            ->assertViewIs('dashboard')
+            ->assertSeeInOrder([
+                __('Current Budget'),
+                $user->apartment->building->balance, 
+                __('Spent This Year'),
+                0,
+                __('Pending Tasks'),
+                Task::pending()->count(),
+                __('Active Projects'),
+                Project::active()->count()
+            ])
+            ->assertSeeText([
+                __('Pending Tasks'),
+                __('Active Projects')
             ]);
     }
 }
