@@ -50,9 +50,7 @@ class DashboardControllerTest extends TestCase
             ->assertViewIs('dashboard')
             ->assertSeeText(__('Dashboard'))
             ->assertSeeText(__('Tasks'))
-            ->assertSeeText(__('Projects'))
-            ->assertDontSeeText(__('Buildings'))
-            ->assertDontSeeText(__('Apartments'));
+            ->assertSeeText(__('Projects'));
 
         $response = $this->actingAs($admin)
             ->get(route('dashboard'));

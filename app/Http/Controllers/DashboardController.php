@@ -44,7 +44,8 @@ class DashboardController extends Controller
             ->count();
 
         // User
-        $currentBudget = auth()->user()->apartment->building->balance;
+        $currentUserApartment = auth()->user()->apartment;
+        $currentBudget = $currentUserApartment ? $currentUserApartment->building->balance : 0;
         $pendingTasks = Task::pending()->count();
         $activeProject = Project::active()->count();
 
