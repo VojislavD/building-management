@@ -1,7 +1,7 @@
-<div>
+<div class="h-full flex flex-col justify-between">
     <h4 class="text-lg font-bold text-gray-700">{{ __('Pending Tasks') }}</h4>
 
-    <div class="space-y-1">
+    <div class="flex-1 space-y-1">
         @forelse ($tasks as $task)
             <div class="h-16 flex mt-6 hover:bg-gray-100 px-4">
                 <div class="flex-1 flex flex-col justify-center truncate">

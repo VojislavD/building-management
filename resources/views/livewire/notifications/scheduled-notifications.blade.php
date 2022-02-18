@@ -1,7 +1,7 @@
-<div>
+<div class="h-full flex flex-col justify-between">
     <h4 class="text-lg font-bold text-gray-700">{{ __('Scheduled Notifications') }}</h4>
 
-    <div class="space-y-1">
+    <div class="flex-1 space-y-1">
         @forelse ($notifications as $notification)
             <div class="flex h-16 mt-6 hover:bg-gray-100">
                 <div class="w-16 xl:w-24 bg-secondary flex flex-col items-center justify-center text-sm py-3">

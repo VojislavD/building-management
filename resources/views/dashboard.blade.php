@@ -118,7 +118,7 @@
 
                     <div class="px-6 py-6 bg-white rounded-lg shadow-xl">
                         <div class="flex items-center justify-between">
-                            <span class="font-bold text-lg text-purple-600">{{ __('Pending Projects') }}</span>
+                            <span class="font-bold text-lg text-purple-600">{{ __('Active Projects') }}</span>
                         </div>
                         <div class="flex items-center justify-between mt-6">
                             <div>
@@ -130,6 +130,15 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-12 mt-12">
+                    <div class="bg-white rounded-lg p-4">
+                        @livewire('tasks.pending-tasks')
+                    </div>
+                    <div class="bg-white rounded-lg p-4">
+                        @livewire('projects.active-projects')
                     </div>
                 </div>
                 

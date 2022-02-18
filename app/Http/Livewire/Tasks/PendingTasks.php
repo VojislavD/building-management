@@ -14,7 +14,7 @@ class PendingTasks extends Component
     {
         $tasks = Task::pending()
             ->latest()
-            ->paginate(5);
+            ->paginate(5, ['*'], 'tasksPage');
 
         return view('livewire.tasks.pending-tasks', [
             'tasks' => $tasks
