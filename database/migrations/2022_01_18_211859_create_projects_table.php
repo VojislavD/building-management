@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->foreignId('building_id')->constrained()->cascadeOnDelete();
-            $table->tinyInteger('status')->default(ProjectStatus::Pending->value);
+            $table->tinyInteger('status')->default(ProjectStatus::Pending());
             $table->string('name');
             $table->integer('price');
             $table->tinyInteger('rates');

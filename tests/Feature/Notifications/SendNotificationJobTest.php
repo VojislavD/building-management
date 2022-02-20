@@ -60,7 +60,7 @@ class SendNotificationJobTest extends TestCase
 
         $this->assertDatabaseHas('notifications', [
             'id' => $notification->id,
-            'status' => NotificationStatus::Finished->value
+            'status' => NotificationStatus::Finished()
         ]);
     }
 }

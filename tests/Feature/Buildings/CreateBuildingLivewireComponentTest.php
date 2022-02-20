@@ -111,7 +111,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
 
         Livewire::test('buildings.create-building', [
             'internal_code' => 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.',
-            'status' => BuildingStatus::Active->value,
+            'status' => BuildingStatus::Active(),
             'construction_year' => now()->year,
             'square' => 0,
             'floors' => -1,
@@ -141,7 +141,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
         
         Livewire::test('buildings.create-building', [
             'internal_code' => "$building->internal_code",
-            'status' => BuildingStatus::Active->value,
+            'status' => BuildingStatus::Active(),
             'construction_year' => now()->year,
             'square' => 10,
             'floors' => 10,
@@ -166,7 +166,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
 
         Livewire::test('buildings.create-building', [
                 'internal_code' => "12345",
-                'status' => BuildingStatus::Active->value,
+                'status' => BuildingStatus::Active(),
                 'construction_year' => now()->year,
                 'square' => 10,
                 'floors' => 10,
@@ -195,7 +195,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
         
         Livewire::test('buildings.create-building', [
             'internal_code' => "12345",
-            'status' => BuildingStatus::Active->value,
+            'status' => BuildingStatus::Active(),
             'construction_year' => now()->year,
             'square' => 10,
             'floors' => 10,
@@ -216,7 +216,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
         
         $this->assertDatabaseHas('buildings', [
             'internal_code' => "12345",
-            'status' => BuildingStatus::Active->value,
+            'status' => BuildingStatus::Active(),
             'construction_year' => now()->year,
             'square' => 10,
             'floors' => 10,

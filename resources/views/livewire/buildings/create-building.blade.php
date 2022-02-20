@@ -23,8 +23,8 @@
                     id="status" 
                     title="{{ __('Status') }}" 
                     :options="[
-                        'Active' => \App\Enums\BuildingStatus::Active->value, 
-                        'Inactive' => \App\Enums\BuildingStatus::Inactive->value
+                        'Active' => \App\Enums\BuildingStatus::Active(), 
+                        'Inactive' => \App\Enums\BuildingStatus::Inactive()
                     ]"
                 />
                 <x-form.error-message name="status" />

@@ -41,7 +41,7 @@ class SendBuildingNotifications extends Command
      */
     public function handle()
     {
-        $notifications = NotificationModel::where('status', NotificationStatus::Scheduled->value)
+        $notifications = NotificationModel::where('status', NotificationStatus::Scheduled())
             ->where('send_at', '<', now())
             ->get(); 
 
@@ -49,7 +49,7 @@ class SendBuildingNotifications extends Command
             SendNotification::dispatch($notification);
 
             $notification->update([
-                'status' => NotificationStatus::Processing->value
+                'status' => NotificationStatus::Processing()
             ]);
         }
 

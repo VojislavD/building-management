@@ -17,7 +17,7 @@ class TasksTable extends Component
 
     public function mount()
     {
-        $this->status = TaskStatus::Pending->value;
+        $this->status = TaskStatus::Pending();
     }
 
     public function updatingStatus() 

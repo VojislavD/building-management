@@ -4,10 +4,18 @@
             <label>Status:</label>
             <select wire:model="status" class="w-32 text-sm py-0.5 ml-2 focus:outline-none focus:ring-0 focus:border-gray-900">
                 <option value="0">{{ __('All') }}</option>
-                <option value="{{ \App\Enums\NotificationStatus::Scheduled->value }}">{{ __('Scheduled') }}</option>
-                <option value="{{ \App\Enums\NotificationStatus::Processing->value }}">{{ __('Processing') }}</option>
-                <option value="{{ \App\Enums\NotificationStatus::Finished->value }}">{{ __('Finished') }}</option>
-                <option value="{{ \App\Enums\NotificationStatus::Cancelled->value }}">{{ __('Cancelled') }}</option>
+                <option value="{{ \App\Enums\NotificationStatus::Scheduled() }}">
+                    {{ \App\Enums\NotificationStatus::Scheduled->name() }}
+                </option>
+                <option value="{{ \App\Enums\NotificationStatus::Processing() }}">
+                    {{ \App\Enums\NotificationStatus::Processing->name() }}
+                </option>
+                <option value="{{ \App\Enums\NotificationStatus::Finished() }}">
+                    {{ \App\Enums\NotificationStatus::Finished->name() }}
+                </option>
+                <option value="{{ \App\Enums\NotificationStatus::Cancelled() }}">
+                    {{ \App\Enums\NotificationStatus::Cancelled->name() }}
+                </option>
             </select>
         </div>
     </div>

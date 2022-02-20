@@ -22,7 +22,7 @@ class BuildingFactory extends Factory
         return [
             'company_id' => Company::factory(),
             'internal_code' => $this->faker->unique()->randomNumber(5, true),
-            'status' => BuildingStatus::Active->value,
+            'status' => BuildingStatus::Active(),
             'pib' => $this->faker->unique()->randomNumber(9, true),
             'identification_number' => $this->faker->unique()->randomNumber(8, true),
             'account_number' => $this->faker->randomNumber(3, true).'-'.$this->faker->randomNumber(5, true).'-'.$this->faker->randomNumber(2, true),
@@ -44,14 +44,14 @@ class BuildingFactory extends Factory
     public function active(): Factory
     {
         return $this->state([
-            'status' => BuildingStatus::Active->value
+            'status' => BuildingStatus::Active()
         ]);
     }
 
     public function inactive(): Factory
     {
         return $this->state([
-            'status' => BuildingStatus::Inactive->value
+            'status' => BuildingStatus::Inactive()
         ]);
     }
 }

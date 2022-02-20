@@ -24,9 +24,9 @@ class TaskFactory extends Factory
             'building_id' => Building::factory(),
             'user_id' => User::factory(),
             'status' => collect([
-                TaskStatus::Pending->value, 
-                TaskStatus::Completed->value, 
-                TaskStatus::Cancelled->value
+                TaskStatus::Pending(), 
+                TaskStatus::Completed(), 
+                TaskStatus::Cancelled()
             ])->random(),
             'description' => $this->faker->realText(1000)
         ];
@@ -35,21 +35,21 @@ class TaskFactory extends Factory
     public function pending(): Factory
     {
         return $this->state([
-            'status' => TaskStatus::Pending->value
+            'status' => TaskStatus::Pending()
         ]);
     }
 
     public function completed(): Factory
     {
         return $this->state([
-            'status' => TaskStatus::Completed->value
+            'status' => TaskStatus::Completed()
         ]);
     }
 
     public function cancelled(): Factory
     {
         return $this->state([
-            'status' => TaskStatus::Cancelled->value
+            'status' => TaskStatus::Cancelled()
         ]);
     }
 }

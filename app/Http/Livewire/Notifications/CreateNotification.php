@@ -80,7 +80,7 @@ class CreateNotification extends Component
         
         Notification::create([
             'building_id' => $this->building->id,
-            'status' => NotificationStatus::Scheduled->value,
+            'status' => NotificationStatus::Scheduled(),
             'via_email' => $this->via_email,
             'subject' => $this->subject,
             'body' => $this->body,

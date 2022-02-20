@@ -40,7 +40,7 @@ class BuildingsTableLivewireComponentTest extends TestCase
             ->assertHasNoErrors();
 
         Livewire::test('buildings.buildings-table')
-            ->set('status', BuildingStatus::Inactive->value)
+            ->set('status', BuildingStatus::Inactive())
             ->assertSee($inactive->internal_code)
             ->assertDontSee($active->internal_code)
             ->assertHasNoErrors();

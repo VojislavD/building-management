@@ -20,21 +20,21 @@ class CompanyFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'status' => collect([CompanyStatus::Active->value, CompanyStatus::Inactive->value])->random()
+            'status' => collect([CompanyStatus::Active(), CompanyStatus::Inactive()])->random()
         ];
     }
 
     public function active(): Factory
     {
         return $this->state([
-            'status' => CompanyStatus::Active->value
+            'status' => CompanyStatus::Active()
         ]);
     }
 
     public function inactive(): Factory
     {
         return $this->state([
-            'status' => CompanyStatus::Inactive->value
+            'status' => CompanyStatus::Inactive()
         ]);
     }
 }

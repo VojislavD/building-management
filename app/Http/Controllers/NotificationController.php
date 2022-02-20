@@ -32,7 +32,7 @@ class NotificationController extends Controller
     public function cancel(Notification $notification): RedirectResponse
     {
         $notification->update([
-            'status' => NotificationStatus::Cancelled->value
+            'status' => NotificationStatus::Cancelled()
         ]);
 
         return to_route('buildings.show', $notification->building)->with('notificationCancelled', __('Notification is successfully cancelled.'));

@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->tinyInteger('status')->default(CompanyStatus::Active->value);
+            $table->tinyInteger('status')->default(CompanyStatus::Active());
             $table->timestamps();
         });
     }

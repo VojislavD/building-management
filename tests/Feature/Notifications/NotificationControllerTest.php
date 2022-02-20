@@ -106,7 +106,7 @@ class NotificationControllerTest extends TestCase
 
         $this->assertDatabaseHas('notifications', [
             'id' => $notification->id,
-            'status' => NotificationStatus::Cancelled->value
+            'status' => NotificationStatus::Cancelled()
         ]);
     }
 

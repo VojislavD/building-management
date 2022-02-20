@@ -4,9 +4,22 @@ namespace App\Enums;
 
 enum TaskStatus: int 
 {
+    use InvokableClass;
+
     case Pending = 1;
     case Completed = 2;
     case Cancelled = 3;
+    
+    public function name(): string
+    {
+        return match($this)
+        {
+            TaskStatus::Pending => __("Pending"),
+            TaskStatus::Completed => __("Completed"),
+            TaskStatus::Cancelled => __("Cancelled"),
+            default => __('N/A')
+        };
+    }
 
     public function label(): string
     {

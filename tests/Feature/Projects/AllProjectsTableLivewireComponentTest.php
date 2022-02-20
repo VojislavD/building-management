@@ -46,7 +46,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
                 $projectFinished->name,
                 $projectCancelled->name
             ])
-            ->set('status', ProjectStatus::Pending->value)
+            ->set('status', ProjectStatus::Pending())
             ->assertSee([
                 $projectPending->name
             ])
@@ -55,7 +55,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
                 $projectFinished->name,
                 $projectCancelled->name
             ])
-            ->set('status', ProjectStatus::Processing->value)
+            ->set('status', ProjectStatus::Processing())
             ->assertSee([
                 $projectProcessing->name
             ])
@@ -64,7 +64,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
                 $projectFinished->name,
                 $projectCancelled->name
             ])
-            ->set('status', ProjectStatus::Finished->value)
+            ->set('status', ProjectStatus::Finished())
             ->assertSee([
                 $projectFinished->name
             ])
@@ -73,7 +73,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
                 $projectProcessing->name,
                 $projectCancelled->name
             ])
-            ->set('status', ProjectStatus::Cancelled->value)
+            ->set('status', ProjectStatus::Cancelled())
             ->assertSee([
                 $projectCancelled->name
             ])

@@ -3,12 +3,20 @@
         <div class="flex items-center space-x-4">
             <div class="flex items-center">
                 <label>Status:</label>
-                <select wire:model="status" class="w-24 text-sm py-0.5 ml-2 focus:outline-none focus:ring-0 focus:border-gray-900">
+                <select wire:model="status" class="w-32 text-sm py-0.5 ml-2 focus:outline-none focus:ring-0 focus:border-gray-900">
                     <option value="0">{{ __('All') }}</option>
-                    <option value="{{ \App\Enums\ProjectStatus::Pending->value }}">{{ __('Pending') }}</option>
-                    <option value="{{ \App\Enums\ProjectStatus::Processing->value }}">{{ __('Processing') }}</option>
-                    <option value="{{ \App\Enums\ProjectStatus::Finished->value }}">{{ __('Finished') }}</option>
-                    <option value="{{ \App\Enums\ProjectStatus::Cancelled->value }}">{{ __('Cancelled') }}</option>
+                    <option value="{{ \App\Enums\ProjectStatus::Pending() }}">
+                        {{\App\Enums\ProjectStatus::Pending->name() }}
+                    </option>
+                    <option value="{{ \App\Enums\ProjectStatus::Processing() }}">
+                        {{ \App\Enums\ProjectStatus::Processing->name() }}
+                    </option>
+                    <option value="{{ \App\Enums\ProjectStatus::Finished() }}">
+                        {{ \App\Enums\ProjectStatus::Finished->name() }}
+                    </option>
+                    <option value="{{ \App\Enums\ProjectStatus::Cancelled() }}">
+                        {{ \App\Enums\ProjectStatus::Cancelled->name() }}
+                    </option>
                 </select>
             </div>
             <div class="flex items-center">

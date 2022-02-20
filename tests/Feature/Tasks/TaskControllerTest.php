@@ -157,11 +157,11 @@ class TaskControllerTest extends TestCase
             ->assertSessionHas('taskCompleted');
 
         $this->assertDatabaseMissing('tasks', [
-            'status' => TaskStatus::Pending->value
+            'status' => TaskStatus::Pending()
         ]);
 
         $this->assertDatabaseHas('tasks', [
-            'status' => TaskStatus::Completed->value
+            'status' => TaskStatus::Completed()
         ]);
     }
 
@@ -179,11 +179,11 @@ class TaskControllerTest extends TestCase
             ->assertSessionHas('taskCancelled');
 
         $this->assertDatabaseMissing('tasks', [
-            'status' => TaskStatus::Pending->value
+            'status' => TaskStatus::Pending()
         ]);
 
         $this->assertDatabaseHas('tasks', [
-            'status' => TaskStatus::Cancelled->value
+            'status' => TaskStatus::Cancelled()
         ]);
     }
 

@@ -55,7 +55,7 @@ class EditBuilding extends Component
     {
         return [
             'internal_code' => ['required', 'string', 'max:255', Rule::unique('buildings')->ignore($this->building->id)],
-            'status' => ['required', Rule::in([BuildingStatus::Active->value, BuildingStatus::Inactive->value])],
+            'status' => ['required', Rule::in([BuildingStatus::Active(), BuildingStatus::Inactive()])],
             'construction_year' => ['required', Rule::in(Building::availableConstructionYears())],
             'square' => ['required', 'numeric', 'min:1'],
             'floors' => ['required', 'numeric', 'min:0'],

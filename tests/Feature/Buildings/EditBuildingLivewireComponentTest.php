@@ -150,7 +150,7 @@ class EditBuildingLivewireComponentTest extends TestCase
             'building' => $building
         ])
             ->set('internal_code', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
-            ->set('status', BuildingStatus::Active->value)
+            ->set('status', BuildingStatus::Active())
             ->set('construction_year', now()->year)
             ->set('square', 0)
             ->set('floors', -1)
@@ -181,7 +181,7 @@ class EditBuildingLivewireComponentTest extends TestCase
             'building' => $building
         ])
             ->set('internal_code', "$building2->internal_code")
-            ->set('status', BuildingStatus::Active->value)
+            ->set('status', BuildingStatus::Active())
             ->set('construction_year', now()->year)
             ->set('square', 1)
             ->set('floors', 1)
@@ -207,7 +207,7 @@ class EditBuildingLivewireComponentTest extends TestCase
             'building' => $building
         ])
             ->set('internal_code', "$building->internal_code")
-            ->set('status', BuildingStatus::Active->value)
+            ->set('status', BuildingStatus::Active())
             ->set('construction_year', now()->year)
             ->set('square', 1)
             ->set('floors', 1)
@@ -237,7 +237,7 @@ class EditBuildingLivewireComponentTest extends TestCase
             'building' => $building
         ])
             ->set('internal_code', "12345")
-            ->set('status', BuildingStatus::Inactive->value)
+            ->set('status', BuildingStatus::Inactive())
             ->set('construction_year', $building->construction_year-1)
             ->set('square', $building->square + 10)
             ->set('floors', $building->floors + 10)
@@ -275,7 +275,7 @@ class EditBuildingLivewireComponentTest extends TestCase
             ])
             ->assertDatabaseHas('buildings', [
                 'internal_code' => "12345",
-                'status' => BuildingStatus::Inactive->value,
+                'status' => BuildingStatus::Inactive(),
                 'construction_year' => $building->construction_year-1,
                 'square' => $building->square + 10,
                 'floors' => $building->floors + 10,

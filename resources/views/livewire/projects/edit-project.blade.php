@@ -40,10 +40,10 @@
                     id="status" 
                     title="{{ __('Status') }}" 
                     :options="[
-                        'Pending' => \App\Enums\ProjectStatus::Pending->value, 
-                        'Processing' => \App\Enums\ProjectStatus::Processing->value,
-                        'Finished' => \App\Enums\ProjectStatus::Finished->value,
-                        'Cancelled' => \App\Enums\ProjectStatus::Cancelled->value
+                        'Pending' => \App\Enums\ProjectStatus::Pending(), 
+                        'Processing' => \App\Enums\ProjectStatus::Processing(),
+                        'Finished' => \App\Enums\ProjectStatus::Finished(),
+                        'Cancelled' => \App\Enums\ProjectStatus::Cancelled()
                     ]"
                 />
                 <x-form.error-message name="status" />

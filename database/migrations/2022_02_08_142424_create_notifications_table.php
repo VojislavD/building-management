@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('building_id')->constrained()->cascadeOnDelete();
-            $table->tinyInteger('status')->default(NotificationStatus::Scheduled->value);
+            $table->tinyInteger('status')->default(NotificationStatus::Scheduled());
             $table->boolean('via_email')->default(false);
             $table->string('subject')->nullable();
             $table->text('body');

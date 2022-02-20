@@ -4,10 +4,24 @@ namespace App\Enums;
 
 enum NotificationStatus: int 
 {
+    use InvokableClass;
+
     case Scheduled = 1;
     case Processing = 2;
     case Finished = 3;
     case Cancelled = 4;
+
+    public function name(): string
+    {
+        return match($this)
+        {
+            NotificationStatus::Scheduled => __("Scheduled"),
+            NotificationStatus::Processing => __("Processing"),
+            NotificationStatus::Finished => __("Finished"),
+            NotificationStatus::Cancelled => __("Cancelled"),
+            default => __('N/A')
+        };
+    }
 
     public function label(): string
     {

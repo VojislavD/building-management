@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('building_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->tinyInteger('status')->default(TaskStatus::Pending->value);
+            $table->tinyInteger('status')->default(TaskStatus::Pending());
             $table->text('description');
             $table->text('comment')->nullable();
             $table->timestamps();

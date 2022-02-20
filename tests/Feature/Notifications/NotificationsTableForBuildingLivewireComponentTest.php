@@ -50,7 +50,7 @@ class NotificationsTableForBuildingLivewireComponentTest extends TestCase
         Livewire::test('notifications.notifications-table-for-building', [
                 'building' => $building
             ])
-            ->set('status', NotificationStatus::Scheduled->value)
+            ->set('status', NotificationStatus::Scheduled())
             ->assertSee($notificationScheduled->subject)
             ->assertDontSee($notificationProcessing->subject)
             ->assertDontSee($notificationFinished->subject)
@@ -59,7 +59,7 @@ class NotificationsTableForBuildingLivewireComponentTest extends TestCase
         Livewire::test('notifications.notifications-table-for-building', [
                 'building' => $building
             ])
-            ->set('status', NotificationStatus::Processing->value)
+            ->set('status', NotificationStatus::Processing())
             ->assertSee($notificationProcessing->subject)
             ->assertDontSee($notificationScheduled->subject)
             ->assertDontSee($notificationFinished->subject)
@@ -68,7 +68,7 @@ class NotificationsTableForBuildingLivewireComponentTest extends TestCase
         Livewire::test('notifications.notifications-table-for-building', [
                 'building' => $building
             ])
-            ->set('status', NotificationStatus::Finished->value)
+            ->set('status', NotificationStatus::Finished())
             ->assertSee($notificationFinished->subject)
             ->assertDontSee($notificationScheduled->subject)
             ->assertDontSee($notificationProcessing->subject)
@@ -77,7 +77,7 @@ class NotificationsTableForBuildingLivewireComponentTest extends TestCase
         Livewire::test('notifications.notifications-table-for-building', [
                 'building' => $building
             ])
-            ->set('status', NotificationStatus::Cancelled->value)
+            ->set('status', NotificationStatus::Cancelled())
             ->assertSee($notificationCancelled->subject)
             ->assertDontSee($notificationScheduled->subject)
             ->assertDontSee($notificationProcessing->subject)

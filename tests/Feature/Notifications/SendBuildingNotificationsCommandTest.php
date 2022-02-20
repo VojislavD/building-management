@@ -45,22 +45,22 @@ class SendBuildingNotificationsCommandTest extends TestCase
 
         $this->assertDatabaseHas('notifications', [
             'id' => $notificationScheduled->id,
-            'status' => NotificationStatus::Processing->value
+            'status' => NotificationStatus::Processing()
         ]);
 
         $this->assertDatabaseHas('notifications', [
             'id' => $notificationProcessing->id,
-            'status' => NotificationStatus::Processing->value
+            'status' => NotificationStatus::Processing()
         ]);
 
         $this->assertDatabaseHas('notifications', [
             'id' => $notificationFinished->id,
-            'status' => NotificationStatus::Finished->value
+            'status' => NotificationStatus::Finished()
         ]);
 
         $this->assertDatabaseHas('notifications', [
             'id' => $notificationCancelled->id,
-            'status' => NotificationStatus::Cancelled->value
+            'status' => NotificationStatus::Cancelled()
         ]);
     }
 }

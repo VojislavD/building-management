@@ -115,7 +115,7 @@ class EditProjectLivewireComponentTest extends TestCase
         Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
-            ->set('status', ProjectStatus::Pending->value)
+            ->set('status', ProjectStatus::Pending())
             ->set('name', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
             ->set('price', 100)
             ->set('rates', 10)
@@ -131,7 +131,7 @@ class EditProjectLivewireComponentTest extends TestCase
         Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
-            ->set('status', ProjectStatus::Pending->value)
+            ->set('status', ProjectStatus::Pending())
             ->set('name', 'Example')
             ->set('price', 100)
             ->set('rates', 10)
@@ -153,7 +153,7 @@ class EditProjectLivewireComponentTest extends TestCase
         Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
-            ->set('status', ProjectStatus::Finished->value)
+            ->set('status', ProjectStatus::Finished())
             ->set('name', 'Example')
             ->set('price', 100)
             ->set('rates', 10)
@@ -176,7 +176,7 @@ class EditProjectLivewireComponentTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('projects', [
-            'status' => ProjectStatus::Finished->value,
+            'status' => ProjectStatus::Finished(),
             'name' => 'Example',
             'price' => 100,
             'rates' => 10,

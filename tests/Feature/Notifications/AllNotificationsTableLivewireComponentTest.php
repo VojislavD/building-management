@@ -48,7 +48,7 @@ class AllNotificationsTableLivewireComponentTest extends TestCase
             ]);
 
         Livewire::test('notifications.all-notifications-table')
-            ->set('status', NotificationStatus::Scheduled->value)
+            ->set('status', NotificationStatus::Scheduled())
             ->assertSeeHtml([
                 $notificationScheduled->subject,
             ])
@@ -59,7 +59,7 @@ class AllNotificationsTableLivewireComponentTest extends TestCase
             ]);
 
         Livewire::test('notifications.all-notifications-table')
-            ->set('status', NotificationStatus::Processing->value)
+            ->set('status', NotificationStatus::Processing())
             ->assertSeeHtml([
                 $notificationProcessing->subject,
             ])
@@ -70,7 +70,7 @@ class AllNotificationsTableLivewireComponentTest extends TestCase
             ]);
 
         Livewire::test('notifications.all-notifications-table')
-            ->set('status', NotificationStatus::Finished->value)
+            ->set('status', NotificationStatus::Finished())
             ->assertSeeHtml([
                 $notificationFinished->subject,
             ])
@@ -81,7 +81,7 @@ class AllNotificationsTableLivewireComponentTest extends TestCase
             ]);
 
         Livewire::test('notifications.all-notifications-table')
-            ->set('status', NotificationStatus::Cancelled->value)
+            ->set('status', NotificationStatus::Cancelled())
             ->assertSeeHtml([
                 $notificationCancelled->subject,
             ])

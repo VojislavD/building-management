@@ -7,9 +7,15 @@
                 class="py-1 text-sm border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300"
                 >
                 <option value="">{{ __('All') }}</option>
-                <option value="{{ \App\Enums\TaskStatus::Pending->value }}">{{ __('Pending') }}</option>
-                <option value="{{ \App\Enums\TaskStatus::Completed->value }}">{{ __('Completed') }}</option>
-                <option value="{{ \App\Enums\TaskStatus::Cancelled->value }}">{{ __('Cancelled') }}</option>
+                <option value="{{ \App\Enums\TaskStatus::Pending() }}">
+                    {{ \App\Enums\TaskStatus::Pending->name() }}
+                </option>
+                <option value="{{ \App\Enums\TaskStatus::Completed() }}">
+                    {{ \App\Enums\TaskStatus::Completed->name() }}
+                </option>
+                <option value="{{ \App\Enums\TaskStatus::Cancelled() }}">
+                    {{ \App\Enums\TaskStatus::Cancelled->name() }}
+                </option>
             </select>
         </div>
         <div>

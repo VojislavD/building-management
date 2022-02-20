@@ -22,10 +22,10 @@ class NotificationFactory extends Factory
         return [
             'building_id' => Building::factory(),
             'status' => collect([
-                NotificationStatus::Scheduled->value,
-                NotificationStatus::Processing->value,
-                NotificationStatus::Finished->value,
-                NotificationStatus::Cancelled->value,
+                NotificationStatus::Scheduled(),
+                NotificationStatus::Processing(),
+                NotificationStatus::Finished(),
+                NotificationStatus::Cancelled(),
             ])->random(),
             'via_email' => $this->faker->boolean(),
             'subject' => $this->faker->sentence(),
@@ -37,28 +37,28 @@ class NotificationFactory extends Factory
     public function scheduled(): Factory
     {
         return $this->state([
-            'status' => NotificationStatus::Scheduled->value
+            'status' => NotificationStatus::Scheduled()
         ]);
     }
 
     public function processing(): Factory
     {
         return $this->state([
-            'status' => NotificationStatus::Processing->value
+            'status' => NotificationStatus::Processing()
         ]);
     }
 
     public function finished(): Factory
     {
         return $this->state([
-            'status' => NotificationStatus::Finished->value
+            'status' => NotificationStatus::Finished()
         ]);
     }
 
     public function cancelled(): Factory
     {
         return $this->state([
-            'status' => NotificationStatus::Cancelled->value
+            'status' => NotificationStatus::Cancelled()
         ]);
     }
 

@@ -39,7 +39,7 @@ class TaskController extends Controller
     public function completed(Task $task): RedirectResponse
     {
         $taskCompleted = $task->update([
-            'status' => TaskStatus::Completed->value
+            'status' => TaskStatus::Completed()
         ]);
 
         if ($taskCompleted) {
@@ -52,7 +52,7 @@ class TaskController extends Controller
     public function cancelled(Task $task): RedirectResponse
     {
         $taskCancelled = $task->update([
-            'status' => TaskStatus::Cancelled->value
+            'status' => TaskStatus::Cancelled()
         ]);
 
         if ($taskCancelled) {

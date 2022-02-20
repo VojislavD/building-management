@@ -4,10 +4,24 @@ namespace App\Enums;
 
 enum ProjectStatus: int 
 {
+    use InvokableClass;
+
     case Pending = 1;
     case Processing = 2;
     case Finished = 3;
     case Cancelled = 4;
+
+    public function name(): string
+    {
+        return match($this)
+        {
+            ProjectStatus::Pending => __("Pending"),
+            ProjectStatus::Processing => __("Processing"),
+            ProjectStatus::Finished => __("Finished"),
+            ProjectStatus::Cancelled => __("Cancelled"),
+            default => __('N/A')
+        };
+    }
 
     public function label(): string
     {

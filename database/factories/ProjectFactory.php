@@ -22,10 +22,10 @@ class ProjectFactory extends Factory
         return [
             'building_id' => Building::factory(),
             'status' => collect([
-                ProjectStatus::Pending->value,
-                ProjectStatus::Processing->value,
-                ProjectStatus::Finished->value,
-                ProjectStatus::Cancelled->value,
+                ProjectStatus::Pending(),
+                ProjectStatus::Processing(),
+                ProjectStatus::Finished(),
+                ProjectStatus::Cancelled(),
             ])->random(),
             'name' => $this->faker->sentence(),
             'price' => $this->faker->numberBetween(10000, 100000),
@@ -40,28 +40,28 @@ class ProjectFactory extends Factory
     public function pending(): Factory
     {
         return $this->state([
-            'status' => ProjectStatus::Pending->value
+            'status' => ProjectStatus::Pending()
         ]);
     }
 
     public function processing(): Factory
     {
         return $this->state([
-            'status' => ProjectStatus::Processing->value
+            'status' => ProjectStatus::Processing()
         ]);
     }
 
     public function finished(): Factory
     {
         return $this->state([
-            'status' => ProjectStatus::Finished->value
+            'status' => ProjectStatus::Finished()
         ]);
     }
 
     public function cancelled(): Factory
     {
         return $this->state([
-            'status' => ProjectStatus::Cancelled->value
+            'status' => ProjectStatus::Cancelled()
         ]);
     }
 }

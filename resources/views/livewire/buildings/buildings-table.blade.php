@@ -7,8 +7,12 @@
                 class="py-1 text-sm border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300"
                 >
                 <option value="">{{ __('All') }}</option>
-                <option value="{{ \App\Enums\BuildingStatus::Active->value }}">{{ __('Active') }}</option>
-                <option value="{{ \App\Enums\BuildingStatus::Inactive->value }}">{{ __('Inactive') }}</option>
+                <option value="{{ \App\Enums\BuildingStatus::Active() }}">
+                    {{ \App\Enums\BuildingStatus::Active->name() }}
+                </option>
+                <option value="{{ \App\Enums\BuildingStatus::Inactive() }}">
+                    {{ \App\Enums\BuildingStatus::Inactive->name() }}
+                </option>
             </select>
         </div>
         <div>

@@ -42,10 +42,10 @@ class EditProject extends Component
     {
         return [
             'status' => ['required', 'integer', Rule::in([
-                ProjectStatus::Pending->value, 
-                ProjectStatus::Processing->value, 
-                ProjectStatus::Finished->value, 
-                ProjectStatus::Cancelled->value, 
+                ProjectStatus::Pending(), 
+                ProjectStatus::Processing(), 
+                ProjectStatus::Finished(), 
+                ProjectStatus::Cancelled(), 
             ])],
             'name' => ['required', 'string', 'min:6', 'max:255'],
             'price' => ['required', 'integer', 'min:0'],

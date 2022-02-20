@@ -17,7 +17,7 @@ class BuildingsTable extends Component
 
     public function mount()
     {
-        $this->status = BuildingStatus::Active->value;
+        $this->status = BuildingStatus::Active();
     }
     
     public function updatingPerPage() 

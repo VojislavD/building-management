@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Projects;
 
-use App\Enums\ProjectStatus;
 use App\Models\Project;
 use Livewire\Component;
 use Livewire\WithPagination;

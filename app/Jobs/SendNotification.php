@@ -44,7 +44,7 @@ class SendNotification implements ShouldQueue
         ));
 
         $this->notification->update([
-            'status' => NotificationStatus::Finished->value
+            'status' => NotificationStatus::Finished()
         ]);
     }
 }
