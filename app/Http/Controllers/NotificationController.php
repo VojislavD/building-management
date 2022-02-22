@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Actions\DeletesNotification;
 use App\Enums\NotificationStatus;
 use App\Models\Building;
 use App\Models\Notification;
@@ -38,12 +39,10 @@ class NotificationController extends Controller
         return to_route('buildings.show', $notification->building)->with('notificationCancelled', __('Notification is successfully cancelled.'));
     }
 
-    public function destroy(Notification $notification): RedirectResponse
+    public function destroy(Notification $notification, DeletesNotification $deletesNotification): RedirectResponse
     {
-        if ($notification->delete()) {
-            return to_route('buildings.show', $notification->building)->with('notificationDeleted', __('Notification is successfully deleted.'));
-        } else {
-            return to_route('buildings.show', $notification->building)->with('notificationNotDeleted', __('Oops! Something went wrong, please try again.'));
-        }
+        $deletesNotification($notification);
+
+        return to_route('buildings.show', $notification->building)->with('notificationDeleted', __('Notification is successfully deleted.'));
     }
 }

@@ -7,7 +7,6 @@
     <x-flash-message type="success" name="notificationCancelled" />
 
     <x-flash-message type="success" name="notificationDeleted" />
-    <x-flash-message type="error" name="notificationNotDeleted" />
 
     <div class="flex items-start justify-between">
         <div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Actions\DeletesBuilding;
 use App\Models\Building;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
@@ -32,12 +33,10 @@ class BuildingController extends Controller
         ]);
     }
 
-    public function destroy(Building $building): RedirectResponse
+    public function destroy(Building $building, DeletesBuilding $deletesBuilding): RedirectResponse
     {
-        if ($building->delete()) {
-            return to_route('buildings.index')->with('buildingDeleted', __('Building is successfully deleted.'));
-        } else {
-            return to_route('buildings.index')->with('buildingNotDeleted', __('Oops! Something went wrong, please try again.'));
-        }
+        $deletesBuilding($building);
+
+        return to_route('buildings.index')->with('buildingDeleted', __('Building is successfully deleted.'));
     }
 }

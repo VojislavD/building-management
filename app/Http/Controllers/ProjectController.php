@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Actions\DeletesProject;
 use App\Models\Project;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
@@ -21,13 +22,10 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function destroy(Project $project): RedirectResponse
+    public function destroy(Project $project, DeletesProject $deletesProject): RedirectResponse
     {
-        if ($project->delete()) {
-            return to_route('projects.index')->with('projectDeleted', 'Project successfully deleted.');
-        } else {
-            return to_route('projects.index')->with('projectNotDeleted', 'Oops! Something went wrong, please try again.');
-        }
+        $deletesProject($project);
 
+        return to_route('projects.index')->with('projectDeleted', 'Project successfully deleted.');
     }
 }

@@ -7,7 +7,6 @@
     <x-flash-message type="error" name="buildingNotUpdated" />
     
     <x-flash-message type="success" name="buildingDeleted" />
-    <x-flash-message type="error" name="buildingNotDeleted" />
 
     <div class="flex items-center justify-end">
         <x-link-button route="{{ route('buildings.create') }}" text="{{ __('New Building') }}" />
