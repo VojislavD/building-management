@@ -4,6 +4,7 @@ namespace App\Actions\Fortify;
 
 use App\Models\Company;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -30,11 +31,11 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
         
-        $company = Company::create([
-            'name' => $input['company']
-        ]);
+        $user = DB::transaction(function () use ($input) {
+            $company = Company::create([
+                'name' => $input['company']
+            ]);
 
-        if ($company instanceof Company) {
             return User::create([
                 'company_id' => $company->id,
                 'name' => $input['name'],
@@ -42,6 +43,8 @@ class CreateNewUser implements CreatesNewUsers
                 'phone' => $input['phone'],
                 'password' => Hash::make($input['password']),
             ]);
-        }
+        });
+
+        return $user;
     }
 }
