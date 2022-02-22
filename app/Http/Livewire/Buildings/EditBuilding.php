@@ -33,22 +33,24 @@ class EditBuilding extends Component
 
     public function mount()
     {
-        $this->internal_code = $this->building->internal_code;
-        $this->status = $this->building->status->value;
-        $this->construction_year = $this->building->construction_year;
-        $this->square = $this->building->square;
-        $this->floors = $this->building->floors;
-        $this->elevator = $this->building->elevator;
-        $this->yard = $this->building->yard;
-        $this->balance = $this->building->balance;
-        $this->pib = $this->building->pib;
-        $this->identification_number = $this->building->identification_number;
-        $this->account_number = $this->building->account_number;
-        $this->address = $this->building->address;
-        $this->city = $this->building->city;
-        $this->county = $this->building->county;
-        $this->postal_code = $this->building->postal_code;
-        $this->comment = $this->building->comment;
+        $this->fill([
+            'internal_code' => $this->building->internal_code,
+            'status' => $this->building->status->value,
+            'construction_year' => $this->building->construction_year,
+            'square' => $this->building->square,
+            'floors' => $this->building->floors,
+            'elevator' => $this->building->elevator,
+            'yard' => $this->building->yard,
+            'balance' => $this->building->balance,
+            'pib' => $this->building->pib,
+            'identification_number' => $this->building->identification_number,
+            'account_number' => $this->building->account_number,
+            'address' => $this->building->address,
+            'city' => $this->building->city,
+            'county' => $this->building->county,
+            'postal_code' => $this->building->postal_code,
+            'comment' => $this->building->comment
+        ]);
     }
 
     protected function rules(): array

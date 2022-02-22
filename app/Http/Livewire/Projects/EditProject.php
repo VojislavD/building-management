@@ -26,16 +26,18 @@ class EditProject extends Component
 
     public function mount()
     {
-        $this->internal_code = $this->project->building->internal_code;    
-        $this->address = $this->project->building->address;
-        $this->status = $this->project->status->value;
-        $this->name = $this->project->name;
-        $this->price = $this->project->price;
-        $this->rates = $this->project->rates;
-        $this->amount_payed = $this->project->amount_payed;
-        $this->amount_left = $this->project->amount_left;
-        $this->start_paying = $this->project->start_paying->format('Y-m-d');
-        $this->end_paying = $this->project->end_paying->format('Y-m-d');
+        $this->fill([
+            'internal_code' => $this->project->building->internal_code,    
+            'address' => $this->project->building->address,
+            'status' => $this->project->status->value,
+            'name' => $this->project->name,
+            'price' => $this->project->price,
+            'rates' => $this->project->rates,
+            'amount_payed' => $this->project->amount_payed,
+            'amount_left' => $this->project->amount_left,
+            'start_paying' => $this->project->start_paying->format('Y-m-d'),
+            'end_paying' => $this->project->end_paying->format('Y-m-d')
+        ]);
     }
 
     protected function rules(): array

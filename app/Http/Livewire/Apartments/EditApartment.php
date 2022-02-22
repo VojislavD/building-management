@@ -22,13 +22,15 @@ class EditApartment extends Component
 
     public function mount()
     {
-        $this->internal_code = $this->apartment->building->internal_code;    
-        $this->address = $this->apartment->building->address;
-        $this->owner_name = $this->apartment->owner->name; 
-        $this->owner_email = $this->apartment->owner->email; 
-        $this->owner_phone = $this->apartment->owner->phone; 
-        $this->number = $this->apartment->number; 
-        $this->tenants = $this->apartment->tenants; 
+        $this->fill([
+            'internal_code' => $this->apartment->building->internal_code,    
+            'address' => $this->apartment->building->address,
+            'owner_name' => $this->apartment->owner->name,
+            'owner_email' => $this->apartment->owner->email,
+            'owner_phone' => $this->apartment->owner->phone, 
+            'number' => $this->apartment->number,
+            'tenants' => $this->apartment->tenants,
+        ]);
     }
 
     protected function rules(): array

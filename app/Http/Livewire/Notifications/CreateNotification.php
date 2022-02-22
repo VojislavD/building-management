@@ -31,8 +31,10 @@ class CreateNotification extends Component
 
     public function mount()
     {
-        $this->internal_code = $this->building->internal_code;
-        $this->address = $this->building->address;
+        $this->fill([
+            'internal_code' => $this->building->internal_code,
+            'address' => $this->building->address
+        ]);
     }
 
     protected function rules(): array
