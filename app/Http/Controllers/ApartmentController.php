@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Apartments\DeleteApartment;
+use App\Contracts\Actions\DeletesApartment;
 use App\Models\Apartment;
 use App\Models\Building;
 use Illuminate\Contracts\Support\Renderable;
@@ -29,9 +29,9 @@ class ApartmentController extends Controller
         ]);
     }
 
-    public function destroy(Apartment $apartment, DeleteApartment $deleteApartment): RedirectResponse
+    public function destroy(Apartment $apartment, DeletesApartment $deletesApartment): RedirectResponse
     {
-        $deleteApartment->handle($apartment);
+        $deletesApartment($apartment);
 
         return to_route('buildings.show', $apartment->building)->with('apartmentDeleted', 'Apartment successfully deleted.');
     }
