@@ -4,7 +4,7 @@ namespace App\Contracts\Actions;
 
 use App\Models\Building;
 
-interface EditsBuilding
+interface UpdatesBuilding
 {
     public function __invoke(Building $building, array $input): void;
 }

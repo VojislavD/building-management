@@ -2,13 +2,13 @@
 
 namespace App\Actions\Apartments;
 
-use App\Contracts\Actions\EditsApartment;
+use App\Contracts\Actions\UpdatesApartment;
 use App\Models\Apartment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class EditApartment implements EditsApartment
+class UpdateApartment implements UpdatesApartment
 {
     public function __invoke(Apartment $apartment, array $input): void
     {

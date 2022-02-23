@@ -2,13 +2,13 @@
 
 namespace App\Actions\Buildings;
 
-use App\Contracts\Actions\EditsBuilding;
+use App\Contracts\Actions\UpdatesBuilding;
 use App\Enums\BuildingStatus;
 use App\Models\Building;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class EditBuilding implements EditsBuilding
+class UpdateBuilding implements UpdatesBuilding
 {
     public function __invoke(Building $building, array $input): void
     {

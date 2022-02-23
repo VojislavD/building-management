@@ -2,13 +2,13 @@
 
 namespace App\Actions\Projects;
 
-use App\Contracts\Actions\EditsProject;
+use App\Contracts\Actions\UpdatesProject;
 use App\Enums\ProjectStatus;
 use App\Models\Project;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class EditProject implements EditsProject
+class UpdateProject implements UpdatesProject
 {
     public function __invoke(Project $project, array $input): void
     {

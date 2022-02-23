@@ -2,13 +2,11 @@
 
 namespace App\Http\Livewire\Projects;
 
-use App\Contracts\Actions\EditsProject;
-use App\Enums\ProjectStatus;
+use App\Contracts\Actions\UpdatesProject;
 use App\Models\Project;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class EditProject extends Component
@@ -33,11 +31,11 @@ class EditProject extends Component
         ]);
     }
 
-    public function submit(EditsProject $editor): Redirector|RedirectResponse
+    public function submit(UpdatesProject $updator): Redirector|RedirectResponse
     {
         $this->resetErrorBag();
 
-        $editor($this->project, $this->state);
+        $updator($this->project, $this->state);
 
         session()->flash('projectUpdated', __('Project successfully updated.'));
 

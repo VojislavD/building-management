@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Apartments;
 
-use App\Contracts\Actions\EditsApartment;
+use App\Contracts\Actions\UpdatesApartment;
 use App\Models\Apartment;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
@@ -29,11 +29,11 @@ class EditApartment extends Component
         ]);
     }
 
-    public function submit(EditsApartment $editor): Redirector|RedirectResponse
+    public function submit(UpdatesApartment $updator): Redirector|RedirectResponse
     {
         $this->resetErrorBag();
         
-        $editor($this->apartment, $this->state);
+        $updator($this->apartment, $this->state);
 
         session()->flash('apratmentUpdated', __('Apartment successfully updated.'));
 

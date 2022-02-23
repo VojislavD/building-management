@@ -4,7 +4,7 @@ namespace App\Contracts\Actions;
 
 use App\Models\Apartment;
 
-interface EditsApartment
+interface UpdatesApartment
 {
     public function __invoke(Apartment $apartment, array $input): void;
 }

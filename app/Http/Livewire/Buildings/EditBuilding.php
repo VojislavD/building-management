@@ -2,13 +2,11 @@
 
 namespace App\Http\Livewire\Buildings;
 
-use App\Contracts\Actions\EditsBuilding;
-use App\Enums\BuildingStatus;
+use App\Contracts\Actions\UpdatesBuilding;
 use App\Models\Building;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class EditBuilding extends Component
@@ -39,11 +37,11 @@ class EditBuilding extends Component
         ]);
     }
 
-    public function submit(EditsBuilding $editor): Redirector|RedirectResponse
+    public function submit(UpdatesBuilding $updator): Redirector|RedirectResponse
     {
         $this->resetErrorBag();
 
-        $editor($this->building, $this->state);
+        $updator($this->building, $this->state);
 
         session()->flash('buildingUpdated', __('Building is successfully updated.'));
         return to_route('buildings.index');
