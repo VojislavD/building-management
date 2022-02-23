@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Apartments;
 
+use App\Contracts\Actions\CreatesApartment;
 use App\Models\Apartment;
 use App\Models\Building;
 use App\Models\User;
@@ -17,56 +18,21 @@ class CreateApartment extends Component
 {
     public Building $building;
 
-    public $internal_code;
-    public $address;
-    public $owner_name;
-    public $owner_email;
-    public $owner_phone;
-    public $owner_password;
-    public $owner_password_confirmation;
-    public $number;
-    public $tenants;
+    public $state = [];
 
     public function mount()
     {
         $this->fill([
-            'internal_code' => $this->building->internal_code,
-            'address' => $this->building->address
+            'state.internal_code' => $this->building->internal_code,
+            'state.address' => $this->building->address
         ]);
     }
 
-    protected function rules(): array
+    public function submit(CreatesApartment $creator): Redirector|RedirectResponse
     {
-        return [
-            'owner_name' => ['required', 'string', 'max:255'],
-            'owner_email' => ['required', 'string', 'email', 'max:255'],
-            'owner_phone' => ['required', 'string', 'max:255'],
-            'owner_password' => ['required', 'string', new Password, 'confirmed'],
-            'number' => ['required', 'integer', 'min:0', 'max:9999', Rule::unique('apartments')->where('building_id', $this->building->id)],
-            'tenants' => ['required', 'integer', 'min:0', 'max:9999']
-        ];
-    }
+        $this->resetErrorBag();
 
-    public function submit(): Redirector|RedirectResponse
-    {
-        $this->validate();
-
-        DB::transaction(function () {
-            $owner = User::create([
-                'company_id' => $this->building->company->id,
-                'name' => $this->owner_name,
-                'email' => $this->owner_email,
-                'phone' => $this->owner_phone,
-                'password' => bcrypt($this->owner_password)
-            ]);
-
-            Apartment::create([
-                'building_id' => $this->building->id,
-                'user_id' => $owner->id,
-                'number' => $this->number,
-                'tenants' => $this->tenants
-            ]);
-        });
+        $creator($this->building, $this->state);
 
         session()->flash('apratmentCreated', __('Apartment successfully created.'));
 

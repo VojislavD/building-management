@@ -9,7 +9,7 @@
             <div>
                 <x-form.input 
                     type="text" 
-                    model="internal_code"
+                    model="state.internal_code"
                     id="internal_code" 
                     title="{{ __('Internal Code') }}" 
                     placeholder="{{ __('Internal Code') }}" 
@@ -20,7 +20,7 @@
             <div>
                 <x-form.input 
                     type="text" 
-                    model="address"
+                    model="state.address"
                     id="address" 
                     title="{{ __('Address') }}" 
                     placeholder="{{ __('Address') }}" 
@@ -37,34 +37,34 @@
             <div>
                 <x-form.input 
                     type="text" 
-                    model="owner_name" 
+                    model="state.owner_name" 
                     id="owner_name" 
+                    error="owner_name"
                     title="{{ __('Name') }}" 
                     placeholder="{{ __('Name') }}" 
                 />
-                <x-form.error-message name="owner_name" />
             </div>
 
             <div>
                 <x-form.input 
                     type="email" 
-                    model="owner_email" 
+                    model="state.owner_email" 
                     id="owner_email" 
+                    error="owner_email"
                     title="{{ __('Email Address') }}" 
                     placeholder="{{ __('Email Address') }}" 
                 />
-                <x-form.error-message name="owner_email" />
             </div>
             
             <div>
                 <x-form.input 
                     type="text" 
-                    model="owner_phone" 
+                    model="state.owner_phone" 
                     id="owner_phone" 
+                    error="owner_phone" 
                     title="{{ __('Phone Number') }}" 
                     placeholder="{{ __('Phone Number') }}" 
                 />
-                <x-form.error-message name="owner_phone" />
             </div>
         </div>
 
@@ -72,18 +72,18 @@
             <div>
                 <x-form.input 
                     type="password" 
-                    model="owner_password" 
+                    model="state.owner_password" 
                     id="owner_password" 
+                    error="owner_password" 
                     title="{{ __('Password') }}" 
                     placeholder="{{ __('Password') }}" 
                 />
-                <x-form.error-message name="owner_password" />
             </div>
 
             <div>
                 <x-form.input 
                     type="password" 
-                    model="owner_password_confirmation" 
+                    model="state.owner_password_confirmation" 
                     id="owner_password_confirmation" 
                     title="{{ __('Password Confirmation') }}" 
                     placeholder="{{ __('Password Confirmation') }}" 
@@ -99,23 +99,23 @@
             <div>
                 <x-form.input 
                     type="number" 
-                    model="number" 
+                    model="state.number" 
                     id="number" 
+                    error="number" 
                     title="{{ __('Number') }}" 
                     placeholder="{{ __('Number') }}" 
                 />
-                <x-form.error-message name="number" />
             </div>
 
             <div>
                 <x-form.input 
                     type="number" 
-                    model="tenants" 
+                    model="state.tenants" 
                     id="tenants" 
+                    error="tenants" 
                     title="{{ __('Tenants') }}" 
                     placeholder="{{ __('Tenants') }}" 
                 />
-                <x-form.error-message name="tenants" />
             </div>
         </div>
     </div>

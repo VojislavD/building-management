@@ -60,12 +60,12 @@ class CreateApartmentLivewireComponentTest extends TestCase
         Livewire::test('apartments.create-apartment', [
                 'building' => $building
             ])
-            ->set('owner_name', 1)
-            ->set('owner_email', 1)
-            ->set('owner_phone', 1)
-            ->set('owner_password', 1)
-            ->set('number', 'Not Integer')
-            ->set('tenants', 'Not Integer')
+            ->set('state.owner_name', 1)
+            ->set('state.owner_email', 1)
+            ->set('state.owner_phone', 1)
+            ->set('state.owner_password', 1)
+            ->set('state.number', 'Not Integer')
+            ->set('state.tenants', 'Not Integer')
             ->call('submit')
             ->assertHasErrors([
                 'owner_name' => 'string',
@@ -79,12 +79,12 @@ class CreateApartmentLivewireComponentTest extends TestCase
         Livewire::test('apartments.create-apartment', [
                 'building' => $building
             ])
-            ->set('owner_name', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
-            ->set('owner_email', 'notvalidemail')
-            ->set('owner_phone', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
-            ->set('owner_password', 'Test')
-            ->set('number', -1)
-            ->set('tenants', -1)
+            ->set('state.owner_name', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
+            ->set('state.owner_email', 'notvalidemail')
+            ->set('state.owner_phone', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
+            ->set('state.owner_password', 'Test')
+            ->set('state.number', -1)
+            ->set('state.tenants', -1)
             ->call('submit')
             ->assertHasErrors([
                 'owner_name' => 'max',
@@ -98,12 +98,12 @@ class CreateApartmentLivewireComponentTest extends TestCase
         Livewire::test('apartments.create-apartment', [
                 'building' => $building
             ])
-            ->set('owner_name', 'Test User')
-            ->set('owner_email', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
-            ->set('owner_phone', '0641234567')
-            ->set('owner_password', 'password')
-            ->set('number', 10000)
-            ->set('tenants', 10000)
+            ->set('state.owner_name', 'Test User')
+            ->set('state.owner_email', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
+            ->set('state.owner_phone', '0641234567')
+            ->set('state.owner_password', 'password')
+            ->set('state.number', 10000)
+            ->set('state.tenants', 10000)
             ->call('submit')
             ->assertHasErrors([
                 'owner_email' => 'max',
@@ -115,13 +115,13 @@ class CreateApartmentLivewireComponentTest extends TestCase
         Livewire::test('apartments.create-apartment', [
                 'building' => $building
             ])
-            ->set('owner_name', 'Test User')
-            ->set('owner_email', 'testuser@example.com')
-            ->set('owner_phone', '0641234567')
-            ->set('owner_password', 'password')
-            ->set('owner_password_confirmation', 'password')
-            ->set('number', $apartment->number)
-            ->set('tenants', 15)
+            ->set('state.owner_name', 'Test User')
+            ->set('state.owner_email', 'testuser@example.com')
+            ->set('state.owner_phone', '0641234567')
+            ->set('state.owner_password', 'password')
+            ->set('state.owner_password_confirmation', 'password')
+            ->set('state.number', $apartment->number)
+            ->set('state.tenants', 15)
             ->call('submit')
             ->assertHasErrors([
                 'number' => 'unique',
@@ -130,13 +130,13 @@ class CreateApartmentLivewireComponentTest extends TestCase
         Livewire::test('apartments.create-apartment', [
                 'building' => $building
             ])
-            ->set('owner_name', 'Test User')
-            ->set('owner_email', 'testuser@example.com')
-            ->set('owner_phone', '0641234567')
-            ->set('owner_password', 'password')
-            ->set('owner_password_confirmation', 'password')
-            ->set('number', $apartment->number+1)
-            ->set('tenants', 15)
+            ->set('state.owner_name', 'Test User')
+            ->set('state.owner_email', 'testuser@example.com')
+            ->set('state.owner_phone', '0641234567')
+            ->set('state.owner_password', 'password')
+            ->set('state.owner_password_confirmation', 'password')
+            ->set('state.number', $apartment->number+1)
+            ->set('state.tenants', 15)
             ->call('submit')
             ->assertHasNoErrors();
     }
@@ -151,13 +151,13 @@ class CreateApartmentLivewireComponentTest extends TestCase
         Livewire::test('apartments.create-apartment', [
                 'building' => $building
             ])
-            ->set('owner_name', 'Test User')
-            ->set('owner_email', 'testuser@example.com')
-            ->set('owner_phone', '0641234567')
-            ->set('owner_password', 'password')
-            ->set('owner_password_confirmation', 'password')
-            ->set('number', 10)
-            ->set('tenants', 15)
+            ->set('state.owner_name', 'Test User')
+            ->set('state.owner_email', 'testuser@example.com')
+            ->set('state.owner_phone', '0641234567')
+            ->set('state.owner_password', 'password')
+            ->set('state.owner_password_confirmation', 'password')
+            ->set('state.number', 10)
+            ->set('state.tenants', 15)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect(route('buildings.show', $building));
