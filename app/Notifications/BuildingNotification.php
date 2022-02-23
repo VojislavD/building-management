@@ -11,21 +11,16 @@ class BuildingNotification extends Notification
 {
     use Queueable;
 
-    public $via_email;
-    public $subject;
-    public $body;
-
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($via_email, $subject, $body)
-    {
-        $this->via_email = $via_email;
-        $this->subject = $subject;
-        $this->body = $body;
-    }
+    public function __construct(
+        public $via_email, 
+        public $subject, 
+        public $body
+    ) {}
 
     /**
      * Get the notification's delivery channels.

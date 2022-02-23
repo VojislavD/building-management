@@ -6,17 +6,14 @@ use Illuminate\View\Component;
 
 class ErrorMessage extends Component
 {
-    public $name;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name)
-    {
-        $this->name = $name;
-    }
+    public function __construct(
+        public $name
+    ) {}
 
     /**
      * Get the view / contents that represent the component.

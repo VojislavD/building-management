@@ -6,17 +6,14 @@ use Illuminate\View\Component;
 
 class ConfirmTaskStatus extends Component
 {
-    public $route;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($route)
-    {
-        $this->route = $route;
-    }
+    public function __construct(
+        public $route
+    ) {}
 
     /**
      * Get the view / contents that represent the component.

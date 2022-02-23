@@ -6,17 +6,14 @@ use Illuminate\View\Component;
 
 class Submit extends Component
 {
-    public $title;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title)
-    {
-        $this->title = $title;
-    }
+    public function __construct(
+        public $title
+    ) {}
 
     /**
      * Get the view / contents that represent the component.

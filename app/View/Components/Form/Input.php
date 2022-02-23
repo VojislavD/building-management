@@ -6,33 +6,22 @@ use Illuminate\View\Component;
 
 class Input extends Component
 {
-    public $type;
-    public $id;
-    public $title;
-    public $placeholder;
-    public $name;
-    public $model;
-    public $error;
-    public $step;
-    public $disabled;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type, $id, $title, $placeholder, $name = null, $model = null, $error = null, $step = null, $disabled = false)
-    {
-        $this->type = $type;
-        $this->id = $id;
-        $this->title = $title;
-        $this->placeholder = $placeholder;
-        $this->name = $name;
-        $this->model = $model;
-        $this->error = $error;
-        $this->step = $step;
-        $this->disabled = $disabled;
-    }
+    public function __construct(
+        public $type, 
+        public $id, 
+        public $title, 
+        public $placeholder, 
+        public $name = null, 
+        public $model = null, 
+        public $error = null, 
+        public $step = null, 
+        public $disabled = false
+    ) {}
 
     /**
      * Get the view / contents that represent the component.

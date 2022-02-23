@@ -6,25 +6,18 @@ use Illuminate\View\Component;
 
 class Select extends Component
 {
-    public $id;
-    public $title;
-    public $options;
-    public $name;
-    public $model;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id, $title, $options, $name = null, $model = null)
-    {
-        $this->id = $id;
-        $this->title = $title;
-        $this->options = $options;
-        $this->name = $name;
-        $this->model = $model;
-    }
+    public function __construct(
+        public $id, 
+        public $title, 
+        public $options, 
+        public $name = null, 
+        public $model = null
+    ) {}
 
     /**
      * Get the view / contents that represent the component.
