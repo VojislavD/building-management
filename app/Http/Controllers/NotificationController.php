@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Actions\DeletesNotification;
+use App\Contracts\Actions\UpdatesNotification;
 use App\Enums\NotificationStatus;
 use App\Models\Building;
 use App\Models\Notification;
@@ -30,11 +31,9 @@ class NotificationController extends Controller
         ]);
     }
 
-    public function cancel(Notification $notification): RedirectResponse
+    public function cancel(Notification $notification, UpdatesNotification $updater): RedirectResponse
     {
-        $notification->update([
-            'status' => NotificationStatus::Cancelled()
-        ]);
+        $updater($notification, ['status' => NotificationStatus::Cancelled()]);
 
         return to_route('buildings.show', $notification->building)->with('notificationCancelled', __('Notification is successfully cancelled.'));
     }
