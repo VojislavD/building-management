@@ -4,7 +4,7 @@ namespace App\Enums;
 
 enum NotificationStatus: int 
 {
-    use InvokableClass;
+    use InvokableCases;
 
     case Scheduled = 1;
     case Processing = 2;

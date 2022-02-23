@@ -11,6 +11,19 @@ parameters:
 
     ignoreErrors:
         - '#PHPDoc tag @var#'
+        - '#Call to an undefined static method App\\Enums\\BuildingStatus::Active\(\)#'
+        - '#Call to an undefined static method App\\Enums\\BuildingStatus::Inactive\(\)#'
+        - '#Call to an undefined static method App\\Enums\\NotificationStatus::Scheduled\(\)#'
+        - '#Call to an undefined static method App\\Enums\\NotificationStatus::Processing\(\)#'
+        - '#Call to an undefined static method App\\Enums\\NotificationStatus::Cancelled\(\)#'
+        - '#Call to an undefined static method App\\Enums\\NotificationStatus::Finished\(\)#'
+        - '#Call to an undefined static method App\\Enums\\ProjectStatus::Pending\(\)#'
+        - '#Call to an undefined static method App\\Enums\\ProjectStatus::Processing\(\)#'
+        - '#Call to an undefined static method App\\Enums\\ProjectStatus::Finished\(\)#'
+        - '#Call to an undefined static method App\\Enums\\ProjectStatus::Cancelled\(\)#'
+        - '#Call to an undefined static method App\\Enums\\TaskStatus::Completed\(\)#'
+        - '#Call to an undefined static method App\\Enums\\TaskStatus::Cancelled\(\)#'
+        - '#Call to an undefined static method App\\Enums\\TaskStatus::Pending\(\)#'
 
     excludePaths:
         - ./*/*/FileToBeExcluded.php

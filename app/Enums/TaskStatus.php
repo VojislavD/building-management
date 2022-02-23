@@ -4,7 +4,7 @@ namespace App\Enums;
 
 enum TaskStatus: int 
 {
-    use InvokableClass;
+    use InvokableCases;
 
     case Pending = 1;
     case Completed = 2;

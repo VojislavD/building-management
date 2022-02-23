@@ -4,7 +4,7 @@ namespace App\Enums;
 
 enum ProjectStatus: int 
 {
-    use InvokableClass;
+    use InvokableCases;
 
     case Pending = 1;
     case Processing = 2;

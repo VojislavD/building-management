@@ -4,7 +4,7 @@ namespace App\Enums;
 
 enum BuildingStatus: int 
 {
-    use InvokableClass;
+    use InvokableCases;
     
     case Active = 1;
     case Inactive = 2;

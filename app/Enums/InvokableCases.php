@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\Rules\Enum;
 
-trait InvokableClass
+trait InvokableCases
 {
     public function __invoke(): int|string
     {
