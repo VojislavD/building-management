@@ -16,7 +16,8 @@ class Select extends Component
         public $title, 
         public $options, 
         public $name = null, 
-        public $model = null
+        public $model = null,
+        public $error = null
     ) {}
 
     /**

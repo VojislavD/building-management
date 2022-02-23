@@ -2,7 +2,6 @@
 
 namespace App\Contracts\Actions;
 
-use App\Models\Apartment;
 use App\Models\Building;
 
 interface CreatesApartment

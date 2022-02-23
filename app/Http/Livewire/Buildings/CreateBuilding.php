@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Buildings;
 
+use App\Contracts\Actions\CreatesBuilding;
 use App\Enums\BuildingStatus;
 use App\Models\Building;
 use Illuminate\Contracts\Support\Renderable;
@@ -12,69 +13,13 @@ use Livewire\Component;
 
 class CreateBuilding extends Component
 {
-    public $internal_code;
-    public $status;
-    public $construction_year;
-    public $square;
-    public $floors;
-    public $elevator;
-    public $yard;
-    public $balance_begining;
-    public $pib;
-    public $identification_number;
-    public $account_number;
-    public $address;
-    public $city;
-    public $county;
-    public $postal_code;
-    public $comment;
-    
-    protected function rules(): array
-    {
-        return [
-            'internal_code' => ['required', 'string', 'max:255', 'unique:buildings'],
-            'status' => ['required', Rule::in([BuildingStatus::Active(), BuildingStatus::Inactive()])],
-            'construction_year' => ['required', Rule::in(Building::availableConstructionYears())],
-            'square' => ['required', 'numeric', 'min:1'],
-            'floors' => ['required', 'numeric', 'min:0'],
-            'elevator' => ['required', 'boolean'],
-            'yard' => ['required', 'boolean'],
-            'balance_begining' => ['required', 'numeric'],
-            'pib' => ['required', 'numeric', 'digits:9', 'unique:buildings'],
-            'identification_number' => ['required', 'numeric', 'digits:8', 'unique:buildings'],
-            'account_number' => ['required', 'string', 'unique:buildings'],
-            'address' => ['required', 'string'],
-            'city' => ['required', 'string'],
-            'county' => ['required', 'string'],
-            'postal_code' => ['required', 'numeric', 'digits:5'],
-            'comment' => ['nullable', 'string', 'max:1000'],
-        ];
-    }
+    public $state = [];
 
-    public function submit(): Redirector|RedirectResponse
+    public function submit(CreatesBuilding $creator): Redirector|RedirectResponse
     {
-        $this->validate();
+        $this->resetErrorBag();
 
-        Building::create([
-            'company_id' => auth()->user()->company->id,
-            'internal_code' => $this->internal_code,
-            'status' => $this->status,
-            'construction_year' => $this->construction_year,
-            'square' => $this->square,
-            'floors' => $this->floors,
-            'elevator' => $this->elevator,
-            'yard' => $this->yard,
-            'balance_begining' => $this->balance_begining,
-            'balance' => $this->balance_begining,
-            'pib' => $this->pib,
-            'identification_number' => $this->identification_number,
-            'account_number' => $this->account_number,
-            'address' => $this->address,
-            'city' => $this->city,
-            'county' => $this->county,
-            'postal_code' => $this->postal_code,
-            'comment' => $this->comment
-        ]);
+        $creator(auth()->user()->company, $this->state);
         
         session()->flash('buildingCreated', __('New building successfully created.'));
 

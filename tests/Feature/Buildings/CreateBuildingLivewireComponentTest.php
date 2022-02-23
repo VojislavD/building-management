@@ -71,24 +71,23 @@ class CreateBuildingLivewireComponentTest extends TestCase
                 'postal_code' => 'required',
             ]);
 
-        Livewire::test('buildings.create-building', [
-            'internal_code' => 1,
-            'status' => 0,
-            'construction_year' => 1949,
-            'square' => 'not numeric',
-            'floors' => 'not numeric',
-            'elevator' => 'not boolean',
-            'yard' => 'not boolean',
-            'balance_begining' => 'not numeric',
-            'pib' => 'not numeric',
-            'identification_number' => 'not numeric',
-            'account_number' => 1,
-            'address' => 1,
-            'city' => 1,
-            'county' => 1,
-            'postal_code' => 'not numeric',
-            'comment' => 1
-        ])
+        Livewire::test('buildings.create-building')
+            ->set('state.internal_code', 1)
+            ->set('state.status', 0)
+            ->set('state.construction_year', 1949)
+            ->set('state.square', 'not numeric')
+            ->set('state.floors', 'not numeric')
+            ->set('state.elevator', 'not boolean')
+            ->set('state.yard', 'not boolean')
+            ->set('state.balance_begining', 'not numeric')
+            ->set('state.pib', 'not numeric')
+            ->set('state.identification_number', 'not numeric')
+            ->set('state.account_number', 1)
+            ->set('state.address', 1)
+            ->set('state.city', 1)
+            ->set('state.county', 1)
+            ->set('state.postal_code', 'not numeric')
+            ->set('state.comment', 1)
             ->call('submit')
             ->assertHasErrors([
                 'internal_code' => 'string',
@@ -109,24 +108,23 @@ class CreateBuildingLivewireComponentTest extends TestCase
                 'comment' => 'string'
             ]);
 
-        Livewire::test('buildings.create-building', [
-            'internal_code' => 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.',
-            'status' => BuildingStatus::Active(),
-            'construction_year' => now()->year,
-            'square' => 0,
-            'floors' => -1,
-            'elevator' => true,
-            'yard' => true,
-            'balance_begining' => 123,
-            'pib' => 12345678,
-            'identification_number' => 1234567,
-            'account_number' => $building->account_number,
-            'address' => 'Some Address 123',
-            'city' => 'New York',
-            'county' => 'New York',
-            'postal_code' => 1234,
-            'comment' => 'More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters.'
-        ])
+        Livewire::test('buildings.create-building')
+            ->set('state.internal_code', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
+            ->set('state.status', BuildingStatus::Active())
+            ->set('state.construction_year', now()->year)
+            ->set('state.square', 0)
+            ->set('state.floors', -1)
+            ->set('state.elevator', true)
+            ->set('state.yard', true)
+            ->set('state.balance_begining', 123)
+            ->set('state.pib', 12345678)
+            ->set('state.identification_number', 1234567)
+            ->set('state.account_number', $building->account_number)
+            ->set('state.address', 'Some Address 123')
+            ->set('state.city', 'New York')
+            ->set('state.county', 'New York')
+            ->set('state.postal_code', 1234)
+            ->set('state.comment', 'More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters. More than 1000 characters.')
             ->call('submit')
             ->assertHasErrors([
                 'internal_code' => 'max',
@@ -139,24 +137,23 @@ class CreateBuildingLivewireComponentTest extends TestCase
                 'comment' => 'max'
             ]);
         
-        Livewire::test('buildings.create-building', [
-            'internal_code' => "$building->internal_code",
-            'status' => BuildingStatus::Active(),
-            'construction_year' => now()->year,
-            'square' => 10,
-            'floors' => 10,
-            'elevator' => true,
-            'yard' => true,
-            'balance_begining' => 123,
-            'pib' => "$building->pib",
-            'identification_number' => "$building->identification_number",
-            'account_number' => '123-4567-89',
-            'address' => 'Some Address 123',
-            'city' => 'New York',
-            'county' => 'New York',
-            'postal_code' => 12345,
-            'comment' => 'Some comment.'
-        ])
+        Livewire::test('buildings.create-building')
+            ->set('state.internal_code', "$building->internal_code")
+            ->set('state.status', BuildingStatus::Active())
+            ->set('state.construction_year', now()->year)
+            ->set('state.square', 10)
+            ->set('state.floors', 10)
+            ->set('state.elevator', true)
+            ->set('state.yard', true)
+            ->set('state.balance_begining', 123)
+            ->set('state.pib', "$building->pib")
+            ->set('state.identification_number', "$building->identification_number")
+            ->set('state.account_number', '123-4567-89')
+            ->set('state.address', 'Some Address 123')
+            ->set('state.city', 'New York')
+            ->set('state.county', 'New York')
+            ->set('state.postal_code', 12345)
+            ->set('state.comment', 'Some comment.')
             ->call('submit')
             ->assertHasErrors([
                 'internal_code' => 'unique',
@@ -164,24 +161,23 @@ class CreateBuildingLivewireComponentTest extends TestCase
                 'identification_number' => 'unique',
             ]);
 
-        Livewire::test('buildings.create-building', [
-                'internal_code' => "12345",
-                'status' => BuildingStatus::Active(),
-                'construction_year' => now()->year,
-                'square' => 10,
-                'floors' => 10,
-                'elevator' => true,
-                'yard' => true,
-                'balance_begining' => 123,
-                'pib' => "123456789",
-                'identification_number' => "12345678",
-                'account_number' => '123-4567-89',
-                'address' => 'Some Address 123',
-                'city' => 'New York',
-                'county' => 'New York',
-                'postal_code' => 12345,
-                'comment' => 'Some comment.'
-            ])
+        Livewire::test('buildings.create-building')
+                ->set('state.internal_code', "12345")
+                ->set('state.status', BuildingStatus::Active())
+                ->set('state.construction_year', now()->year)
+                ->set('state.square', 10)
+                ->set('state.floors', 10)
+                ->set('state.elevator', true)
+                ->set('state.yard', true)
+                ->set('state.balance_begining', 123)
+                ->set('state.pib', "123456789")
+                ->set('state.identification_number', "12345678")
+                ->set('state.account_number', '123-4567-89')
+                ->set('state.address', 'Some Address 123')
+                ->set('state.city', 'New York')
+                ->set('state.county', 'New York')
+                ->set('state.postal_code', 12345)
+                ->set('state.comment', 'Some comment.')
                 ->call('submit')
                 ->assertHasNoErrors();
     }
@@ -193,24 +189,23 @@ class CreateBuildingLivewireComponentTest extends TestCase
     {
         $this->actingAs(User::factory()->create());
         
-        Livewire::test('buildings.create-building', [
-            'internal_code' => "12345",
-            'status' => BuildingStatus::Active(),
-            'construction_year' => now()->year,
-            'square' => 10,
-            'floors' => 10,
-            'elevator' => true,
-            'yard' => true,
-            'balance_begining' => 123,
-            'pib' => "123456789",
-            'identification_number' => "12345678",
-            'account_number' => '123-4567-89',
-            'address' => 'Some Address 123',
-            'city' => 'New York',
-            'county' => 'New York',
-            'postal_code' => 12345,
-            'comment' => 'Some comment.'
-        ])
+        Livewire::test('buildings.create-building')
+            ->set('state.internal_code', "12345")
+            ->set('state.status', BuildingStatus::Active())
+            ->set('state.construction_year', now()->year)
+            ->set('state.square', 10)
+            ->set('state.floors', 10)
+            ->set('state.elevator', true)
+            ->set('state.yard', true)
+            ->set('state.balance_begining', 123)
+            ->set('state.pib', "123456789")
+            ->set('state.identification_number', "12345678")
+            ->set('state.account_number', '123-4567-89')
+            ->set('state.address', 'Some Address 123')
+            ->set('state.city', 'New York')
+            ->set('state.county', 'New York')
+            ->set('state.postal_code', 12345)
+            ->set('state.comment', 'Some comment.')
             ->call('submit')
             ->assertHasNoErrors();
         

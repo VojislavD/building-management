@@ -9,88 +9,88 @@
             <div>
                 <x-form.input 
                     type="text" 
-                    model="internal_code"
+                    model="state.internal_code"
                     id="internal_code" 
+                    error="internal_code" 
                     title="{{ __('Internal Code') }}" 
                     placeholder="{{ __('Internal Code') }}" 
                 />
-                <x-form.error-message name="internal_code" />
             </div>
 
             <div>
                 <x-form.select 
-                    model="status" 
+                    model="state.status" 
                     id="status" 
+                    error="status" 
                     title="{{ __('Status') }}" 
                     :options="[
                         'Active' => \App\Enums\BuildingStatus::Active(), 
                         'Inactive' => \App\Enums\BuildingStatus::Inactive()
                     ]"
                 />
-                <x-form.error-message name="status" />
             </div>
         </div>
 
         <div class="grid grid-cols-3 gap-8 my-4">
             <div>
                 <x-form.select 
-                    model="construction_year" 
+                    model="state.construction_year" 
                     id="construction_year" 
+                    error="construction_year" 
                     title="{{ __('Construction Year') }}" 
                     :options="\App\Models\Building::availableConstructionYears()"
                 />
-                <x-form.error-message name="construction_year" />
             </div>
 
             <div>
                 <x-form.input 
                     type="number" 
                     step=".01"
-                    model="square" 
+                    model="state.square" 
                     id="square" 
+                    error="square" 
                     title="{{ __('Square') }}" 
                     placeholder="{{ __('Square') }}" 
                 />
-                <x-form.error-message name="square" />
             </div>
 
             <div>
                 <x-form.input 
                     type="number" 
-                    model="floors" 
+                    model="state.floors" 
                     id="floors" 
+                    error="floors" 
                     title="{{ __('Floors') }}" 
                     placeholder="{{ __('Floors') }}" 
                 />
-                <x-form.error-message name="floors" />
             </div>
         </div>
 
         <div class="grid grid-cols-2 gap-8 my-4">
             <div>
                 <x-form.select 
-                    model="elevator" 
+                    model="state.elevator" 
                     id="elevator" 
+                    error="elevator" 
                     title="{{ __('Elevator') }}" 
                     :options="[
                         'Yes' => 1,
                         'No' => 0
                     ]"
                 />
-                <x-form.error-message name="elevator" />
             </div>
 
             <div>
                 <x-form.select 
-                    model="yard" 
+                    model="state.yard" 
                     id="yard" 
+                    error="yard"
                     title="{{ __('Yard') }}" 
                     :options="[
                         'Yes' => 1,
                         'No' => 0
                     ]"
                 />
-                <x-form.error-message name="yard" />
             </div>
         </div>
 
@@ -99,12 +99,12 @@
                 <x-form.input 
                     type="number" 
                     step=".01"
-                    model="balance_begining" 
+                    model="state.balance_begining" 
                     id="balance_begining" 
+                    error="balance_begining" 
                     title="{{ __('Balance Begining') }}" 
                     placeholder="{{ __('Balance Begining') }}" 
                 />
-                <x-form.error-message name="balance_begining" />
             </div>
         </div>
     </div>
@@ -116,34 +116,34 @@
             <div>
                 <x-form.input 
                     type="text" 
-                    model="pib" 
+                    model="state.pib" 
                     id="pib" 
+                    error="pib" 
                     title="{{ __('PIB') }}" 
                     placeholder="{{ __('PIB') }}" 
                 />
-                <x-form.error-message name="pib" />
             </div>
 
             <div>
                 <x-form.input 
                     type="text" 
-                    model="identification_number" 
+                    model="state.identification_number" 
                     id="identification_number" 
+                    error="identification_number" 
                     title="{{ __('Identification Number') }}" 
                     placeholder="{{ __('Identification Number') }}" 
                 />
-                <x-form.error-message name="identification_number" />
             </div>
             
             <div>
                 <x-form.input 
                     type="text" 
-                    model="account_number" 
+                    model="state.account_number" 
                     id="account_number" 
+                    error="account_number" 
                     title="{{ __('Account Number') }}" 
                     placeholder="{{ __('Account Number') }}" 
                 />
-                <x-form.error-message name="account_number" />
             </div>
         </div>
     </div>
@@ -155,12 +155,12 @@
             <div>
                 <x-form.input 
                     type="text" 
-                    model="address" 
+                    model="state.address" 
                     id="address" 
+                    error="address" 
                     title="{{ __('Address') }}" 
                     placeholder="{{ __('Address') }}" 
                 />
-                <x-form.error-message name="address" />
             </div>
         </div>
     
@@ -168,34 +168,34 @@
             <div>
                 <x-form.input 
                     type="text" 
-                    model="city" 
+                    model="state.city" 
                     id="city" 
+                    error="city" 
                     title="{{ __('City') }}" 
                     placeholder="{{ __('City') }}" 
                 />
-                <x-form.error-message name="city" />
             </div>
 
             <div>
                 <x-form.input 
                     type="text" 
-                    model="county" 
+                    model="state.county" 
                     id="county" 
+                    error="county" 
                     title="{{ __('County') }}" 
                     placeholder="{{ __('County') }}" 
                 />
-                <x-form.error-message name="county" />
             </div>
 
             <div>
                 <x-form.input 
                     type="text" 
-                    model="postal_code" 
+                    model="state.postal_code" 
                     id="postal_code" 
+                    error="postal_code" 
                     title="{{ __('Postal Code') }}" 
                     placeholder="{{ __('Postal Code') }}" 
                 />
-                <x-form.error-message name="postal_code" />
             </div>
         </div>
     </div>
@@ -204,12 +204,12 @@
         <div class="my-4">
             <div>
                 <x-form.textarea
-                    model="comment"
+                    model="state.comment"
                     id="comment"
+                    error="comment"
                     title="Comment"
                     placeholder="{{ __('Comment...') }}"
                 />
-                <x-form.error-message name="comment" />
             </div>
         </div>
     </div>

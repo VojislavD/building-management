@@ -17,6 +17,7 @@ class Textarea extends Component
         public $placeholder, 
         public $name = null, 
         public $model = null, 
+        public $error = null,
         public $value = null
     ) {}
 
