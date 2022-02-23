@@ -10,7 +10,7 @@ enum TaskStatus: int
     case Completed = 2;
     case Cancelled = 3;
     
-    public function name(): string
+    public function name(): string|array|null
     {
         return match($this)
         {
@@ -21,7 +21,7 @@ enum TaskStatus: int
         };
     }
 
-    public function label(): string
+    public function label(): string|array|null
     {
         return match($this)
         {

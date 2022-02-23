@@ -9,7 +9,7 @@ enum BuildingStatus: int
     case Active = 1;
     case Inactive = 2;
 
-    public function name(): string
+    public function name(): string|array|null
     {
         return match($this)
         {
@@ -19,7 +19,7 @@ enum BuildingStatus: int
         };
     }
 
-    public function label(): string
+    public function label(): string|array|null
     {
         return match($this)
         {

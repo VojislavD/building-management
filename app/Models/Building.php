@@ -107,7 +107,7 @@ class Building extends Model
         return $years;
     }
 
-    public function getElevatorStatusText(): string
+    public function getElevatorStatusText(): string|array|null
     {
         if ($this->elevator) {
             return __('Yes');
@@ -116,7 +116,7 @@ class Building extends Model
         }
     }
 
-    public function getYardStatusText(): string
+    public function getYardStatusText(): string|array|null
     {
         if ($this->yard) {
             return __('Yes');

@@ -11,7 +11,7 @@ enum NotificationStatus: int
     case Finished = 3;
     case Cancelled = 4;
 
-    public function name(): string
+    public function name(): string|array|null
     {
         return match($this)
         {
@@ -23,7 +23,7 @@ enum NotificationStatus: int
         };
     }
 
-    public function label(): string
+    public function label(): string|array|null
     {
         return match($this)
         {
