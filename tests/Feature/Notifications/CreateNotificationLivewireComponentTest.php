@@ -55,7 +55,7 @@ class CreateNotificationLivewireComponentTest extends TestCase
         Livewire::test('notifications.create-notification', [
                 'building' => $building
             ])
-            ->set('send_scheduled', true)
+            ->set('state.send_scheduled', true)
             ->call('submit')
             ->assertHasErrors([
                 'subject' => 'required',
@@ -68,12 +68,12 @@ class CreateNotificationLivewireComponentTest extends TestCase
         Livewire::test('notifications.create-notification', [
                 'building' => $building
             ])
-            ->set('send_scheduled', true)
-            ->set('subject', 1)
-            ->set('body', 1)
-            ->set('via_email', 'not boolean')
-            ->set('scheduled_date', 'not date')
-            ->set('scheduled_time', 'not time')
+            ->set('state.send_scheduled', true)
+            ->set('state.subject', 1)
+            ->set('state.body', 1)
+            ->set('state.via_email', 'not boolean')
+            ->set('state.scheduled_date', 'not date')
+            ->set('state.scheduled_time', 'not time')
             ->call('submit')
             ->assertHasErrors([
                 'subject' => 'string',
@@ -86,12 +86,12 @@ class CreateNotificationLivewireComponentTest extends TestCase
         Livewire::test('notifications.create-notification', [
                 'building' => $building
             ])
-            ->set('send_scheduled', true)
-            ->set('subject', 'Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters.')
-            ->set('body', 1)
-            ->set('via_email', true)
-            ->set('scheduled_date', now()->format('Y-m-d'))
-            ->set('scheduled_time', now()->format('H:i'))
+            ->set('state.send_scheduled', true)
+            ->set('state.subject', 'Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters.')
+            ->set('state.body', 1)
+            ->set('state.via_email', true)
+            ->set('state.scheduled_date', now()->format('Y-m-d'))
+            ->set('state.scheduled_time', now()->format('H:i'))
             ->call('submit')
             ->assertHasErrors([
                 'subject' => 'max',
@@ -100,12 +100,12 @@ class CreateNotificationLivewireComponentTest extends TestCase
         Livewire::test('notifications.create-notification', [
                 'building' => $building
             ])
-            ->set('send_scheduled', true)
-            ->set('subject', 'Example subject')
-            ->set('body', 'Example body.')
-            ->set('via_email', true)
-            ->set('scheduled_date', now()->format('Y-m-d'))
-            ->set('scheduled_time', now()->format('H:i'))
+            ->set('state.send_scheduled', true)
+            ->set('state.subject', 'Example subject')
+            ->set('state.body', 'Example body.')
+            ->set('state.via_email', true)
+            ->set('state.scheduled_date', now()->format('Y-m-d'))
+            ->set('state.scheduled_time', now()->format('H:i'))
             ->call('submit')
             ->assertHasNoErrors();
     }
@@ -122,12 +122,12 @@ class CreateNotificationLivewireComponentTest extends TestCase
         Livewire::test('notifications.create-notification', [
                 'building' => $building
             ])
-            ->set('send_scheduled', true)
-            ->set('subject', 'Example subject')
-            ->set('body', 'Example body.')
-            ->set('via_email', true)
-            ->set('scheduled_date', $date)
-            ->set('scheduled_time', $time)
+            ->set('state.send_scheduled', true)
+            ->set('state.subject', 'Example subject')
+            ->set('state.body', 'Example body.')
+            ->set('state.via_email', true)
+            ->set('state.scheduled_date', $date)
+            ->set('state.scheduled_time', $time)
             ->call('submit')
             ->assertHasNoErrors();
 

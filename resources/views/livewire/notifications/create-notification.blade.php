@@ -9,7 +9,7 @@
             <div>
                 <x-form.input 
                     type="text" 
-                    model="internal_code"
+                    model="state.internal_code"
                     id="internal_code" 
                     title="{{ __('Internal Code') }}" 
                     placeholder="{{ __('Internal Code') }}" 
@@ -20,7 +20,7 @@
             <div>
                 <x-form.input 
                     type="text" 
-                    model="address"
+                    model="state.address"
                     id="address" 
                     title="{{ __('Address') }}" 
                     placeholder="{{ __('Address') }}" 
@@ -37,22 +37,22 @@
             <div>
                 <x-form.input 
                     type="text" 
-                    model="subject"
+                    model="state.subject"
                     id="subject" 
+                    error="subject" 
                     title="{{ __('Subject') }}" 
                     placeholder="{{ __('Subject') }}" 
                 />
-                <x-form.error-message name="subject" />
             </div>
 
             <div>
                 <x-form.textarea
-                    model="body"
+                    model="state.body"
                     id="body"
+                    error="body"
                     title="Body"
                     placeholder="{{ __('Notification text goes here...') }}"
                 />
-                <x-form.error-message name="body" />
             </div>
         </div>
     </div>
@@ -68,7 +68,7 @@
                         type="checkbox" 
                         id="via_email" 
                         class="py-1 border-gray-300 focus:border-gray-300 focus:outline-none focus:ring-0 @error('via_email') border-red-500 @enderror" 
-                        wire:model="via_email"
+                        wire:model.defer="state.via_email"
                     >
                     <label for="via_email">Email</label>
                 </div>
@@ -84,7 +84,7 @@
                         type="radio" 
                         id="send_immediately" 
                         class="py-1 border-gray-300 focus:border-gray-300 focus:outline-none focus:ring-0 @error('schedule_at') border-red-500 @enderror" 
-                        wire:model="send_immediately"
+                        wire:model.defer="state.send_immediately"
                     >
                     <label for="send_immediately">Immediately</label>
                 </div>
@@ -95,7 +95,7 @@
                         type="radio" 
                         id="send_scheduled" 
                         class="py-1 border-gray-300 focus:border-gray-300 focus:outline-none focus:ring-0 @error('schedule_at') border-red-500 @enderror" 
-                        wire:model="send_scheduled"
+                        wire:model.defer="state.send_scheduled"
                     >
                     <label for="send_scheduled">Scheduled</label>
                 </div>
@@ -110,14 +110,14 @@
                         id="scheduled_date"
                         class="py-1 border-gray-300 focus:border-gray-300 focus:outline-none focus:ring-0 @error('scheduled_date') border-red-500 @enderror" 
                         min="{{ today()->format('Y-m-d') }}"
-                        wire:model="scheduled_date"
+                        wire:model.defer="state.scheduled_date"
                     />
                     <input 
                         type="time"
                         id="scheduled_time"
                         class="py-1 border-gray-300 focus:border-gray-300 focus:outline-none focus:ring-0 @error('scheduled_time') border-red-500 @enderror" 
                         min="{{ now()->format('H:i') }}"
-                        wire:model="scheduled_time"
+                        wire:model.defer="state.scheduled_time"
                     />
                 </div>
                 <x-form.error-message name="scheduled_date" />

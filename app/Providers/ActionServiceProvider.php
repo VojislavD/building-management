@@ -8,6 +8,7 @@ use App\Actions\Apartments\UpdateApartment;
 use App\Actions\Buildings\CreateBuilding;
 use App\Actions\Buildings\DeleteBuilding;
 use App\Actions\Buildings\UpdateBuilding;
+use App\Actions\Notifications\CreateNotification;
 use App\Actions\Notifications\DeleteNotification;
 use App\Actions\Notifications\UpdateNotification;
 use App\Actions\Projects\DeleteProject;
@@ -15,6 +16,7 @@ use App\Actions\Projects\UpdateProject;
 use App\Actions\Tasks\UpdateTask;
 use App\Contracts\Actions\CreatesApartment;
 use App\Contracts\Actions\CreatesBuilding;
+use App\Contracts\Actions\CreatesNotification;
 use App\Contracts\Actions\DeletesApartment;
 use App\Contracts\Actions\DeletesBuilding;
 use App\Contracts\Actions\DeletesNotification;
@@ -40,6 +42,7 @@ class ActionServiceProvider extends ServiceProvider
         CreatesBuilding::class => CreateBuilding::class,
         UpdatesBuilding::class => UpdateBuilding::class,
         DeletesBuilding::class => DeleteBuilding::class,
+        CreatesNotification::class => CreateNotification::class,
         UpdatesNotification::class => UpdateNotification::class,
         DeletesNotification::class => DeleteNotification::class,
         UpdatesProject::class => UpdateProject::class,
