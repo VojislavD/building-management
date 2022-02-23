@@ -2,10 +2,7 @@
     <h1 class="text-xl font-bold">{{ __('All Buildings') }}</h1>
 
     <x-flash-message type="success" name="buildingCreated" />
-
     <x-flash-message type="success" name="buildingUpdated" />
-    <x-flash-message type="error" name="buildingNotUpdated" />
-    
     <x-flash-message type="success" name="buildingDeleted" />
 
     <div class="flex items-center justify-end">
