@@ -12,13 +12,13 @@ class Textarea extends Component
      * @return void
      */
     public function __construct(
-        public $id, 
-        public $title, 
-        public $placeholder, 
-        public $name = null, 
-        public $model = null, 
-        public $error = null,
-        public $value = null
+        public string $id, 
+        public string $title, 
+        public string $placeholder, 
+        public string|null $name = null, 
+        public string|null $model = null, 
+        public string|null $error = null,
+        public string|null $value = null
     ) {}
 
     /**

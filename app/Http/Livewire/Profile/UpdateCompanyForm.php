@@ -13,11 +13,11 @@ class UpdateCompanyForm extends Component
      *
      * @var array
      */
-    public $state = [
+    public array $state = [
         'name' => '',
     ];
 
-    public function mount()
+    public function mount(): void
     {
         $this->state['name'] = auth()->user()->company->name;
     }
@@ -29,7 +29,7 @@ class UpdateCompanyForm extends Component
         ];
     }
 
-    public function updateCompany()
+    public function updateCompany(): void
     {
         $this->validate();
 

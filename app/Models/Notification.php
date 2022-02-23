@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\NotificationStatus;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -40,7 +41,7 @@ class Notification extends Model
         return $this->belongsTo(Building::class);
     }
 
-    public function scopeScheduled()
+    public function scopeScheduled(): Builder
     {
         return $this->where('status', NotificationStatus::Scheduled);
     }

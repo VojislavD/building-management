@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Notifications;
 
 use App\Models\Building;
 use App\Models\Notification;
+use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,26 +12,26 @@ class AllNotificationsTable extends Component
 {
     use WithPagination;
 
-    public $perPage = 10;
-    public $status;
-    public $building_id;
+    public int $perPage = 10;
+    public int|null $status = null;
+    public int|null $building_id = null;
 
-    public function updatingStatus() 
+    public function updatingStatus(): void
     {
         $this->gotoPage(1);
     }
 
-    public function updatingPerPage() 
+    public function updatingPerPage(): void
     {
         $this->gotoPage(1);
     }
 
-    public function updatingBuildingId() 
+    public function updatingBuildingId(): void
     {
         $this->gotoPage(1);
     }
 
-    public function render()
+    public function render(): Renderable
     {
         $notifications = Notification::query()
             ->when($this->status, function($query) {

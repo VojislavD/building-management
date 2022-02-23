@@ -18,9 +18,9 @@ class CreateApartment extends Component
 {
     public Building $building;
 
-    public $state = [];
+    public array $state = [];
 
-    public function mount()
+    public function mount(): void
     {
         $this->fill([
             'state.internal_code' => $this->building->internal_code,

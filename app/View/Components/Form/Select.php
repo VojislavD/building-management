@@ -12,12 +12,12 @@ class Select extends Component
      * @return void
      */
     public function __construct(
-        public $id, 
-        public $title, 
-        public $options, 
-        public $name = null, 
-        public $model = null,
-        public $error = null
+        public string $id, 
+        public string $title, 
+        public array $options, 
+        public string|null $name = null, 
+        public string|null $model = null,
+        public string|null $error = null
     ) {}
 
     /**

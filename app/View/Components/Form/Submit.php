@@ -12,7 +12,7 @@ class Submit extends Component
      * @return void
      */
     public function __construct(
-        public $title
+        public string $title
     ) {}
 
     /**

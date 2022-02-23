@@ -17,13 +17,13 @@ class CreateNotification extends Component
 {
     public Building $building;
     
-    public $state = [];
+    public array $state = [];
 
-    protected $messages = [
+    protected array $messages = [
         'via_email.accepted' => 'One of channels for sending notification must be selected.',
     ];
 
-    public function mount()
+    public function mount(): void
     {
         $this->fill([
             'state.internal_code' => $this->building->internal_code,
@@ -34,12 +34,12 @@ class CreateNotification extends Component
         ]);
     }
 
-    public function sendImmediately()
+    public function sendImmediately(): void
     {
         $this->state['send_scheduled'] = false;
     }
 
-    public function sendScheduled()
+    public function sendScheduled(): void
     {
         $this->state['send_immediately'] = false;
     }

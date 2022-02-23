@@ -12,15 +12,15 @@ class AllApartmentsTable extends Component
 {
     use WithPagination;
 
-    public $building_id;
-    public $perPage = 10;
+    public int|null $building_id = null;
+    public int $perPage = 10;
 
-    public function updatingBuildingId() 
+    public function updatingBuildingId(): void
     {
         $this->gotoPage(1);
     }
 
-    public function updatingPerPage() 
+    public function updatingPerPage(): void
     {
         $this->gotoPage(1);
     }

@@ -17,9 +17,9 @@ class BuildingNotification extends Notification
      * @return void
      */
     public function __construct(
-        public $via_email, 
-        public $subject, 
-        public $body
+        public bool $via_email, 
+        public string $subject, 
+        public string $body
     ) {}
 
     /**

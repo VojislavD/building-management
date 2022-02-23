@@ -13,9 +13,9 @@ class EditProject extends Component
 {
     public Project $project;
 
-    public $state = [];
+    public array $state = [];
 
-    public function mount()
+    public function mount(): void
     {
         $this->fill([
             'state.internal_code' => $this->project->building->internal_code,    

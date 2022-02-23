@@ -12,7 +12,7 @@ class ConfirmCancel extends Component
      * @return void
      */
     public function __construct(
-        public $route
+        public string $route
     ) {}
 
     /**

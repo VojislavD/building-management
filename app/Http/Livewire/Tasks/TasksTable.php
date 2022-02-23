@@ -12,20 +12,20 @@ class TasksTable extends Component
 {
     use WithPagination;
 
-    public $status;
-    public $perPage = 10;
+    public int|null $status;
+    public int $perPage = 10;
 
-    public function mount()
+    public function mount(): void
     {
         $this->fill(['status' => TaskStatus::Pending()]);
     }
 
-    public function updatingStatus() 
+    public function updatingStatus(): void
     {
         $this->gotoPage(1);
     }
 
-    public function updatingPerPage() 
+    public function updatingPerPage(): void
     {
         $this->gotoPage(1);
     }

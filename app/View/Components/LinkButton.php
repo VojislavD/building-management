@@ -12,8 +12,8 @@ class LinkButton extends Component
      * @return void
      */
     public function __construct(
-        public $route, 
-        public $text
+        public string $route, 
+        public string $text
     ) {}
 
     /**

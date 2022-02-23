@@ -13,7 +13,7 @@ trait InvokableCases
         return $this->value;
     }
 
-    public static function __callStatic($name, $args): int|string|Exception
+    public static function __callStatic(string $name, array $args): int|string|Exception
     {
         $cases = static::cases();
 

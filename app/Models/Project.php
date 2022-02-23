@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ProjectStatus;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -43,7 +44,7 @@ class Project extends Model
         return $this->belongsTo(Building::class);
     }
 
-    public function scopeActive()
+    public function scopeActive(): Builder
     {
         return $this->whereIn('status', [ProjectStatus::Pending, ProjectStatus::Processing]);
     }

@@ -12,7 +12,7 @@ class ErrorMessage extends Component
      * @return void
      */
     public function __construct(
-        public $name
+        public string $name
     ) {}
 
     /**

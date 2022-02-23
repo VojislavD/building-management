@@ -14,9 +14,9 @@ class EditApartment extends Component
 {
     public Apartment $apartment;
     
-    public $state = [];
+    public array $state = [];
 
-    public function mount()
+    public function mount(): void
     {
         $this->fill([
             'state.internal_code' => $this->apartment->building->internal_code,    

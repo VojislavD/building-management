@@ -12,8 +12,8 @@ class FlashMessage extends Component
      * @return void
      */
     public function __construct(
-        public $type, 
-        public $name
+        public string $type, 
+        public string $name
     )
     {}
 

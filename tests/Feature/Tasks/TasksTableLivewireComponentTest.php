@@ -73,7 +73,7 @@ class TasksTableLivewireComponentTest extends TestCase
         $cancelled = Task::factory()->cancelled()->create();
 
         Livewire::test('tasks.tasks-table')
-            ->set('status', '')
+            ->set('status', null)
             ->assertSee($pending->limited_description)
             ->assertSee($completed->limited_description)
             ->assertSee($cancelled->limited_description)

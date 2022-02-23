@@ -12,7 +12,7 @@ use Illuminate\Http\RedirectResponse;
 
 class NotificationController extends Controller
 {
-    public function index()
+    public function index(): Renderable
     {
         return view('notifications.index');
     }

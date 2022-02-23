@@ -12,15 +12,15 @@ class BuildingsTable extends Component
 {
     use WithPagination;
     
-    public $perPage = 10;
-    public $status;
+    public int $perPage = 10;
+    public int|null $status = null;
 
-    public function mount()
+    public function mount(): void
     {
         $this->fill(['status' => BuildingStatus::Active()]);
     }
     
-    public function updatingPerPage() 
+    public function updatingPerPage(): void
     {
         $this->gotoPage(1);
     }

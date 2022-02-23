@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\BuildingStatus;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -67,21 +68,21 @@ class Building extends Model
         return $this->hasMany(Notification::class);
     }
     
-    public function scopeActive()
+    public function scopeActive(): Builder
     {
-        $this->where('status', static::STATUS_ACTIVE);
+        return $this->where('status', static::STATUS_ACTIVE);
     }
 
-    public function scopeInactive()
+    public function scopeInactive(): Builder
     {
-        $this->where('status', static::STATUS_INACTIVE);
+        return $this->where('status', static::STATUS_INACTIVE);
     }
 
     public function allTenants(): Collection
     {
         $apartments = $this->apartments();
 
-        $tenants = collect();
+        $tenants = new Collection();
 
         $apartments->each(function ($item) use ($tenants) {
             $tenants->push($item->owner);

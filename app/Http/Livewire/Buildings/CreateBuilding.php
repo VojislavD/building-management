@@ -13,7 +13,7 @@ use Livewire\Component;
 
 class CreateBuilding extends Component
 {
-    public $state = [];
+    public array $state = [];
 
     public function submit(CreatesBuilding $creator): Redirector|RedirectResponse
     {
