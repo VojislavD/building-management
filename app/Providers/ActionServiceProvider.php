@@ -10,6 +10,7 @@ use App\Actions\Buildings\DeleteBuilding;
 use App\Actions\Buildings\EditBuilding;
 use App\Actions\Notifications\DeleteNotification;
 use App\Actions\Projects\DeleteProject;
+use App\Actions\Projects\EditProject;
 use App\Contracts\Actions\CreatesApartment;
 use App\Contracts\Actions\CreatesBuilding;
 use App\Contracts\Actions\DeletesApartment;
@@ -18,6 +19,7 @@ use App\Contracts\Actions\DeletesNotification;
 use App\Contracts\Actions\DeletesProject;
 use App\Contracts\Actions\EditsApartment;
 use App\Contracts\Actions\EditsBuilding;
+use App\Contracts\Actions\EditsProject;
 use Illuminate\Support\ServiceProvider;
 
 class ActionServiceProvider extends ServiceProvider
@@ -35,6 +37,7 @@ class ActionServiceProvider extends ServiceProvider
         EditsBuilding::class => EditBuilding::class,
         DeletesBuilding::class => DeleteBuilding::class,
         DeletesNotification::class => DeleteNotification::class,
+        EditsProject::class => EditProject::class,
         DeletesProject::class => DeleteProject::class
     ];
 }

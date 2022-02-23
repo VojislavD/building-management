@@ -48,14 +48,14 @@ class EditProjectLivewireComponentTest extends TestCase
         Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
-            ->set('status', '')
-            ->set('name', '')
-            ->set('price', '')
-            ->set('rates', '')
-            ->set('amount_payed', '')
-            ->set('amount_left', '')
-            ->set('start_paying', '')
-            ->set('end_paying', '')
+            ->set('state.status', '')
+            ->set('state.name', '')
+            ->set('state.price', '')
+            ->set('state.rates', '')
+            ->set('state.amount_payed', '')
+            ->set('state.amount_left', '')
+            ->set('state.start_paying', '')
+            ->set('state.end_paying', '')
             ->call('submit')
             ->assertHasErrors([
                 'status' => 'required',
@@ -71,14 +71,14 @@ class EditProjectLivewireComponentTest extends TestCase
         Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
-            ->set('status', 'not integer')
-            ->set('name', 1)
-            ->set('price', 'not integer')
-            ->set('rates', 'not integer')
-            ->set('amount_payed', 'not integer')
-            ->set('amount_left', 'not integer')
-            ->set('start_paying', 'not date')
-            ->set('end_paying', 'not date')
+            ->set('state.status', 'not integer')
+            ->set('state.name', 1)
+            ->set('state.price', 'not integer')
+            ->set('state.rates', 'not integer')
+            ->set('state.amount_payed', 'not integer')
+            ->set('state.amount_left', 'not integer')
+            ->set('state.start_paying', 'not date')
+            ->set('state.end_paying', 'not date')
             ->call('submit')
             ->assertHasErrors([
                 'status' => 'integer',
@@ -94,14 +94,14 @@ class EditProjectLivewireComponentTest extends TestCase
         Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
-            ->set('status', 0)
-            ->set('name', 'abcde')
-            ->set('price', -1)
-            ->set('rates', -1)
-            ->set('amount_payed', -1)
-            ->set('amount_left', -1)
-            ->set('start_paying', now())
-            ->set('end_paying', now())
+            ->set('state.status', 0)
+            ->set('state.name', 'abcde')
+            ->set('state.price', -1)
+            ->set('state.rates', -1)
+            ->set('state.amount_payed', -1)
+            ->set('state.amount_left', -1)
+            ->set('state.start_paying', now())
+            ->set('state.end_paying', now())
             ->call('submit')
             ->assertHasErrors([
                 'status' => 'in',
@@ -115,14 +115,14 @@ class EditProjectLivewireComponentTest extends TestCase
         Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
-            ->set('status', ProjectStatus::Pending())
-            ->set('name', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
-            ->set('price', 100)
-            ->set('rates', 10)
-            ->set('amount_payed', 20)
-            ->set('amount_left', 80)
-            ->set('start_paying', now())
-            ->set('end_paying', now())
+            ->set('state.status', ProjectStatus::Pending())
+            ->set('state.name', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
+            ->set('state.price', 100)
+            ->set('state.rates', 10)
+            ->set('state.amount_payed', 20)
+            ->set('state.amount_left', 80)
+            ->set('state.start_paying', now())
+            ->set('state.end_paying', now())
             ->call('submit')
             ->assertHasErrors([
                 'name' => 'max',
@@ -131,14 +131,14 @@ class EditProjectLivewireComponentTest extends TestCase
         Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
-            ->set('status', ProjectStatus::Pending())
-            ->set('name', 'Example')
-            ->set('price', 100)
-            ->set('rates', 10)
-            ->set('amount_payed', 20)
-            ->set('amount_left', 80)
-            ->set('start_paying', now())
-            ->set('end_paying', now())
+            ->set('state.status', ProjectStatus::Pending())
+            ->set('state.name', 'Example')
+            ->set('state.price', 100)
+            ->set('state.rates', 10)
+            ->set('state.amount_payed', 20)
+            ->set('state.amount_left', 80)
+            ->set('state.start_paying', now())
+            ->set('state.end_paying', now())
             ->call('submit')
             ->assertHasNoErrors();
     }
@@ -153,14 +153,14 @@ class EditProjectLivewireComponentTest extends TestCase
         Livewire::test('projects.edit-project', [
                 'project' => $project
             ])
-            ->set('status', ProjectStatus::Finished())
-            ->set('name', 'Example')
-            ->set('price', 100)
-            ->set('rates', 10)
-            ->set('amount_payed', 20)
-            ->set('amount_left', 80)
-            ->set('start_paying', today())
-            ->set('end_paying', today())
+            ->set('state.status', ProjectStatus::Finished())
+            ->set('state.name', 'Example')
+            ->set('state.price', 100)
+            ->set('state.rates', 10)
+            ->set('state.amount_payed', 20)
+            ->set('state.amount_left', 80)
+            ->set('state.start_paying', today())
+            ->set('state.end_paying', today())
             ->call('submit')
             ->assertHasNoErrors();
 

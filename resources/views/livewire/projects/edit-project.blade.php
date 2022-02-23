@@ -9,7 +9,7 @@
             <div>
                 <x-form.input 
                     type="text" 
-                    model="internal_code"
+                    model="state.internal_code"
                     id="internal_code" 
                     title="{{ __('Internal Code') }}" 
                     placeholder="{{ __('Internal Code') }}" 
@@ -20,7 +20,7 @@
             <div>
                 <x-form.input 
                     type="text" 
-                    model="address"
+                    model="state.address"
                     id="address" 
                     title="{{ __('Address') }}" 
                     placeholder="{{ __('Address') }}" 
@@ -36,8 +36,9 @@
         <div class="grid grid-cols-2 gap-8 my-4">
             <div>
                 <x-form.select 
-                    model="status" 
+                    model="state.status" 
                     id="status" 
+                    error="status" 
                     title="{{ __('Status') }}" 
                     :options="[
                         'Pending' => \App\Enums\ProjectStatus::Pending(), 
@@ -46,84 +47,83 @@
                         'Cancelled' => \App\Enums\ProjectStatus::Cancelled()
                     ]"
                 />
-                <x-form.error-message name="status" />
             </div>
 
             <div>
                 <x-form.input 
                     type="text" 
-                    model="name" 
+                    model="state.name" 
                     id="name" 
+                    error="name" 
                     title="{{ __('Name') }}" 
                     placeholder="{{ __('Name') }}" 
                 />
-                <x-form.error-message name="name" />
             </div>
 
             <div>
                 <x-form.input 
                     type="number" 
-                    model="price" 
+                    model="state.price" 
                     id="price" 
+                    error="price" 
                     title="{{ __('Price') }}" 
                     placeholder="{{ __('Price') }}" 
                 />
-                <x-form.error-message name="price" />
             </div>
 
             <div>
                 <x-form.input 
                     type="text" 
-                    model="rates" 
+                    model="state.rates" 
                     id="rates" 
+                    error="rates" 
                     title="{{ __('Rates') }}" 
                     placeholder="{{ __('Rates') }}" 
                 />
-                <x-form.error-message name="rates" />
             </div>
 
             <div>
                 <x-form.input 
                     type="text" 
-                    model="amount_payed" 
+                    model="state.amount_payed" 
                     id="amount_payed" 
+                    error="amount_payed" 
                     title="{{ __('Amount Payed') }}" 
                     placeholder="{{ __('Amount Payed') }}" 
                 />
-                <x-form.error-message name="amount_payed" />
             </div>
 
             <div>
                 <x-form.input 
                     type="text" 
-                    model="amount_left" 
+                    model="state.amount_left" 
                     id="amount_left" 
+                    error="amount_left" 
                     title="{{ __('Amount Left') }}" 
                     placeholder="{{ __('Amount Left') }}" 
                 />
-                <x-form.error-message name="amount_left" />
             </div>
 
             <div>
                 <x-form.input 
                     type="date" 
-                    model="start_paying" 
+                    model="state.start_paying" 
                     id="start_paying" 
+                    error="start_paying" 
                     title="{{ __('Start Paying') }}" 
                     placeholder="{{ __('Start Paying') }}" 
                 />
-                <x-form.error-message name="start_paying" />
             </div> 
             
             <div>
                 <x-form.input 
                     type="date" 
-                    model="end_paying" 
+                    model="state.end_paying" 
                     id="end_paying" 
+                    error="end_paying" 
                     title="{{ __('End Paying') }}" 
                     placeholder="{{ __('End Paying') }}" 
                 />
-                <x-form.error-message name="end_paying" />
             </div> 
         </div>
     </div>

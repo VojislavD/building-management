@@ -2,7 +2,6 @@
     <h1 class="text-xl font-bold">{{ __('All Projects') }}</h1>
 
     <x-flash-message type="success" name="projectUpdated" />
-    <x-flash-message type="error" name="projectNotUpdated" />
 
     <x-flash-message type="success" name="projectDeleted" />
 

@@ -11,23 +11,23 @@
                     type="text" 
                     model="state.internal_code"
                     id="internal_code" 
+                    error="internal_code" 
                     title="{{ __('Internal Code') }}" 
                     placeholder="{{ __('Internal Code') }}" 
                 />
-                <x-form.error-message name="internal_code" />
             </div>
 
             <div>
                 <x-form.select 
                     model="state.status" 
                     id="status" 
+                    error="status" 
                     title="{{ __('Status') }}" 
                     :options="[
                         'Active' => \App\Enums\BuildingStatus::Active(), 
                         'Inactive' => \App\Enums\BuildingStatus::Inactive()
                     ]"
                 />
-                <x-form.error-message name="status" />
             </div>
         </div>
 
@@ -48,10 +48,10 @@
                     step=".01"
                     model="state.square" 
                     id="square" 
+                    error="square" 
                     title="{{ __('Square') }}" 
                     placeholder="{{ __('Square') }}" 
                 />
-                <x-form.error-message name="square" />
             </div>
 
             <div>
@@ -59,10 +59,10 @@
                     type="number" 
                     model="state.floors" 
                     id="floors" 
+                    error="floors" 
                     title="{{ __('Floors') }}" 
                     placeholder="{{ __('Floors') }}" 
                 />
-                <x-form.error-message name="floors" />
             </div>
         </div>
 
@@ -71,26 +71,26 @@
                 <x-form.select 
                     model="state.elevator" 
                     id="elevator" 
+                    error="elevator" 
                     title="{{ __('Elevator') }}" 
                     :options="[
                         'Yes' => 1,
                         'No' => 0
                     ]"
                 />
-                <x-form.error-message name="elevator" />
             </div>
 
             <div>
                 <x-form.select 
                     model="state.yard" 
                     id="yard" 
+                    error="yard" 
                     title="{{ __('Yard') }}" 
                     :options="[
                         'Yes' => 1,
                         'No' => 0
                     ]"
                 />
-                <x-form.error-message name="yard" />
             </div>
         </div>
 
@@ -101,10 +101,10 @@
                     step=".01"
                     model="state.balance" 
                     id="balance" 
+                    error="balance" 
                     title="{{ __('Balance') }}" 
                     placeholder="{{ __('Balance') }}" 
                 />
-                <x-form.error-message name="balance" />
             </div>
         </div>
     </div>
@@ -118,10 +118,10 @@
                     type="text" 
                     model="state.pib" 
                     id="pib" 
+                    error="pib" 
                     title="{{ __('PIB') }}" 
                     placeholder="{{ __('PIB') }}" 
                 />
-                <x-form.error-message name="pib" />
             </div>
 
             <div>
@@ -129,10 +129,10 @@
                     type="text" 
                     model="state.identification_number" 
                     id="identification_number" 
+                    error="identification_number" 
                     title="{{ __('Identification Number') }}" 
                     placeholder="{{ __('Identification Number') }}" 
                 />
-                <x-form.error-message name="identification_number" />
             </div>
             
             <div>
@@ -140,10 +140,10 @@
                     type="text" 
                     model="state.account_number" 
                     id="account_number" 
+                    error="account_number" 
                     title="{{ __('Account Number') }}" 
                     placeholder="{{ __('Account Number') }}" 
                 />
-                <x-form.error-message name="account_number" />
             </div>
         </div>
     </div>
@@ -157,10 +157,10 @@
                     type="text" 
                     model="state.address" 
                     id="address" 
+                    error="address" 
                     title="{{ __('Address') }}" 
                     placeholder="{{ __('Address') }}" 
                 />
-                <x-form.error-message name="address" />
             </div>
         </div>
     
@@ -170,10 +170,10 @@
                     type="text" 
                     model="state.city" 
                     id="city" 
+                    error="city" 
                     title="{{ __('City') }}" 
                     placeholder="{{ __('City') }}" 
                 />
-                <x-form.error-message name="city" />
             </div>
 
             <div>
@@ -181,10 +181,10 @@
                     type="text" 
                     model="state.county" 
                     id="county" 
+                    error="county" 
                     title="{{ __('County') }}" 
                     placeholder="{{ __('County') }}" 
                 />
-                <x-form.error-message name="county" />
             </div>
 
             <div>
@@ -192,10 +192,10 @@
                     type="text" 
                     model="state.postal_code" 
                     id="postal_code" 
+                    error="postal_code" 
                     title="{{ __('Postal Code') }}" 
                     placeholder="{{ __('Postal Code') }}" 
                 />
-                <x-form.error-message name="postal_code" />
             </div>
         </div>
     </div>
@@ -206,10 +206,10 @@
                 <x-form.textarea
                     model="state.comment"
                     id="comment"
+                    error="comment"
                     title="Comment"
                     placeholder="{{ __('Comment...') }}"
                 />
-                <x-form.error-message name="comment" />
             </div>
         </div>
     </div>
