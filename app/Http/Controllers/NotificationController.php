@@ -39,9 +39,9 @@ class NotificationController extends Controller
         return to_route('buildings.show', $notification->building)->with('notificationCancelled', __('Notification is successfully cancelled.'));
     }
 
-    public function destroy(Notification $notification, DeletesNotification $deletesNotification): RedirectResponse
+    public function destroy(Notification $notification, DeletesNotification $deleter): RedirectResponse
     {
-        $deletesNotification($notification);
+        $deleter($notification);
 
         return to_route('buildings.show', $notification->building)->with('notificationDeleted', __('Notification is successfully deleted.'));
     }

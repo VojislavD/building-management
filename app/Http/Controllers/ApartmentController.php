@@ -29,9 +29,9 @@ class ApartmentController extends Controller
         ]);
     }
 
-    public function destroy(Apartment $apartment, DeletesApartment $deletesApartment): RedirectResponse
+    public function destroy(Apartment $apartment, DeletesApartment $deleter): RedirectResponse
     {
-        $deletesApartment($apartment);
+        $deleter($apartment);
 
         return to_route('buildings.show', $apartment->building)->with('apartmentDeleted', 'Apartment successfully deleted.');
     }

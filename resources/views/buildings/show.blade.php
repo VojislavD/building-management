@@ -1,11 +1,10 @@
 <x-app-layout>
-
-    <x-flash-message type="success" name="notificationCreated" />
-    
+    <x-flash-message type="success" name="apratmentCreated" />        
+    <x-flash-message type="success" name="apratmentUpdated" />
     <x-flash-message type="success" name="apartmentDeleted" />
-
+    
+    <x-flash-message type="success" name="notificationCreated" />
     <x-flash-message type="success" name="notificationCancelled" />
-
     <x-flash-message type="success" name="notificationDeleted" />
 
     <div class="flex items-start justify-between">
@@ -140,15 +139,7 @@
     </div>
 
     <div class="mt-24">
-        <h2 class="text-xl font-semibold">{{ __('Apartments') }}</h2>
-
-        <x-flash-message type="success" name="apratmentCreated" />
-        
-        <x-flash-message type="success" name="apratmentUpdated" />
-        <x-flash-message type="error" name="apratmentNotUpdated" />
-        
-        <x-flash-message type="success" name="apratmentDeleted" />
-        <x-flash-message type="error" name="apratmentNotDeleted" />
+        <h2 class="text-xl font-semibold">{{ __('Apartments') }}</h2>        
 
         <div class="flex items-center justify-end">
             <x-link-button route="{{ route('apartments.create', $building) }}" text="{{ __('New Apartment') }}" />

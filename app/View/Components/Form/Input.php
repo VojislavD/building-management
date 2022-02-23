@@ -12,6 +12,7 @@ class Input extends Component
     public $placeholder;
     public $name;
     public $model;
+    public $error;
     public $step;
     public $disabled;
 
@@ -20,7 +21,7 @@ class Input extends Component
      *
      * @return void
      */
-    public function __construct($type, $id, $title, $placeholder, $name = null, $model = null, $step = null, $disabled = false)
+    public function __construct($type, $id, $title, $placeholder, $name = null, $model = null, $error = null, $step = null, $disabled = false)
     {
         $this->type = $type;
         $this->id = $id;
@@ -28,6 +29,7 @@ class Input extends Component
         $this->placeholder = $placeholder;
         $this->name = $name;
         $this->model = $model;
+        $this->error = $error;
         $this->step = $step;
         $this->disabled = $disabled;
     }

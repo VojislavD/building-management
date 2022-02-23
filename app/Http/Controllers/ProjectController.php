@@ -22,9 +22,9 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function destroy(Project $project, DeletesProject $deletesProject): RedirectResponse
+    public function destroy(Project $project, DeletesProject $deleter): RedirectResponse
     {
-        $deletesProject($project);
+        $deleter($project);
 
         return to_route('projects.index')->with('projectDeleted', 'Project successfully deleted.');
     }

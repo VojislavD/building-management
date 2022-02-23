@@ -48,11 +48,11 @@ class EditApartmentLivewireComponentTest extends TestCase
         Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
-            ->set('owner_name', '')
-            ->set('owner_email', '')
-            ->set('owner_phone', '')
-            ->set('number', '')
-            ->set('tenants', '')
+            ->set('state.owner_name', '')
+            ->set('state.owner_email', '')
+            ->set('state.owner_phone', '')
+            ->set('state.number', '')
+            ->set('state.tenants', '')
             ->call('submit')
             ->assertHasErrors([
                 'owner_name' => 'required',
@@ -65,11 +65,11 @@ class EditApartmentLivewireComponentTest extends TestCase
         Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
-            ->set('owner_name', 1)
-            ->set('owner_email', 1)
-            ->set('owner_phone', 1)
-            ->set('number', 'Not Integer')
-            ->set('tenants', 'Not Integer')
+            ->set('state.owner_name', 1)
+            ->set('state.owner_email', 1)
+            ->set('state.owner_phone', 1)
+            ->set('state.number', 'Not Integer')
+            ->set('state.tenants', 'Not Integer')
             ->call('submit')
             ->assertHasErrors([
                 'owner_name' => 'string',
@@ -82,11 +82,11 @@ class EditApartmentLivewireComponentTest extends TestCase
         Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
-            ->set('owner_name', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
-            ->set('owner_email', 'notvalidemail')
-            ->set('owner_phone', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
-            ->set('number', -1)
-            ->set('tenants', -1)
+            ->set('state.owner_name', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
+            ->set('state.owner_email', 'notvalidemail')
+            ->set('state.owner_phone', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
+            ->set('state.number', -1)
+            ->set('state.tenants', -1)
             ->call('submit')
             ->assertHasErrors([
                 'owner_name' => 'max',
@@ -99,11 +99,11 @@ class EditApartmentLivewireComponentTest extends TestCase
         Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
-            ->set('owner_name', 'Test User')
-            ->set('owner_email', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
-            ->set('owner_phone', '0641234567')
-            ->set('number', 10000)
-            ->set('tenants', 10000)
+            ->set('state.owner_name', 'Test User')
+            ->set('state.owner_email', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
+            ->set('state.owner_phone', '0641234567')
+            ->set('state.number', 10000)
+            ->set('state.tenants', 10000)
             ->call('submit')
             ->assertHasErrors([
                 'owner_email' => 'max',
@@ -114,11 +114,11 @@ class EditApartmentLivewireComponentTest extends TestCase
         Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
-            ->set('owner_name', 'Test User')
-            ->set('owner_email', 'testuser@example.com')
-            ->set('owner_phone', '0641234567')
-            ->set('number', $apartment2->number)
-            ->set('tenants', 15)
+            ->set('state.owner_name', 'Test User')
+            ->set('state.owner_email', 'testuser@example.com')
+            ->set('state.owner_phone', '0641234567')
+            ->set('state.number', $apartment2->number)
+            ->set('state.tenants', 15)
             ->call('submit')
             ->assertHasErrors([
                 'number' => 'unique',
@@ -127,11 +127,11 @@ class EditApartmentLivewireComponentTest extends TestCase
         Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
-            ->set('owner_name', 'Test User')
-            ->set('owner_email', 'testuser@example.com')
-            ->set('owner_phone', '0641234567')
-            ->set('number', $apartment->number)
-            ->set('tenants', 15)
+            ->set('state.owner_name', 'Test User')
+            ->set('state.owner_email', 'testuser@example.com')
+            ->set('state.owner_phone', '0641234567')
+            ->set('state.number', $apartment->number)
+            ->set('state.tenants', 15)
             ->call('submit')
             ->assertHasNoErrors();
     }
@@ -146,11 +146,11 @@ class EditApartmentLivewireComponentTest extends TestCase
         Livewire::test('apartments.edit-apartment', [
                 'apartment' => $apartment
             ])
-            ->set('owner_name', 'Test User')
-            ->set('owner_email', 'testuser@example.com')
-            ->set('owner_phone', '0641234567')
-            ->set('number', $apartment->number + 1)
-            ->set('tenants', $apartment->tenants + 1)
+            ->set('state.owner_name', 'Test User')
+            ->set('state.owner_email', 'testuser@example.com')
+            ->set('state.owner_phone', '0641234567')
+            ->set('state.number', $apartment->number + 1)
+            ->set('state.tenants', $apartment->tenants + 1)
             ->call('submit')
             ->assertHasNoErrors();
 

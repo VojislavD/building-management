@@ -33,9 +33,9 @@ class BuildingController extends Controller
         ]);
     }
 
-    public function destroy(Building $building, DeletesBuilding $deletesBuilding): RedirectResponse
+    public function destroy(Building $building, DeletesBuilding $deleter): RedirectResponse
     {
-        $deletesBuilding($building);
+        $deleter($building);
 
         return to_route('buildings.index')->with('buildingDeleted', __('Building is successfully deleted.'));
     }
