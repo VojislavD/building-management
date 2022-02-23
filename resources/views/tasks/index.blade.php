@@ -2,13 +2,8 @@
     <h1 class="text-xl font-bold">{{ __('All Tasks') }}</h1>
 
     <x-flash-message type="success" name="taskUpdated" />
-    <x-flash-message type="error" name="taskNotUpdated" />
-
     <x-flash-message type="success" name="taskCompleted" />
-    <x-flash-message type="error" name="taskNotCompleted" />
-
     <x-flash-message type="success" name="taskCancelled" />
-    <x-flash-message type="error" name="taskNotCancelled" />
 
     @livewire('tasks.tasks-table')
 
