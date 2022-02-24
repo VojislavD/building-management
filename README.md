@@ -1,5 +1,5 @@
 # Building Management App
-<p><i>Note: App is still in heavy development</i></p>
+<p><i>Note: App is still under heavy development</i></p>
 
 <img src="https://user-images.githubusercontent.com/23532087/155483837-3d056ca9-6458-42f9-b859-2f1b37b525b7.png" alt="Building Management Image">
 
