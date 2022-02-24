@@ -11,7 +11,7 @@ Clone the repository, navigate to project directory and install dependencies
 composer install
 ```
   
-Create a file for environment variables by coping `.env.example`:
+Create a file for environment variables by coping `.env.example`
 ```bash
 cp .env.example .env
 ```
