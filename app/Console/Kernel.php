@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command(SendBuildingNotifications::class)->everyFiveMinutes();
+        $schedule->command(SendBuildingNotifications::class)->everyFiveMinutes();
     }
 
     /**
