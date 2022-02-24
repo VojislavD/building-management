@@ -37,8 +37,8 @@
             >
                 <!-- start::Logo -->
                 <div class="flex items-center justify-center bg-black bg-opacity-30 h-16">
-                    <h1 class="text-gray-100 text-lg font-bold uppercase tracking-widest">
-                        Template
+                    <h1 class="text-gray-100 text-center text-lg font-bold uppercase tracking-widest">
+                        {{ config('app.name') }}
                     </h1>
                 </div>
                 <!-- end::Logo -->
