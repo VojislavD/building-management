@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\BuildingStatus;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -107,21 +108,17 @@ class Building extends Model
         return $years;
     }
 
-    public function getElevatorStatusText(): string|array|null
+    public function elevatorStatusText(): Attribute
     {
-        if ($this->elevator) {
-            return __('Yes');
-        } else {
-            return __('No');
-        }
+        return new Attribute(
+            get: fn() => $this->elevator ? __('Yes') : __('No')
+        );
     }
 
-    public function getYardStatusText(): string|array|null
+    public function yardStatusText(): Attribute
     {
-        if ($this->yard) {
-            return __('Yes');
-        } else {
-            return __('No');
-        }
+        return new Attribute(
+            get: fn() => $this->yard ? __('Yes') : __('No')
+        );
     }
 }

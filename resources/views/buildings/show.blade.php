@@ -77,10 +77,10 @@
                     {{ __('Tenants') }}: <span class="font-bold"> {{ $building->tenantsSum() }} </span>
                 </p>
                 <p>
-                    {{ __('Elevator') }}: <span class="font-bold"> {{ $building->getElevatorStatusText() }} </span>
+                    {{ __('Elevator') }}: <span class="font-bold"> {{ $building->elevatorStatusText }} </span>
                 </p>
                 <p>
-                    {{ __('Yard') }}: <span class="font-bold"> {{ $building->getYardStatusText() }} </span>
+                    {{ __('Yard') }}: <span class="font-bold"> {{ $building->yardStatusText }} </span>
                 </p>
             </div>
         </div>
