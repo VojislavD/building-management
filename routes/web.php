@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\BuildingController;
 use App\Http\Controllers\DashboardController;
@@ -64,5 +65,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
         Route::get('/show/{notification}', 'show')->name('show');
         Route::patch('/cancel/{notification}', 'cancel')->name('cancel');
         Route::delete('/delete/{notification}', 'destroy')->name('delete');
+    });
+
+    // Admins
+    Route::controller(AdminController::class)->prefix('/admins')->name('admins.')->group(function () {
+        Route::get('/index', 'index')->name('index');
     });
 });
