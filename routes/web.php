@@ -71,5 +71,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::controller(AdminController::class)->prefix('/admins')->name('admins.')->group(function () {
         Route::get('/index', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
+        Route::get('/edit/{user}', 'edit')->name('edit');
     });
 });
