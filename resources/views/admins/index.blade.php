@@ -3,6 +3,7 @@
 
     <x-flash-message type="success" name="adminCreated" />
     <x-flash-message type="success" name="adminUpdated" />
+    <x-flash-message type="success" name="adminDeleted" />
 
     <div class="flex items-center justify-end">
         <x-link-button route="{{ route('admins.create') }}" text="{{ __('New Admin') }}" />

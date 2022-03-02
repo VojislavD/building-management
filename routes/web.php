@@ -72,5 +72,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
         Route::get('/index', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::get('/edit/{user}', 'edit')->name('edit');
+        Route::delete('/delete/{user}', 'destroy')->name('delete');
     });
 });

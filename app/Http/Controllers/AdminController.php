@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Actions\DeletesAdmin;
 use App\Models\User;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -23,5 +25,12 @@ class AdminController extends Controller
         return view('admins.edit', [
             'admin' => $user
         ]);
+    }
+
+    public function destroy(User $user, DeletesAdmin $deleter): RedirectResponse
+    {
+        $deleter($user);
+
+        return to_route('admins.index')->with('adminDeleted', __('Admin is successfully deleted.'));
     }
 }
