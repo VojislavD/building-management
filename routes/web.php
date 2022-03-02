@@ -70,5 +70,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     // Admins
     Route::controller(AdminController::class)->prefix('/admins')->name('admins.')->group(function () {
         Route::get('/index', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
     });
 });

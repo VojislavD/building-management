@@ -11,4 +11,9 @@ class AdminController extends Controller
     {
         return view('admins.index');
     }
+
+    public function create(): Renderable
+    {
+        return view('admins.create');
+    }
 }

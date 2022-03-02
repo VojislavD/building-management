@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Actions\Admins\CreateAdmin;
 use App\Actions\Apartments\CreateApartment;
 use App\Actions\Apartments\DeleteApartment;
 use App\Actions\Apartments\UpdateApartment;
@@ -14,6 +15,7 @@ use App\Actions\Notifications\UpdateNotification;
 use App\Actions\Projects\DeleteProject;
 use App\Actions\Projects\UpdateProject;
 use App\Actions\Tasks\UpdateTask;
+use App\Contracts\Actions\CreatesAdmin;
 use App\Contracts\Actions\CreatesApartment;
 use App\Contracts\Actions\CreatesBuilding;
 use App\Contracts\Actions\CreatesNotification;
@@ -47,6 +49,7 @@ class ActionServiceProvider extends ServiceProvider
         DeletesNotification::class => DeleteNotification::class,
         UpdatesProject::class => UpdateProject::class,
         DeletesProject::class => DeleteProject::class,
-        UpdatesTask::class => UpdateTask::class
+        UpdatesTask::class => UpdateTask::class,
+        CreatesAdmin::class => CreateAdmin::class
     ];
 }
