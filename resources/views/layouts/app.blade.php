@@ -68,7 +68,7 @@
 
                     <p class="text-xs text-gray-600 mt-10 mb-2 px-6 uppercase">Manage</p>
 
-                    @hasanyrole('admin|super_admin')
+                    @hasrole('admin')
 
                         <!-- start::Menu link -->
                         <a 
@@ -128,6 +128,8 @@
                         <!-- end::Menu link -->
                     @endrole
 
+                    @hasanyrole('admin|user')
+
                         <!-- start::Menu link -->
                         <a 
                             x-data="{ linkHover: false }"
@@ -165,6 +167,47 @@
                             </span>
                         </a>
                         <!-- end::Menu link -->
+                    @endrole
+
+                    @hasrole('super_admin')
+                        <!-- start::Menu link -->
+                        <a 
+                            x-data="{ linkHover: false }"
+                            @mouseover = "linkHover = true"
+                            @mouseleave = "linkHover = false"
+                            href="#"
+                            class="flex items-center text-gray-400 px-6 py-3 cursor-pointer hover:bg-black hover:bg-opacity-30 transition duration-200"
+                            :class="{{ Request::segment(1) === 'admins' }} ? 'bg-black bg-opacity-30' : ''"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition duration-200" :class="linkHover ? 'text-gray-100' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            <span 
+                                class="ml-3 transition duration-200" 
+                                :class="linkHover ? 'text-gray-100' : ''"
+                            >
+                                {{ __('Admins') }}
+                            </span>
+                        </a>
+                        <!-- end::Menu link -->
+
+                        <!-- start::Menu link -->
+                        <a 
+                            x-data="{ linkHover: false }"
+                            @mouseover = "linkHover = true"
+                            @mouseleave = "linkHover = false"
+                            href="#"
+                            class="flex items-center text-gray-400 px-6 py-3 cursor-pointer hover:bg-black hover:bg-opacity-30 transition duration-200"
+                            :class="{{ Request::segment(1) === 'users' }} ? 'bg-black bg-opacity-30' : ''"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition duration-200" :class="linkHover ? 'text-gray-100' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                            <span 
+                                class="ml-3 transition duration-200" 
+                                :class="linkHover ? 'text-gray-100' : ''"
+                            >
+                                {{ __('Users') }}
+                            </span>
+                        </a>
+                        <!-- end::Menu link -->
+                    @endrole
                 </nav>
                 <!-- end::Navigation -->
             </aside>

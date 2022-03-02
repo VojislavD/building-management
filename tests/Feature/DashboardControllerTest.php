@@ -69,10 +69,8 @@ class DashboardControllerTest extends TestCase
         $response->assertStatus(200)
             ->assertViewIs('dashboard')
             ->assertSeeText(__('Dashboard'))
-            ->assertSeeText(__('Buildings'))
-            ->assertSeeText(__('Apartments'))
-            ->assertSeeText(__('Tasks'))
-            ->assertSeeText(__('Projects'));
+            ->assertSeeText(__('Admins'))
+            ->assertSeeText(__('Users'));
     }
 
     /**
