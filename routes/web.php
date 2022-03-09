@@ -75,3 +75,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
         Route::delete('/delete/{user}', 'destroy')->name('delete');
     });
 });
+
+Route::impersonate();

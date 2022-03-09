@@ -334,6 +334,13 @@
             </div>
         </div>
 
+        @impersonating
+            <div class="flex items-center justify-center fixed bottom-0 left-0 w-full bg-yellow-500 bg-opacity-80 text-gray-900 space-x-4 py-2 z-40">
+                <p>You are impersonating {{ auth()->user()->name }}</p>
+                <a href="{{ route('impersonate.leave') }}" class="bg-gray-300 hover:bg-gray-400 py-1 px-4 text-sm rounded-lg">Leave Impersonating</a>
+            </div>
+        @endImpersonating
+
         @stack('modals')
         @stack('scripts')
         
