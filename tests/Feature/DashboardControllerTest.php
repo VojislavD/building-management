@@ -82,10 +82,10 @@ class DashboardControllerTest extends TestCase
             ->create()
             ->assignRole('admin');
 
-        $tasksThisMonth = Task::factory(1)->create()->count();
-        $tasksLastMonth = Task::factory(2)->create(['created_at' => now()->subMonth()])->count();
+        $tasksThisMonth = Task::factory()->create()->count();
+        $tasksLastMonth = Task::factory(2)->create(['created_at' => now()->subMonthsNoOverflow()])->count();
         $notificationsThisMonth = Notification::factory(3)->create()->count();
-        $notificationsLastMonth = Notification::factory(4)->create(['created_at' => now()->subMonth()])->count();
+        $notificationsLastMonth = Notification::factory(4)->create(['created_at' => now()->subMonthsNoOverflow()])->count();
 
         $response = $this->actingAs($admin)
             ->get(route('dashboard'));
