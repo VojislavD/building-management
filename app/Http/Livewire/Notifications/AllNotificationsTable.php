@@ -13,7 +13,9 @@ class AllNotificationsTable extends Component
     use WithPagination;
 
     public int $perPage = 10;
+
     public int|null $status = null;
+
     public int|null $building_id = null;
 
     public function updatingStatus(): void
@@ -34,10 +36,10 @@ class AllNotificationsTable extends Component
     public function render(): Renderable
     {
         $notifications = Notification::query()
-            ->when($this->status, function($query) {
+            ->when($this->status, function ($query) {
                 return $query->where('status', $this->status);
             })
-            ->when($this->building_id, function($query) {
+            ->when($this->building_id, function ($query) {
                 return $query->where('building_id', $this->building_id);
             })
             ->latest()
@@ -45,7 +47,7 @@ class AllNotificationsTable extends Component
 
         return view('livewire.notifications.all-notifications-table', [
             'buildings' => Building::all(),
-            'notifications' => $notifications
+            'notifications' => $notifications,
         ]);
     }
 }

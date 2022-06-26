@@ -14,18 +14,18 @@ class ApartmentController extends Controller
     {
         return view('apartments.index');
     }
-    
+
     public function create(Building $building): Renderable
     {
         return view('apartments.create', [
-            'building' => $building
+            'building' => $building,
         ]);
     }
 
     public function edit(Apartment $apartment): Renderable
     {
         return view('apartments.edit', [
-            'apartment' => $apartment
+            'apartment' => $apartment,
         ]);
     }
 

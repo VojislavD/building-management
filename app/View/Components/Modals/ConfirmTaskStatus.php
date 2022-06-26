@@ -13,7 +13,8 @@ class ConfirmTaskStatus extends Component
      */
     public function __construct(
         public string $route
-    ) {}
+    ) {
+    }
 
     /**
      * Get the view / contents that represent the component.

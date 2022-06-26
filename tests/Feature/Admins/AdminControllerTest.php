@@ -4,7 +4,6 @@ namespace Tests\Feature\Admins;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class AdminControllerTest extends TestCase
@@ -34,11 +33,11 @@ class AdminControllerTest extends TestCase
             ->assertSeeText(__('All Admins'))
             ->assertSeeText(__('New Admin'))
             ->assertSeeInOrder([
-                __('Name'), 
-                __('Email'),	
-                __('Company'), 
-                __('Created At'), 
-                __('Updated At'), 
+                __('Name'),
+                __('Email'),
+                __('Company'),
+                __('Created At'),
+                __('Updated At'),
             ]);
     }
 
@@ -64,13 +63,13 @@ class AdminControllerTest extends TestCase
             ->assertViewIs('admins.create')
             ->assertSeeText(__('Add New Admin'))
             ->assertSeeTextInOrder([
-                __('Admin Info'), 
-                __('Company'), 
-                __('Name'), 
-                __('Email'), 
-                __('Password'), 
-                __('Password Confirmation'), 
-                __('Save'), 
+                __('Admin Info'),
+                __('Company'),
+                __('Name'),
+                __('Email'),
+                __('Password'),
+                __('Password Confirmation'),
+                __('Save'),
             ]);
     }
 
@@ -100,12 +99,12 @@ class AdminControllerTest extends TestCase
             ->assertViewIs('admins.edit')
             ->assertSeeText(__('Edit Admin'))
             ->assertSeeTextInOrder([
-                __('Admin Info'), 
-                __('Company'), 
-                __('Name'), 
-                __('Email'), 
-                __('New Password'), 
-                __('Save'), 
+                __('Admin Info'),
+                __('Company'),
+                __('Name'),
+                __('Email'),
+                __('New Password'),
+                __('Save'),
             ]);
     }
 
@@ -135,7 +134,7 @@ class AdminControllerTest extends TestCase
             ->assertSessionHas('adminDeleted');
 
         $this->assertDatabaseMissing('users', [
-            $admin->id
+            $admin->id,
         ]);
     }
 }

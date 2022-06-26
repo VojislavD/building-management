@@ -5,7 +5,6 @@ namespace Tests\Feature\Buildings;
 use App\Models\Building;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class BuildingControllerTest extends TestCase
@@ -35,12 +34,12 @@ class BuildingControllerTest extends TestCase
             ->assertSeeText(__('All Buildings'))
             ->assertSeeText(__('New Building'))
             ->assertSeeInOrder([
-                __('Internal Code'), 
-                __('Address'),	
-                __('Floors'), 
-                __('Apartments'), 
-                __('Tenants'), 
-                __('Manage')
+                __('Internal Code'),
+                __('Address'),
+                __('Floors'),
+                __('Apartments'),
+                __('Tenants'),
+                __('Manage'),
             ]);
     }
 
@@ -66,26 +65,26 @@ class BuildingControllerTest extends TestCase
             ->assertViewIs('buildings.create')
             ->assertSeeText(__('Add New Building'))
             ->assertSeeTextInOrder([
-                __('Basic Info'), 
-                __('Internal Code'), 
-                __('Status'), 
-                __('Construction Year'), 
-                __('Square'), 
-                __('Floors'), 
-                __('Elevator'), 
-                __('Yard'), 
-                __('Balance'), 
+                __('Basic Info'),
+                __('Internal Code'),
+                __('Status'),
+                __('Construction Year'),
+                __('Square'),
+                __('Floors'),
+                __('Elevator'),
+                __('Yard'),
+                __('Balance'),
                 __('Administrative Info'),
-                __('PIB'), 
-                __('Identification Number'), 
-                __('Account Number'), 
-                __('Location Info'), 
-                __('Address'), 
-                __('City'), 
-                __('County'), 
-                __('Postal Code'), 
-                __('Comment'), 
-                __('Save'), 
+                __('PIB'),
+                __('Identification Number'),
+                __('Account Number'),
+                __('Location Info'),
+                __('Address'),
+                __('City'),
+                __('County'),
+                __('Postal Code'),
+                __('Comment'),
+                __('Save'),
             ]);
     }
 
@@ -117,7 +116,7 @@ class BuildingControllerTest extends TestCase
                 $building->address,
                 $building->balance,
                 __('Basic Info'),
-                $building->internal_code
+                $building->internal_code,
             ]);
     }
 
@@ -147,26 +146,26 @@ class BuildingControllerTest extends TestCase
             ->assertViewIs('buildings.edit')
             ->assertSeeText(__('Edit Building'))
             ->assertSeeTextInOrder([
-                __('Basic Info'), 
-                __('Internal Code'), 
-                __('Status'), 
-                __('Construction Year'), 
-                __('Square'), 
-                __('Floors'), 
-                __('Elevator'), 
-                __('Yard'), 
-                __('Balance'), 
+                __('Basic Info'),
+                __('Internal Code'),
+                __('Status'),
+                __('Construction Year'),
+                __('Square'),
+                __('Floors'),
+                __('Elevator'),
+                __('Yard'),
+                __('Balance'),
                 __('Administrative Info'),
-                __('PIB'), 
-                __('Identification Number'), 
-                __('Account Number'), 
-                __('Location Info'), 
-                __('Address'), 
-                __('City'), 
-                __('County'), 
-                __('Postal Code'), 
-                __('Comment'), 
-                __('Save'), 
+                __('PIB'),
+                __('Identification Number'),
+                __('Account Number'),
+                __('Location Info'),
+                __('Address'),
+                __('City'),
+                __('County'),
+                __('Postal Code'),
+                __('Comment'),
+                __('Save'),
             ]);
     }
 
@@ -196,7 +195,7 @@ class BuildingControllerTest extends TestCase
             ->assertSessionHas('buildingDeleted');
 
         $this->assertDatabaseMissing('buildings', [
-            $building->id
+            $building->id,
         ]);
     }
 }

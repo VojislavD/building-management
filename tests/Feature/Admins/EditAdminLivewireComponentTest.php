@@ -5,7 +5,6 @@ namespace Tests\Feature\Admins;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -21,7 +20,7 @@ class EditAdminLivewireComponentTest extends TestCase
         $admin = User::factory()->create()->assignRole('admin');
 
         Livewire::test('admins.edit-admin', [
-            'admin' => $admin
+            'admin' => $admin,
         ])
             ->assertSeeInOrder([
                 __('Company'),
@@ -47,7 +46,7 @@ class EditAdminLivewireComponentTest extends TestCase
         $company = Company::factory()->create();
 
         Livewire::test('admins.edit-admin', [
-            'admin' => $admin
+            'admin' => $admin,
         ])
             ->set('state.company_id', '')
             ->set('state.name', '')
@@ -61,7 +60,7 @@ class EditAdminLivewireComponentTest extends TestCase
             ]);
 
         Livewire::test('admins.edit-admin', [
-            'admin' => $admin
+            'admin' => $admin,
         ])
             ->set('state.company_id', 9999)
             ->set('state.name', 1)
@@ -76,7 +75,7 @@ class EditAdminLivewireComponentTest extends TestCase
             ]);
 
         Livewire::test('admins.edit-admin', [
-            'admin' => $admin
+            'admin' => $admin,
         ])
             ->set('state.company_id', "$company->id")
             ->set('state.name', 'Greater than 255 characters. Greater than 255 characters. Greater than 255 characters. Greater than 255 characters. Greater than 255 characters. Greater than 255 characters. Greater than 255 characters. Greater than 255 characters. Greater than 255 characters.')
@@ -89,7 +88,7 @@ class EditAdminLivewireComponentTest extends TestCase
             ]);
 
         Livewire::test('admins.edit-admin', [
-            'admin' => $admin
+            'admin' => $admin,
         ])
             ->set('state.company_id', "$company->id")
             ->set('state.name', 'New Name')
@@ -101,7 +100,7 @@ class EditAdminLivewireComponentTest extends TestCase
             ]);
 
         Livewire::test('admins.edit-admin', [
-            'admin' => $admin
+            'admin' => $admin,
         ])
             ->set('state.company_id', "$company->id")
             ->set('state.name', 'New Name')
@@ -111,7 +110,7 @@ class EditAdminLivewireComponentTest extends TestCase
             ->assertHasNoErrors();
 
         Livewire::test('admins.edit-admin', [
-            'admin' => $admin
+            'admin' => $admin,
         ])
             ->set('state.company_id', "$company->id")
             ->set('state.name', 'New Name')
@@ -131,7 +130,7 @@ class EditAdminLivewireComponentTest extends TestCase
         $company = Company::factory()->create();
 
         Livewire::test('admins.edit-admin', [
-            'admin' => $admin
+            'admin' => $admin,
         ])
             ->set('state.company_id', "$company->id")
             ->set('state.name', 'New Name')
@@ -150,8 +149,7 @@ class EditAdminLivewireComponentTest extends TestCase
         $this->assertDatabaseHas('model_has_roles', [
             'role_id' => 2,
             'model_type' => 'App\Models\User',
-            'model_id' => $admin->id
+            'model_id' => $admin->id,
         ]);
-
     }
 }

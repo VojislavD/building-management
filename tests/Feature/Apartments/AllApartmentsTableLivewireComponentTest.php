@@ -5,8 +5,6 @@ namespace Tests\Feature\Apartments;
 use App\Models\Apartment;
 use App\Models\Building;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Log;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -29,7 +27,7 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
                     <td class="py-3 pl-2 capitalize">',
                 $apartment2->number.'
                     </td>
-                    <td class="py-3 pl-2 capitalize">'
+                    <td class="py-3 pl-2 capitalize">',
             ]);
     }
 
@@ -43,17 +41,17 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
         $apartment2 = Apartment::factory()->create();
 
         Livewire::test('apartments.all-apartments-table', [
-                'building_id' => $building->id
-            ])
+            'building_id' => $building->id,
+        ])
             ->assertSeeHtml([
                 $apartment->number.'
                     </td>
-                    <td class="py-3 pl-2 capitalize">'
+                    <td class="py-3 pl-2 capitalize">',
             ])
             ->assertDontSeeHtml([
                 $apartment2->number.'
                     </td>
-                    <td class="py-3 pl-2 capitalize">'
+                    <td class="py-3 pl-2 capitalize">',
             ]);
     }
 
@@ -65,7 +63,7 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
         $building = Building::factory()->create();
 
         $apartment1 = Apartment::factory()->for($building)->create([
-            'created_at' => now()->subDays(2)
+            'created_at' => now()->subDays(2),
         ]);
 
         $apartment2 = Apartment::factory()->for($building)->create();
@@ -74,15 +72,15 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
 
         Livewire::test('apartments.all-apartments-table')
             ->assertDontSeeHtml([
-                    $apartment1->number.'
+                $apartment1->number.'
                     </td>
                     <td class="py-3 pl-2 capitalize">',
             ])
             ->assertSeeHtml([
-                    $apartment2->number.'
+                $apartment2->number.'
                     </td>
                     <td class="py-3 pl-2 capitalize">',
-                    $apartment3->number.'
+                $apartment3->number.'
                     </td>
                     <td class="py-3 pl-2 capitalize">',
             ])
@@ -96,13 +94,13 @@ class AllApartmentsTableLivewireComponentTest extends TestCase
     public function test_show_apartments_when_per_page_15()
     {
         $apartment1 = Apartment::factory()->create([
-            'created_at' => now()->subDays(2)
+            'created_at' => now()->subDays(2),
         ]);
 
         $apartment2 = Apartment::factory()->create();
         Apartment::factory(8)->create();
         $apartment3 = Apartment::factory()->create();
-        
+
         Livewire::test('apartments.all-apartments-table')
             ->set('perPage', 15)
             ->assertSeeHtml([

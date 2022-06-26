@@ -25,7 +25,7 @@ class UpdateCompanyForm extends Component
     public function rules(): array
     {
         return [
-            'state.name' => ['required', 'string', 'max:255', Rule::unique('companies', 'name')->ignore(auth()->user()->company)]
+            'state.name' => ['required', 'string', 'max:255', Rule::unique('companies', 'name')->ignore(auth()->user()->company)],
         ];
     }
 
@@ -34,14 +34,14 @@ class UpdateCompanyForm extends Component
         $this->validate();
 
         $updateCompany = auth()->user()->company->update([
-            'name' => $this->state['name']
+            'name' => $this->state['name'],
         ]);
 
         if ($updateCompany) {
             $this->state = [
                 'name' => '',
             ];
-    
+
             $this->emit('saved');
         }
     }

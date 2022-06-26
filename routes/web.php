@@ -22,11 +22,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
     // Buildings
-    Route::controller(BuildingController::class)->prefix('/buildings')->name('buildings.')->group(function() {
+    Route::controller(BuildingController::class)->prefix('/buildings')->name('buildings.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::get('/edit/{building}', 'edit')->name('edit');
@@ -35,7 +35,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     });
 
     // Apartments
-    Route::controller(ApartmentController::class)->prefix('/apartments')->name('apartments.')->group(function() {
+    Route::controller(ApartmentController::class)->prefix('/apartments')->name('apartments.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create/{building}', 'create')->name('create');
         Route::get('/edit/{apartment}', 'edit')->name('edit');
@@ -43,7 +43,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     });
 
     // Tasks
-    Route::controller(TaskController::class)->prefix('/tasks')->name('tasks.')->group(function() {
+    Route::controller(TaskController::class)->prefix('/tasks')->name('tasks.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/show/{task}', 'show')->name('show');
         Route::patch('/update/{task}', 'update')->name('update');
@@ -52,14 +52,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     });
 
     // Projects
-    Route::controller(ProjectController::class)->prefix('/projects')->name('projects.')->group(function() {
+    Route::controller(ProjectController::class)->prefix('/projects')->name('projects.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/edit/{project}', 'edit')->name('edit');
         Route::delete('/delete/{project}', 'destroy')->name('delete');
     });
 
     // Notifications
-    Route::controller(NotificationController::class)->prefix('/notifications')->name('notifications.')->group(function() {
+    Route::controller(NotificationController::class)->prefix('/notifications')->name('notifications.')->group(function () {
         Route::get('/index', 'index')->name('index');
         Route::get('/create/{building}', 'create')->name('create');
         Route::get('/show/{notification}', 'show')->name('show');

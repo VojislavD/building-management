@@ -19,19 +19,19 @@ class CreateNotification implements CreatesNotification
             'body' => ['required', 'string'],
             'via_email' => ['accepted'],
             'scheduled_date' => [
-                Rule::requiredIf(function () use ($input) { 
-                    return $input['send_scheduled']; 
-                }), 
-                'nullable', 
-                'date', 
+                Rule::requiredIf(function () use ($input) {
+                    return $input['send_scheduled'];
+                }),
+                'nullable',
+                'date',
             ],
             'scheduled_time' => [
-                Rule::requiredIf(function () use ($input) { 
-                    return $input['send_scheduled']; 
-                }), 
-                'nullable', 
+                Rule::requiredIf(function () use ($input) {
+                    return $input['send_scheduled'];
+                }),
+                'nullable',
                 'date_format:H:i',
-            ]
+            ],
         ])->validate();
 
         if ($input['send_scheduled']) {
@@ -39,14 +39,14 @@ class CreateNotification implements CreatesNotification
         } else {
             $send_at = now();
         }
-        
+
         Notification::create([
             'building_id' => $building->id,
             'status' => NotificationStatus::Scheduled(),
             'via_email' => $input['via_email'],
             'subject' => $input['subject'],
             'body' => $input['body'],
-            'send_at' => $send_at
+            'send_at' => $send_at,
         ]);
     }
 }

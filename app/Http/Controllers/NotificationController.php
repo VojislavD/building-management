@@ -16,18 +16,18 @@ class NotificationController extends Controller
     {
         return view('notifications.index');
     }
-    
+
     public function create(Building $building): Renderable
     {
         return view('notifications.create', [
-            'building' => $building
+            'building' => $building,
         ]);
     }
 
     public function show(Notification $notification): Renderable
     {
         return view('notifications.show', [
-            'notification' => $notification
+            'notification' => $notification,
         ]);
     }
 

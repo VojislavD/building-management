@@ -12,9 +12,10 @@ class LinkButton extends Component
      * @return void
      */
     public function __construct(
-        public string $route, 
+        public string $route,
         public string $text
-    ) {}
+    ) {
+    }
 
     /**
      * Get the view / contents that represent the component.

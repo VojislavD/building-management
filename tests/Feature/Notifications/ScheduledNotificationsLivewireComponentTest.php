@@ -4,7 +4,6 @@ namespace Tests\Feature\Notifications;
 
 use App\Models\Notification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -18,7 +17,7 @@ class ScheduledNotificationsLivewireComponentTest extends TestCase
     public function test_that_component_shows_correct_data()
     {
         $notification1 = Notification::factory()->scheduled()->create([
-            'created_at' => now()->subDay()
+            'created_at' => now()->subDay(),
         ]);
         Notification::factory(4)->scheduled()->create();
         $notification2 = Notification::factory()->scheduled()->create();
@@ -33,7 +32,7 @@ class ScheduledNotificationsLivewireComponentTest extends TestCase
                 $notification1->subject,
                 $processingNotification->subject,
                 $finishedNotification->subject,
-                $cancelledNotification->subject
+                $cancelledNotification->subject,
             ]);
     }
 }

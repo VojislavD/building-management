@@ -9,7 +9,6 @@ use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class DashboardControllerTest extends TestCase
@@ -94,17 +93,17 @@ class DashboardControllerTest extends TestCase
             ->assertViewIs('dashboard')
             ->assertSeeInOrder([
                 __('Tasks This Month'),
-                $tasksThisMonth, 
+                $tasksThisMonth,
                 __('Tasks Last Month'),
                 $tasksLastMonth,
                 __('Notifications This Month'),
                 $notificationsThisMonth,
                 __('Notifications Last Month'),
-                $notificationsLastMonth
+                $notificationsLastMonth,
             ])
             ->assertSeeText([
                 __('Scheduled Notifications'),
-                __('Pending Tasks')
+                __('Pending Tasks'),
             ]);
     }
 
@@ -131,17 +130,17 @@ class DashboardControllerTest extends TestCase
             ->assertViewIs('dashboard')
             ->assertSeeInOrder([
                 __('Current Budget'),
-                $user->apartment->building->balance, 
+                $user->apartment->building->balance,
                 __('Spent This Year'),
                 0,
                 __('Pending Tasks'),
                 Task::pending()->count(),
                 __('Active Projects'),
-                Project::active()->count()
+                Project::active()->count(),
             ])
             ->assertSeeText([
                 __('Pending Tasks'),
-                __('Active Projects')
+                __('Active Projects'),
             ]);
     }
 }

@@ -5,7 +5,6 @@ namespace Tests\Feature\Projects;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ProjectControllerTest extends TestCase
@@ -72,7 +71,7 @@ class ProjectControllerTest extends TestCase
                 $project->start_paying->format('Y-m-d'),
                 $project->end_paying->format('Y-m-d'),
                 __('Save'),
-                __('Delete Project')
+                __('Delete Project'),
             ]);
     }
 
@@ -100,9 +99,9 @@ class ProjectControllerTest extends TestCase
 
         $response->assertRedirect(route('projects.index'))
             ->assertSessionHas('projectDeleted');
-        
+
         $this->assertDatabaseMissing('projects', [
-            'id' => $project->id
+            'id' => $project->id,
         ]);
     }
 }

@@ -12,13 +12,14 @@ class Select extends Component
      * @return void
      */
     public function __construct(
-        public string $id, 
-        public string $title, 
-        public array $options, 
-        public string|null $name = null, 
+        public string $id,
+        public string $title,
+        public array $options,
+        public string|null $name = null,
         public string|null $model = null,
         public string|null $error = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the view / contents that represent the component.

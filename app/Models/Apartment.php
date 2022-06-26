@@ -16,10 +16,10 @@ class Apartment extends Model
      * @var string[]
      */
     protected $fillable = [
-        'building_id', 
-        'user_id', 
-        'number', 
-        'tenants'
+        'building_id',
+        'user_id',
+        'number',
+        'tenants',
     ];
 
     public function building(): BelongsTo

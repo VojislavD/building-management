@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Enums\BuildingStatus;
-use App\Models\Building;
 use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -29,7 +28,7 @@ class BuildingFactory extends Factory
             'balance' => $this->faker->numberBetween(1000, 1000000),
             'construction_year' => $this->faker->numberBetween(1970, now()->year),
             'square' => $this->faker->randomNumber(4, true),
-            'floors' => $this->faker->numberBetween(1,30),
+            'floors' => $this->faker->numberBetween(1, 30),
             'elevator' => $this->faker->boolean(80),
             'yard' => $this->faker->boolean(30),
             'address' => $this->faker->streetAddress(),
@@ -37,21 +36,21 @@ class BuildingFactory extends Factory
             'county' => $this->faker->country(),
             'postal_code' => $this->faker->randomNumber(5, true),
             'balance_begining' => $this->faker->numberBetween(1000, 10000),
-            'comment' => $this->faker->text(500)
+            'comment' => $this->faker->text(500),
         ];
     }
 
     public function active(): Factory
     {
         return $this->state([
-            'status' => BuildingStatus::Active()
+            'status' => BuildingStatus::Active(),
         ]);
     }
 
     public function inactive(): Factory
     {
         return $this->state([
-            'status' => BuildingStatus::Inactive()
+            'status' => BuildingStatus::Inactive(),
         ]);
     }
 }

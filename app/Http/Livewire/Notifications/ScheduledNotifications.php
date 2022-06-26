@@ -18,7 +18,7 @@ class ScheduledNotifications extends Component
             ->paginate(5, ['*'], 'notificationsPage');
 
         return view('livewire.notifications.scheduled-notifications', [
-            'notifications' => $notifications
+            'notifications' => $notifications,
         ]);
     }
 }

@@ -22,7 +22,7 @@ class ApartmentsTable extends Component
             ->paginate(10);
 
         return view('livewire.apartments.apartments-table', [
-            'apartments' => $apartments
+            'apartments' => $apartments,
         ]);
     }
 }

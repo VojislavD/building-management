@@ -7,7 +7,6 @@ use App\Models\Building;
 use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class NotificationControllerTest extends TestCase
@@ -106,7 +105,7 @@ class NotificationControllerTest extends TestCase
 
         $this->assertDatabaseHas('notifications', [
             'id' => $notification->id,
-            'status' => NotificationStatus::Cancelled()
+            'status' => NotificationStatus::Cancelled(),
         ]);
     }
 
@@ -136,7 +135,7 @@ class NotificationControllerTest extends TestCase
             ->assertSessionHas('notificationDeleted');
 
         $this->assertDatabaseMissing('notifications', [
-            $notification->id
+            $notification->id,
         ]);
     }
 }

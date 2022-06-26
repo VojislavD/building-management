@@ -33,7 +33,7 @@ class EditBuilding extends Component
             'state.city' => $this->building->city,
             'state.county' => $this->building->county,
             'state.postal_code' => $this->building->postal_code,
-            'state.comment' => $this->building->comment
+            'state.comment' => $this->building->comment,
         ]);
     }
 
@@ -44,6 +44,7 @@ class EditBuilding extends Component
         $updator($this->building, $this->state);
 
         session()->flash('buildingUpdated', __('Building is successfully updated.'));
+
         return to_route('buildings.index');
     }
 

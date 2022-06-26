@@ -5,7 +5,6 @@ namespace Tests\Feature\Notifications;
 use App\Models\Building;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -21,8 +20,8 @@ class CreateNotificationLivewireComponentTest extends TestCase
         $building = Building::factory()->create();
 
         Livewire::test('notifications.create-notification', [
-                'building' => $building
-            ])
+            'building' => $building,
+        ])
             ->assertSeeInOrder([
                 __('Internal Code'),
                 __('Address'),
@@ -43,18 +42,18 @@ class CreateNotificationLivewireComponentTest extends TestCase
         $building = Building::factory()->create();
 
         Livewire::test('notifications.create-notification', [
-                'building' => $building
-            ])
+            'building' => $building,
+        ])
             ->call('submit')
             ->assertHasErrors([
                 'subject' => 'required',
                 'body' => 'required',
-                'via_email' => 'accepted'
+                'via_email' => 'accepted',
             ]);
 
         Livewire::test('notifications.create-notification', [
-                'building' => $building
-            ])
+            'building' => $building,
+        ])
             ->set('state.send_scheduled', true)
             ->call('submit')
             ->assertHasErrors([
@@ -62,12 +61,12 @@ class CreateNotificationLivewireComponentTest extends TestCase
                 'body' => 'required',
                 'via_email' => 'accepted',
                 'scheduled_date' => 'required',
-                'scheduled_time' => 'required'
+                'scheduled_time' => 'required',
             ]);
 
         Livewire::test('notifications.create-notification', [
-                'building' => $building
-            ])
+            'building' => $building,
+        ])
             ->set('state.send_scheduled', true)
             ->set('state.subject', 1)
             ->set('state.body', 1)
@@ -80,12 +79,12 @@ class CreateNotificationLivewireComponentTest extends TestCase
                 'body' => 'string',
                 'via_email' => 'accepted',
                 'scheduled_date' => 'date',
-                'scheduled_time' => 'date_format'
+                'scheduled_time' => 'date_format',
             ]);
 
         Livewire::test('notifications.create-notification', [
-                'building' => $building
-            ])
+            'building' => $building,
+        ])
             ->set('state.send_scheduled', true)
             ->set('state.subject', 'Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters. Text greater than 255 characters.')
             ->set('state.body', 1)
@@ -96,10 +95,10 @@ class CreateNotificationLivewireComponentTest extends TestCase
             ->assertHasErrors([
                 'subject' => 'max',
             ]);
-        
+
         Livewire::test('notifications.create-notification', [
-                'building' => $building
-            ])
+            'building' => $building,
+        ])
             ->set('state.send_scheduled', true)
             ->set('state.subject', 'Example subject')
             ->set('state.body', 'Example body.')
@@ -120,8 +119,8 @@ class CreateNotificationLivewireComponentTest extends TestCase
         $time = now()->format('H:i');
 
         Livewire::test('notifications.create-notification', [
-                'building' => $building
-            ])
+            'building' => $building,
+        ])
             ->set('state.send_scheduled', true)
             ->set('state.subject', 'Example subject')
             ->set('state.body', 'Example body.')
@@ -136,7 +135,7 @@ class CreateNotificationLivewireComponentTest extends TestCase
             'via_email' => 1,
             'subject' => 'Example subject',
             'body' => 'Example body.',
-            'send_at' => Carbon::createFromFormat('Y-m-d H:i', $date.' '.$time)
+            'send_at' => Carbon::createFromFormat('Y-m-d H:i', $date.' '.$time),
         ]);
     }
 }

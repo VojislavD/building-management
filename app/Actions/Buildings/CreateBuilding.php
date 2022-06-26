@@ -50,7 +50,7 @@ class CreateBuilding implements CreatesBuilding
             'city' => $input['city'],
             'county' => $input['county'],
             'postal_code' => $input['postal_code'],
-            'comment' => $input['comment']
+            'comment' => $input['comment'],
         ]);
     }
 }

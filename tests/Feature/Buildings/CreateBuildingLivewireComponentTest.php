@@ -6,7 +6,6 @@ use App\Enums\BuildingStatus;
 use App\Models\Building;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -105,7 +104,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
                 'city' => 'string',
                 'county' => 'string',
                 'postal_code' => 'numeric',
-                'comment' => 'string'
+                'comment' => 'string',
             ]);
 
         Livewire::test('buildings.create-building')
@@ -134,9 +133,9 @@ class CreateBuildingLivewireComponentTest extends TestCase
                 'identification_number' => 'digits',
                 'account_number' => 'unique',
                 'postal_code' => 'digits',
-                'comment' => 'max'
+                'comment' => 'max',
             ]);
-        
+
         Livewire::test('buildings.create-building')
             ->set('state.internal_code', "$building->internal_code")
             ->set('state.status', BuildingStatus::Active())
@@ -162,7 +161,7 @@ class CreateBuildingLivewireComponentTest extends TestCase
             ]);
 
         Livewire::test('buildings.create-building')
-                ->set('state.internal_code', "12345")
+                ->set('state.internal_code', '12345')
                 ->set('state.status', BuildingStatus::Active())
                 ->set('state.construction_year', now()->year)
                 ->set('state.square', 10)
@@ -170,8 +169,8 @@ class CreateBuildingLivewireComponentTest extends TestCase
                 ->set('state.elevator', true)
                 ->set('state.yard', true)
                 ->set('state.balance_begining', 123)
-                ->set('state.pib', "123456789")
-                ->set('state.identification_number', "12345678")
+                ->set('state.pib', '123456789')
+                ->set('state.identification_number', '12345678')
                 ->set('state.account_number', '123-4567-89')
                 ->set('state.address', 'Some Address 123')
                 ->set('state.city', 'New York')
@@ -188,9 +187,9 @@ class CreateBuildingLivewireComponentTest extends TestCase
     public function test_create_new_building()
     {
         $this->actingAs(User::factory()->create());
-        
+
         Livewire::test('buildings.create-building')
-            ->set('state.internal_code', "12345")
+            ->set('state.internal_code', '12345')
             ->set('state.status', BuildingStatus::Active())
             ->set('state.construction_year', now()->year)
             ->set('state.square', 10)
@@ -198,8 +197,8 @@ class CreateBuildingLivewireComponentTest extends TestCase
             ->set('state.elevator', true)
             ->set('state.yard', true)
             ->set('state.balance_begining', 123)
-            ->set('state.pib', "123456789")
-            ->set('state.identification_number', "12345678")
+            ->set('state.pib', '123456789')
+            ->set('state.identification_number', '12345678')
             ->set('state.account_number', '123-4567-89')
             ->set('state.address', 'Some Address 123')
             ->set('state.city', 'New York')
@@ -208,9 +207,9 @@ class CreateBuildingLivewireComponentTest extends TestCase
             ->set('state.comment', 'Some comment.')
             ->call('submit')
             ->assertHasNoErrors();
-        
+
         $this->assertDatabaseHas('buildings', [
-            'internal_code' => "12345",
+            'internal_code' => '12345',
             'status' => BuildingStatus::Active(),
             'construction_year' => now()->year,
             'square' => 10,
@@ -218,14 +217,14 @@ class CreateBuildingLivewireComponentTest extends TestCase
             'elevator' => true,
             'yard' => true,
             'balance_begining' => 123,
-            'pib' => "123456789",
-            'identification_number' => "12345678",
+            'pib' => '123456789',
+            'identification_number' => '12345678',
             'account_number' => '123-4567-89',
             'address' => 'Some Address 123',
             'city' => 'New York',
             'county' => 'New York',
             'postal_code' => 12345,
-            'comment' => 'Some comment.'
+            'comment' => 'Some comment.',
         ]);
     }
 }

@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 class PendingTasks extends Component
 {
     use WithPagination;
-    
+
     public function render(): Renderable
     {
         $tasks = Task::pending()
@@ -18,7 +18,7 @@ class PendingTasks extends Component
             ->paginate(5, ['*'], 'tasksPage');
 
         return view('livewire.tasks.pending-tasks', [
-            'tasks' => $tasks
+            'tasks' => $tasks,
         ]);
     }
 }

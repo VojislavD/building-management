@@ -13,7 +13,8 @@ class ErrorMessage extends Component
      */
     public function __construct(
         public string $name
-    ) {}
+    ) {
+    }
 
     /**
      * Get the view / contents that represent the component.

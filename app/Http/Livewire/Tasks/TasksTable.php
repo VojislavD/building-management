@@ -13,6 +13,7 @@ class TasksTable extends Component
     use WithPagination;
 
     public int|null $status;
+
     public int $perPage = 10;
 
     public function mount(): void
@@ -33,14 +34,14 @@ class TasksTable extends Component
     public function render(): Renderable
     {
         $tasks = Task::with('user', 'building')
-            ->when($this->status, function($query) {
+            ->when($this->status, function ($query) {
                 return $query->where('status', $this->status);
             })
             ->latest()
             ->paginate($this->perPage);
 
         return view('livewire.tasks.tasks-table', [
-            'tasks' => $tasks
+            'tasks' => $tasks,
         ]);
     }
 }

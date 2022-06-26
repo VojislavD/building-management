@@ -17,19 +17,19 @@ class UpdateApartment implements UpdatesApartment
             'owner_email' => ['required', 'string', 'email', 'max:255'],
             'owner_phone' => ['required', 'string', 'max:255'],
             'number' => ['required', 'integer', 'min:0', 'max:9999', Rule::unique('apartments')->where('building_id', $apartment->building->id)->ignore($apartment->id)],
-            'tenants' => ['required', 'integer', 'min:0', 'max:9999']
+            'tenants' => ['required', 'integer', 'min:0', 'max:9999'],
         ])->validate();
 
         DB::transaction(function () use ($apartment, $input) {
             $apartment->owner->update([
                 'name' => $input['owner_name'],
                 'email' => $input['owner_email'],
-                'phone' => $input['owner_phone']
+                'phone' => $input['owner_phone'],
             ]);
 
             $apartment->update([
                 'number' => $input['number'],
-                'tenants' => $input['tenants']
+                'tenants' => $input['tenants'],
             ]);
         });
     }

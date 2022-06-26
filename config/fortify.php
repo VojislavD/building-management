@@ -141,5 +141,5 @@ return [
             'confirmPassword' => true,
         ]),
     ],
-    
+
 ];

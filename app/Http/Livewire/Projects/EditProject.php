@@ -18,7 +18,7 @@ class EditProject extends Component
     public function mount(): void
     {
         $this->fill([
-            'state.internal_code' => $this->project->building->internal_code,    
+            'state.internal_code' => $this->project->building->internal_code,
             'state.address' => $this->project->building->address,
             'state.status' => $this->project->status->value,
             'state.name' => $this->project->name,
@@ -27,7 +27,7 @@ class EditProject extends Component
             'state.amount_payed' => $this->project->amount_payed,
             'state.amount_left' => $this->project->amount_left,
             'state.start_paying' => $this->project->start_paying->format('Y-m-d'),
-            'state.end_paying' => $this->project->end_paying->format('Y-m-d')
+            'state.end_paying' => $this->project->end_paying->format('Y-m-d'),
         ]);
     }
 

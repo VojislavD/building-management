@@ -6,7 +6,6 @@ use App\Enums\TaskStatus;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class TaskControllerTest extends TestCase
@@ -70,7 +69,7 @@ class TaskControllerTest extends TestCase
                 $task->updated_at->format('d.m.Y'),
                 __('Comment'),
                 __('Mark As Completed'),
-                __('Mark As Cancelled')
+                __('Mark As Cancelled'),
             ]);
     }
 
@@ -95,25 +94,25 @@ class TaskControllerTest extends TestCase
 
         $response = $this->actingAs(User::factory()->create())
             ->patch(route('tasks.update', $task), [
-                'comment' => 1
+                'comment' => 1,
             ]);
 
         $response->assertSessionHasErrors([
-            'comment'
+            'comment',
         ]);
 
         $response = $this->actingAs(User::factory()->create())
             ->patch(route('tasks.update', $task), [
-                'comment' => "Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters."
+                'comment' => 'Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.Comment greater than 1000 characters.',
             ]);
 
         $response->assertSessionHasErrors([
-            'comment'
+            'comment',
         ]);
 
         $response = $this->actingAs(User::factory()->create())
             ->patch(route('tasks.update', $task), [
-                'comment' => "Some random comment."
+                'comment' => 'Some random comment.',
             ]);
 
         $response->assertSessionHasNoErrors();
@@ -128,18 +127,18 @@ class TaskControllerTest extends TestCase
 
         $response = $this->actingAs(User::factory()->create())
             ->patch(route('tasks.update', $task), [
-                'comment' => 'Some random comment'
+                'comment' => 'Some random comment',
             ]);
 
         $response->assertRedirect(route('tasks.index'))
             ->assertSessionHas('taskUpdated');
 
         $this->assertDatabaseMissing('tasks', [
-            'comment' => $task->comment
+            'comment' => $task->comment,
         ]);
 
         $this->assertDatabaseHas('tasks', [
-            'comment' => 'Some random comment'
+            'comment' => 'Some random comment',
         ]);
     }
 
@@ -157,11 +156,11 @@ class TaskControllerTest extends TestCase
             ->assertSessionHas('taskCompleted');
 
         $this->assertDatabaseMissing('tasks', [
-            'status' => TaskStatus::Pending()
+            'status' => TaskStatus::Pending(),
         ]);
 
         $this->assertDatabaseHas('tasks', [
-            'status' => TaskStatus::Completed()
+            'status' => TaskStatus::Completed(),
         ]);
     }
 
@@ -179,11 +178,11 @@ class TaskControllerTest extends TestCase
             ->assertSessionHas('taskCancelled');
 
         $this->assertDatabaseMissing('tasks', [
-            'status' => TaskStatus::Pending()
+            'status' => TaskStatus::Pending(),
         ]);
 
         $this->assertDatabaseHas('tasks', [
-            'status' => TaskStatus::Cancelled()
+            'status' => TaskStatus::Cancelled(),
         ]);
     }
 

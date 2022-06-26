@@ -4,7 +4,6 @@ namespace Tests\Feature\Projects;
 
 use App\Models\Project;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -26,11 +25,11 @@ class ActiveProjectsLivewireComponentTest extends TestCase
             ->assertSee(__('Active Projects'))
             ->assertSee([
                 str($pendingProject->name)->limit(50),
-                str($processingProject->name)->limit(50)
+                str($processingProject->name)->limit(50),
             ])
             ->assertDontSee([
                 str($finishedProject->name)->limit(50),
-                str($cancelledProject->name)->limit(50)
+                str($cancelledProject->name)->limit(50),
             ]);
     }
 }

@@ -25,7 +25,7 @@ class Project extends Model
         'amount_payed',
         'amount_left',
         'start_paying',
-        'end_paying'
+        'end_paying',
     ];
 
     /**

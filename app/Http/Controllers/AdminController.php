@@ -6,7 +6,6 @@ use App\Contracts\Actions\DeletesAdmin;
 use App\Models\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -23,7 +22,7 @@ class AdminController extends Controller
     public function edit(User $user): Renderable
     {
         return view('admins.edit', [
-            'admin' => $user
+            'admin' => $user,
         ]);
     }
 

@@ -16,6 +16,7 @@ class Building extends Model
     use HasFactory;
 
     const STATUS_ACTIVE = 1;
+
     const STATUS_INACTIVE = 2;
 
     /**
@@ -24,25 +25,25 @@ class Building extends Model
      * @var string[]
      */
     protected $fillable = [
-        'company_id', 
-        'internal_code', 
-        'status', 
-        'construction_year', 
-        'square', 
-        'floors', 
-        'apartments', 
-        'elevator', 
-        'yard', 
-        'balance', 
-        'balance_begining', 
-        'pib', 
-        'identification_number', 
-        'account_number', 
-        'address', 
-        'city', 
-        'county', 
-        'postal_code', 
-        'comment'
+        'company_id',
+        'internal_code',
+        'status',
+        'construction_year',
+        'square',
+        'floors',
+        'apartments',
+        'elevator',
+        'yard',
+        'balance',
+        'balance_begining',
+        'pib',
+        'identification_number',
+        'account_number',
+        'address',
+        'city',
+        'county',
+        'postal_code',
+        'comment',
     ];
 
     /**
@@ -68,7 +69,7 @@ class Building extends Model
     {
         return $this->hasMany(Notification::class);
     }
-    
+
     public function scopeActive(): Builder
     {
         return $this->where('status', static::STATUS_ACTIVE);
@@ -111,14 +112,14 @@ class Building extends Model
     public function elevatorStatusText(): Attribute
     {
         return new Attribute(
-            get: fn() => $this->elevator ? __('Yes') : __('No')
+            get: fn () => $this->elevator ? __('Yes') : __('No')
         );
     }
 
     public function yardStatusText(): Attribute
     {
         return new Attribute(
-            get: fn() => $this->yard ? __('Yes') : __('No')
+            get: fn () => $this->yard ? __('Yes') : __('No')
         );
     }
 }

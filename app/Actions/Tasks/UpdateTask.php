@@ -4,9 +4,6 @@ namespace App\Actions\Tasks;
 
 use App\Contracts\Actions\UpdatesTask;
 use App\Models\Task;
-use Illuminate\Support\Facades\Validator;
-
-use function PHPUnit\Framework\throwException;
 
 class UpdateTask implements UpdatesTask
 {

@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\Task;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -18,7 +17,7 @@ class PendingTasksLivewireComponentTest extends TestCase
     public function test_that_component_shows_correct_data()
     {
         $task1 = Task::factory()->pending()->create([
-            'created_at' => now()->subDay()
+            'created_at' => now()->subDay(),
         ]);
         Task::factory(4)->pending()->create();
         $task2 = Task::factory()->pending()->create();

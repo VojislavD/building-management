@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -20,7 +19,7 @@ class TaskController extends Controller
     public function show(Task $task): Renderable
     {
         return view('tasks.show', [
-            'task' => $task
+            'task' => $task,
         ]);
     }
 

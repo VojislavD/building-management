@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Enums\NotificationStatus;
 use App\Models\Building;
-use App\Models\Notification;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -30,49 +29,49 @@ class NotificationFactory extends Factory
             'via_email' => $this->faker->boolean(),
             'subject' => $this->faker->sentence(),
             'body' => $this->faker->text(),
-            'send_at' => now()->addMinute()
+            'send_at' => now()->addMinute(),
         ];
     }
 
     public function scheduled(): Factory
     {
         return $this->state([
-            'status' => NotificationStatus::Scheduled()
+            'status' => NotificationStatus::Scheduled(),
         ]);
     }
 
     public function processing(): Factory
     {
         return $this->state([
-            'status' => NotificationStatus::Processing()
+            'status' => NotificationStatus::Processing(),
         ]);
     }
 
     public function finished(): Factory
     {
         return $this->state([
-            'status' => NotificationStatus::Finished()
+            'status' => NotificationStatus::Finished(),
         ]);
     }
 
     public function cancelled(): Factory
     {
         return $this->state([
-            'status' => NotificationStatus::Cancelled()
+            'status' => NotificationStatus::Cancelled(),
         ]);
     }
 
     public function viaEmail(): Factory
     {
         return $this->state([
-            'via_email' => true
+            'via_email' => true,
         ]);
     }
 
     public function notViaEmail(): Factory
     {
         return $this->state([
-            'via_email' => false
+            'via_email' => false,
         ]);
     }
 }

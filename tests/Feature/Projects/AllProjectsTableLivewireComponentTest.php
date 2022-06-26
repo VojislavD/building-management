@@ -2,11 +2,10 @@
 
 namespace Tests\Feature\Projects;
 
-use App\Models\Building;
 use App\Enums\ProjectStatus;
+use App\Models\Building;
 use App\Models\Project;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -25,7 +24,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
         Livewire::test('projects.all-projects-table')
             ->assertSee([
                 $project->name,
-                $project2->name
+                $project2->name,
             ]);
     }
 
@@ -44,43 +43,43 @@ class AllProjectsTableLivewireComponentTest extends TestCase
                 $projectPending->name,
                 $projectProcessing->name,
                 $projectFinished->name,
-                $projectCancelled->name
+                $projectCancelled->name,
             ])
             ->set('status', ProjectStatus::Pending())
             ->assertSee([
-                $projectPending->name
+                $projectPending->name,
             ])
             ->assertDontSee([
                 $projectProcessing->name,
                 $projectFinished->name,
-                $projectCancelled->name
+                $projectCancelled->name,
             ])
             ->set('status', ProjectStatus::Processing())
             ->assertSee([
-                $projectProcessing->name
+                $projectProcessing->name,
             ])
             ->assertDontSee([
                 $projectPending->name,
                 $projectFinished->name,
-                $projectCancelled->name
+                $projectCancelled->name,
             ])
             ->set('status', ProjectStatus::Finished())
             ->assertSee([
-                $projectFinished->name
+                $projectFinished->name,
             ])
             ->assertDontSee([
                 $projectPending->name,
                 $projectProcessing->name,
-                $projectCancelled->name
+                $projectCancelled->name,
             ])
             ->set('status', ProjectStatus::Cancelled())
             ->assertSee([
-                $projectCancelled->name
+                $projectCancelled->name,
             ])
             ->assertDontSee([
                 $projectPending->name,
                 $projectProcessing->name,
-                $projectFinished->name
+                $projectFinished->name,
             ]);
     }
 
@@ -94,13 +93,13 @@ class AllProjectsTableLivewireComponentTest extends TestCase
         $project2 = Project::factory()->create();
 
         Livewire::test('projects.all-projects-table', [
-                'building_id' => $building->id
-            ])
+            'building_id' => $building->id,
+        ])
             ->assertSee([
-                $project->name
+                $project->name,
             ])
             ->assertDontSee([
-                $project2->name
+                $project2->name,
             ]);
     }
 
@@ -110,7 +109,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
     public function test_show_projects_when_per_page_default()
     {
         $project1 = Project::factory()->create([
-            'created_at' => now()->subDays(2)
+            'created_at' => now()->subDays(2),
         ]);
 
         $project2 = Project::factory()->create();
@@ -123,7 +122,7 @@ class AllProjectsTableLivewireComponentTest extends TestCase
             ])
             ->assertSee([
                 $project2->name,
-                $project3->name
+                $project3->name,
             ])
             ->assertSeeInOrder(['Showing', '1', 'to', '10', 'of', Project::count(), 'results'])
             ->assertHasNoErrors();
@@ -135,19 +134,19 @@ class AllProjectsTableLivewireComponentTest extends TestCase
     public function test_show_projects_when_per_page_15()
     {
         $project1 = Project::factory()->create([
-            'created_at' => now()->subDays(2)
+            'created_at' => now()->subDays(2),
         ]);
 
         $project2 = Project::factory()->create();
         Project::factory(8)->create();
         $project3 = Project::factory()->create();
-        
+
         Livewire::test('projects.all-projects-table')
             ->set('perPage', 15)
             ->assertSee([
                 $project1->name,
                 $project2->name,
-                $project3->name
+                $project3->name,
             ])
             ->assertHasNoErrors();
     }

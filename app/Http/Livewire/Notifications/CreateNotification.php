@@ -3,20 +3,16 @@
 namespace App\Http\Livewire\Notifications;
 
 use App\Contracts\Actions\CreatesNotification;
-use App\Enums\NotificationStatus;
 use App\Models\Building;
-use App\Models\Notification;
-use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class CreateNotification extends Component
 {
     public Building $building;
-    
+
     public array $state = [];
 
     protected array $messages = [
@@ -30,7 +26,7 @@ class CreateNotification extends Component
             'state.address' => $this->building->address,
             'state.via_email' => false,
             'state.send_immediately' => 'on',
-            'state.send_scheduled' => false
+            'state.send_scheduled' => false,
         ]);
     }
 

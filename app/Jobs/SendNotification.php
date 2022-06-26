@@ -6,12 +6,10 @@ use App\Enums\NotificationStatus;
 use App\Models\Notification as NotificationModel;
 use App\Notifications\BuildingNotification;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 
 class SendNotification implements ShouldQueue
@@ -36,7 +34,7 @@ class SendNotification implements ShouldQueue
     public function handle()
     {
         $tenants = $this->notification->building->allTenants();
-        
+
         Notification::send($tenants, new BuildingNotification(
             $this->notification->via_email,
             $this->notification->subject,
@@ -44,7 +42,7 @@ class SendNotification implements ShouldQueue
         ));
 
         $this->notification->update([
-            'status' => NotificationStatus::Finished()
+            'status' => NotificationStatus::Finished(),
         ]);
     }
 }

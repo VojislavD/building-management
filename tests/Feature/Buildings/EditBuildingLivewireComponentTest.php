@@ -2,10 +2,9 @@
 
 namespace Tests\Feature\Buildings;
 
-use App\Models\Building;
 use App\Enums\BuildingStatus;
+use App\Models\Building;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -21,7 +20,7 @@ class EditBuildingLivewireComponentTest extends TestCase
         $building = Building::factory()->create();
 
         Livewire::test('buildings.edit-building', [
-            'building' => $building
+            'building' => $building,
         ])
             ->assertSeeInOrder([
                 __('Internal Code'),
@@ -70,7 +69,7 @@ class EditBuildingLivewireComponentTest extends TestCase
         $building2 = Building::factory()->create();
 
         Livewire::test('buildings.edit-building', [
-            'building' => $building
+            'building' => $building,
         ])
             ->set('state.internal_code', '')
             ->set('state.status', '')
@@ -108,7 +107,7 @@ class EditBuildingLivewireComponentTest extends TestCase
             ]);
 
         Livewire::test('buildings.edit-building', [
-            'building' => $building
+            'building' => $building,
         ])
             ->set('state.internal_code', 1)
             ->set('state.status', 0)
@@ -147,7 +146,7 @@ class EditBuildingLivewireComponentTest extends TestCase
             ]);
 
         Livewire::test('buildings.edit-building', [
-            'building' => $building
+            'building' => $building,
         ])
             ->set('state.internal_code', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
             ->set('state.status', BuildingStatus::Active())
@@ -178,7 +177,7 @@ class EditBuildingLivewireComponentTest extends TestCase
             ]);
 
         Livewire::test('buildings.edit-building', [
-            'building' => $building
+            'building' => $building,
         ])
             ->set('state.internal_code', "$building2->internal_code")
             ->set('state.status', BuildingStatus::Active())
@@ -204,7 +203,7 @@ class EditBuildingLivewireComponentTest extends TestCase
             ]);
 
         Livewire::test('buildings.edit-building', [
-            'building' => $building
+            'building' => $building,
         ])
             ->set('state.internal_code', "$building->internal_code")
             ->set('state.status', BuildingStatus::Active())
@@ -234,11 +233,11 @@ class EditBuildingLivewireComponentTest extends TestCase
         $building = Building::factory()->active()->create();
 
         Livewire::test('buildings.edit-building', [
-            'building' => $building
+            'building' => $building,
         ])
-            ->set('state.internal_code', "12345")
+            ->set('state.internal_code', '12345')
             ->set('state.status', BuildingStatus::Inactive())
-            ->set('state.construction_year', $building->construction_year-1)
+            ->set('state.construction_year', $building->construction_year - 1)
             ->set('state.square', $building->square + 10)
             ->set('state.floors', $building->floors + 10)
             ->set('state.elevator', false)
@@ -256,27 +255,27 @@ class EditBuildingLivewireComponentTest extends TestCase
             ->assertHasNoErrors();
 
         $this->assertDatabaseMissing('buildings', [
-                'internal_code' => $building->internal_code,
-                'status' => $building->status,
-                'construction_year' => $building->construction_year,
-                'square' => $building->square,
-                'floors' => $building->floors,
-                'elevator' => $building->elevator,
-                'yard' => $building->yard,
-                'balance' => $building->balance,
-                'pib' => $building->pib,
-                'identification_number' => $building->identification_number,
-                'account_number' => $building->account_number,
-                'address' => $building->address,
-                'city' => $building->city,
-                'county' => $building->county,
-                'postal_code' => $building->postal_code,
-                'comment' => $building->comment,
-            ])
+            'internal_code' => $building->internal_code,
+            'status' => $building->status,
+            'construction_year' => $building->construction_year,
+            'square' => $building->square,
+            'floors' => $building->floors,
+            'elevator' => $building->elevator,
+            'yard' => $building->yard,
+            'balance' => $building->balance,
+            'pib' => $building->pib,
+            'identification_number' => $building->identification_number,
+            'account_number' => $building->account_number,
+            'address' => $building->address,
+            'city' => $building->city,
+            'county' => $building->county,
+            'postal_code' => $building->postal_code,
+            'comment' => $building->comment,
+        ])
             ->assertDatabaseHas('buildings', [
-                'internal_code' => "12345",
+                'internal_code' => '12345',
                 'status' => BuildingStatus::Inactive(),
-                'construction_year' => $building->construction_year-1,
+                'construction_year' => $building->construction_year - 1,
                 'square' => $building->square + 10,
                 'floors' => $building->floors + 10,
                 'elevator' => false,
@@ -289,7 +288,7 @@ class EditBuildingLivewireComponentTest extends TestCase
                 'city' => 'New York',
                 'county' => 'New York',
                 'postal_code' => '11111',
-                'comment' => 'Some random comment.'
+                'comment' => 'Some random comment.',
             ]);
     }
 }

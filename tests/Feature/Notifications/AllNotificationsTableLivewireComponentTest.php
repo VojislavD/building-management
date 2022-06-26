@@ -6,7 +6,6 @@ use App\Enums\NotificationStatus;
 use App\Models\Building;
 use App\Models\Notification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -44,7 +43,7 @@ class AllNotificationsTableLivewireComponentTest extends TestCase
                 $notificationScheduled->subject,
                 $notificationProcessing->subject,
                 $notificationFinished->subject,
-                $notificationCancelled->subject
+                $notificationCancelled->subject,
             ]);
 
         Livewire::test('notifications.all-notifications-table')
@@ -55,7 +54,7 @@ class AllNotificationsTableLivewireComponentTest extends TestCase
             ->assertDontSee([
                 $notificationProcessing->subject,
                 $notificationFinished->subject,
-                $notificationCancelled->subject
+                $notificationCancelled->subject,
             ]);
 
         Livewire::test('notifications.all-notifications-table')
@@ -66,7 +65,7 @@ class AllNotificationsTableLivewireComponentTest extends TestCase
             ->assertDontSee([
                 $notificationScheduled->subject,
                 $notificationFinished->subject,
-                $notificationCancelled->subject
+                $notificationCancelled->subject,
             ]);
 
         Livewire::test('notifications.all-notifications-table')
@@ -77,7 +76,7 @@ class AllNotificationsTableLivewireComponentTest extends TestCase
             ->assertDontSee([
                 $notificationScheduled->subject,
                 $notificationProcessing->subject,
-                $notificationCancelled->subject
+                $notificationCancelled->subject,
             ]);
 
         Livewire::test('notifications.all-notifications-table')
@@ -88,7 +87,7 @@ class AllNotificationsTableLivewireComponentTest extends TestCase
             ->assertDontSee([
                 $notificationScheduled->subject,
                 $notificationProcessing->subject,
-                $notificationFinished->subject
+                $notificationFinished->subject,
             ]);
     }
 
@@ -112,19 +111,19 @@ class AllNotificationsTableLivewireComponentTest extends TestCase
         Livewire::test('notifications.all-notifications-table')
             ->set('building_id', $building1->id)
             ->assertSeeHtml([
-                $notification1->subject
+                $notification1->subject,
             ])
             ->assertDontSee([
-                $notification2->subject
+                $notification2->subject,
             ]);
 
         Livewire::test('notifications.all-notifications-table')
             ->set('building_id', $building2->id)
             ->assertSeeHtml([
-                $notification2->subject
+                $notification2->subject,
             ])
             ->assertDontSee([
-                $notification1->subject
+                $notification1->subject,
             ]);
     }
 
@@ -134,7 +133,7 @@ class AllNotificationsTableLivewireComponentTest extends TestCase
     public function test_show_notifications_when_per_page_is_changed()
     {
         $notification1 = Notification::factory()->create([
-            'created_at' => now()->subDay()
+            'created_at' => now()->subDay(),
         ]);
 
         Notification::factory(8)->create();
@@ -148,7 +147,7 @@ class AllNotificationsTableLivewireComponentTest extends TestCase
                 $notification3->subject,
             ])
             ->assertDontSee([
-                $notification1->subject
+                $notification1->subject,
             ]);
 
         Livewire::test('notifications.all-notifications-table')

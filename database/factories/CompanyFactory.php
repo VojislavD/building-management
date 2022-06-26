@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Enums\CompanyStatus;
-use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,21 +19,21 @@ class CompanyFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'status' => collect([CompanyStatus::Active(), CompanyStatus::Inactive()])->random()
+            'status' => collect([CompanyStatus::Active(), CompanyStatus::Inactive()])->random(),
         ];
     }
 
     public function active(): Factory
     {
         return $this->state([
-            'status' => CompanyStatus::Active()
+            'status' => CompanyStatus::Active(),
         ]);
     }
 
     public function inactive(): Factory
     {
         return $this->state([
-            'status' => CompanyStatus::Inactive()
+            'status' => CompanyStatus::Inactive(),
         ]);
     }
 }

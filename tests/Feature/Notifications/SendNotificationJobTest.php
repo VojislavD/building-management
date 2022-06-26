@@ -9,7 +9,6 @@ use App\Models\Building;
 use App\Models\Notification as NotificationModel;
 use App\Notifications\BuildingNotification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
@@ -60,7 +59,7 @@ class SendNotificationJobTest extends TestCase
 
         $this->assertDatabaseHas('notifications', [
             'id' => $notification->id,
-            'status' => NotificationStatus::Finished()
+            'status' => NotificationStatus::Finished(),
         ]);
     }
 }

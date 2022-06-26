@@ -21,6 +21,6 @@ trait InvokableCases
             }
         }
 
-        return throw new Exception("Undefined constant ".static::class."::$name");
+        return throw new Exception('Undefined constant '.static::class."::$name");
     }
 }

@@ -18,7 +18,7 @@ class ActiveProjects extends Component
             ->paginate(5, ['*'], 'projectsPage');
 
         return view('livewire.projects.active-projects', [
-            'projects' => $projects
+            'projects' => $projects,
         ]);
     }
 }

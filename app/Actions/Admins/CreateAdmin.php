@@ -23,14 +23,13 @@ class CreateAdmin implements CreatesAdmin
         ])->validate();
 
         DB::transaction(function () use ($input) {
-
             $admin = User::create([
                 'company_id' => $input['company_id'],
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]);
-            
+
             $admin->assignRole('admin');
         }, 3);
     }

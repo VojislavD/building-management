@@ -5,8 +5,6 @@ namespace Tests\Feature\Admins;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Hash;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -73,7 +71,7 @@ class CreateAdminLivewireComponentTest extends TestCase
                 'name' => 'max',
                 'email' => 'email',
             ]);
-        
+
         Livewire::test('admins.create-admin')
             ->set('state.company_id', "$company->id")
             ->set('state.name', 'New Admin')
@@ -83,7 +81,7 @@ class CreateAdminLivewireComponentTest extends TestCase
             ->assertHasErrors([
                 'email' => 'max',
             ]);
-        
+
         Livewire::test('admins.create-admin')
             ->set('state.company_id', "$company->id")
             ->set('state.name', 'New Admin')
@@ -93,7 +91,7 @@ class CreateAdminLivewireComponentTest extends TestCase
             ->assertHasErrors([
                 'email' => 'unique',
             ]);
-        
+
         Livewire::test('admins.create-admin')
             ->set('state.company_id', "$company->id")
             ->set('state.name', 'Admin')
@@ -135,11 +133,11 @@ class CreateAdminLivewireComponentTest extends TestCase
             'name' => 'Admin',
             'email' => 'admin@example.com',
         ]);
-        
+
         $this->assertDatabaseHas('model_has_roles', [
             'role_id' => 2,
             'model_type' => 'App\Models\User',
-            'model_id' => 1
+            'model_id' => 1,
         ]);
     }
 }

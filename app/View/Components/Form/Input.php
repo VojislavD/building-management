@@ -12,16 +12,17 @@ class Input extends Component
      * @return void
      */
     public function __construct(
-        public string $type, 
-        public string $id, 
-        public string $title, 
-        public string $placeholder, 
-        public string|null $name = null, 
-        public string|null $model = null, 
-        public string|null $error = null, 
-        public string|null $step = null, 
+        public string $type,
+        public string $id,
+        public string $title,
+        public string $placeholder,
+        public string|null $name = null,
+        public string|null $model = null,
+        public string|null $error = null,
+        public string|null $step = null,
         public bool $disabled = false
-    ) {}
+    ) {
+    }
 
     /**
      * Get the view / contents that represent the component.

@@ -2,10 +2,9 @@
 
 namespace Tests\Feature\Projects;
 
-use App\Models\Project;
 use App\Enums\ProjectStatus;
+use App\Models\Project;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -21,8 +20,8 @@ class EditProjectLivewireComponentTest extends TestCase
         $project = Project::factory()->create();
 
         Livewire::test('projects.edit-project', [
-                'project' => $project
-            ])
+            'project' => $project,
+        ])
             ->assertSeeInOrder([
                 __('Internal Code'),
                 __('Address'),
@@ -46,8 +45,8 @@ class EditProjectLivewireComponentTest extends TestCase
         $project = Project::factory()->create();
 
         Livewire::test('projects.edit-project', [
-                'project' => $project
-            ])
+            'project' => $project,
+        ])
             ->set('state.status', '')
             ->set('state.name', '')
             ->set('state.price', '')
@@ -65,12 +64,12 @@ class EditProjectLivewireComponentTest extends TestCase
                 'amount_payed' => 'required',
                 'amount_left' => 'required',
                 'start_paying' => 'required',
-                'end_paying' => 'required'
+                'end_paying' => 'required',
             ]);
 
         Livewire::test('projects.edit-project', [
-                'project' => $project
-            ])
+            'project' => $project,
+        ])
             ->set('state.status', 'not integer')
             ->set('state.name', 1)
             ->set('state.price', 'not integer')
@@ -88,12 +87,12 @@ class EditProjectLivewireComponentTest extends TestCase
                 'amount_payed' => 'integer',
                 'amount_left' => 'integer',
                 'start_paying' => 'date',
-                'end_paying' => 'date'
+                'end_paying' => 'date',
             ]);
 
         Livewire::test('projects.edit-project', [
-                'project' => $project
-            ])
+            'project' => $project,
+        ])
             ->set('state.status', 0)
             ->set('state.name', 'abcde')
             ->set('state.price', -1)
@@ -111,10 +110,10 @@ class EditProjectLivewireComponentTest extends TestCase
                 'amount_payed' => 'min',
                 'amount_left' => 'min',
             ]);
-        
+
         Livewire::test('projects.edit-project', [
-                'project' => $project
-            ])
+            'project' => $project,
+        ])
             ->set('state.status', ProjectStatus::Pending())
             ->set('state.name', 'More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters. More than 255 characters.')
             ->set('state.price', 100)
@@ -127,10 +126,10 @@ class EditProjectLivewireComponentTest extends TestCase
             ->assertHasErrors([
                 'name' => 'max',
             ]);
-        
+
         Livewire::test('projects.edit-project', [
-                'project' => $project
-            ])
+            'project' => $project,
+        ])
             ->set('state.status', ProjectStatus::Pending())
             ->set('state.name', 'Example')
             ->set('state.price', 100)
@@ -151,8 +150,8 @@ class EditProjectLivewireComponentTest extends TestCase
         $project = Project::factory()->pending()->create();
 
         Livewire::test('projects.edit-project', [
-                'project' => $project
-            ])
+            'project' => $project,
+        ])
             ->set('state.status', ProjectStatus::Finished())
             ->set('state.name', 'Example')
             ->set('state.price', 100)

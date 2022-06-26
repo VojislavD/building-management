@@ -6,7 +6,6 @@ use App\Models\Apartment;
 use App\Models\Building;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ApartmentControllerTest extends TestCase
@@ -62,11 +61,11 @@ class ApartmentControllerTest extends TestCase
             ->assertViewIs('apartments.create')
             ->assertSeeText(__('Add New Apartment'))
             ->assertSeeInOrder([
-                __('Building Info'), 
+                __('Building Info'),
                 __('Internal Code'),
-                __('Address'), 
-                __('Owner Info'), 
-                __('Name'), 
+                __('Address'),
+                __('Owner Info'),
+                __('Name'),
                 __('Email Address'),
                 __('Phone Number'),
                 __('Apartment Info'),
@@ -109,7 +108,7 @@ class ApartmentControllerTest extends TestCase
                 $apartment->number,
                 $apartment->tenants,
                 __('Save'),
-                __('Delete Apartment')
+                __('Delete Apartment'),
             ]);
     }
 
@@ -139,7 +138,7 @@ class ApartmentControllerTest extends TestCase
             ->assertSessionHas('apartmentDeleted');
 
         $this->assertDatabaseMissing('apartments', [
-            'id' => $apartment->id
+            'id' => $apartment->id,
         ]);
     }
 }

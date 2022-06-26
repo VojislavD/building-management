@@ -6,7 +6,6 @@ use App\Contracts\Actions\DeletesProject;
 use App\Models\Project;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -18,7 +17,7 @@ class ProjectController extends Controller
     public function edit(Project $project): Renderable
     {
         return view('projects.edit', [
-            'project' => $project
+            'project' => $project,
         ]);
     }
 

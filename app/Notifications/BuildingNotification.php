@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -17,10 +16,11 @@ class BuildingNotification extends Notification
      * @return void
      */
     public function __construct(
-        public bool $via_email, 
-        public string $subject, 
+        public bool $via_email,
+        public string $subject,
         public string $body
-    ) {}
+    ) {
+    }
 
     /**
      * Get the notification's delivery channels.
@@ -35,7 +35,7 @@ class BuildingNotification extends Notification
         if ($this->via_email) {
             $via[] = 'mail';
         }
-        
+
         return $via;
     }
 

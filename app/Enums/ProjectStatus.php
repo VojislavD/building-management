@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum ProjectStatus: int 
+enum ProjectStatus: int
 {
     use InvokableCases;
 
@@ -13,24 +13,22 @@ enum ProjectStatus: int
 
     public function name(): string|array|null
     {
-        return match($this)
-        {
-            ProjectStatus::Pending => __("Pending"),
-            ProjectStatus::Processing => __("Processing"),
-            ProjectStatus::Finished => __("Finished"),
-            ProjectStatus::Cancelled => __("Cancelled"),
+        return match ($this) {
+            ProjectStatus::Pending => __('Pending'),
+            ProjectStatus::Processing => __('Processing'),
+            ProjectStatus::Finished => __('Finished'),
+            ProjectStatus::Cancelled => __('Cancelled'),
             default => __('N/A')
         };
     }
 
     public function label(): string|array|null
     {
-        return match($this)
-        {
-            ProjectStatus::Pending => '<span class="text-xs bg-yellow-500 text-gray-100 px-2 py-0.5 rounded-lg capitalize">'. __("Pending") .'</span>',
-            ProjectStatus::Processing => '<span class="text-xs bg-blue-600 text-gray-100 px-2 py-0.5 rounded-lg capitalize">'. __("Processing") .'</span>',
-            ProjectStatus::Finished => '<span class="text-xs bg-green-600 text-gray-100 px-2 py-0.5 rounded-lg capitalize">'. __("Finished") .'</span>',
-            ProjectStatus::Cancelled => '<span class="text-xs bg-red-600 text-gray-100 px-2 py-0.5 rounded-lg capitalize">'. __("Cancelled") .'</span>',
+        return match ($this) {
+            ProjectStatus::Pending => '<span class="text-xs bg-yellow-500 text-gray-100 px-2 py-0.5 rounded-lg capitalize">'.__('Pending').'</span>',
+            ProjectStatus::Processing => '<span class="text-xs bg-blue-600 text-gray-100 px-2 py-0.5 rounded-lg capitalize">'.__('Processing').'</span>',
+            ProjectStatus::Finished => '<span class="text-xs bg-green-600 text-gray-100 px-2 py-0.5 rounded-lg capitalize">'.__('Finished').'</span>',
+            ProjectStatus::Cancelled => '<span class="text-xs bg-red-600 text-gray-100 px-2 py-0.5 rounded-lg capitalize">'.__('Cancelled').'</span>',
             default => __('N/A')
         };
     }

@@ -2,10 +2,9 @@
 
 namespace Tests\Feature\Tasks;
 
-use App\Models\Task;
 use App\Enums\TaskStatus;
+use App\Models\Task;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -86,7 +85,7 @@ class TasksTableLivewireComponentTest extends TestCase
     public function test_show_number_of_tasks_when_per_page_change()
     {
         $task = Task::factory()->pending()->create([
-            'created_at' => now()->subDay()
+            'created_at' => now()->subDay(),
         ]);
 
         $task2 = Task::factory()->pending()->create();

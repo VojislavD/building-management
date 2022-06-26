@@ -30,10 +30,10 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
-        
+
         $user = DB::transaction(function () use ($input) {
             $company = Company::create([
-                'name' => $input['company']
+                'name' => $input['company'],
             ]);
 
             return User::create([

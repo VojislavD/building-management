@@ -18,8 +18,8 @@ class UpdateNotification implements UpdatesNotification
                     NotificationStatus::Scheduled(),
                     NotificationStatus::Processing(),
                     NotificationStatus::Finished(),
-                    NotificationStatus::Cancelled()
-                ])]
+                    NotificationStatus::Cancelled(),
+                ])],
             ])->validate();
 
             $notification->update(['status' => $input['status']]);

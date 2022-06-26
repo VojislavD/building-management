@@ -21,7 +21,7 @@ class CreateApartment implements CreatesApartment
             'owner_phone' => ['required', 'string', 'max:255'],
             'owner_password' => ['required', 'string', new Password, 'confirmed'],
             'number' => ['required', 'integer', 'min:0', 'max:9999', Rule::unique('apartments')->where('building_id', $building->id)],
-            'tenants' => ['required', 'integer', 'min:0', 'max:9999']
+            'tenants' => ['required', 'integer', 'min:0', 'max:9999'],
         ])->validate();
 
         DB::transaction(function () use ($building, $input) {
@@ -30,14 +30,14 @@ class CreateApartment implements CreatesApartment
                 'name' => $input['owner_name'],
                 'email' => $input['owner_email'],
                 'phone' => $input['owner_phone'],
-                'password' => bcrypt($input['owner_password'])
+                'password' => bcrypt($input['owner_password']),
             ]);
 
             Apartment::create([
                 'building_id' => $building->id,
                 'user_id' => $owner->id,
                 'number' => $input['number'],
-                'tenants' => $input['tenants']
+                'tenants' => $input['tenants'],
             ]);
         });
     }

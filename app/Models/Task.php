@@ -20,8 +20,8 @@ class Task extends Model
      * @var string[]
      */
     protected $fillable = [
-        'status', 
-        'comment'
+        'status',
+        'comment',
     ];
 
     /**
@@ -32,7 +32,7 @@ class Task extends Model
     protected $casts = [
         'status' => TaskStatus::class,
     ];
-    
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -51,7 +51,7 @@ class Task extends Model
     public function limitedDescription(): Attribute
     {
         return new Attribute(
-            get: fn() => Str::limit($this->description, 40, '...')
+            get: fn () => Str::limit($this->description, 40, '...')
         );
     }
 }

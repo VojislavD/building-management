@@ -5,8 +5,6 @@ namespace Tests\Feature\Apartments;
 use App\Models\Apartment;
 use App\Models\Building;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Log;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -23,8 +21,8 @@ class ApartmentsTableLivewireComponentTest extends TestCase
         $apartment = Apartment::factory()->for($building)->create();
 
         Livewire::test('apartments.apartments-table', [
-                'building' => $building
-            ])
+            'building' => $building,
+        ])
             ->assertSee([
                 $apartment->number,
             ]);

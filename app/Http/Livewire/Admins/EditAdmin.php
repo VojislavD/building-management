@@ -6,9 +6,9 @@ use App\Contracts\Actions\UpdatesAdmin;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Contracts\Support\Renderable;
-use Livewire\Component;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
+use Livewire\Component;
 
 class EditAdmin extends Component
 {
@@ -22,7 +22,7 @@ class EditAdmin extends Component
             'state.company_id' => $this->admin->company_id,
             'state.name' => $this->admin->name,
             'state.email' => $this->admin->email,
-            'state.password' => ''
+            'state.password' => '',
         ]);
     }
 
@@ -40,7 +40,7 @@ class EditAdmin extends Component
     public function render(): Renderable
     {
         return view('livewire.admins.edit-admin', [
-            'companies' => Company::get(['id', 'name'])
+            'companies' => Company::get(['id', 'name']),
         ]);
     }
 }

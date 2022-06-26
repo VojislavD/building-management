@@ -6,7 +6,6 @@ use App\Enums\NotificationStatus;
 use App\Models\Building;
 use App\Models\Notification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -23,8 +22,8 @@ class NotificationsTableForBuildingLivewireComponentTest extends TestCase
         $notification = Notification::factory()->for($building)->create();
 
         Livewire::test('notifications.notifications-table-for-building', [
-                'building' => $building
-            ])
+            'building' => $building,
+        ])
             ->assertSee($notification->subject);
     }
 
@@ -40,25 +39,25 @@ class NotificationsTableForBuildingLivewireComponentTest extends TestCase
         $notificationCancelled = Notification::factory()->for($building)->cancelled()->create();
 
         Livewire::test('notifications.notifications-table-for-building', [
-                'building' => $building
-            ])
+            'building' => $building,
+        ])
             ->assertSee($notificationScheduled->subject)
             ->assertSee($notificationProcessing->subject)
             ->assertSee($notificationFinished->subject)
             ->assertSee($notificationCancelled->subject);
 
         Livewire::test('notifications.notifications-table-for-building', [
-                'building' => $building
-            ])
+            'building' => $building,
+        ])
             ->set('status', NotificationStatus::Scheduled())
             ->assertSee($notificationScheduled->subject)
             ->assertDontSee($notificationProcessing->subject)
             ->assertDontSee($notificationFinished->subject)
             ->assertDontSee($notificationCancelled->subject);
-        
+
         Livewire::test('notifications.notifications-table-for-building', [
-                'building' => $building
-            ])
+            'building' => $building,
+        ])
             ->set('status', NotificationStatus::Processing())
             ->assertSee($notificationProcessing->subject)
             ->assertDontSee($notificationScheduled->subject)
@@ -66,8 +65,8 @@ class NotificationsTableForBuildingLivewireComponentTest extends TestCase
             ->assertDontSee($notificationCancelled->subject);
 
         Livewire::test('notifications.notifications-table-for-building', [
-                'building' => $building
-            ])
+            'building' => $building,
+        ])
             ->set('status', NotificationStatus::Finished())
             ->assertSee($notificationFinished->subject)
             ->assertDontSee($notificationScheduled->subject)
@@ -75,8 +74,8 @@ class NotificationsTableForBuildingLivewireComponentTest extends TestCase
             ->assertDontSee($notificationCancelled->subject);
 
         Livewire::test('notifications.notifications-table-for-building', [
-                'building' => $building
-            ])
+            'building' => $building,
+        ])
             ->set('status', NotificationStatus::Cancelled())
             ->assertSee($notificationCancelled->subject)
             ->assertDontSee($notificationScheduled->subject)

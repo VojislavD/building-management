@@ -2,11 +2,10 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-use App\Models\Notification as NotificationModel;
 use App\Enums\NotificationStatus;
 use App\Jobs\SendNotification;
-use Illuminate\Support\Facades\Queue;
+use App\Models\Notification as NotificationModel;
+use Illuminate\Console\Command;
 
 class SendBuildingNotifications extends Command
 {
@@ -43,13 +42,13 @@ class SendBuildingNotifications extends Command
     {
         $notifications = NotificationModel::where('status', NotificationStatus::Scheduled())
             ->where('send_at', '<', now())
-            ->get(); 
+            ->get();
 
         foreach ($notifications as $notification) {
             SendNotification::dispatch($notification);
 
             $notification->update([
-                'status' => NotificationStatus::Processing()
+                'status' => NotificationStatus::Processing(),
             ]);
         }
 

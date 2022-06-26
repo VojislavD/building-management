@@ -8,14 +8,13 @@ use App\Models\Notification;
 use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function __invoke(): Renderable
     {
         // Admin
-        $tasksThisMonth = Task::whereMonth('created_at',  now())->count();
+        $tasksThisMonth = Task::whereMonth('created_at', now())->count();
         $tasksLastMonth = Task::whereMonth('created_at', now()->subMonth())->count();
         $notificationsThisMonth = Notification::whereMonth('created_at', now())->count();
         $notificationsLastMonth = Notification::whereMonth('created_at', now()->subMonth())->count();
@@ -63,7 +62,7 @@ class DashboardController extends Controller
             'cntm' => $cancelledNotificationsThisMonth,
             'cb' => $currentBudget,
             'pt' => $pendingTasks,
-            'ap' => $activeProject
+            'ap' => $activeProject,
         ]);
     }
 }

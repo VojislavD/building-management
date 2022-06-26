@@ -5,7 +5,6 @@ namespace Tests\Feature\Companies;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -31,35 +30,35 @@ class UpdateCompanyFormLivewireComponentTest extends TestCase
     {
         $this->actingAs(User::factory()->create());
         $company2 = Company::factory()->create();
-        
+
         Livewire::test('profile.update-company-form')
             ->set('state.name', '')
             ->call('updateCompany')
             ->assertHasErrors([
-                'state.name' => 'required'
+                'state.name' => 'required',
             ]);
 
         Livewire::test('profile.update-company-form')
             ->set('state.name', 1)
             ->call('updateCompany')
             ->assertHasErrors([
-                'state.name' => 'string'
+                'state.name' => 'string',
             ]);
 
         Livewire::test('profile.update-company-form')
             ->set('state.name', 'Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.Length greater than 255 characters.')
             ->call('updateCompany')
             ->assertHasErrors([
-                'state.name' => 'max'
+                'state.name' => 'max',
             ]);
-        
+
         Livewire::test('profile.update-company-form')
             ->set('state.name', $company2->name)
             ->call('updateCompany')
             ->assertHasErrors([
-                'state.name' => 'unique'
+                'state.name' => 'unique',
             ]);
-        
+
         Livewire::test('profile.update-company-form')
             ->set('state.name', 'Test Name')
             ->call('updateCompany')
@@ -80,13 +79,13 @@ class UpdateCompanyFormLivewireComponentTest extends TestCase
             ->set('state.name', 'Test Name')
             ->call('updateCompany')
             ->assertHasNoErrors();
-        
+
         $this->assertDatabaseMissing('companies', [
-            'name' => $company_name
+            'name' => $company_name,
         ]);
 
         $this->assertDatabaseHas('companies', [
-            'name' => 'Test Name'
+            'name' => 'Test Name',
         ]);
     }
 }

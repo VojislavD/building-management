@@ -11,7 +11,7 @@ class AdminsTable extends Component
     public function render(): Renderable
     {
         return view('livewire.admins.admins-table', [
-            'admins' => User::admin()->latest()->paginate(10)
+            'admins' => User::admin()->latest()->paginate(10),
         ]);
     }
 }

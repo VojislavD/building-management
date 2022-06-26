@@ -22,14 +22,14 @@ class BuildingController extends Controller
     public function show(Building $building): Renderable
     {
         return view('buildings.show', [
-            'building' => $building
+            'building' => $building,
         ]);
     }
 
     public function edit(Building $building): Renderable
     {
         return view('buildings.edit', [
-            'building' => $building
+            'building' => $building,
         ]);
     }
 

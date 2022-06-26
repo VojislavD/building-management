@@ -56,6 +56,6 @@ class ActionServiceProvider extends ServiceProvider
         UpdatesTask::class => UpdateTask::class,
         CreatesAdmin::class => CreateAdmin::class,
         UpdatesAdmin::class => UpdateAdmin::class,
-        DeletesAdmin::class => DeleteAdmin::class
+        DeletesAdmin::class => DeleteAdmin::class,
     ];
 }

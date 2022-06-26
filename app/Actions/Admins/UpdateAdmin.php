@@ -20,11 +20,11 @@ class UpdateAdmin implements UpdatesAdmin
             'company_id' => ['required', 'exists:companies,id'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($admin->id)],
-            'password' => ['nullable', 'string', new Password]
+            'password' => ['nullable', 'string', new Password],
         ])->validate();
 
         $input['password'] = $input['password'] ? Hash::make($input['password']) : $admin->password;
-        
+
         $admin->update($input);
     }
 }

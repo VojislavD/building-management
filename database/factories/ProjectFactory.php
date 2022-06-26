@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Enums\ProjectStatus;
 use App\Models\Building;
-use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -29,39 +28,39 @@ class ProjectFactory extends Factory
             ])->random(),
             'name' => $this->faker->sentence(),
             'price' => $this->faker->numberBetween(10000, 100000),
-            'rates' => $this->faker->numberBetween(1,10),
+            'rates' => $this->faker->numberBetween(1, 10),
             'amount_payed' => $this->faker->numberBetween(10000, 50000),
             'amount_left' => $this->faker->numberBetween(10000, 50000),
             'start_paying' => today(),
-            'end_paying' => today()->addMonths(5)
+            'end_paying' => today()->addMonths(5),
         ];
     }
 
     public function pending(): Factory
     {
         return $this->state([
-            'status' => ProjectStatus::Pending()
+            'status' => ProjectStatus::Pending(),
         ]);
     }
 
     public function processing(): Factory
     {
         return $this->state([
-            'status' => ProjectStatus::Processing()
+            'status' => ProjectStatus::Processing(),
         ]);
     }
 
     public function finished(): Factory
     {
         return $this->state([
-            'status' => ProjectStatus::Finished()
+            'status' => ProjectStatus::Finished(),
         ]);
     }
 
     public function cancelled(): Factory
     {
         return $this->state([
-            'status' => ProjectStatus::Cancelled()
+            'status' => ProjectStatus::Cancelled(),
         ]);
     }
 }

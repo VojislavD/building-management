@@ -21,6 +21,7 @@
         "barryvdh/laravel-debugbar": "^3.6.6",
         "brianium/paratest": "^6.4",
         "fakerphp/faker": "^1.19.0",
+        "laravel/pint": "^0.2.0",
         "laravel/sail": "^1.13.2",
         "mockery/mockery": "^1.5.0",
         "nunomaduro/collision": "^6.1",

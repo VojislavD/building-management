@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Buildings;
 
-use App\Models\Building;
 use App\Enums\BuildingStatus;
+use App\Models\Building;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
@@ -19,7 +19,7 @@ class BuildingsTableLivewireComponentTest extends TestCase
     {
         $active = Building::factory()->active()->create();
         $inactive = Building::factory()->inactive()->create();
-        
+
         Livewire::test('buildings.buildings-table')
             ->assertSee($active->internal_code)
             ->assertDontSee($inactive->internal_code)
@@ -33,7 +33,7 @@ class BuildingsTableLivewireComponentTest extends TestCase
     {
         $active = Building::factory()->active()->create();
         $inactive = Building::factory()->inactive()->create();
-        
+
         Livewire::test('buildings.buildings-table')
             ->assertSee($active->internal_code)
             ->assertDontSee($inactive->internal_code)
@@ -44,7 +44,7 @@ class BuildingsTableLivewireComponentTest extends TestCase
             ->assertSee($inactive->internal_code)
             ->assertDontSee($active->internal_code)
             ->assertHasNoErrors();
-        
+
         Livewire::test('buildings.buildings-table')
             ->set('status', null)
             ->assertSee($active->internal_code)
@@ -58,10 +58,10 @@ class BuildingsTableLivewireComponentTest extends TestCase
     public function test_show_buildings_in_latest_order()
     {
         $building1 = Building::factory()->create([
-            'created_at' => now()->subDays(2)
+            'created_at' => now()->subDays(2),
         ]);
         $building2 = Building::factory()->create([
-            'created_at' => now()->subDay()
+            'created_at' => now()->subDay(),
         ]);
         $building3 = Building::factory()->create();
 
@@ -69,7 +69,7 @@ class BuildingsTableLivewireComponentTest extends TestCase
             ->assertSeeInOrder([
                 $building3->internal_code,
                 $building2->internal_code,
-                $building1->internal_code
+                $building1->internal_code,
             ])
             ->assertHasNoErrors();
     }
@@ -80,7 +80,7 @@ class BuildingsTableLivewireComponentTest extends TestCase
     public function test_show_buildings_when_per_page_change()
     {
         $building1 = Building::factory()->active()->create([
-            'created_at' => now()->subDay()
+            'created_at' => now()->subDay(),
         ]);
 
         $building2 = Building::factory()->active()->create();
